@@ -8,7 +8,7 @@ This application is dedicated to non-professional musicians who want to expand t
 
 1. Your band just found a date 100 km away from your rehearsal room. Look for a band equivalent to yours among the users and see what they propose as a solution in terms of sleeping arrangements and equipment. If it works, this same band will be able to count on you in a similar situation.
 
-2. You have a date planned. You can propose a group in your network to do the support and in return they will do the same for your band on a future occasion.
+2. You have a date planned in your area. You can propose a group that belongs to your network to do the oppening act and offer them sleeping arrangement and equipment, and in return they will do the same for your band on a future occasion.
 
 **Main features :**
 
