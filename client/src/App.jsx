@@ -1,42 +1,23 @@
-import { useState } from 'react';
 import './App.css';
-import Maps from './components/Maps.jsx';
-import SearchBox2 from './components/SearchBox.jsx';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import NavBar from './pages/NavBar.jsx';
+import HomePage from './pages/HomePage.jsx';
+import UserPage from './pages/UserPage.jsx';
+import Map from './pages/Map.jsx';
+import RegisterPage from './pages/RegisterPage.jsx';
 
 function App() {
-  const [selectPosition, setSelectPosition] = useState(null);
-
-  return (
-    <>
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'row',
-          width: '100vw',
-          height: '100vh',
-        }}
-      >
-        <div
-          style={{
-            width: '50vw',
-            height: '100vh ',
-          }}
-        >
-          <Maps selectPosition={selectPosition} />
-        </div>
-        <div
-          style={{
-            width: '50vw',
-          }}
-        >
-          <SearchBox2
-            selectPosition={selectPosition}
-            setSelectPosition={setSelectPosition}
-          />
-        </div>
-      </div>
-    </>
-  );
+	return (
+		<BrowserRouter>
+			<NavBar />
+			<Routes>
+				<Route path="/" element={<HomePage />} />
+				<Route path="/map" element={<Map />} />
+				<Route path="/profile/:id" element={<UserPage />} />
+				<Route path="/register" element={<RegisterPage />} />
+			</Routes>
+		</BrowserRouter>
+	);
 }
 
 export default App;
