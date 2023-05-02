@@ -1,10 +1,11 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import NavBar from './pages/NavBar.jsx';
+import NavBar from './pages/Navbar.jsx';
 import Home from './pages/Home.jsx';
 import Profile from './pages/Profile.jsx';
 import Map from './pages/Map.jsx';
 import Register from './pages/Register.jsx';
+import Login from './pages/Login.jsx';
 
 function App() {
 	return (
@@ -15,6 +16,7 @@ function App() {
 				<Route path="/map" element={<Map />} />
 				<Route path="/profile/:id" element={<Profile />} />
 				<Route path="/register" element={<Register />} />
+				<Route path="/login" element={<Login />} />
 			</Routes>
 		</BrowserRouter>
 	);

@@ -63,3 +63,5 @@ export const readAllUsers = async (req, res) => {
 		res.json({ success: false, message: err.message });
 	}
 };
+
+	
