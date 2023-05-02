@@ -1,17 +1,18 @@
-// axios
 import axios from 'axios';
 import { useState } from 'react';
 import { Input, Button, Space, Tooltip, Divider, List, DatePicker } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
+import { useNavigate } from 'react-router-dom';
 
 const NOMINATIM_BASE_URL = 'https://nominatim.openstreetmap.org/search?';
 
 const { RangePicker } = DatePicker;
 
-const SearchBox2 = (props) => {
+const SearchBox = (props) => {
   const { selectPosition, setSelectPosition } = props;
   const [searchText, setSearchText] = useState('');
   const [listPlace, setListPlace] = useState([]);
+  const navigate = useNavigate();
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }}>
@@ -78,6 +79,7 @@ const SearchBox2 = (props) => {
                 <List.Item
                   onClick={() => {
                     setSelectPosition(item);
+                    navigate(`/mapsearch?lat=${item.lat}&lon=${item.lon}`);
                   }}
                 >
                   {item?.display_name}
@@ -91,4 +93,4 @@ const SearchBox2 = (props) => {
     </div>
   );
 };
-export default SearchBox2;
+export default SearchBox;
