@@ -1,6 +1,6 @@
 import { useLocation } from 'react-router-dom';
 
-function UserPage() {
+function Profile() {
 	//states
 
 	const location = useLocation();
@@ -12,4 +12,4 @@ function UserPage() {
 	);
 }
 
-export default UserPage;
+export default Profile;

@@ -1,6 +1,6 @@
 import RegisterForm from '../components/RegisterForm.jsx';
 
-function RegisterPage() {
+function Register() {
 	return (
 		<div>
 			<h1>Register</h1>
@@ -9,4 +9,4 @@ function RegisterPage() {
 	);
 }
 
-export default RegisterPage;
+export default Register;
