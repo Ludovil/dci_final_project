@@ -11,11 +11,8 @@ function NavBar() {
           <NavLink to='/map'>Map</NavLink>
         </li>
         <li>
-          <NavLink to='/mapsearch'>MapSearch</NavLink>
+          <NavLink to='/mapsearch'>Map Search</NavLink>
         </li>
-        {/* <li>
-          <NavLink to='/profile'>profile</NavLink>
-        </li> */}
         <li>
           <NavLink to='/register'>Register</NavLink>
         </li>

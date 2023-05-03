@@ -1,8 +1,10 @@
-import { useState } from 'react';
-import Maps from '../components/Maps.jsx';
+import { useState, useContext } from 'react';
 import SearchBox from '../components/SearchBox.jsx';
+import { MyContext } from '../context/context.js';
+
 function Home() {
   const [selectPosition, setSelectPosition] = useState(null);
+  const { positionContext, setPositionContext } = useContext(MyContext);
   return (
     <>
       <div
@@ -13,24 +15,13 @@ function Home() {
           height: '100vh',
         }}
       >
-        {/* <div
-          style={{
-            width: '50vw',
-            height: '100vh ',
-          }}
-        >
-          <Maps selectPosition={selectPosition} />
-        </div> */}
         <div
           style={{
             width: '50vw',
             margin: '0 auto',
           }}
         >
-          <SearchBox
-            selectPosition={selectPosition}
-            setSelectPosition={setSelectPosition}
-          />
+          <SearchBox />
         </div>
       </div>
     </>
