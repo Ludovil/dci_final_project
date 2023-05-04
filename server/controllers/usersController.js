@@ -21,7 +21,7 @@ export const createUser = async (req, res) => {
 		const formatted_address = response.data.results[0].formatted;
 		console.log(formatted_address);
 
-		// hashing the password
+		// hashing the password,
 		const hashedPassword = bcrypt.hashSync(password, 10);
 
 		const user = new UserCollection({

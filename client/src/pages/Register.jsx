@@ -17,10 +17,24 @@ function Register() {
 		housenumber: '',
 	});
 
+	const [profileImage, setProfileImage] = useState({ file: '' });
+
+	console.log('profile image: ', profileImage.file);
 	//actions
 	const onChangeHandler = (e) => {
 		const value = e.target.value;
 		setFormData({ ...formData, [e.target.name]: value });
+	};
+
+	const handleFileUpload = async (e) => {
+		const file = e.target.files[0];
+		//console.log('file:', file);
+		const base64 = await convertToBase64(file);
+		//console.log('base64:', base64);
+		//console.log('formData before update:', formData.profile_image);
+		//setFormData({ ...formData, profile_image: base64 });
+		//console.log('formData after update:', formData.profile_image);
+		setProfileImage({ ...profileImage, file: base64 });
 	};
 
 	const onSubmitHandler = (e) => {
@@ -29,7 +43,8 @@ function Register() {
 			userName: e.target.userName.value,
 			email: e.target.email.value,
 			password: e.target.password.value,
-			profile_image: e.target.profile_image.value,
+			//profile_image: e.target.profile_image.value,
+			profile_image: profileImage.file,
 			address: {
 				country: e.target.country.value,
 				city: e.target.city.value,
@@ -41,6 +56,7 @@ function Register() {
 		axios
 			.post('http://localhost:3000/users', JSON.stringify(formData), {
 				headers: { 'Content-Type': 'application/json' },
+				//headers: { 'Content-Type': 'multipart/form-data' },
 			})
 			.then((res) => {
 				if (res.data.success) {
@@ -57,6 +73,7 @@ function Register() {
 			<RegisterForm
 				onChangeHandler={onChangeHandler}
 				onSubmitHandler={onSubmitHandler}
+				handleFileUpload={handleFileUpload}
 				formData={formData}
 			/>
 		</div>
@@ -64,3 +81,16 @@ function Register() {
 }
 
 export default Register;
+
+function convertToBase64(file) {
+	return new Promise((resolve, reject) => {
+		const fileReader = new FileReader();
+		fileReader.readAsDataURL(file);
+		fileReader.onload = () => {
+			resolve(fileReader.result);
+		};
+		fileReader.onerror = (error) => {
+			reject(error);
+		};
+	});
+}
