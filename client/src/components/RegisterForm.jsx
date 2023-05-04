@@ -1,72 +1,107 @@
-//import { useState } from 'react';
-import axios from 'axios';
+import PropTypes from 'prop-types';
 
-function RegisterForm() {
-	//
-	const registerUser = (e) => {
-		e.preventDefault();
-		console.log('click');
-		const user = {
-			userName: e.target.userName.value,
-			email: e.target.email.value,
-			password: e.target.password.value,
-			profile_image: e.target.profileImage.value,
-			address: {
-				country: e.target.country.value,
-				city: e.target.city.value,
-				postcode: e.target.postcode.value,
-				street: e.target.street.value,
-				housenumber: e.target.housenumber.value,
-			},
-		};
-		console.log(user);
-		axios
-			.post('http://localhost:3000/users', JSON.stringify(user), {
-				headers: { 'Content-Type': 'application/json' },
-			})
-			.then((res) => {
-				if (res.data.success) {
-					console.log('success');
-				} else {
-					console.log(res.data.message);
-				}
-			});
-	};
-	//
+function RegisterForm({ onChangeHandler, onSubmitHandler, submitedInput }) {
 	return (
 		<div className="form">
-			<form onSubmit={registerUser}>
-				<label htmlFor="">
-					UserName <input type="text" name="userName" />
+			<form onSubmit={onSubmitHandler}>
+				<label>
+					<span>UserName</span>
+					<input
+						type="text"
+						name="username"
+						onChange={onChangeHandler}
+					/>
 				</label>
-				<label htmlFor="">
-					Email <input type="email" name="email" />
+				<br />
+				<label>
+					<span>email</span>
+					<input
+						type="email"
+						name="email"
+						onChange={onChangeHandler}
+					/>
 				</label>
-				<label htmlFor="">
-					Password <input type="password" name="password" />
+				<br />
+				<label>
+					<span>password</span>
+					<input
+						type="password"
+						name="password"
+						onChange={onChangeHandler}
+					/>
 				</label>
-				<label htmlFor="">
-					Profile Image <input type="file" name="profileImage" />
+				<br />
+				<label>
+					<span>Image Profile</span>
+					<input
+						type="file"
+						name="profile_image"
+						onChange={onChangeHandler}
+					/>
 				</label>
-				<label htmlFor="">
-					Country <input type="text" name="country" />
+				<br />
+				<label>
+					<span>country</span>
+					<input
+						type="country"
+						name="country"
+						onChange={onChangeHandler}
+					/>
 				</label>
-				<label htmlFor="">
-					City <input type="text" name="city" />
+				<br />
+				<label>
+					<span>city</span>
+					<input type="city" name="city" onChange={onChangeHandler} />
 				</label>
-				<label htmlFor="">
-					Postcode <input type="text" name="postcode" />
+				<br />
+				<label>
+					<span>postcode</span>
+					<input
+						type="postcode"
+						name="postcode"
+						onChange={onChangeHandler}
+					/>
 				</label>
-				<label htmlFor="">
-					Street <input type="text" name="street" />
+				<br />
+				<label>
+					<span>street</span>
+					<input
+						type="street"
+						name="street"
+						onChange={onChangeHandler}
+					/>
 				</label>
-				<label htmlFor="">
-					House Number <input type="text" name="housenumber" />
+				<br />
+				<label>
+					<span>street</span>
+					<input
+						type="street"
+						name="street"
+						onChange={onChangeHandler}
+					/>
 				</label>
-				<button>submit</button>
+				<br />
+				<button type="submit">Register</button>
+				<br />
 			</form>
 		</div>
 	);
 }
+
+RegisterForm.propTypes = {
+	username: PropTypes.string,
+	email: PropTypes.string,
+	password: PropTypes.string,
+	profile_image: PropTypes.string,
+	country: PropTypes.string,
+	city: PropTypes.string,
+	postcode: PropTypes.string,
+	street: PropTypes.string,
+	housenumber: PropTypes.string,
+	onChangeHandler: PropTypes.func,
+	onSubmitHandler: PropTypes.func,
+	submitedInput: PropTypes.object,
+	formData: PropTypes.object,
+};
 
 export default RegisterForm;
