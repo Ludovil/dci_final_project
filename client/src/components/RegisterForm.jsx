@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-function RegisterForm({ onChangeHandler, onSubmitHandler, submitedInput }) {
+function RegisterForm({ onChangeHandler, onSubmitHandler }) {
 	return (
 		<div className="form">
 			<form onSubmit={onSubmitHandler}>
@@ -8,7 +8,7 @@ function RegisterForm({ onChangeHandler, onSubmitHandler, submitedInput }) {
 					<span>UserName</span>
 					<input
 						type="text"
-						name="username"
+						name="userName"
 						onChange={onChangeHandler}
 					/>
 				</label>
@@ -43,7 +43,7 @@ function RegisterForm({ onChangeHandler, onSubmitHandler, submitedInput }) {
 				<label>
 					<span>country</span>
 					<input
-						type="country"
+						type="text"
 						name="country"
 						onChange={onChangeHandler}
 					/>
@@ -51,13 +51,13 @@ function RegisterForm({ onChangeHandler, onSubmitHandler, submitedInput }) {
 				<br />
 				<label>
 					<span>city</span>
-					<input type="city" name="city" onChange={onChangeHandler} />
+					<input type="text" name="city" onChange={onChangeHandler} />
 				</label>
 				<br />
 				<label>
 					<span>postcode</span>
 					<input
-						type="postcode"
+						type="text"
 						name="postcode"
 						onChange={onChangeHandler}
 					/>
@@ -66,17 +66,17 @@ function RegisterForm({ onChangeHandler, onSubmitHandler, submitedInput }) {
 				<label>
 					<span>street</span>
 					<input
-						type="street"
+						type="text"
 						name="street"
 						onChange={onChangeHandler}
 					/>
 				</label>
 				<br />
 				<label>
-					<span>street</span>
+					<span>housenumber</span>
 					<input
-						type="street"
-						name="street"
+						type="text"
+						name="housenumber"
 						onChange={onChangeHandler}
 					/>
 				</label>
