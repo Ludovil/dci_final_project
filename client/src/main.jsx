@@ -4,7 +4,7 @@ import Container from './context/Container.jsx';
 import './index.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <Container>
-    <App />
-  </Container>
+	<Container>
+		<App />
+	</Container>
 );

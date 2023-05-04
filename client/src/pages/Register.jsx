@@ -1,35 +1,20 @@
+import { useContext, useState } from 'react';
 import RegisterForm from '../components/RegisterForm.jsx';
-import { useState } from 'react';
 import axios from 'axios';
+import { MyContext } from '../context/context.js';
 
 function Register() {
-	//states
+	const { setUser } = useContext(MyContext);
 	const [formData, setFormData] = useState({
 		userName: '',
 		email: '',
 		password: '',
 		profile_image: '',
-		address: {
-			country: '',
-			city: '',
-			postcode: '',
-			street: '',
-			housenumber: '',
-		},
-	});
-
-	const [submitedInput, setSubmitedInput] = useState({
-		userName: null,
-		email: null,
-		password: null,
-		profile_image: null,
-		address: {
-			country: null,
-			city: null,
-			postcode: null,
-			street: null,
-			housenumber: null,
-		},
+		country: '',
+		city: '',
+		postcode: '',
+		street: '',
+		housenumber: '',
 	});
 
 	//actions
@@ -40,22 +25,19 @@ function Register() {
 
 	const onSubmitHandler = (e) => {
 		e.preventDefault();
-		setSubmitedInput(formData);
-		// remise à zero
-		setFormData({
-			userName: '',
-			email: '',
-			password: '',
-			profile_image: '',
+		const formData = {
+			userName: e.target.userName.value,
+			email: e.target.email.value,
+			password: e.target.password.value,
+			profile_image: e.target.profile_image.value,
 			address: {
-				country: '',
-				city: '',
-				postcode: '',
-				street: '',
-				housenumber: '',
+				country: e.target.country.value,
+				city: e.target.city.value,
+				postcode: e.target.postcode.value,
+				street: e.target.street.value,
+				housenumber: e.target.housenumber.value,
 			},
-		});
-		console.log('state:', formData);
+		};
 		axios
 			.post('http://localhost:3000/users', JSON.stringify(formData), {
 				headers: { 'Content-Type': 'application/json' },
@@ -63,6 +45,7 @@ function Register() {
 			.then((res) => {
 				if (res.data.success) {
 					console.log('success');
+					setUser(res.data.data);
 				} else {
 					console.log(res.data.message);
 				}
@@ -74,7 +57,6 @@ function Register() {
 			<RegisterForm
 				onChangeHandler={onChangeHandler}
 				onSubmitHandler={onSubmitHandler}
-				submitedInput={submitedInput}
 				formData={formData}
 			/>
 		</div>

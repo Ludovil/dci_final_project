@@ -1,15 +1,23 @@
 import { useLocation } from 'react-router-dom';
+import { MyContext } from '../context/context.js';
+import { useContext } from 'react';
 
 function Profile() {
-  //states
+	//states
 
-  const location = useLocation();
+	const location = useLocation();
+	const { user } = useContext(MyContext);
 
-  return (
-    <div>
-      <h1>{location?.state?.userName}</h1>
-    </div>
-  );
+	return (
+		<div>
+			<h1>{location?.state?.userName}</h1>
+			{user && (
+				<div>
+					<h2>{user.userName}</h2>
+				</div>
+			)}
+		</div>
+	);
 }
 
 export default Profile;
