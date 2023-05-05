@@ -8,7 +8,7 @@ export default function ProtectRoute({children}) {
     if(!user){
         return children
     }else{
-        return <Navigate to="/profile/:id" />
+        return <Navigate to="/" />
     }
   
 }

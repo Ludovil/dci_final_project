@@ -5,7 +5,7 @@ import { useContext } from 'react';
 import { MyContext } from '../context/context.js';
 
 function LoginForm() {
-	const { setUser } = useContext(MyContext);
+	const { setUser } = useContext(MyContext); // 
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [loggedIn, setLoggedIn] = useState(false); // Add state to track whether the user is logged in

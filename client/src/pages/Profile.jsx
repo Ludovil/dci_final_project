@@ -4,14 +4,11 @@ import { Navigate } from "react-router-dom";
 
 export default function Profile() {
   const { user, setUser } = useContext(MyContext);
+  // const logoutUser = () => {
 
-  const logoutUser = () => {
-    localStorage.removeItem("token");
-    setUser(null);
-  };
-
-
-
+  //   localStorage.removeItem("token");
+  //   setUser(null);
+  // };
 
   if (user) {
     return (
@@ -30,14 +27,15 @@ export default function Profile() {
                 <li>{user.address.city}</li>
                 <li>{user.address.postcode}</li>
 
+                <ul><li>{user.address.street}</li><li>{user.address.housenumber}</li></ul>
               </ul>
             </>
           )}
-          <button onClick={logoutUser}>logout</button>
+          {/* <button onClick={logoutUser}>logout</button> */}
         </div>
       </div>
     );
   } else {
-    return <Navigate to="/login" />;
   }
+  return <Navigate to="/" />;
 }
