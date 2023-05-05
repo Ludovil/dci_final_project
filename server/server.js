@@ -16,7 +16,7 @@ mongoose
 	.catch((err) => console.log(err.message));
 
 // json middleware
-app.use(express.json());
+app.use(express.json({ limit: '5mb' }));
 
 app.use(cors({ origin: 'http://localhost:5173' }));
 

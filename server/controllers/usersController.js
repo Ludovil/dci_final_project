@@ -7,10 +7,12 @@ const API_KEY = 'c53b5cb2b6794d1881e5704b0a5f1ea0';
 
 export const createUser = async (req, res) => {
 	try {
+		console.log('Create user', req.body);
 		const { userName, email, password, address, profile_image } = req.body;
-
+		console.log('Create user', req.file);
+		if (req.file) req.body.profile_image = req.file.path;
 		const response = await axios.get(
-			`https://api.geoapify.com/v1/geocode/search?housenumber=${address.housenumber}&street=${address.street}&postcode=${address.postcode}&city=${address.city}&country=germany&format=json&apiKey=${API_KEY}`
+			`https://api.geoapify.com/v1/geocode/search?housenumber=${req.body.housenumber}&street=${req.body.street}&postcode=${req.body.postcode}&city=${req.body.city}&country=germany&format=json&apiKey=${API_KEY}`
 		);
 
 		// Extract latitude and longitude from the response data
@@ -86,6 +88,7 @@ export const readUser = async (req, res) => {
 			res.json({ success: false, message: 'not valid id' });
 		}
 	} catch (err) {
+		console.log('read users', err.message);
 		res.json({ success: false, message: err.message });
 	}
 };

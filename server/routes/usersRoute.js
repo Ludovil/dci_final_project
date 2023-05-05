@@ -1,4 +1,5 @@
 import express from 'express';
+import multerMiddleware from '../middlewares/multer.js';
 import {
 	createUser,
 	readUser,
@@ -8,7 +9,8 @@ import {
 
 const router = express.Router();
 
-router.post('/', createUser);
+// router.post('/', createUser);
+router.post('/', multerMiddleware.single('image'), createUser);
 router.post('/login', loginUser);
 router.get('/', readAllUsers);
 router.get('/:id', readUser);

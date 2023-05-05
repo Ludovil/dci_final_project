@@ -27,32 +27,54 @@ function Register() {
 	};
 
 	const handleFileUpload = async (e) => {
-		const file = e.target.files[0];
+		//		const file = e.target.files[0];
 		//console.log('file:', file);
-		const base64 = await convertToBase64(file);
+		//const base64 = await convertToBase64(file);
 		//console.log('base64:', base64);
 		//console.log('formData before update:', formData.profile_image);
 		//setFormData({ ...formData, profile_image: base64 });
 		//console.log('formData after update:', formData.profile_image);
-		setProfileImage({ ...profileImage, file: base64 });
+		//setProfileImage({ ...profileImage, file: base64 });
+		setProfileImage({
+			url: URL.createObjectURL(e.currentTarget.files[0]),
+			file: e.currentTarget.files[0],
+		});
 	};
 
 	const onSubmitHandler = (e) => {
 		e.preventDefault();
-		const formData = {
-			userName: e.target.userName.value,
-			email: e.target.email.value,
-			password: e.target.password.value,
-			//profile_image: e.target.profile_image.value,
-			profile_image: profileImage.file,
-			address: {
+		const formdata = new FormData();
+		//const formData = {
+		//userName: e.target.userName.value,
+		formdata.set('username', formData.username);
+		//email: e.target.email.value,
+		formdata.set('email', formData.email);
+		//password: e.target.password.value,
+		formdata.set('password', formData.password);
+		//profile_image: e.target.profile_image.value,
+		//profile_image: profileImage.file,
+		console.log('profile file', profileImage);
+		if (profileImage.file)
+			formdata.set('image', profileImage.file, 'profileImage');
+		//formdata.set('profile_image', profileImage.file, 'profileImage');
+		formdata.set(
+			'address',
+			JSON.stringify({
 				country: e.target.country.value,
 				city: e.target.city.value,
 				postcode: e.target.postcode.value,
 				street: e.target.street.value,
 				housenumber: e.target.housenumber.value,
-			},
-		};
+			})
+		);
+		// address: {
+		// country: e.target.country.value,
+		// city: e.target.city.value,
+		// postcode: e.target.postcode.value,
+		// street: e.target.street.value,
+		// housenumber: e.target.housenumber.value,
+		// },
+		//};
 		axios
 			.post('http://localhost:3000/users', JSON.stringify(formData), {
 				headers: { 'Content-Type': 'application/json' },
@@ -63,7 +85,8 @@ function Register() {
 					console.log('success');
 					setUser(res.data.data);
 				} else {
-					console.log(res.data.message);
+					console.log(res.data);
+					console.log();
 				}
 			});
 	};
