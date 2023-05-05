@@ -14,6 +14,9 @@ function Profile() {
 			{user && (
 				<div>
 					<h2>{user.userName}</h2>
+					{user.profile_image && (
+						<img src={user.profile_image} alt="Profile Image" />
+					)}
 				</div>
 			)}
 		</div>

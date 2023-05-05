@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-function RegisterForm({ onChangeHandler, onSubmitHandler }) {
+function RegisterForm({ onChangeHandler, onSubmitHandler, handleFileUpload }) {
 	return (
 		<div className="form">
 			<form onSubmit={onSubmitHandler}>
@@ -36,7 +36,9 @@ function RegisterForm({ onChangeHandler, onSubmitHandler }) {
 					<input
 						type="file"
 						name="profile_image"
-						onChange={onChangeHandler}
+						accept=".jpeg, .png, .jpg"
+						//onChange={onChangeHandler}
+						onChange={handleFileUpload}
 					/>
 				</label>
 				<br />
@@ -102,6 +104,7 @@ RegisterForm.propTypes = {
 	onSubmitHandler: PropTypes.func,
 	submitedInput: PropTypes.object,
 	formData: PropTypes.object,
+	handleFileUpload: PropTypes.func,
 };
 
 export default RegisterForm;
