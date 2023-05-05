@@ -1,4 +1,6 @@
 import axios from 'axios';
+import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
 import UserCollection from '../models/usersSchema.js';
 
 const API_KEY = 'c53b5cb2b6794d1881e5704b0a5f1ea0';
@@ -16,14 +18,16 @@ export const createUser = async (req, res) => {
 		const lon = response.data.results[0].lon;
 
 		// Extract formatted address
-
 		const formatted_address = response.data.results[0].formatted;
 		console.log(formatted_address);
+
+		// hashing the password
+		const hashedPassword = bcrypt.hashSync(password, 10);
 
 		const user = new UserCollection({
 			userName,
 			email,
-			password,
+			password: hashedPassword,
 			profile_image,
 			address,
 			geocode: [lat, lon],
@@ -41,6 +45,37 @@ export const createUser = async (req, res) => {
 	}
 };
 
+//login user
+export const loginUser = async (req, res) => {
+	try {
+		const { email, password } = req.body;
+		const user = await UserCollection.findOne({ email });
+		if (user) {
+			const verifyPassword = bcrypt.compareSync(password, user.password);
+			if (verifyPassword) {
+				const token = jwt.sign(
+					{ _id: user._id, email: user.email },
+					process.env.SIGNATURE,
+					{ expiresIn: '1h', issuer: 'Ludo' }
+				);
+				res.header('token', token).json({ success: true, data: user });
+			} else {
+				res.json({
+					success: false,
+					message: 'The password does not match',
+				});
+			}
+		} else {
+			res.json({
+				success: false,
+				message: 'This email does not exist',
+			});
+		}
+	} catch (err) {
+		res.json({ success: false, message: err.message });
+	}
+};
+//
 export const readUser = async (req, res) => {
 	try {
 		const { id } = req.params;
@@ -63,5 +98,3 @@ export const readAllUsers = async (req, res) => {
 		res.json({ success: false, message: err.message });
 	}
 };
-
-	
