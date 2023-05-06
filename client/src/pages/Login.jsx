@@ -1,10 +1,11 @@
 import LoginForm from '../components/LoginForm.jsx';
 
-const Login = () => {
+function Login() {
 	return (
 		<div>
 			<LoginForm />
 		</div>
 	);
-};
+}
+
 export default Login;

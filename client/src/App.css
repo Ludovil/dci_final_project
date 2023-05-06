@@ -5,14 +5,11 @@
 	text-align: center;
 }
 
-/* body {
-	display: grid;
-	align-items: center;
-} */
 .leaflet-container {
 	height: 100vh;
 }
 
+/* ----------------------------------------- */
 .form {
 	border: 1px solid black;
 	padding: 5px;
@@ -37,4 +34,17 @@
 	width: 100px;
 	text-align: center;
 	margin-left: 350px;
+}
+/* ----------------------------------------- */
+nav ul {
+	display: flex;
+	justify-content: space-around;
+}
+
+nav ul li {
+	list-style-type: none;
+}
+
+.navlink {
+	text-decoration: none;
 }

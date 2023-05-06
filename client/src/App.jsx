@@ -2,7 +2,8 @@ import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import NavBar from './pages/NavBar.jsx';
 import Home from './pages/Home.jsx';
-import Profile from './pages/Profile.jsx';
+import UsersProfile from './pages/UsersProfile.jsx';
+import VisitProfile from './pages/VisitProfile.jsx';
 import Map from './pages/Map.jsx';
 import Register from './pages/Register.jsx';
 import MapSearch from './pages/MapSearch.jsx';
@@ -16,7 +17,8 @@ function App() {
 				<Route path="/" element={<Home />} />
 				<Route path="/map" element={<Map />} />
 				<Route path="/mapsearch" element={<MapSearch />} />
-				<Route path="/profile/:id" element={<Profile />} />
+				<Route path="/profile" element={<UsersProfile />} />
+				<Route path="/visitprofile/:id" element={<VisitProfile />} />
 				<Route path="/register" element={<Register />} />
 				<Route path="/login" element={<Login />} />
 			</Routes>
