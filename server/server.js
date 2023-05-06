@@ -2,6 +2,8 @@ import express from 'express';
 import mongoose from 'mongoose';
 import usersRoute from './routes/usersRoute.js';
 import cors from 'cors';
+import dotenv from 'dotenv';
+dotenv.config();
 
 // server
 const app = express();
@@ -14,9 +16,15 @@ mongoose
 	.catch((err) => console.log(err.message));
 
 // json middleware
-app.use(express.json());
+app.use(express.json({ limit: '10mb' }));
 
-app.use(cors({ origin: 'http://localhost:5173' }));
+app.use(
+	cors({
+		origin: 'http://localhost:5173',
+		exposedHeaders: ['token'],
+		credentials: true,
+	})
+);
 
 // routes
 app.use('/users', usersRoute);

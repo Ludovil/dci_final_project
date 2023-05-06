@@ -10,7 +10,20 @@ const userSchema = new Schema({
 	password: {
 		type: String,
 	},
+	profile_image: {
+		type: String,
+	},
+	address: {
+		country: { type: String },
+		city: { type: String },
+		postcode: { type: String },
+		street: { type: String },
+		housenumber: { type: String },
+	},
 	geocode: Array,
+	formatted_address: {
+		type: String,
+	},
 });
 
 const UserCollection = model('users', userSchema);
