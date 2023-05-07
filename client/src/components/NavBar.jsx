@@ -18,11 +18,11 @@ function NavBar() {
 						Map
 					</NavLink>
 				</li>
-				<li>
+				{/* <li>
 					<NavLink to="/mapsearch" className="navlink">
 						Map Search
 					</NavLink>
-				</li>
+				</li> */}
 				{user ? (
 					<li>
 						<NavLink to="/profile" className="navlink">

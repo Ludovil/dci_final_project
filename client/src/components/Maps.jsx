@@ -1,9 +1,10 @@
-import { useEffect, useContext } from 'react';
+import { useEffect, useContext, useState } from 'react';
 import { MapContainer, Marker, Popup, TileLayer, useMap } from 'react-leaflet';
+import { useLocation, Link } from 'react-router-dom';
+import { MyContext } from '../context/context.js';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
-import { useLocation } from 'react-router-dom';
-import { MyContext } from '../context/context.js';
+import axios from 'axios';
 
 const ResetCenterView = ({ position }) => {
 	const map = useMap();
@@ -22,7 +23,18 @@ const ResetCenterView = ({ position }) => {
 const Maps = () => {
 	const { position, setPosition } = useContext(MyContext);
 	const location = useLocation();
-	//console.log(location);
+	const [users, setUsers] = useState([]);
+
+	const URL = 'http://localhost:3000';
+
+	useEffect(() => {
+		axios
+			.get(`${URL}/users`)
+			.then((res) => {
+				setUsers(res.data.data);
+			})
+			.catch((err) => console.log(err));
+	}, []);
 
 	return (
 		<MapContainer
@@ -41,6 +53,25 @@ const Maps = () => {
 				</Marker>
 			)}
 			<ResetCenterView position={position} />
+			{users.map((user) => {
+				return (
+					<div key={user._id}>
+						<Marker position={user.geocode}>
+							<Popup>
+								{user.userName} <br />
+								{user.formatted_address} <br />
+								<Link
+									to={`/visitprofile/${user._id}`}
+									state={user}
+								>
+									<button>visit profile</button>
+								</Link>
+							</Popup>
+						</Marker>
+						;
+					</div>
+				);
+			})}
 		</MapContainer>
 	);
 };
