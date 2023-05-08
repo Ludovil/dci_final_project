@@ -1,4 +1,4 @@
-import Conversation from "../models/Conversation.js";
+import Conversation from "../models/conversationSchema.js";
 
 export const newConversation = async (req, res) => {
   const newConversation = new Conversation({
@@ -33,4 +33,6 @@ export const getConversationByUserIds = async (req, res) => {
   } catch (err) {
     res.status(500).json(err);
   }
-};
+};    
+
+

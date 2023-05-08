@@ -3,6 +3,10 @@ import mongoose from 'mongoose';
 import usersRoute from './routes/usersRoute.js';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import conversationRoute from './routes/conversationRoutes.js';
+import messagesRoute from "./routes/messagesRoutes.js"
+
+
 dotenv.config();
 
 // server
@@ -28,6 +32,9 @@ app.use(
 
 // routes
 app.use('/users', usersRoute);
+app.use('/conversations', conversationRoute);
+app.use('/messages', messagesRoute);
+
 
 // test
 app.get('/', (req, res) => {

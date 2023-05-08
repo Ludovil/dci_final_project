@@ -1,4 +1,4 @@
-const Message = require("../models/Message");
+import Message from "../models/messageSchema.js";
 
 export const addMessage = async (req, res) => {
   const newMessage = new Message(req.body);
@@ -20,4 +20,4 @@ export const  getMessagesByConversationId = async (req, res) => {
   } catch (err) {
     res.status(500).json(err);
   }
-};
+};  
