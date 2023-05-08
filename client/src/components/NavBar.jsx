@@ -43,6 +43,16 @@ function NavBar() {
 						</li>
 					</>
 				)}
+				<li>
+					<NavLink to="/about" className="navlink">
+						About
+					</NavLink>
+				</li>
+				<li>
+					<NavLink to="/contact" className="navlink">
+						Contact
+					</NavLink>
+				</li>
 			</ul>
 		</nav>
 	);
