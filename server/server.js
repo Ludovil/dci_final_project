@@ -1,8 +1,11 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import usersRoute from './routes/usersRoute.js';
+import placesRoute from './routes/placesRoute.js';
+import place_imagesRoute from './routes/place_imagesRoute.js';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import fileupload from 'express-fileupload';
 dotenv.config();
 
 // server
@@ -11,27 +14,26 @@ const PORT = process.env.PORT || 3000;
 
 // database
 mongoose
-	.connect('mongodb://127.0.0.1:27017/final_project')
-	.then(() => console.log('connect to DB'))
-	.catch((err) => console.log(err.message));
+  .connect('mongodb://127.0.0.1:27017/final_project')
+  .then(() => console.log('Connected to DB'))
+  .catch((err) => console.log(err.message));
 
 // json middleware
 app.use(express.json({ limit: '10mb' }));
 
 app.use(
-	cors({
-		origin: 'http://localhost:5173',
-		exposedHeaders: ['token'],
-		credentials: true,
-	})
+  cors({
+    origin: 'http://localhost:5173',
+    exposedHeaders: ['token'],
+    credentials: true,
+  })
 );
+
+app.use(fileupload());
 
 // routes
 app.use('/users', usersRoute);
+app.use('/places', placesRoute);
+app.use('/images', place_imagesRoute);
 
-// test
-app.get('/', (req, res) => {
-	res.send('hello world');
-});
-
-app.listen(PORT, () => console.log('server is running on PORT', PORT));
+app.listen(PORT, () => console.log('Server is running on PORT', PORT));
