@@ -35,7 +35,12 @@ const placeSchema = new Schema({
     coordinates: { type: [Number], required: true },
   },
   */
-  images: [{}],
+  images: [
+    {
+      id: { type: Schema.Types.ObjectId, ref: 'images' },
+      link: { type: String },
+    },
+  ],
   host: { type: Schema.Types.ObjectId, ref: 'users', required: true },
   /*
   dateCreated: { type: Date, default: Date.now() },

@@ -1,33 +1,83 @@
 import PlaceCollection from '../models/apartmentsSchema.js';
 import ImageCollection from '../models/imagesSchema.js';
+import UserCollection from '../models/usersSchema.js';
 
-export const uploadImage = async (req, res) => {
+// create place
+export const createApartment = async (req, res) => {
   try {
-    console.log(req.files);
-    // const { id } = req.params;
     const { name, data } = req.files.image;
-
-    const newImage = new ImageCollection({
-      filename: new Date().getTime() + '_' + name,
-      data,
-    });
-
-    const savedImage = await newImage.save();
-
-    const link = `http://localhost:3000/images/${savedImage.filename}`;
 
     const place = new PlaceCollection({
       title: req.body.title,
       host: req.body.host,
     });
-    place.images.push({ link, id: savedImage._id });
-    await place.save();
 
+    let imagePromises = req.files.image.map((item) => {
+      const { name, data } = item;
+
+      const newImage = new ImageCollection({
+        filename: new Date().getTime() + '_' + name,
+        data,
+        // userId: req.user._id, --> token
+        userId: req.body.userId,
+        apartmentId: place._id,
+      });
+
+      const savedImage = newImage.save();
+
+      return savedImage;
+    });
+
+    let allImages = await Promise.all(imagePromises);
+
+    const user = await UserCollection.findById(req.body.host);
+
+    for (const image of allImages) {
+      const link = `http://localhost:3000/images/${image.filename}`;
+
+      user.apartment_images.push(image._id);
+
+      place.images.push({ link, id: image._id });
+    }
+
+    await user.save();
+    await place.save();
     res.status(200).json({ message: 'Image uploaded successfully' });
   } catch (err) {
     console.error('Error uploading image:', err);
     res.status(500).json({ error: 'Failed to upload image' });
   }
+};
+
+export const modifiedApartment = async (req, res) => {
+  const { id } = req.params;
+
+  let imagePromises = req.files.image.map((item) => {
+    const { name, data } = item;
+
+    const newImage = new ImageCollection({
+      filename: new Date().getTime() + '_' + name,
+      data,
+      // userId: req.user._id, --> token
+      userId: req.body.userId,
+      apartmentId: id,
+    });
+
+    const savedImage = newImage.save();
+
+    return savedImage;
+  });
+
+  let allImages = await Promise.all(imagePromises);
+
+  const place = await PlaceCollection.findById(id);
+  allImages.forEach((image) => {
+    const link = `http://localhost:3000/images/${image.filename}`;
+
+    place.images.push({ link, id: image._id });
+  });
+  await place.save();
+  res.status(200).json({ message: 'Image uploaded successfully' });
 };
 
 export const deleteImage = async (req, res) => {
