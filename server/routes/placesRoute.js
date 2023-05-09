@@ -1,9 +1,13 @@
 import express from 'express';
-import { deleteImage, uploadImage } from '../controllers/placesController.js';
+import {
+  deleteImage,
+  createApartment,
+  modifiedApartment,
+} from '../controllers/placesController.js';
 
 const router = express.Router();
 
-router.post('/', uploadImage);
-// router.delete('/places/:id/images/:imageId', deleteImage);
+router.post('/', createApartment);
+router.patch('/:id', modifiedApartment);
 
 export default router;

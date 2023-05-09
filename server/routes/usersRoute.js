@@ -5,7 +5,6 @@ import {
   readAllUsers,
   loginUser,
 } from '../controllers/usersController.js';
-
 import { authorized } from '../middlewares/authorized.js';
 
 const router = express.Router();
@@ -17,7 +16,5 @@ router.get('/refresh', authorized, (req, res) => {
 });
 router.get('/', readAllUsers);
 router.get('/:id', readUser);
-// router.delete()
-// router.patch()
 
 export default router;
