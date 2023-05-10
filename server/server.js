@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import usersRoute from './routes/usersRoute.js';
 import placesRoute from './routes/placesRoute.js';
 import place_imagesRoute from './routes/place_imagesRoute.js';
+import imagesRoute from './routes/imagesRoute.js';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import fileupload from 'express-fileupload';
@@ -35,5 +36,6 @@ app.use(fileupload());
 app.use('/users', usersRoute);
 app.use('/places', placesRoute);
 app.use('/images', place_imagesRoute);
+app.use('/images', imagesRoute);
 
 app.listen(PORT, () => console.log('Server is running on PORT', PORT));
