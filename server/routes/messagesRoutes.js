@@ -1,4 +1,4 @@
-import {addMessage, getMessagesByConversationId} from "../controllers/messagesController.js"
+import {addMessage, getMessagesByConversationId} from "../controllers/messagesController.js";
 
 
 import Express from "express";  

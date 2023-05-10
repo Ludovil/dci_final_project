@@ -1,6 +1,8 @@
 import { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import { MyContext } from '../context/context.js';
+import LogoutButton from './LogoutButton.jsx';
+
 
 function NavBar() {
 	const { user } = useContext(MyContext);
@@ -18,17 +20,23 @@ function NavBar() {
 						Map
 					</NavLink>
 				</li>
-				{/* <li>
-					<NavLink to="/mapsearch" className="navlink">
-						Map Search
-					</NavLink>
-				</li> */}
 				{user ? (
+					<>
 					<li>
 						<NavLink to="/profile" className="navlink">
 							Profile {user.userName}
 						</NavLink>
 					</li>
+					{/* <li>
+						<NavLink to="/inbox" className="navlink">Inbox
+						</NavLink>
+					</li>  */}
+					<li>
+						<NavLink to="/logout" className="navlink">	
+							<LogoutButton />	
+						</NavLink>	
+					</li>
+					</>
 				) : (
 					<>
 						<li>
