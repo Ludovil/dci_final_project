@@ -2,12 +2,11 @@ import express from 'express';
 import mongoose from 'mongoose';
 import usersRoute from './routes/usersRoute.js';
 import placesRoute from './routes/placesRoute.js';
+import imagesRoute from './routes/imagesRoute.js';
+
 import cors from 'cors';
 import dotenv from 'dotenv';
 import fileupload from 'express-fileupload';
-import conversationRoute from './routes/conversationRoutes.js';
-import messagesRoute from "./routes/messagesRoutes.js"
-
 dotenv.config();
 
 // server
@@ -37,7 +36,12 @@ app.use(fileupload());
 app.use('/users', usersRoute);
 app.use('/places', placesRoute);
 
+
 app.use('/conversations', conversationRoute);
 app.use('/messages', messagesRoute);
+
+// app.use('/images', place_imagesRoute);
+app.use('/images', imagesRoute);
+
 
 app.listen(PORT, () => console.log('Server is running on PORT', PORT));

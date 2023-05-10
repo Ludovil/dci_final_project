@@ -1,53 +1,122 @@
 import PlaceCollection from '../models/apartmentsSchema.js';
 import ImageCollection from '../models/imagesSchema.js';
+import UserCollection from '../models/usersSchema.js';
 
-export const uploadImage = async (req, res) => {
+export const createApartment = async (req, res) => {
   try {
-    console.log(req.files);
-    // const { id } = req.params;
+    const { title, host } = req.body;
+
+    const place = new PlaceCollection({
+      title,
+      host,
+    });
+
+    if (req.files && req.files.image) {
+      let imageFiles = req.files.image;
+      if (!Array.isArray(imageFiles)) {
+        // Convert single file to an array
+        imageFiles = [imageFiles];
+      }
+
+      const imagePromises = imageFiles.map((item) => {
+        const { name, data } = item;
+
+        const newImage = new ImageCollection({
+          filename: new Date().getTime() + '_' + name,
+          data,
+          userId: req.body.userId,
+          apartmentId: place._id,
+        });
+
+        return newImage.save();
+      });
+
+      const allImages = await Promise.all(imagePromises);
+
+      const user = await UserCollection.findById(req.body.host);
+
+      for (const image of allImages) {
+        const link = `http://localhost:3000/images/${image.filename}`;
+        user.apartment_images.push(image._id);
+        place.images.push({ link, id: image._id });
+      }
+
+      await user.save();
+    }
+
+    await place.save();
+    res.status(200).json({ message: 'Apartment created successfully' });
+  } catch (err) {
+    console.error('Error creating apartment:', err);
+    res.status(500).json({ error: 'Failed to create apartment' });
+  }
+};
+
+export const modifiedApartment = async (req, res) => {
+  const { id } = req.params;
+
+  let imagePromises = [];
+  if (req.files && Array.isArray(req.files.image)) {
+    imagePromises = req.files.image.map((item) => {
+      const { name, data } = item;
+
+      const newImage = new ImageCollection({
+        filename: new Date().getTime() + '_' + name,
+        data,
+        userId: req.body.userId,
+        apartmentId: id,
+      });
+
+      const savedImage = newImage.save();
+
+      return savedImage;
+    });
+  } else if (req.files && req.files.image) {
     const { name, data } = req.files.image;
 
     const newImage = new ImageCollection({
       filename: new Date().getTime() + '_' + name,
       data,
+      userId: req.body.userId,
+      apartmentId: id,
     });
 
-    const savedImage = await newImage.save();
+    const savedImage = newImage.save();
 
-    const link = `http://localhost:3000/images/${savedImage.filename}`;
-
-    const place = new PlaceCollection({
-      title: req.body.title,
-      host: req.body.host,
-    });
-    place.images.push({ link, id: savedImage._id });
-    await place.save();
-
-    res.status(200).json({ message: 'Image uploaded successfully' });
-  } catch (err) {
-    console.error('Error uploading image:', err);
-    res.status(500).json({ error: 'Failed to upload image' });
+    imagePromises.push(savedImage);
   }
+
+  let allImages = await Promise.all(imagePromises);
+
+  const place = await PlaceCollection.findById(id);
+  allImages.forEach((image) => {
+    const link = `http://localhost:3000/images/${image.filename}`;
+
+    place.images.push({ link, id: image._id });
+  });
+
+  // Modify 'title'. Later we should add more properties her
+  if (req.body.title || req.body.title === '') {
+    place.title = req.body.title;
+  }
+
+  await place.save();
+  res.status(200).json({ message: 'Apartment modified successfully' });
 };
 
-export const deleteImage = async (req, res) => {
+export const deleteApartment = async (req, res) => {
   try {
     const placeId = req.params.id;
-    const imageId = req.params.imageId;
 
-    const place = await PlaceCollection.findById(placeId);
-    const index = place.images.indexOf(imageId);
+    // Delete the apartment document
+    await PlaceCollection.findByIdAndDelete(placeId);
 
-    if (index > -1) {
-      place.images.splice(index, 1);
-      await place.save();
-    }
+    // Delete any associated images
+    await ImageCollection.deleteMany({ apartmentId: placeId });
 
-    await ImageCollection.findByIdAndDelete(imageId);
-
-    res.status(200).json({ message: 'Image deleted successfully' });
+    res.status(200).json({ message: 'Apartment deleted successfully' });
   } catch (err) {
-    console.error('Error deleting image:', err);
-    res.status(500).json({ error: 'Failed to delete image' });
+    console.error('Error deleting apartment:', err);
+    res.status(500).json({ error: 'Failed to delete apartment' });
   }
 };
