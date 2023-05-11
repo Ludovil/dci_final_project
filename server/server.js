@@ -15,19 +15,19 @@ const PORT = process.env.PORT || 3000;
 
 // database
 mongoose
-  .connect('mongodb://127.0.0.1:27017/final_project')
-  .then(() => console.log('Connected to DB'))
-  .catch((err) => console.log(err.message));
+	.connect('mongodb://127.0.0.1:27017/final_project')
+	.then(() => console.log('Connected to DB'))
+	.catch((err) => console.log(err.message));
 
 // json middleware
 app.use(express.json({ limit: '10mb' }));
 
 app.use(
-  cors({
-    origin: 'http://localhost:5173',
-    exposedHeaders: ['token'],
-    credentials: true,
-  })
+	cors({
+		origin: 'http://localhost:5173',
+		exposedHeaders: ['token'],
+		credentials: true,
+	})
 );
 
 app.use(fileupload());
@@ -37,5 +37,9 @@ app.use('/users', usersRoute);
 app.use('/places', placesRoute);
 // app.use('/images', place_imagesRoute);
 app.use('/images', imagesRoute);
+
+app.get('/', (req, res) => {
+	res.json({ mess: 'hello ' });
+});
 
 app.listen(PORT, () => console.log('Server is running on PORT', PORT));

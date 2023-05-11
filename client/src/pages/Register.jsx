@@ -2,8 +2,10 @@ import { useContext, useState } from 'react';
 import RegisterForm from '../components/RegisterForm.jsx';
 import axios from 'axios';
 import { MyContext } from '../context/context.js';
+import { useNavigate } from 'react-router-dom';
 
 function Register() {
+	const navigate = useNavigate();
 	const { setUser } = useContext(MyContext);
 	const [formData, setFormData] = useState({
 		userName: '',
@@ -55,11 +57,22 @@ function Register() {
 				if (res.data.success) {
 					console.log('success');
 					setUser(res.data.data);
+
+					// redirect to the login page
+					// needs to be updated with redirect to the profile page with valid token
+					navigate('/login');
 				} else {
 					console.log(res.data.message);
 				}
 			});
 	};
+
+	// cancel registration process
+	const onCancelClick = () => {
+		// Redirect to the home page
+		navigate('/');
+	};
+
 	return (
 		<div>
 			<h1>Register</h1>
@@ -69,6 +82,7 @@ function Register() {
 				handleFileUpload={handleFileUpload}
 				formData={formData}
 			/>
+			<button onClick={onCancelClick}>Cancel</button>
 		</div>
 	);
 }

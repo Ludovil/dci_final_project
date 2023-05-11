@@ -15,7 +15,7 @@ router.post('/login', loginUser);
 router.get('/refresh', authorized, (req, res) => {
 	res.json({ success: true, data: req.user });
 });
-router.patch('/', authorized, updateUser);
+router.patch('/:id', authorized, updateUser);
 router.get('/', readAllUsers);
 router.get('/:id', readUser);
 

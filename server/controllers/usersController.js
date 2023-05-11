@@ -102,7 +102,28 @@ export const readAllUsers = async (req, res) => {
 export const updateUser = async (req, res) => {
 	try {
 		const { id } = req.params;
-		const user = await UserCollection.findByIdAndUpdate(id, req.body, {
+		const { password, address, ...userData } = req.body;
+		if (password) {
+			const hashedPassword = bcrypt.hashSync(password, 10);
+			userData.password = hashedPassword;
+		}
+		if (address) {
+			const response = await axios.get(
+				`https://api.geoapify.com/v1/geocode/search?housenumber=${address.housenumber}&street=${address.street}&postcode=${address.postcode}&city=${address.city}&country=germany&format=json&apiKey=${API_KEY}`
+			);
+			// Extract latitude and longitude from the response data
+			const lat = response.data.results[0].lat;
+			const lon = response.data.results[0].lon;
+
+			// Extract formatted address
+			const formatted_address = response.data.results[0].formatted;
+
+			// Update the user with the new address, geocode, and formatted_address fields
+			userData.address = address;
+			userData.geocode = [lat, lon];
+			userData.formatted_address = formatted_address;
+		}
+		const user = await UserCollection.findByIdAndUpdate(id, userData, {
 			new: true,
 		});
 		res.json({ success: true, data: user });
