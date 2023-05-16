@@ -3,9 +3,9 @@ import { authorized } from '../middlewares/authorized.js';
 import { isAdministrator } from '../middlewares/isAdmin.js';
 
 import {
-  getAllImages,
-  getSingleImage,
-  deleteImage,
+	getAllImages,
+	getSingleImage,
+	deleteImage,
 } from '../controllers/imagesController.js';
 
 const router = express.Router();

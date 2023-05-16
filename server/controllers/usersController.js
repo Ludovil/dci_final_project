@@ -1,9 +1,12 @@
 import axios from 'axios';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
+import dotenv from 'dotenv';
+dotenv.config();
 import UserCollection from '../models/usersSchema.js';
 
-const API_KEY = 'c53b5cb2b6794d1881e5704b0a5f1ea0';
+//const API_KEY = 'c53b5cb2b6794d1881e5704b0a5f1ea0';
+const API_KEY = process.env.API_KEY;
 
 export const createUser = async (req, res) => {
 	try {

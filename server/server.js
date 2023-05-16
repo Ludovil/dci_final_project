@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import usersRoute from './routes/usersRoute.js';
 import placesRoute from './routes/placesRoute.js';
 // import place_imagesRoute from './routes/place_imagesRoute.js';
+import cloudinaryRoute from './routes/cloudinaryRoute.js';
 import imagesRoute from './routes/imagesRoute.js';
 import cors from 'cors';
 import dotenv from 'dotenv';
@@ -30,13 +31,14 @@ app.use(
 	})
 );
 
-app.use(fileupload());
+//app.use(fileupload());
 
 // routes
 app.use('/users', usersRoute);
 app.use('/places', placesRoute);
 // app.use('/images', place_imagesRoute);
 app.use('/images', imagesRoute);
+app.use('/cloud', cloudinaryRoute);
 
 app.get('/', (req, res) => {
 	res.json({ mess: 'hello ' });
