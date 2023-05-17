@@ -9,12 +9,12 @@ cloudinary.config({
 	api_secret: process.env.CLOUD_API_SECRET,
 });
 
-const cloudinarySchema = new Schema({
+const instrumentsSchema = new Schema({
 	userId: { type: Schema.Types.ObjectId, ref: 'users' },
 	imageUrl: {
 		type: String,
 	},
 });
 
-const CloudinaryImage = model('cloudinaryimages', cloudinarySchema);
-export default CloudinaryImage;
+const instrumentsCollection = model('instruments', instrumentsSchema);
+export default instrumentsCollection;

@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 import usersRoute from './routes/usersRoute.js';
 import placesRoute from './routes/placesRoute.js';
 // import place_imagesRoute from './routes/place_imagesRoute.js';
-import cloudinaryRoute from './routes/cloudinaryRoute.js';
+import InstrumentsRoute from './routes/InstrumentsRoute.js';
 import imagesRoute from './routes/imagesRoute.js';
 import cors from 'cors';
 import dotenv from 'dotenv';
@@ -38,7 +38,7 @@ app.use('/users', usersRoute);
 app.use('/places', placesRoute);
 // app.use('/images', place_imagesRoute);
 app.use('/images', imagesRoute);
-app.use('/cloud', cloudinaryRoute);
+app.use('/instruments', InstrumentsRoute);
 
 app.get('/', (req, res) => {
 	res.json({ mess: 'hello ' });

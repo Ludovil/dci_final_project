@@ -26,10 +26,16 @@ const userSchema = new Schema({
 	},
 	apartment_images: [{ type: Schema.Types.ObjectId, ref: 'images' }],
 
-	cloudinaryImages: [
+	// cloudinaryImages: [
+	// 	{
+	// 		type: Schema.Types.ObjectId,
+	// 		ref: 'cloudinaryimages',
+	// 	},
+	// ],
+	instruments: [
 		{
 			type: Schema.Types.ObjectId,
-			ref: 'cloudinaryimages',
+			ref: 'instruments',
 		},
 	],
 });
