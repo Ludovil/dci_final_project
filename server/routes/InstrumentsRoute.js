@@ -4,6 +4,7 @@ import {
 	uploadImagesInstruments,
 	readLoggedUserInstruments,
 	readVisitUserInstruments,
+	deleteInstrument,
 } from '../controllers/InstrumentsController.js';
 
 const router = express.Router();
@@ -29,5 +30,8 @@ router.post('/', readLoggedUserInstruments);
 
 // READ images NOT logged-in USER - visitProfile.jsx
 router.get('/:userId', readVisitUserInstruments);
+
+// delete an instrument
+router.delete('/:instrumentId', deleteInstrument);
 
 export default router;

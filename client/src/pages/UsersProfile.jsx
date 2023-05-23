@@ -29,10 +29,11 @@ function Profile() {
 					<p>{user.formatted_address}</p>
 					<p>{user.email}</p>
 
-					<Instruments />
 					<br />
-					<button onClick={goToUpdatePage}>update</button>
+					<button onClick={goToUpdatePage}>update profile</button>
 					<button onClick={logoutUser}>Logout</button>
+					<br />
+					<Instruments />
 				</div>
 			)}
 		</div>

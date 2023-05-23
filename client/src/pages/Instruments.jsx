@@ -1,6 +1,8 @@
 import { MyContext } from '../context/context.js';
 import { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
+import '../Instruments.css';
+import InstrumentsForm from '../components/InstrumentsForm.jsx';
 
 function Instruments() {
 	const { user } = useContext(MyContext);
@@ -8,6 +10,12 @@ function Instruments() {
 	const [selectedImages, setSelectedImages] = useState([]);
 	const [fileNames, setFileNames] = useState([]);
 	const [imageSelection, setImageSelection] = useState([]);
+	const [showDeleteButtons, setShowDeleteButtons] = useState(false);
+
+	// console.log('instruments:', instruments);
+	// console.log('selected images', selectedImages);
+	// console.log('files names', fileNames);
+	// console.log('images selection', imageSelection);
 
 	// read instruments
 	useEffect(() => {
@@ -58,6 +66,7 @@ function Instruments() {
 		setImageSelection(updatedImageSelection);
 	};
 
+	// delete one image before uploading it
 	const handleImageDelete = (index) => {
 		const updatedSelectedImages = [...selectedImages];
 		const updatedFileNames = [...fileNames];
@@ -105,57 +114,118 @@ function Instruments() {
 		}
 	};
 
+	// show / hide delete buttons
+	const handleToggleDeleteButtons = () => {
+		setShowDeleteButtons(!showDeleteButtons);
+	};
+	// delete an image / instrument from the DB / collection
+	const handleInstrumentDelete = async (instrumentId) => {
+		try {
+			const response = await axios.delete(
+				`http://localhost:3000/instruments/${instrumentId}`
+			);
+
+			if (response.status === 200) {
+				// Remove the deleted instrument from the state
+				const updatedInstruments = instruments.filter(
+					(instrument) => instrument._id !== instrumentId
+				);
+				setInstruments(updatedInstruments);
+			} else {
+				console.error('Failed to delete instrument');
+			}
+		} catch (error) {
+			console.error(error);
+		}
+	};
+
 	//
 	return (
-		<div>
-			<h3>Instruments Gallery</h3>
-			{/* Image upload form */}
-			<input
-				type="file"
-				accept="image/*"
-				multiple
-				onChange={handleFileChange}
-			/>
-			{fileNames.length > 0 && (
-				<div>
-					<h4>Selected Files:</h4>
-					<ul style={{ display: 'flex' }}>
-						{fileNames.map((file, index) => (
-							<li key={file.name}>
-								<img
-									src={file.image}
-									alt={file.name}
-									style={{
-										width: '200px',
-										marginLeft: '10px',
-									}}
-								/>
-								<br />
-								<span>{file.name}</span>
-								<button
-									onClick={() => handleImageDelete(index)}
-								>
-									Delete
-								</button>
-							</li>
-						))}
-					</ul>
-				</div>
-			)}
-			<br />
-			<button onClick={handleImageUpload}>Upload Images</button>
-			<br />
-			<br />
+		<InstrumentsForm
+			handleFileChange={handleFileChange}
+			handleImageDelete={handleImageDelete}
+			handleImageUpload={handleImageUpload}
+			handleToggleDeleteButtons={handleToggleDeleteButtons}
+			handleInstrumentDelete={handleInstrumentDelete}
+			fileNames={fileNames}
+			showDeleteButtons={showDeleteButtons}
+			instruments={instruments}
+		/>
+		// <div>
+		// 	<h3>Instruments Gallery</h3>
+		// 	{/* Image upload form */}
+		// 	<label htmlFor="upload-input" className="custom-file-upload">
+		// 		update your gear
+		// 	</label>
+		// 	<input
+		// 		id="upload-input"
+		// 		type="file"
+		// 		accept="image/*"
+		// 		multiple
+		// 		onChange={handleFileChange}
+		// 		style={{ display: 'none' }}
+		// 	/>
+		// 	{fileNames.length > 0 && (
+		// 		<div>
+		// 			<h4>Selected Files:</h4>
+		// 			<ul style={{ display: 'flex' }}>
+		// 				{fileNames.map((file, index) => (
+		// 					<li key={file.name}>
+		// 						<img
+		// 							src={file.image}
+		// 							alt={file.name}
+		// 							style={{
+		// 								width: '200px',
+		// 								marginLeft: '10px',
+		// 							}}
+		// 						/>
+		// 						<br />
+		// 						<span>{file.name}</span>
+		// 						<button
+		// 							onClick={() => handleImageDelete(index)}
+		// 						>
+		// 							Delete
+		// 						</button>
+		// 					</li>
+		// 				))}
+		// 			</ul>
+		// 		</div>
+		// 	)}
+		// 	<br />
+		// 	<button onClick={handleImageUpload}>Upload Images</button>
 
-			{instruments.map((instrument) => (
-				<img
-					key={instrument._id}
-					src={instrument.imageUrl}
-					alt="Cloudinary Image"
-					style={{ width: '200px', marginLeft: '10px' }}
-				/>
-			))}
-		</div>
+		// 	{/* Show/hide delete buttons */}
+		// 	<button onClick={handleToggleDeleteButtons}>
+		// 		{showDeleteButtons
+		// 			? 'Hide Delete Buttons'
+		// 			: 'Show Delete Buttons'}
+		// 	</button>
+		// 	<br />
+
+		// 	{/* Read the images */}
+		// 	{instruments.map((instrument) => (
+		// 		<div
+		// 			key={instrument._id}
+		// 			style={{ display: 'flex', alignItems: 'center' }}
+		// 		>
+		// 			<img
+		// 				src={instrument.imageUrl}
+		// 				alt="Cloudinary Image"
+		// 				style={{ width: '200px', marginLeft: '10px' }}
+		// 			/>
+
+		// 			{showDeleteButtons && (
+		// 				<button
+		// 					onClick={() =>
+		// 						handleInstrumentDelete(instrument._id)
+		// 					}
+		// 				>
+		// 					Delete
+		// 				</button>
+		// 			)}
+		// 		</div>
+		// 	))}
+		// </div>
 	);
 }
 
