@@ -1,42 +1,37 @@
 import './App.css';
-import { useEffect, useState } from 'react';
-import axios from 'axios';
-import { MapContainer, TileLayer, Marker } from 'react-leaflet';
-import 'leaflet/dist/leaflet.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import NavBar from './components/NavBar.jsx';
+import Home from './pages/Home.jsx';
+import UsersProfile from './pages/UsersProfile.jsx';
+import VisitProfile from './pages/VisitProfile.jsx';
+import Map from './pages/Map.jsx';
+import Register from './pages/Register.jsx';
+import MapSearch from './pages/MapSearch.jsx';
+import Login from './pages/Login.jsx';
+import About from './pages/About.jsx';
+import Contact from './pages/Contact.jsx';
+import Messenger from './pages/messenger/Messenger';
+import AllConversation from './pages/AllConversation';
+
 
 function App() {
-	// states
-	//const [user, setUser] = useState(null);
-	const [marker, setMarker] = useState([]);
-
-	const URL = 'http://localhost:3000';
-
-	// action
-	useEffect(() => {
-		axios
-			.get(`${URL}/users/6447fe383a1282652c316121`)
-			.then((res) => {
-				//console.log(res.data.data.geocode);
-				setMarker(res.data.data.geocode);
-			})
-			.catch((err) => console.log(err));
-	}, []);
-
-	console.log(marker);
-
-	// render
 	return (
-		<>
-			<h1>Map test</h1>
-			{/* <MapContainer center={[48.8566, 2.3522]} zoom={13}>
-				<TileLayer
-					attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-					url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
-				/>
-
-				<Marker position={marker}></Marker>
-			</MapContainer> */}
-		</>
+		<BrowserRouter>
+			<NavBar />
+			<Routes>
+				<Route path="/" element={<Home />} />
+				<Route path="/map" element={<Map />} />
+				<Route path="/mapsearch" element={<MapSearch />} />
+				<Route path="/profile" element={<UsersProfile />} />
+				<Route path="/visitprofile/:id" element={<VisitProfile />} />
+				<Route path="/register" element={<Register />} />
+				<Route path="/login" element={<Login />} />
+				<Route path="/about" element={<About />} />
+				<Route path="/contact" element={<Contact />} />
+				<Route path="/messenger/:id" element={<Messenger />} />
+				<Route path="/allconversations"element={<AllConversation />} />
+			</Routes>
+		</BrowserRouter>
 	);
 }
 

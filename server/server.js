@@ -1,29 +1,71 @@
-import express from 'express';
-import mongoose from 'mongoose';
-import usersRoute from './routes/usersRoute.js';
-import cors from 'cors';
+import express from "express";
+import mongoose from "mongoose";
+import usersRoute from "./routes/usersRoute.js";
+import placesRoute from "./routes/placesRoute.js";
+import imagesRoute from "./routes/imagesRoute.js";
+import conversationRoute from "./routes/conversationRoutes.js";
+import messagesRoute from "./routes/messagesRoutes.js";
+import http from "http";
+import { Server } from "socket.io";
+import Message from "./models/messageSchema.js";
+import morgan from "morgan";
+import cors from "cors";
+import dotenv from "dotenv";
+import fileupload from "express-fileupload";
+dotenv.config();
 
 // server
 const app = express();
 const PORT = process.env.PORT || 3000;
+const server = http.createServer(app);
+const io = new Server(server, { cors: "http://localhost:5173" });
 
 // database
 mongoose
-	.connect('mongodb://127.0.0.1:27017/final_project')
-	.then(() => console.log('connect to DB'))
-	.catch((err) => console.log(err.message));
+  .connect("mongodb://127.0.0.1:27017/final_project")
+  .then(() => console.log("Connected to DB"))
+  .catch((err) => console.log(err.message));
 
 // json middleware
-app.use(express.json());
+app.use(express.static("public"))
+app.use(express.json({ limit: "10mb" }));
+app.use(morgan("dev"));
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    exposedHeaders: ["token"],
+    credentials: true,
+  })
+);
 
-app.use(cors({ origin: 'http://localhost:5173' }));
+app.use(fileupload());
 
 // routes
-app.use('/users', usersRoute);
+app.use("/users", usersRoute);
+app.use("/places", placesRoute);
 
-// test
-app.get('/', (req, res) => {
-	res.send('hello world');
+//
+app.use("/conversations", conversationRoute);
+app.use("/messages", messagesRoute);
+
+// app.use('/images', place_imagesRoute);
+app.use("/images", imagesRoute);
+
+// socket code here
+io.on("connection", (socket) => {
+  socket.on("joinConversation", (conversationId) => {
+    socket.join(conversationId);
+  });
+  socket.on("sendMessage", async (conversationId, message) => {
+    const messageData = new Message(message);
+    await messageData.save();
+    console.log( await messageData.populate("sender"));
+    io.to(conversationId).emit("getMessage",await messageData.populate("sender"));
+  });
+
+  socket.on("disconnect", () => {
+    console.log("a user disconnected!");
+  });
 });
 
-app.listen(PORT, () => console.log('server is running on PORT', PORT));
+server.listen(PORT, () => console.log("Server is running on PORT", PORT));
