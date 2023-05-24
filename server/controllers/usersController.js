@@ -52,7 +52,19 @@ export const createUser = async (req, res) => {
 export const loginUser = async (req, res) => {
 	try {
 		const { email, password } = req.body;
-		const user = await UserCollection.findOne({ email });
+		const user = await UserCollection.findOne({ email }).populate({
+			path: 'conversations',
+			populate: [
+				{
+					path: 'host',
+					model: 'users',
+				},
+				{
+					path: 'guest',
+					model: 'users',
+				},
+			],
+		});
 		if (user) {
 			const verifyPassword = bcrypt.compareSync(password, user.password);
 			if (verifyPassword) {

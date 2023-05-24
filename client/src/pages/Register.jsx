@@ -55,12 +55,10 @@ function Register() {
 			})
 			.then((res) => {
 				if (res.data.success) {
-					console.log('success');
+					const token = res.headers.token;
+					localStorage.setItem('token', token);
 					setUser(res.data.data);
-
-					// redirect to the login page
-					// needs to be updated with redirect to the profile page with valid token
-					navigate('/login');
+					navigate('/profile');
 				} else {
 					console.log(res.data.message);
 				}
