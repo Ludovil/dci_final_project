@@ -3,8 +3,7 @@ import InstrumentsRoute from './routes/InstrumentsRoute.js';
 import express from 'express';
 import mongoose from 'mongoose';
 import usersRoute from './routes/usersRoute.js';
-import placesRoute from './routes/placesRoute.js';
-import imagesRoute from './routes/imagesRoute.js';
+
 import conversationRoute from './routes/conversationRoutes.js';
 import messagesRoute from './routes/messagesRoutes.js';
 import http from 'http';
@@ -49,14 +48,10 @@ app.get('/', (req, res) => {
 app.use('/instruments', InstrumentsRoute);
 
 app.use('/users', usersRoute);
-app.use('/places', placesRoute);
 
 //
 app.use('/conversations', conversationRoute);
 app.use('/messages', messagesRoute);
-
-// app.use('/images', place_imagesRoute);
-app.use('/images', imagesRoute);
 
 // socket code here
 io.on('connection', (socket) => {
