@@ -35,7 +35,6 @@ app.use(fileupload());
 // routes
 app.use('/users', usersRoute);
 app.use('/places', placesRoute);
-// app.use('/images', place_imagesRoute);
 app.use('/images', imagesRoute);
 
 app.listen(PORT, () => console.log('Server is running on PORT', PORT));

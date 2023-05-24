@@ -49,7 +49,7 @@ export const createUser = async (req, res) => {
 export const loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
-    const user = await UserCollection.findOne({ email });
+    const user = await UserCollection.findOne({ email }).populate('apartments');
     if (user) {
       const verifyPassword = bcrypt.compareSync(password, user.password);
       if (verifyPassword) {
@@ -75,11 +75,11 @@ export const loginUser = async (req, res) => {
     res.json({ success: false, message: err.message });
   }
 };
-//
+
 export const readUser = async (req, res) => {
   try {
     const { id } = req.params;
-    const user = await UserCollection.findById(id);
+    const user = await UserCollection.findById(id).populate('apartments');
     if (user) {
       res.json({ success: true, data: user });
     } else {
@@ -92,9 +92,44 @@ export const readUser = async (req, res) => {
 
 export const readAllUsers = async (req, res) => {
   try {
-    const users = await UserCollection.find();
+    const users = await UserCollection.find().populate('apartments');
     res.json({ success: true, data: users });
   } catch (err) {
     res.json({ success: false, message: err.message });
+  }
+};
+
+export const updateUser = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const updatedUser = await UserCollection.findByIdAndUpdate(id, req.body, {
+      new: true,
+    });
+    res.json({ success: true, data: updatedUser });
+  } catch (err) {
+    res.json({ success: false, message: err.message });
+  }
+};
+
+// Delete 'apartments' property from the user (if this property has no value = no linked apartment to the user)
+export const deleteApartmentsFromUser = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const updatedUserAfterDeletingPlace =
+      await UserCollection.findByIdAndUpdate(
+        id,
+        { $unset: { apartments: 1 } },
+        { new: true }
+      );
+
+    if (updatedUserAfterDeletingPlace) {
+      console.log('User updated', updatedUserAfterDeletingPlace);
+      res.json({ success: true, data: updatedUserAfterDeletingPlace });
+    } else {
+      res.json({ success: false, message: 'User not found' });
+    }
+  } catch (error) {
+    console.log('Something went wrong', error);
+    res.json({ success: false, message: 'Something went wrong' });
   }
 };

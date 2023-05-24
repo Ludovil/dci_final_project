@@ -33,26 +33,45 @@ export const createApartment = async (req, res) => {
 
       const allImages = await Promise.all(imagePromises);
 
-      const user = await UserCollection.findById(req.body.host);
-
       for (const image of allImages) {
         const link = `http://localhost:3000/images/${image.filename}`;
-        user.apartment_images.push(image._id);
         place.images.push({ link, id: image._id });
       }
-
-      await user.save();
     }
 
     await place.save();
-    res.status(200).json({ message: 'Apartment created successfully' });
+    const user = await UserCollection.findByIdAndUpdate(
+      req.user._id,
+      {
+        apartments: place._id,
+      },
+      { new: true }
+    );
+    res.status(200).json({ success: true, data: user });
   } catch (err) {
     console.error('Error creating apartment:', err);
     res.status(500).json({ error: 'Failed to create apartment' });
   }
 };
 
+/*
 export const modifiedApartment = async (req, res) => {
+  try {
+    const placeId = req.params.id;
+
+    const updatedApartment = await ProductCollection.findByIdAndUpdate(
+      placeId,
+      req.body,
+      { new: true }
+    );
+    res.json({ success: true, data: updatedProduct });
+  } catch (err) {
+    console.log(err);
+  }
+};
+*/
+export const modifiedApartment = async (req, res) => {
+  console.log('working');
   const { id } = req.params;
 
   let imagePromises = [];
@@ -67,9 +86,7 @@ export const modifiedApartment = async (req, res) => {
         apartmentId: id,
       });
 
-      const savedImage = newImage.save();
-
-      return savedImage;
+      return newImage.save();
     });
   } else if (req.files && req.files.image) {
     const { name, data } = req.files.image;
@@ -81,9 +98,7 @@ export const modifiedApartment = async (req, res) => {
       apartmentId: id,
     });
 
-    const savedImage = newImage.save();
-
-    imagePromises.push(savedImage);
+    imagePromises.push(newImage.save());
   }
 
   let allImages = await Promise.all(imagePromises);
@@ -95,13 +110,22 @@ export const modifiedApartment = async (req, res) => {
     place.images.push({ link, id: image._id });
   });
 
-  // Modify 'title'. Later we should add more properties her
+  // Modify 'title'. Later we should add more properties here
   if (req.body.title || req.body.title === '') {
     place.title = req.body.title;
   }
 
   await place.save();
-  res.status(200).json({ message: 'Apartment modified successfully' });
+
+  const user = await UserCollection.findByIdAndUpdate(
+    req.user._id,
+    {
+      apartments: place._id,
+    },
+    { new: true }
+  );
+
+  res.status(200).json({ success: true, data: user });
 };
 
 export const deleteApartment = async (req, res) => {

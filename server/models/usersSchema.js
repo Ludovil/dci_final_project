@@ -25,6 +25,7 @@ const userSchema = new Schema({
     type: String,
   },
   apartment_images: [{ type: Schema.Types.ObjectId, ref: 'images' }],
+  apartments: { type: Schema.Types.ObjectId, ref: 'places' },
 });
 
 const UserCollection = model('users', userSchema);
