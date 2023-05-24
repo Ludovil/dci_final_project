@@ -14,7 +14,7 @@ export const uploadImagesInstruments = async (req, res) => {
 		// Upload images to Cloudinary
 		for (const file of files) {
 			const cloudinaryResponse = await cloudinary.v2.uploader.upload(
-				//file.buffer
+				//file.buffer,
 				`./uploads/${file.filename}`,
 				{ folder: 'final_project/instruments' }
 			);
@@ -105,6 +105,7 @@ export const readVisitUserInstruments = async (req, res) => {
 
 // delete an instrument
 export const deleteInstrument = async (req, res) => {
+	console.log('delete Fn');
 	try {
 		const { instrumentId } = req.params;
 
@@ -126,6 +127,14 @@ export const deleteInstrument = async (req, res) => {
 			},
 			{ new: true }
 		);
+		console.log('instrument ID :', instrumentId);
+		console.log('instrument link:', instrument.imageUrl);
+		// Delete image from Cloudinary
+		const publicId = instrument.imageUrl.split('/').pop().split('.')[0];
+		console.log('publicId:', publicId);
+		await cloudinary.v2.uploader.destroy(publicId, {
+			folder: 'final_project/instruments',
+		});
 
 		res.json(user);
 	} catch (error) {

@@ -3,7 +3,6 @@ import InstrumentsRoute from './routes/InstrumentsRoute.js';
 import express from 'express';
 import mongoose from 'mongoose';
 import usersRoute from './routes/usersRoute.js';
-
 import conversationRoute from './routes/conversationRoutes.js';
 import messagesRoute from './routes/messagesRoutes.js';
 import http from 'http';
@@ -12,7 +11,6 @@ import Message from './models/messageSchema.js';
 import morgan from 'morgan';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import fileupload from 'express-fileupload';
 
 dotenv.config();
 

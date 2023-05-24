@@ -24,7 +24,13 @@ function Profile() {
 				<div>
 					<h2>{user.userName}</h2>
 					{user.profile_image && (
-						<img src={user.profile_image} alt="Profile Image" />
+						<img
+							src={user.profile_image}
+							alt="Profile Image"
+							style={{
+								width: '200px',
+							}}
+						/>
 					)}
 					<p>{user.formatted_address}</p>
 					<p>{user.email}</p>
