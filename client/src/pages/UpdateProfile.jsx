@@ -1,30 +1,31 @@
-import { useContext, useState } from 'react';
-import RegisterForm from '../components/RegisterForm.jsx';
-import axios from 'axios';
+import UpdateForm from '../components/UpdateForm.jsx';
 import { MyContext } from '../context/context.js';
+import { useContext, useState } from 'react';
+import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-function Register() {
+function UpdateProfile() {
 	const navigate = useNavigate();
-	const { setUser } = useContext(MyContext);
-	// const [formData, setFormData] = useState({
-	// 	userName: '',
-	// 	email: '',
-	// 	password: '',
-	// 	profile_image: '',
-	// 	country: '',
-	// 	city: '',
-	// 	postcode: '',
-	// 	street: '',
-	// 	housenumber: '',
-	// });
+	const { user, setUser } = useContext(MyContext);
+
+	const [formData, setFormData] = useState({
+		userName: user.userName,
+		email: user.email,
+		password: '',
+		profile_image: user.profile_image,
+		country: user.address.country,
+		city: user.address.city,
+		postcode: user.address.postcode,
+		street: user.address.street,
+		housenumber: user.address.housenumber,
+	});
 
 	const [profileImage, setProfileImage] = useState({ file: '' });
 
-	// const onChangeHandler = (e) => {
-	// 	const value = e.target.value;
-	// 	setFormData({ ...formData, [e.target.name]: value });
-	// };
+	const onChangeHandler = (e) => {
+		const value = e.target.value;
+		setFormData({ ...formData, [e.target.name]: value });
+	};
 
 	// Profile Image
 	const handleFileUpload = async (e) => {
@@ -36,11 +37,16 @@ function Register() {
 
 	const onSubmitHandler = (e) => {
 		e.preventDefault();
-		const formData = {
+		// avoid updating image with empty file
+		const newProfileImage = profileImage.file
+			? profileImage.file
+			: formData.profile_image;
+		//
+		const updatedFormData = {
 			userName: e.target.userName.value,
 			email: e.target.email.value,
 			password: e.target.password.value,
-			profile_image: profileImage.file,
+			profile_image: newProfileImage,
 			address: {
 				country: e.target.country.value,
 				city: e.target.city.value,
@@ -49,14 +55,21 @@ function Register() {
 				housenumber: e.target.housenumber.value,
 			},
 		};
+		console.log(updatedFormData);
 		axios
-			.post('http://localhost:3000/users', JSON.stringify(formData), {
-				headers: { 'Content-Type': 'application/json' },
-			})
+			.patch(
+				`http://localhost:3000/users/${user._id}`,
+				JSON.stringify(updatedFormData),
+				{
+					headers: {
+						'Content-Type': 'application/json',
+						token: localStorage.getItem('token'),
+					},
+				}
+			)
 			.then((res) => {
 				if (res.data.success) {
-					const token = res.headers.token;
-					localStorage.setItem('token', token);
+					console.log('success');
 					setUser(res.data.data);
 					navigate('/profile');
 				} else {
@@ -64,28 +77,19 @@ function Register() {
 				}
 			});
 	};
-
-	// cancel registration process
-	const onCancelClick = () => {
-		// Redirect to the home page
-		navigate('/');
-	};
-
 	return (
-		<div>
-			<h1>Register</h1>
-			<RegisterForm
-				//onChangeHandler={onChangeHandler}
+		<>
+			<UpdateForm
+				onChangeHandler={onChangeHandler}
 				onSubmitHandler={onSubmitHandler}
 				handleFileUpload={handleFileUpload}
-				//formData={formData}
+				user={formData}
 			/>
-			<button onClick={onCancelClick}>Cancel</button>
-		</div>
+		</>
 	);
 }
 
-export default Register;
+export default UpdateProfile;
 
 function convertToBase64(file) {
 	return new Promise((resolve, reject) => {

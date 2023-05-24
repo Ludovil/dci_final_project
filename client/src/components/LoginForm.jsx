@@ -12,7 +12,6 @@ function LoginForm() {
 
 	const onSubmitHandler = (e) => {
 		e.preventDefault();
-		console.log('click');
 		axios
 			.post('http://localhost:3000/users/login', { email, password })
 			.then((res) => {
