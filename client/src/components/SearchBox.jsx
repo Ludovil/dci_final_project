@@ -16,12 +16,25 @@ const SearchBox = () => {
   const navigate = useNavigate();
 
   return (
+    <>
+    <h1 style={
+      {
+        color: 'white',
+        fontSize: '64px', 
+        textAlign: 'center',  
+        marginTop: '200px',
+        marginBottom: '50px',
+        fontFamily: 'Arial',
+        fontWeight: 'bold', }
+
+    }
+     className='area'>​Input your gig address <br /> to discover available hosts<br /> in the area.</h1>
     <div style={{ display: 'flex', flexDirection: 'column' }}>
       <div style={{ display: 'flex' }}>
         <div style={{ flex: 1 }}>
           <Input
             style={{ width: '100%' }}
-            placeholder='Where do you want to play?'
+            placeholder='Stay for your next gig here'
             value={searchText}
             onChange={(e) => {
               setSearchText(e.target.value);
@@ -91,6 +104,7 @@ const SearchBox = () => {
         </List>
       </div>
     </div>
+    </>
   );
 };
 export default SearchBox;

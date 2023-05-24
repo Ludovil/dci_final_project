@@ -7,9 +7,19 @@ export const authorized = async (req, res, next) => {
 
     const payload = jwt.verify(token, process.env.SIGNATURE);
 
-    const user = await UserCollection.findById(payload._id).populate(
-      'apartments'
-    );
+    const user = await UserCollection.findById(payload._id).populate({
+      path: 'conversations',
+      populate: [
+        {
+          path: 'host',
+          model: 'users',
+        },
+        {
+          path: 'guest',
+          model: 'users',
+        },
+      ],
+    });
 
     req.user = user;
     console.log('try');

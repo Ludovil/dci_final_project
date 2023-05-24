@@ -25,7 +25,20 @@ const userSchema = new Schema({
     type: String,
   },
   apartment_images: [{ type: Schema.Types.ObjectId, ref: 'images' }],
-  apartments: { type: Schema.Types.ObjectId, ref: 'places' },
+
+  // cloudinaryImages: [
+  // 	{
+  // 		type: Schema.Types.ObjectId,
+  // 		ref: 'cloudinaryimages',
+  // 	},
+  // ],
+  instruments: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'instruments',
+    },
+  ],
+  conversations: [{ type: Schema.Types.ObjectId, ref: 'conversations' }],
 });
 
 const UserCollection = model('users', userSchema);

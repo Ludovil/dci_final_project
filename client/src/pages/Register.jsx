@@ -2,39 +2,29 @@ import { useContext, useState } from 'react';
 import RegisterForm from '../components/RegisterForm.jsx';
 import axios from 'axios';
 import { MyContext } from '../context/context.js';
+import { useNavigate } from 'react-router-dom';
 
 function Register() {
+  const navigate = useNavigate();
   const { setUser } = useContext(MyContext);
-  /*const [formData, setFormData] = useState({
-    userName: '',
-    email: '',
-    password: '',
-    profile_image: '',
-    country: '',
-    city: '',
-    postcode: '',
-    street: '',
-    housenumber: '',
-  });*/
-  const [formData, setFormData] = useState({
-    userName: '',
-    email: '',
-    password: '',
-    profile_image: '',
-    country: '',
-    city: '',
-    postcode: '',
-    street: '',
-    housenumber: '',
-    apartments: [], // Add the apartments property
-  });
+  // const [formData, setFormData] = useState({
+  // 	userName: '',
+  // 	email: '',
+  // 	password: '',
+  // 	profile_image: '',
+  // 	country: '',
+  // 	city: '',
+  // 	postcode: '',
+  // 	street: '',
+  // 	housenumber: '',
+  // });
 
   const [profileImage, setProfileImage] = useState({ file: '' });
 
-  const onChangeHandler = (e) => {
-    const value = e.target.value;
-    setFormData({ ...formData, [e.target.name]: value });
-  };
+  // const onChangeHandler = (e) => {
+  // 	const value = e.target.value;
+  // 	setFormData({ ...formData, [e.target.name]: value });
+  // };
 
   // Profile Image
   const handleFileUpload = async (e) => {
@@ -44,21 +34,6 @@ function Register() {
     setProfileImage({ ...profileImage, file: base64 });
   };
 
-  /*const onSubmitHandler = (e) => {
-    e.preventDefault();
-    const formData = {
-      userName: e.target.userName.value,
-      email: e.target.email.value,
-      password: e.target.password.value,
-      profile_image: profileImage.file,
-      address: {
-        country: e.target.country.value,
-        city: e.target.city.value,
-        postcode: e.target.postcode.value,
-        street: e.target.street.value,
-        housenumber: e.target.housenumber.value,
-      },
-    };*/
   const onSubmitHandler = (e) => {
     e.preventDefault();
     const formData = {
@@ -73,7 +48,6 @@ function Register() {
         street: e.target.street.value,
         housenumber: e.target.housenumber.value,
       },
-      apartments: [], // Add the apartments property
     };
     axios
       .post('http://localhost:3000/users', JSON.stringify(formData), {
@@ -81,22 +55,32 @@ function Register() {
       })
       .then((res) => {
         if (res.data.success) {
-          console.log('success');
+          const token = res.headers.token;
+          localStorage.setItem('token', token);
           setUser(res.data.data);
+          navigate('/profile');
         } else {
           console.log(res.data.message);
         }
       });
   };
+
+  // cancel registration process
+  const onCancelClick = () => {
+    // Redirect to the home page
+    navigate('/');
+  };
+
   return (
     <div>
       <h1>Register</h1>
       <RegisterForm
-        onChangeHandler={onChangeHandler}
+        //onChangeHandler={onChangeHandler}
         onSubmitHandler={onSubmitHandler}
         handleFileUpload={handleFileUpload}
-        formData={formData}
+        //formData={formData}
       />
+      <button onClick={onCancelClick}>Cancel</button>
     </div>
   );
 }

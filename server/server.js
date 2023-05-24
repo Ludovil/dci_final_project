@@ -1,9 +1,13 @@
+import InstrumentsRoute from './routes/InstrumentsRoute.js';
 import express from 'express';
 import mongoose from 'mongoose';
 import usersRoute from './routes/usersRoute.js';
-import placesRoute from './routes/placesRoute.js';
-// import place_imagesRoute from './routes/place_imagesRoute.js';
-import imagesRoute from './routes/imagesRoute.js';
+import conversationRoute from './routes/conversationRoutes.js';
+import messagesRoute from './routes/messagesRoutes.js';
+import http from 'http';
+import { Server } from 'socket.io';
+import Message from './models/messageSchema.js';
+import morgan from 'morgan';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import fileupload from 'express-fileupload';
@@ -12,6 +16,8 @@ dotenv.config();
 // server
 const app = express();
 const PORT = process.env.PORT || 3000;
+const server = http.createServer(app);
+const io = new Server(server, { cors: 'http://localhost:5173' });
 
 // database
 mongoose
@@ -20,8 +26,9 @@ mongoose
   .catch((err) => console.log(err.message));
 
 // json middleware
+app.use(express.static('public'));
 app.use(express.json({ limit: '10mb' }));
-
+app.use(morgan('dev'));
 app.use(
   cors({
     origin: 'http://localhost:5173',
@@ -30,11 +37,33 @@ app.use(
   })
 );
 
-app.use(fileupload());
-
+app.get('/', (req, res) => {
+  res.json({ mess: 'hello ' });
+});
 // routes
 app.use('/users', usersRoute);
-app.use('/places', placesRoute);
-app.use('/images', imagesRoute);
+app.use('/instruments', InstrumentsRoute);
+app.use('/conversations', conversationRoute);
+app.use('/messages', messagesRoute);
 
-app.listen(PORT, () => console.log('Server is running on PORT', PORT));
+// socket code here
+io.on('connection', (socket) => {
+  socket.on('joinConversation', (conversationId) => {
+    socket.join(conversationId);
+  });
+  socket.on('sendMessage', async (conversationId, message) => {
+    const messageData = new Message(message);
+    await messageData.save();
+    console.log(await messageData.populate('sender'));
+    io.to(conversationId).emit(
+      'getMessage',
+      await messageData.populate('sender')
+    );
+  });
+
+  socket.on('disconnect', () => {
+    console.log('a user disconnected!');
+  });
+});
+
+server.listen(PORT, () => console.log('Server is running on PORT', PORT));

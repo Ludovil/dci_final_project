@@ -1,9 +1,12 @@
 import axios from 'axios';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
+import dotenv from 'dotenv';
+dotenv.config();
 import UserCollection from '../models/usersSchema.js';
 
-const API_KEY = 'c53b5cb2b6794d1881e5704b0a5f1ea0';
+//const API_KEY = 'c53b5cb2b6794d1881e5704b0a5f1ea0';
+const API_KEY = process.env.API_KEY;
 
 export const createUser = async (req, res) => {
   try {
@@ -49,7 +52,19 @@ export const createUser = async (req, res) => {
 export const loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
-    const user = await UserCollection.findOne({ email }).populate('apartments');
+    const user = await UserCollection.findOne({ email }).populate({
+      path: 'conversations',
+      populate: [
+        {
+          path: 'host',
+          model: 'users',
+        },
+        {
+          path: 'guest',
+          model: 'users',
+        },
+      ],
+    });
     if (user) {
       const verifyPassword = bcrypt.compareSync(password, user.password);
       if (verifyPassword) {
@@ -79,7 +94,7 @@ export const loginUser = async (req, res) => {
 export const readUser = async (req, res) => {
   try {
     const { id } = req.params;
-    const user = await UserCollection.findById(id).populate('apartments');
+    const user = await UserCollection.findById(id);
     if (user) {
       res.json({ success: true, data: user });
     } else {
@@ -92,7 +107,7 @@ export const readUser = async (req, res) => {
 
 export const readAllUsers = async (req, res) => {
   try {
-    const users = await UserCollection.find().populate('apartments');
+    const users = await UserCollection.find();
     res.json({ success: true, data: users });
   } catch (err) {
     res.json({ success: false, message: err.message });
@@ -102,34 +117,32 @@ export const readAllUsers = async (req, res) => {
 export const updateUser = async (req, res) => {
   try {
     const { id } = req.params;
-    const updatedUser = await UserCollection.findByIdAndUpdate(id, req.body, {
+    const { password, address, ...userData } = req.body;
+    if (password) {
+      const hashedPassword = bcrypt.hashSync(password, 10);
+      userData.password = hashedPassword;
+    }
+    if (address) {
+      const response = await axios.get(
+        `https://api.geoapify.com/v1/geocode/search?housenumber=${address.housenumber}&street=${address.street}&postcode=${address.postcode}&city=${address.city}&country=germany&format=json&apiKey=${API_KEY}`
+      );
+      // Extract latitude and longitude from the response data
+      const lat = response.data.results[0].lat;
+      const lon = response.data.results[0].lon;
+
+      // Extract formatted address
+      const formatted_address = response.data.results[0].formatted;
+
+      // Update the user with the new address, geocode, and formatted_address fields
+      userData.address = address;
+      userData.geocode = [lat, lon];
+      userData.formatted_address = formatted_address;
+    }
+    const user = await UserCollection.findByIdAndUpdate(id, userData, {
       new: true,
     });
-    res.json({ success: true, data: updatedUser });
+    res.json({ success: true, data: user });
   } catch (err) {
     res.json({ success: false, message: err.message });
-  }
-};
-
-// Delete 'apartments' property from the user (if this property has no value = no linked apartment to the user)
-export const deleteApartmentsFromUser = async (req, res) => {
-  try {
-    const { id } = req.params;
-    const updatedUserAfterDeletingPlace =
-      await UserCollection.findByIdAndUpdate(
-        id,
-        { $unset: { apartments: 1 } },
-        { new: true }
-      );
-
-    if (updatedUserAfterDeletingPlace) {
-      console.log('User updated', updatedUserAfterDeletingPlace);
-      res.json({ success: true, data: updatedUserAfterDeletingPlace });
-    } else {
-      res.json({ success: false, message: 'User not found' });
-    }
-  } catch (error) {
-    console.log('Something went wrong', error);
-    res.json({ success: false, message: 'Something went wrong' });
   }
 };

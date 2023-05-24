@@ -1,6 +1,11 @@
 import PropTypes from 'prop-types';
 
-function RegisterForm({ onChangeHandler, onSubmitHandler, handleFileUpload }) {
+function UpdateForm({
+	onChangeHandler,
+	onSubmitHandler,
+	handleFileUpload,
+	user,
+}) {
 	return (
 		<div className="form">
 			<form onSubmit={onSubmitHandler}>
@@ -10,6 +15,7 @@ function RegisterForm({ onChangeHandler, onSubmitHandler, handleFileUpload }) {
 						type="text"
 						name="userName"
 						onChange={onChangeHandler}
+						value={user.userName}
 					/>
 				</label>
 				<br />
@@ -19,6 +25,7 @@ function RegisterForm({ onChangeHandler, onSubmitHandler, handleFileUpload }) {
 						type="email"
 						name="email"
 						onChange={onChangeHandler}
+						value={user.email}
 					/>
 				</label>
 				<br />
@@ -28,6 +35,7 @@ function RegisterForm({ onChangeHandler, onSubmitHandler, handleFileUpload }) {
 						type="password"
 						name="password"
 						onChange={onChangeHandler}
+						placeholder="If you don't update your password it will stay the same"
 					/>
 				</label>
 				<br />
@@ -48,12 +56,18 @@ function RegisterForm({ onChangeHandler, onSubmitHandler, handleFileUpload }) {
 						type="text"
 						name="country"
 						onChange={onChangeHandler}
+						value={user.country}
 					/>
 				</label>
 				<br />
 				<label>
 					<span>city</span>
-					<input type="text" name="city" onChange={onChangeHandler} />
+					<input
+						type="text"
+						name="city"
+						onChange={onChangeHandler}
+						value={user.city}
+					/>
 				</label>
 				<br />
 				<label>
@@ -62,6 +76,7 @@ function RegisterForm({ onChangeHandler, onSubmitHandler, handleFileUpload }) {
 						type="text"
 						name="postcode"
 						onChange={onChangeHandler}
+						value={user.postcode}
 					/>
 				</label>
 				<br />
@@ -71,6 +86,7 @@ function RegisterForm({ onChangeHandler, onSubmitHandler, handleFileUpload }) {
 						type="text"
 						name="street"
 						onChange={onChangeHandler}
+						value={user.street}
 					/>
 				</label>
 				<br />
@@ -80,6 +96,7 @@ function RegisterForm({ onChangeHandler, onSubmitHandler, handleFileUpload }) {
 						type="text"
 						name="housenumber"
 						onChange={onChangeHandler}
+						value={user.housenumber}
 					/>
 				</label>
 				<br />
@@ -90,8 +107,8 @@ function RegisterForm({ onChangeHandler, onSubmitHandler, handleFileUpload }) {
 	);
 }
 
-RegisterForm.propTypes = {
-	username: PropTypes.string,
+UpdateForm.propTypes = {
+	userName: PropTypes.string,
 	email: PropTypes.string,
 	password: PropTypes.string,
 	profile_image: PropTypes.string,
@@ -103,8 +120,8 @@ RegisterForm.propTypes = {
 	onChangeHandler: PropTypes.func,
 	onSubmitHandler: PropTypes.func,
 	submitedInput: PropTypes.object,
-	formData: PropTypes.object,
+	user: PropTypes.object,
 	handleFileUpload: PropTypes.func,
 };
 
-export default RegisterForm;
+export default UpdateForm;
