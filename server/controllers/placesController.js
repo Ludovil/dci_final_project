@@ -40,7 +40,6 @@ export const createApartment = async (req, res) => {
         user.apartment_images.push(image._id);
         place.images.push({ link, id: image._id });
       }
-
       await user.save();
     }
 

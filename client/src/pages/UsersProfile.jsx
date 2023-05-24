@@ -12,7 +12,15 @@ function Profile() {
 					<div>
 						<h2>{user.userName}</h2>
 						{user.profile_image && (
-							<img src={user.profile_image} alt="Profile Image" />
+							<img style={
+								{ 	
+									width: '400px',
+									height: '400px',
+									borderRadius: '10%',
+									objectFit: 'cover'
+
+								}
+							} src={user.profile_image} alt="Profile Image" />
 						)}
 					</div>
 				)}

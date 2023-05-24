@@ -10,6 +10,9 @@ import MapSearch from './pages/MapSearch.jsx';
 import Login from './pages/Login.jsx';
 import About from './pages/About.jsx';
 import Contact from './pages/Contact.jsx';
+import Messenger from './pages/messenger/Messenger';
+import AllConversation from './pages/AllConversation';
+
 
 function App() {
 	return (
@@ -25,6 +28,8 @@ function App() {
 				<Route path="/login" element={<Login />} />
 				<Route path="/about" element={<About />} />
 				<Route path="/contact" element={<Contact />} />
+				<Route path="/messenger/:id" element={<Messenger />} />
+				<Route path="/allconversations"element={<AllConversation />} />
 			</Routes>
 		</BrowserRouter>
 	);

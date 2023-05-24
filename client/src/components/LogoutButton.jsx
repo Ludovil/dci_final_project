@@ -12,7 +12,19 @@ export default function LogoutButton() {
  if (user) { 
      return ( 
          <div> 
-              <button onClick={logoutUser}  >logout</button>  
+              <button style={
+                    {   
+                        width: '100px', 
+                        height: '30px',
+                        borderRadius: '10%',
+                        objectFit: 'cover',
+                        backgroundColor: 'red',
+                        color: 'white',
+                        fontSize: '16px',
+                        fontWeight: 'bold',
+                        cursor: 'pointer'
+                    }
+              } onClick={logoutUser}  >logout</button>  
          </div> 
      ); 
  } else { 

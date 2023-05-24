@@ -2,6 +2,7 @@ import { useContext, useState } from 'react';
 import RegisterForm from '../components/RegisterForm.jsx';
 import axios from 'axios';
 import { MyContext } from '../context/context.js';
+import { useNavigate } from 'react-router-dom';
 
 function Register() {
 	const { setUser } = useContext(MyContext);
@@ -16,7 +17,7 @@ function Register() {
 		street: '',
 		housenumber: '',
 	});
-
+	const navigate = useNavigate();
 	const [profileImage, setProfileImage] = useState({ file: '' });
 
 	const onChangeHandler = (e) => {
@@ -53,8 +54,10 @@ function Register() {
 			})
 			.then((res) => {
 				if (res.data.success) {
-					console.log('success');
+					const token = res.headers.token;
+					localStorage.setItem('token', token);
 					setUser(res.data.data);
+					navigate('/profile');
 				} else {
 					console.log(res.data.message);
 				}

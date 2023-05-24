@@ -11,28 +11,28 @@ function NavBar() {
 		<nav>
 			<ul>
 				<li>
-					<NavLink to="/" className="navlink">
+					<NavLink to="/" className="navlink home">
 						Home
 					</NavLink>
 				</li>
 				<li>
-					<NavLink to="/map" className="navlink">
-						Map
+					<NavLink to="/map" className="navlink map">
+						Map		
 					</NavLink>
 				</li>
 				{user ? (
 					<>
 					<li>
-						<NavLink to="/profile" className="navlink">
+						<NavLink to="/profile" className="navlink profile">
 							Profile {user.userName}
 						</NavLink>
 					</li>
-					{/* <li>
-						<NavLink to="/inbox" className="navlink">Inbox
-						</NavLink>
-					</li>  */}
 					<li>
-						<NavLink to="/logout" className="navlink">	
+						<NavLink to="/allconversations" className="navlink allconversations">Postbox
+						</NavLink>
+					</li> 
+					<li>
+						<NavLink to="/logout" className="navlink logout">	
 							<LogoutButton />	
 						</NavLink>	
 					</li>
@@ -40,24 +40,24 @@ function NavBar() {
 				) : (
 					<>
 						<li>
-							<NavLink to="/register" className="navlink">
+							<NavLink to="/register" className="navlink register">
 								Register
 							</NavLink>
 						</li>
 						<li>
-							<NavLink to="/login" className="navlink">
+							<NavLink to="/login" className="navlink login">
 								Login
 							</NavLink>
 						</li>
 					</>
 				)}
 				<li>
-					<NavLink to="/about" className="navlink">
+					<NavLink to="/about" className="navlink about">
 						About
 					</NavLink>
 				</li>
 				<li>
-					<NavLink to="/contact" className="navlink">
+					<NavLink to="/contact" className="navlink contact">
 						Contact
 					</NavLink>
 				</li>

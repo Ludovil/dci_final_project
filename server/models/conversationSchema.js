@@ -3,13 +3,12 @@ import { Schema, model } from 'mongoose';
 
 const ConversationSchema = new mongoose.Schema(
   {
-    members: {
-      type: Array,
-    },
+    host: {type: Schema.Types.ObjectId, ref: 'users'},
+    guest: {type: Schema.Types.ObjectId, ref: 'users'},
   },
   { timestamps: true }
 );
 
-const Conversation = model('conversation', ConversationSchema);
+const Conversation = model('conversations', ConversationSchema);
 
 export default Conversation;
