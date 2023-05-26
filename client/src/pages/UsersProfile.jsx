@@ -5,14 +5,8 @@ import Instruments from './Instruments.jsx';
 
 function Profile() {
 	const navigate = useNavigate();
-	const { user, setUser } = useContext(MyContext);
+	const { user } = useContext(MyContext);
 	console.log('users profile 1: ', user);
-
-	const logoutUser = () => {
-		localStorage.removeItem('token');
-		setUser(null);
-		navigate('/login');
-	};
 
 	const goToUpdatePage = () => {
 		navigate('/profile/update');
@@ -37,7 +31,6 @@ function Profile() {
 
 					<br />
 					<button onClick={goToUpdatePage}>update profile</button>
-					<button onClick={logoutUser}>Logout</button>
 					<br />
 					<Instruments />
 				</div>

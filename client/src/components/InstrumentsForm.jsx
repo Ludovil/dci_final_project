@@ -9,6 +9,9 @@ function InstrumentsForm({
 	fileNames,
 	showDeleteButtons,
 	instruments,
+	isLoading,
+	instrumentDescription,
+	setInstrumentDescription,
 }) {
 	return (
 		<div>
@@ -25,7 +28,8 @@ function InstrumentsForm({
 				onChange={handleFileChange}
 				style={{ display: 'none' }}
 			/>
-			{fileNames.length > 0 && (
+			{/* previous version */}
+			{/* {fileNames.length > 0 && (
 				<div>
 					<h4>Selected Files:</h4>
 					<ul style={{ display: 'flex' }}>
@@ -50,6 +54,49 @@ function InstrumentsForm({
 						))}
 					</ul>
 				</div>
+			)} */}
+			{/* version with ..loading */}
+			{isLoading ? (
+				<div style={{ margin: '15px' }}>...loading</div>
+			) : (
+				fileNames.length > 0 && (
+					<div>
+						<h4>Selected Files:</h4>
+						<ul style={{ display: 'flex' }}>
+							{fileNames.map((file, index) => (
+								<li key={file.name}>
+									<img
+										src={file.image}
+										alt={file.name}
+										style={{
+											width: '200px',
+											marginLeft: '10px',
+										}}
+									/>
+									<br />
+									<span>{file.name}</span>
+									<br />
+									<input
+										type="text"
+										name="description"
+										value={instrumentDescription}
+										onChange={(e) =>
+											setInstrumentDescription(
+												e.target.value
+											)
+										}
+										placeholder="description"
+									/>
+									<button
+										onClick={() => handleImageDelete(index)}
+									>
+										Delete
+									</button>
+								</li>
+							))}
+						</ul>
+					</div>
+				)
 			)}
 			<br />
 			<button onClick={handleImageUpload}>Upload Images</button>
@@ -72,6 +119,7 @@ function InstrumentsForm({
 						style={{ width: '200px', marginLeft: '10px' }}
 					/>
 
+					<p>{instrument.description}</p>
 					{showDeleteButtons && (
 						<button
 							onClick={() =>
@@ -95,5 +143,8 @@ InstrumentsForm.propTypes = {
 	fileNames: PropTypes.array.isRequired,
 	showDeleteButtons: PropTypes.bool.isRequired,
 	instruments: PropTypes.array.isRequired,
+	isLoading: PropTypes.bool.isRequired,
+	instrumentDescription: PropTypes.string.isRequired,
+	setInstrumentDescription: PropTypes.func.isRequired,
 };
 export default InstrumentsForm;

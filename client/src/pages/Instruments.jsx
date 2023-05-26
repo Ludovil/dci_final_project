@@ -11,11 +11,10 @@ function Instruments() {
 	const [fileNames, setFileNames] = useState([]);
 	const [imageSelection, setImageSelection] = useState([]);
 	const [showDeleteButtons, setShowDeleteButtons] = useState(false);
+	const [isLoading, setIsLoading] = useState(false);
+	const [instrumentDescription, setInstrumentDescription] = useState('');
 
-	// console.log('instruments:', instruments);
-	// console.log('selected images', selectedImages);
-	// console.log('files names', fileNames);
-	// console.log('images selection', imageSelection);
+	console.log(instrumentDescription);
 
 	// read instruments
 	useEffect(() => {
@@ -31,7 +30,7 @@ function Instruments() {
 				if (response.status === 200) {
 					setInstruments(response.data.instruments);
 				} else {
-					console.error('Failed to fetch Cloudinary images');
+					console.error('Failed to fetch Instruments');
 				}
 			} catch (error) {
 				console.error(error);
@@ -44,7 +43,6 @@ function Instruments() {
 	}, [user]);
 
 	// upload instruments
-
 	const handleFileChange = (e) => {
 		const files = e.target.files;
 		const updatedSelectedImages = [...selectedImages];
@@ -83,13 +81,16 @@ function Instruments() {
 
 	const handleImageUpload = async () => {
 		try {
+			setIsLoading(true);
 			const formData = new FormData();
 			formData.append('userId', user._id);
+			formData.append('description', instrumentDescription); // Add instrumentDescription to the form data
 
 			for (let i = 0; i < selectedImages.length; i++) {
 				formData.append('files', selectedImages[i]);
 			}
 
+			console.log(formData);
 			const response = await axios.post(
 				'http://localhost:3000/instruments/filesupload',
 				formData,
@@ -101,6 +102,7 @@ function Instruments() {
 			);
 
 			if (response.status === 200) {
+				//window.location.reload();
 				setInstruments(response.data.instruments);
 				setSelectedImages([]);
 				setFileNames([]);
@@ -111,6 +113,8 @@ function Instruments() {
 			}
 		} catch (error) {
 			console.error(error);
+		} finally {
+			setIsLoading(false); // Set loading state to false after upload completes
 		}
 	};
 
@@ -141,16 +145,21 @@ function Instruments() {
 
 	//
 	return (
-		<InstrumentsForm
-			handleFileChange={handleFileChange}
-			handleImageDelete={handleImageDelete}
-			handleImageUpload={handleImageUpload}
-			handleToggleDeleteButtons={handleToggleDeleteButtons}
-			handleInstrumentDelete={handleInstrumentDelete}
-			fileNames={fileNames}
-			showDeleteButtons={showDeleteButtons}
-			instruments={instruments}
-		/>
+		<>
+			<InstrumentsForm
+				handleFileChange={handleFileChange}
+				handleImageDelete={handleImageDelete}
+				handleImageUpload={handleImageUpload}
+				handleToggleDeleteButtons={handleToggleDeleteButtons}
+				handleInstrumentDelete={handleInstrumentDelete}
+				fileNames={fileNames}
+				showDeleteButtons={showDeleteButtons}
+				instruments={instruments}
+				isLoading={isLoading}
+				instrumentDescription={instrumentDescription}
+				setInstrumentDescription={setInstrumentDescription}
+			/>
+		</>
 	);
 }
 

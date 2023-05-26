@@ -6,7 +6,7 @@ import fs from 'fs';
 // upload several images as files
 export const uploadImagesInstruments = async (req, res) => {
 	try {
-		const { userId } = req.body;
+		const { userId, description } = req.body;
 		const files = req.files;
 
 		const uploadedImages = [];
@@ -21,6 +21,7 @@ export const uploadImagesInstruments = async (req, res) => {
 			const instruments = new instrumentsCollection({
 				userId: userId,
 				imageUrl: cloudinaryResponse.secure_url,
+				description: description,
 			});
 			await instruments.save();
 			uploadedImages.push(instruments);
@@ -105,7 +106,6 @@ export const readVisitUserInstruments = async (req, res) => {
 
 // delete an instrument
 export const deleteInstrument = async (req, res) => {
-	console.log('delete Fn');
 	try {
 		const { instrumentId } = req.params;
 
@@ -127,14 +127,13 @@ export const deleteInstrument = async (req, res) => {
 			},
 			{ new: true }
 		);
-		console.log('instrument ID :', instrumentId);
-		console.log('instrument link:', instrument.imageUrl);
+
 		// Delete image from Cloudinary
 		const publicId = instrument.imageUrl.split('/').pop().split('.')[0];
 		console.log('publicId:', publicId);
-		await cloudinary.v2.uploader.destroy(publicId, {
-			folder: 'final_project/instruments',
-		});
+		await cloudinary.v2.uploader.destroy(
+			`final_project/instruments/${publicId}`
+		);
 
 		res.json(user);
 	} catch (error) {
