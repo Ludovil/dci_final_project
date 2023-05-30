@@ -6,6 +6,8 @@
 	-moz-column-width: 33%;
 	column-width: 33%;
 	padding: 12px;
+	/* display: flex;
+	flex-direction: column; */
 }
 
 .gallery .pics {
@@ -13,9 +15,15 @@
 	transition: all 350 ease;
 	cursor: pointer;
 	margin-bottom: 12px;
+	position: relative;
 }
 .gallery .pics:hover {
 	filter: opacity(0.8);
+}
+.delete-button-container {
+	position: absolute;
+	bottom: 10px; /* adjust the desired distance from the bottom */
+	right: 10px; /* adjust the desired distance from the right */
 }
 @media (max-width: 991px) {
 	.gallery {
@@ -36,11 +44,6 @@
 	}
 }
 
-/* .gallery .pics img {
-	width: 100%;
-	height: auto;
-	object-fit: cover;
-} */
 /* model */
 
 .model {
@@ -94,6 +97,8 @@
 
 .model.open .description {
 	color: white;
+	background-color: #000000;
 	position: fixed;
-	bottom: 10px;
+	bottom: 0px;
+	width: 100%;
 }

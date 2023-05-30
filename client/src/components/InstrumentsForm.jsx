@@ -20,8 +20,8 @@ function InstrumentsForm({
 	const [tempImgSrc, setTempImgSrc] = useState('');
 	// to display the description when one image is displayed :
 	const [description, setDescription] = useState('');
-	console.log(description);
-	console.log(instrumentDescription);
+
+	console.log(instruments);
 
 	const getImg = (imgSrc) => {
 		setTempImgSrc(imgSrc);
@@ -78,10 +78,6 @@ function InstrumentsForm({
 											setInstrumentDescription(
 												newDescriptions
 											); // Set the updated array
-											//
-											// setInstrumentDescription(
-											// 	e.target.value
-											// )
 										}}
 										placeholder="description"
 									/>
@@ -116,7 +112,7 @@ function InstrumentsForm({
 					return (
 						<div
 							className="pics"
-							key={instruments._id}
+							key={item._id}
 							onClick={() => {
 								getImg(item.imageUrl);
 								setDescription(item.description);
@@ -125,18 +121,22 @@ function InstrumentsForm({
 							<img
 								src={item.imageUrl}
 								alt=""
-								key={instruments._id}
+								key={item._id}
 								style={{ width: '100%' }}
 							/>
+
 							{/* <p>{item.description}</p> */}
 							{showDeleteButtons && (
-								<button
-									onClick={() =>
-										handleInstrumentDelete(item._id)
-									}
-								>
-									Delete
-								</button>
+								<div className="delete-button-container">
+									<button
+										onClick={(e) => {
+											e.stopPropagation(); // avoid triggering the previous onClick event (getImg())
+											handleInstrumentDelete(item._id);
+										}}
+									>
+										Delete
+									</button>
+								</div>
 							)}
 						</div>
 					);

@@ -14,8 +14,6 @@ function Instruments() {
 	const [isLoading, setIsLoading] = useState(false);
 	const [instrumentDescription, setInstrumentDescription] = useState([]);
 
-	console.log(instrumentDescription);
-
 	// read instruments
 	useEffect(() => {
 		const fetchInstruments = async () => {
