@@ -12,7 +12,7 @@ function Instruments() {
 	const [imageSelection, setImageSelection] = useState([]);
 	const [showDeleteButtons, setShowDeleteButtons] = useState(false);
 	const [isLoading, setIsLoading] = useState(false);
-	const [instrumentDescription, setInstrumentDescription] = useState('');
+	const [instrumentDescription, setInstrumentDescription] = useState([]);
 
 	console.log(instrumentDescription);
 
@@ -48,6 +48,7 @@ function Instruments() {
 		const updatedSelectedImages = [...selectedImages];
 		const updatedFileNames = [...fileNames];
 		const updatedImageSelection = [...imageSelection];
+		const updatedIntrumentDescription = [...instrumentDescription];
 
 		for (let i = 0; i < files.length; i++) {
 			updatedSelectedImages.push(files[i]);
@@ -57,11 +58,13 @@ function Instruments() {
 				image: URL.createObjectURL(files[i]),
 			});
 			updatedImageSelection.push(true);
+			updatedIntrumentDescription.push('');
 		}
 
 		setSelectedImages(updatedSelectedImages);
 		setFileNames(updatedFileNames);
 		setImageSelection(updatedImageSelection);
+		setInstrumentDescription(updatedIntrumentDescription);
 	};
 
 	// delete one image before uploading it
@@ -69,14 +72,17 @@ function Instruments() {
 		const updatedSelectedImages = [...selectedImages];
 		const updatedFileNames = [...fileNames];
 		const updatedImageSelection = [...imageSelection];
+		const updatedIntrumentDescription = [...instrumentDescription];
 
 		updatedSelectedImages.splice(index, 1);
 		updatedFileNames.splice(index, 1);
 		updatedImageSelection.splice(index, 1);
+		updatedIntrumentDescription.splice(index, 1);
 
 		setSelectedImages(updatedSelectedImages);
 		setFileNames(updatedFileNames);
 		setImageSelection(updatedImageSelection);
+		setInstrumentDescription(updatedIntrumentDescription);
 	};
 
 	const handleImageUpload = async () => {
@@ -84,10 +90,11 @@ function Instruments() {
 			setIsLoading(true);
 			const formData = new FormData();
 			formData.append('userId', user._id);
-			formData.append('description', instrumentDescription); // Add instrumentDescription to the form data
+			//formData.append('description', instrumentDescription); // Add instrumentDescription to the form data
 
 			for (let i = 0; i < selectedImages.length; i++) {
 				formData.append('files', selectedImages[i]);
+				formData.append('description', instrumentDescription[i]);
 			}
 
 			console.log(formData);
@@ -107,6 +114,7 @@ function Instruments() {
 				setSelectedImages([]);
 				setFileNames([]);
 				setImageSelection([]);
+				setInstrumentDescription([]);
 				window.location.reload();
 			} else {
 				console.error('Failed to upload instrument images');

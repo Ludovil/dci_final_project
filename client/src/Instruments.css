@@ -11,3 +11,7 @@
 .custom-file-upload:hover {
 	background-color: #e0e0e0;
 }
+
+.grid-instrument {
+	display: grid;
+}

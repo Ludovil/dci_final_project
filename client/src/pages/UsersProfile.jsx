@@ -6,7 +6,6 @@ import Instruments from './Instruments.jsx';
 function Profile() {
 	const navigate = useNavigate();
 	const { user } = useContext(MyContext);
-	console.log('users profile 1: ', user);
 
 	const goToUpdatePage = () => {
 		navigate('/profile/update');

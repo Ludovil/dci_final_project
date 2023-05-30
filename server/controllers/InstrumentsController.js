@@ -8,11 +8,14 @@ export const uploadImagesInstruments = async (req, res) => {
 	try {
 		const { userId, description } = req.body;
 		const files = req.files;
+		console.log(description);
 
 		const uploadedImages = [];
 
 		// Upload images to Cloudinary
-		for (const file of files) {
+		//for (const file of files) {
+		for (let i = 0; i < files.length; i++) {
+			const file = files[i];
 			const cloudinaryResponse = await cloudinary.v2.uploader.upload(
 				//file.buffer,
 				`./uploads/${file.filename}`,
@@ -21,7 +24,7 @@ export const uploadImagesInstruments = async (req, res) => {
 			const instruments = new instrumentsCollection({
 				userId: userId,
 				imageUrl: cloudinaryResponse.secure_url,
-				description: description,
+				description: description[i] || '',
 			});
 			await instruments.save();
 			uploadedImages.push(instruments);

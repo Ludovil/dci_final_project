@@ -1,4 +1,7 @@
 import PropTypes from 'prop-types';
+import { useState } from 'react';
+import '../gallery.css';
+import CloseIcon from '@mui/icons-material/Close';
 
 function InstrumentsForm({
 	handleFileChange,
@@ -13,6 +16,17 @@ function InstrumentsForm({
 	instrumentDescription,
 	setInstrumentDescription,
 }) {
+	const [model, setModel] = useState(false);
+	const [tempImgSrc, setTempImgSrc] = useState('');
+	// to display the description when one image is displayed :
+	const [description, setDescription] = useState('');
+	console.log(description);
+	console.log(instrumentDescription);
+
+	const getImg = (imgSrc) => {
+		setTempImgSrc(imgSrc);
+		setModel(true);
+	};
 	return (
 		<div>
 			<h3>Instruments Gallery</h3>
@@ -28,33 +42,6 @@ function InstrumentsForm({
 				onChange={handleFileChange}
 				style={{ display: 'none' }}
 			/>
-			{/* previous version */}
-			{/* {fileNames.length > 0 && (
-				<div>
-					<h4>Selected Files:</h4>
-					<ul style={{ display: 'flex' }}>
-						{fileNames.map((file, index) => (
-							<li key={file.name}>
-								<img
-									src={file.image}
-									alt={file.name}
-									style={{
-										width: '200px',
-										marginLeft: '10px',
-									}}
-								/>
-								<br />
-								<span>{file.name}</span>
-								<button
-									onClick={() => handleImageDelete(index)}
-								>
-									Delete
-								</button>
-							</li>
-						))}
-					</ul>
-				</div>
-			)} */}
 			{/* version with ..loading */}
 			{isLoading ? (
 				<div style={{ margin: '15px' }}>...loading</div>
@@ -79,12 +66,23 @@ function InstrumentsForm({
 									<input
 										type="text"
 										name="description"
-										value={instrumentDescription}
-										onChange={(e) =>
-											setInstrumentDescription(
-												e.target.value
-											)
+										value={
+											instrumentDescription[index] || ''
 										}
+										onChange={(e) => {
+											const newDescriptions = [
+												...instrumentDescription,
+											]; // Create a copy of the array
+											newDescriptions[index] =
+												e.target.value; // Update the value at the corresponding index
+											setInstrumentDescription(
+												newDescriptions
+											); // Set the updated array
+											//
+											// setInstrumentDescription(
+											// 	e.target.value
+											// )
+										}}
 										placeholder="description"
 									/>
 									<button
@@ -106,31 +104,44 @@ function InstrumentsForm({
 				{showDeleteButtons ? 'cancel' : 'remove instruments'}
 			</button>
 			<br />
-
-			{/* Read the images */}
-			{instruments.map((instrument) => (
-				<div
-					key={instrument._id}
-					style={{ display: 'flex', alignItems: 'center' }}
-				>
-					<img
-						src={instrument.imageUrl}
-						alt="Cloudinary Image"
-						style={{ width: '200px', marginLeft: '10px' }}
-					/>
-
-					<p>{instrument.description}</p>
-					{showDeleteButtons && (
-						<button
-							onClick={() =>
-								handleInstrumentDelete(instrument._id)
-							}
+			{/* Read the images with Gallery */}
+			<div className={model ? 'model open' : 'model'}>
+				<img src={tempImgSrc} alt="" />
+				<br />
+				<p className="description">{description}</p>
+				<CloseIcon onClick={() => setModel(false)} />
+			</div>
+			<div className="gallery">
+				{instruments.map((item) => {
+					return (
+						<div
+							className="pics"
+							key={instruments._id}
+							onClick={() => {
+								getImg(item.imageUrl);
+								setDescription(item.description);
+							}}
 						>
-							Delete
-						</button>
-					)}
-				</div>
-			))}
+							<img
+								src={item.imageUrl}
+								alt=""
+								key={instruments._id}
+								style={{ width: '100%' }}
+							/>
+							{/* <p>{item.description}</p> */}
+							{showDeleteButtons && (
+								<button
+									onClick={() =>
+										handleInstrumentDelete(item._id)
+									}
+								>
+									Delete
+								</button>
+							)}
+						</div>
+					);
+				})}
+			</div>
 		</div>
 	);
 }
@@ -144,7 +155,7 @@ InstrumentsForm.propTypes = {
 	showDeleteButtons: PropTypes.bool.isRequired,
 	instruments: PropTypes.array.isRequired,
 	isLoading: PropTypes.bool.isRequired,
-	instrumentDescription: PropTypes.string.isRequired,
+	instrumentDescription: PropTypes.array.isRequired,
 	setInstrumentDescription: PropTypes.func.isRequired,
 };
 export default InstrumentsForm;
