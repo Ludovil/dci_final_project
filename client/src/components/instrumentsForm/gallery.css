@@ -1,3 +1,5 @@
+/* photo gallery */
+
 .gallery {
 	-webkit-column-count: 3;
 	-moz-column-count: 3;
@@ -6,8 +8,8 @@
 	-moz-column-width: 33%;
 	column-width: 33%;
 	padding: 12px;
-	/* display: flex;
-	flex-direction: column; */
+	/* background-color: #000000; */
+	margin-top: 10px;
 }
 
 .gallery .pics {

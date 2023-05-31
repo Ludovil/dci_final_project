@@ -79,7 +79,6 @@ export default function Messenger() {
 					</div>
 				</div>
 			</div>
-			<div></div>
 		</>
 	);
 }

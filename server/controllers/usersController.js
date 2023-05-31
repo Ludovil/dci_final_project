@@ -4,8 +4,6 @@ import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 dotenv.config();
 import UserCollection from '../models/usersSchema.js';
-
-//const API_KEY = 'c53b5cb2b6794d1881e5704b0a5f1ea0';
 const API_KEY = process.env.API_KEY;
 
 export const createUser = async (req, res) => {
@@ -52,40 +50,51 @@ export const createUser = async (req, res) => {
 export const loginUser = async (req, res) => {
 	try {
 		const { email, password } = req.body;
-		const user = await UserCollection.findOne({ email }).populate({
-			path: 'conversations',
-			populate: [
-				{
-					path: 'host',
-					model: 'users',
-				},
-				{
-					path: 'guest',
-					model: 'users',
-				},
-			],
-		});
-		if (user) {
-			const verifyPassword = bcrypt.compareSync(password, user.password);
-			if (verifyPassword) {
-				const token = jwt.sign(
-					{ _id: user._id, email: user.email },
-					process.env.SIGNATURE,
-					{ expiresIn: '1h', issuer: 'Ludo' }
-				);
-				res.header('token', token).json({ success: true, data: user });
-			} else {
-				res.json({
-					success: false,
-					message: 'The password does not match',
-				});
-			}
-		} else {
-			res.json({
+		const user = await UserCollection.findOne({ email }).populate([
+			{
+				path: 'conversations',
+				populate: [
+					{
+						path: 'host',
+						model: 'users',
+					},
+					{
+						path: 'guest',
+						model: 'users',
+					},
+				],
+			},
+			// {
+			// 	path: 'reviews',
+			// 	populate: {
+			// 		path: 'reviewerUser',
+			// 		model: 'users',
+			// 	},
+			// },
+		]);
+
+		if (!user) {
+			return res.json({
 				success: false,
 				message: 'This email does not exist',
 			});
 		}
+
+		const verifyPassword = bcrypt.compareSync(password, user.password);
+		if (!verifyPassword) {
+			return res.json({
+				success: false,
+				message: 'The password does not match',
+			});
+		}
+
+		const token = jwt.sign(
+			{ _id: user._id, email: user.email },
+			process.env.SIGNATURE,
+			{ expiresIn: '1h', issuer: 'Ludo' }
+		);
+
+		res.header('token', token).json({ success: true, data: user });
 	} catch (err) {
 		res.json({ success: false, message: err.message });
 	}
@@ -107,7 +116,28 @@ export const readUser = async (req, res) => {
 
 export const readAllUsers = async (req, res) => {
 	try {
-		const users = await UserCollection.find();
+		const users = await UserCollection.find().populate([
+			{
+				path: 'conversations',
+				populate: [
+					{
+						path: 'host',
+						model: 'users',
+					},
+					{
+						path: 'guest',
+						model: 'users',
+					},
+				],
+			},
+			// {
+			// 	path: 'reviews',
+			// 	populate: {
+			// 		path: 'reviewerUser',
+			// 		model: 'users',
+			// 	},
+			// },
+		]);
 		res.json({ success: true, data: users });
 	} catch (err) {
 		res.json({ success: false, message: err.message });
@@ -142,6 +172,31 @@ export const updateUser = async (req, res) => {
 			new: true,
 		});
 		res.json({ success: true, data: user });
+	} catch (err) {
+		res.json({ success: false, message: err.message });
+	}
+};
+
+export const getUserAverageRating = async (req, res) => {
+	try {
+		const { id } = req.params;
+
+		const user = await UserCollection.findById(id).populate('reviews');
+
+		if (!user) {
+			return res.json({ success: false, message: 'User does not exist' });
+		}
+
+		const reviewCount = user.reviews.length;
+		let totalRating = 0;
+
+		for (const review of user.reviews) {
+			totalRating += review.rating;
+		}
+
+		const averageRating = reviewCount > 0 ? totalRating / reviewCount : 0;
+
+		res.json({ success: true, data: { averageRating, reviewCount } });
 	} catch (err) {
 		res.json({ success: false, message: err.message });
 	}

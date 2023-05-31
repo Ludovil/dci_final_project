@@ -1,17 +1,15 @@
-import InstrumentsRoute from './routes/InstrumentsRoute.js';
-
 import express from 'express';
 import mongoose from 'mongoose';
 import usersRoute from './routes/usersRoute.js';
 import conversationRoute from './routes/conversationRoutes.js';
 import messagesRoute from './routes/messagesRoutes.js';
+import InstrumentsRoute from './routes/InstrumentsRoute.js';
 import http from 'http';
 import { Server } from 'socket.io';
 import Message from './models/messageSchema.js';
 import morgan from 'morgan';
 import cors from 'cors';
 import dotenv from 'dotenv';
-
 dotenv.config();
 
 // server
@@ -42,12 +40,9 @@ app.get('/', (req, res) => {
 	res.json({ mess: 'hello ' });
 });
 // routes
-
 app.use('/instruments', InstrumentsRoute);
-
 app.use('/users', usersRoute);
-
-//
+//app.use('/reviews', reviewsRoute);
 app.use('/conversations', conversationRoute);
 app.use('/messages', messagesRoute);
 
@@ -65,7 +60,9 @@ io.on('connection', (socket) => {
 			await messageData.populate('sender')
 		);
 	});
-
+	socket.on('deleteConversation', (conversationId) => {
+		socket.leave(conversationId);
+	});
 	socket.on('disconnect', () => {
 		console.log('a user disconnected!');
 	});

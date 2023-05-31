@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
-import '../gallery.css';
+import './gallery.css';
+import './Instruments.css';
 import CloseIcon from '@mui/icons-material/Close';
 
 function InstrumentsForm({

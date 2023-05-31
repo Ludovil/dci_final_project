@@ -24,6 +24,12 @@ const userSchema = new Schema({
 	formatted_address: {
 		type: String,
 	},
+	reviews: [
+		{
+			type: Schema.Types.ObjectId,
+			ref: 'reviews',
+		},
+	],
 	instruments: [
 		{
 			type: Schema.Types.ObjectId,
