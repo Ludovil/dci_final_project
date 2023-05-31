@@ -4,17 +4,24 @@
   margin-bottom: 10px;
 }
 
-.message.own {
-  align-self: flex-end;
+.messageTop {
+ 
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
-.message .messageTop {
+.messageBar {
+  
   display: flex;
   align-items: center;
-  margin-bottom: 5px;
+  background-color: #f5f5f5;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.message .messageImg {
+.messageImg {
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -22,32 +29,49 @@
   margin-right: 10px;
 }
 
-.message .messageContent {
-  background-color: #eae6db;
-  border: 1px solid #c9c4b9;
-  padding: 10px;
-  border-radius: 10px;
+.messageSender {
+  font-weight: 500;
+  margin-right: 10px;
+  margin-top: 0px;
+  justify-content: flex-start;
+  display: grid;
+ 
 }
 
-.message .messageText {
-  margin: 0;
-  font-size: 14px;
-  color: #403d39;
+.messageText {
+  margin-right: 10px;
+
+}
+.imgSender{
+  margin-right: 10px;
+  margin-top: 16px;
+  justify-content: flex-start;
+  display: grid;
 }
 
-.message .messageSender {
+.messageReceiever {
+  font-weight: bold;
+  margin-right: 10px;
+  justify-content: flex-end;
+  display: grid;
+  
+}
+
+.messageBottom {
+  color: gray;
   font-size: 12px;
-  color: #888;
-  margin: 0;
+  margin-top: 5px;
 }
 
-.message .messageReceiver {
-  font-size: 12px;
-  color: #888;
-  margin: 0;
+.message.own {
+  align-self: flex-end;
 }
 
-.message .messageBottom {
-  font-size: 10px;
-  color: #888;
+.message.own .messageBar {
+  background-color: #dcf8c6;
 }
+
+.message.own .messageText {
+  text-align: right;
+}
+

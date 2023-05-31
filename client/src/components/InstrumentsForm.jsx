@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 
+
 function InstrumentsForm({
 	handleFileChange,
 	handleImageDelete,
@@ -11,7 +12,7 @@ function InstrumentsForm({
 	instruments,
 }) {
 	return (
-		<div>
+		<div className='carousel-container'>
 			<h3>Instruments Gallery</h3>
 			{/* Image upload form */}
 			<label htmlFor="upload-input" className="custom-file-upload">
@@ -28,10 +29,10 @@ function InstrumentsForm({
 			{fileNames.length > 0 && (
 				<div>
 					<h4>Selected Files:</h4>
-					<ul style={{ display: 'flex' }}>
+					<ul className='u-list'>
 						{fileNames.map((file, index) => (
-							<li key={file.name}>
-								<img
+							<li key={file.name} className='l-list' >
+								<img className='u-list__image'
 									src={file.image}
 									alt={file.name}
 									style={{
@@ -40,8 +41,8 @@ function InstrumentsForm({
 									}}
 								/>
 								<br />
-								<span>{file.name}</span>
-								<button
+							
+								<button className='u-list__button'
 									onClick={() => handleImageDelete(index)}
 								>
 									Delete
@@ -52,28 +53,29 @@ function InstrumentsForm({
 				</div>
 			)}
 			<br />
-			<button onClick={handleImageUpload}>Upload Images</button>
+			<button onClick={handleImageUpload} className='upload-image-button'>Upload Images</button>
 
 			{/* Show/hide delete buttons */}
-			<button onClick={handleToggleDeleteButtons}>
+			<button onClick={handleToggleDeleteButtons} className='delete-button'>
 				{showDeleteButtons ? 'cancel' : 'remove instruments'}
 			</button>
 			<br />
 
 			{/* Read the images */}
 			{instruments.map((instrument) => (
-				<div
+				
+				 <div className='carousel-container__image'
 					key={instrument._id}
 					style={{ display: 'flex', alignItems: 'center' }}
-				>
-					<img
+				> 
+					<img className='carousel-container__image'
 						src={instrument.imageUrl}
 						alt="Cloudinary Image"
-						style={{ width: '200px', marginLeft: '10px' }}
+						style={{  display: "block", maxWidth: "100%", height: "auto", width: "auto" }}
 					/>
 
 					{showDeleteButtons && (
-						<button
+						<button className='carousel-container__button'
 							onClick={() =>
 								handleInstrumentDelete(instrument._id)
 							}
@@ -82,6 +84,7 @@ function InstrumentsForm({
 						</button>
 					)}
 				</div>
+				 
 			))}
 		</div>
 	);

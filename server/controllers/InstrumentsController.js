@@ -105,31 +105,32 @@ export const readVisitUserInstruments = async (req, res) => {
 
 // delete an instrument
 export const deleteInstrument = async (req, res) => {
-	try {
-		const { instrumentId } = req.params;
-
-		// Find the instrument by its ID
-		const instrument = await instrumentsCollection.findById(instrumentId);
-
-		if (!instrument) {
-			return res.status(404).json({ error: 'Instrument not found' });
-		}
-
-		// Delete the instrument from the instruments collection
-		await instrumentsCollection.findByIdAndRemove(instrumentId);
-
-		// Remove the instrument ID from the user's instruments field
-		const user = await UserCollection.findByIdAndUpdate(
-			instrument.userId,
-			{
-				$pull: { instruments: instrumentId },
-			},
-			{ new: true }
-		);
-
-		res.json(user);
-	} catch (error) {
-		console.error(error);
-		res.status(500).json({ error: 'Server Error' });
-	}
+    try {
+        const { instrumentId } = req.params;
+        // Find the instrument by its ID
+        const instrument = await instrumentsCollection.findById(instrumentId);
+        if (!instrument) {
+            return res.status(404).json({ error: 'Instrument not found' });
+        }
+        // Delete the instrument from the instruments collection
+        await instrumentsCollection.findByIdAndRemove(instrumentId);
+        // Remove the instrument ID from the user's instruments field
+        const user = await UserCollection.findByIdAndUpdate(
+            instrument.userId,
+            {
+                $pull: { instruments: instrumentId },
+            },
+            { new: true }
+        );
+        // Delete image from Cloudinary
+        const publicId = instrument.imageUrl.split('/').pop().split('.')[0];
+        console.log('publicId:', publicId);
+        await cloudinary.v2.uploader.destroy(
+            `final_project/instruments/${publicId}`
+        );
+        res.json(user);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Server Error' });
+    }
 };

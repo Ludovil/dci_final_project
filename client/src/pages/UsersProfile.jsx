@@ -8,12 +8,6 @@ function Profile() {
 	const { user, setUser } = useContext(MyContext);
 	console.log('users profile 1: ', user);
 
-	const logoutUser = () => {
-		localStorage.removeItem('token');
-		setUser(null);
-		navigate('/login');
-	};
-
 	const goToUpdatePage = () => {
 		navigate('/profile/update');
 	};
@@ -24,14 +18,19 @@ function Profile() {
 				<div>
 					<h2>{user.userName}</h2>
 					{user.profile_image && (
-						<img src={user.profile_image} alt="Profile Image" />
+						<img src={user.profile_image} 
+						style={{
+							width: '400px',
+							height: '400px',
+							borderRadius: '10%',
+							objectFit: 'cover',
+						}} alt="Profile Image" />
 					)}
 					<p>{user.formatted_address}</p>
 					<p>{user.email}</p>
 
 					<br />
 					<button onClick={goToUpdatePage}>update profile</button>
-					<button onClick={logoutUser}>Logout</button>
 					<br />
 					<Instruments />
 				</div>

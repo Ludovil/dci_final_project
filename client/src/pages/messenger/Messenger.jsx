@@ -1,4 +1,4 @@
-
+// 
 import Message from "../../components/message/Message.jsx";
 import { useContext, useEffect, useState } from "react";
 import { MyContext } from "../../context/context.js";
@@ -52,15 +52,8 @@ export default function Messenger() {
     <>
       <div className="messenger">
         <div className="chatMenu">
-          <h1>Postbox</h1>
-          <form className="form" onSubmit={handleSubmit}>
-            <input className="input"
-              name="message"
-              type="text"
-              placeholder="your text goes here.."
-            />
-            <button className="send">send</button>
-          </form>
+
+          <h1>messages</h1>
           <div className="messages">
            
             {user &&
@@ -79,13 +72,16 @@ export default function Messenger() {
               )}
     
           </div>
+          <form className="form" onSubmit={handleSubmit}>
+            <input className="input"
+              name="message"
+              type="text"
+              placeholder="your text goes here.."
+            />
+            <button className="send">send</button>
+          </form>
         </div>
       </div>
-      <div>
-      <h3>Conversations</h3>
-        {user?.conversations.map((c) => (<Link to={ c._id}><h1> {c?.guest.userName} and {c?.host.userName}</h1></Link>)) }
-    </div>
-  
     </>
   );
 }

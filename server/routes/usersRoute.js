@@ -5,6 +5,7 @@ import {
 	readAllUsers,
 	loginUser,
 	updateUser,
+	getUserAverageRating,
 } from '../controllers/usersController.js';
 import { authorized } from '../middlewares/authorized.js';
 
@@ -18,5 +19,6 @@ router.get('/refresh', authorized, (req, res) => {
 router.patch('/:id', authorized, updateUser);
 router.get('/', readAllUsers);
 router.get('/:id', readUser);
+router.get('/:id/averagerating', getUserAverageRating); 
 
 export default router;
