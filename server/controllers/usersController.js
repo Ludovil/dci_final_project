@@ -197,4 +197,3 @@ export const getUserAverageRating = async (req, res) => {
     res.json({ success: false, message: err.message });
   }
 };
-
