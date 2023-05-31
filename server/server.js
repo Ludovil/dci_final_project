@@ -5,6 +5,7 @@ import conversationRoute from './routes/conversationRoutes.js';
 import messagesRoute from './routes/messagesRoutes.js';
 import InstrumentsRoute from './routes/InstrumentsRoute.js';
 import http from 'http';
+import reviewsRoute from './routes/reviewsRoute.js';
 import { Server } from 'socket.io';
 import Message from './models/messageSchema.js';
 import morgan from 'morgan';
@@ -40,11 +41,11 @@ app.get('/', (req, res) => {
 	res.json({ mess: 'hello ' });
 });
 // routes
-app.use('/instruments', InstrumentsRoute);
 app.use('/users', usersRoute);
-//app.use('/reviews', reviewsRoute);
+app.use('/instruments', InstrumentsRoute);
 app.use('/conversations', conversationRoute);
 app.use('/messages', messagesRoute);
+app.use('/reviews', reviewsRoute);
 
 // socket code here
 io.on('connection', (socket) => {
@@ -63,6 +64,7 @@ io.on('connection', (socket) => {
 	socket.on('deleteConversation', (conversationId) => {
 		socket.leave(conversationId);
 	});
+
 	socket.on('disconnect', () => {
 		console.log('a user disconnected!');
 	});

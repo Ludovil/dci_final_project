@@ -2,8 +2,8 @@ import axios from 'axios';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
-dotenv.config();
 import UserCollection from '../models/usersSchema.js';
+dotenv.config();
 const API_KEY = process.env.API_KEY;
 
 export const createUser = async (req, res) => {
@@ -22,7 +22,7 @@ export const createUser = async (req, res) => {
 		const formatted_address = response.data.results[0].formatted;
 		console.log(formatted_address);
 
-		// hashing the password,
+		// Hash the password
 		const hashedPassword = bcrypt.hashSync(password, 10);
 
 		const user = new UserCollection({
@@ -35,18 +35,16 @@ export const createUser = async (req, res) => {
 			formatted_address: formatted_address,
 		});
 
-		try {
-			await user.save();
-			res.status(201).json({ success: true, data: user });
-		} catch (err) {
-			res.status(500).json({ err: 'Failed to create user' });
-		}
+		await user.save();
+		res.status(201).json({ success: true, data: user });
 	} catch (err) {
-		res.json({ success: false, message: err.message });
+		res.status(500).json({
+			success: false,
+			message: 'Failed to create user',
+		});
 	}
 };
 
-//login user
 export const loginUser = async (req, res) => {
 	try {
 		const { email, password } = req.body;
@@ -64,13 +62,13 @@ export const loginUser = async (req, res) => {
 					},
 				],
 			},
-			// {
-			// 	path: 'reviews',
-			// 	populate: {
-			// 		path: 'reviewerUser',
-			// 		model: 'users',
-			// 	},
-			// },
+			{
+				path: 'reviews',
+				populate: {
+					path: 'reviewerUser',
+					model: 'users',
+				},
+			},
 		]);
 
 		if (!user) {
@@ -99,16 +97,15 @@ export const loginUser = async (req, res) => {
 		res.json({ success: false, message: err.message });
 	}
 };
-//
+
 export const readUser = async (req, res) => {
 	try {
 		const { id } = req.params;
 		const user = await UserCollection.findById(id);
-		if (user) {
-			res.json({ success: true, data: user });
-		} else {
-			res.json({ success: false, message: 'not valid id' });
+		if (!user) {
+			return res.json({ success: false, message: 'Invalid user ID' });
 		}
+		res.json({ success: true, data: user });
 	} catch (err) {
 		res.json({ success: false, message: err.message });
 	}
@@ -130,13 +127,13 @@ export const readAllUsers = async (req, res) => {
 					},
 				],
 			},
-			// {
-			// 	path: 'reviews',
-			// 	populate: {
-			// 		path: 'reviewerUser',
-			// 		model: 'users',
-			// 	},
-			// },
+			{
+				path: 'reviews',
+				populate: {
+					path: 'reviewerUser',
+					model: 'users',
+				},
+			},
 		]);
 		res.json({ success: true, data: users });
 	} catch (err) {
@@ -148,14 +145,17 @@ export const updateUser = async (req, res) => {
 	try {
 		const { id } = req.params;
 		const { password, address, ...userData } = req.body;
+
 		if (password) {
 			const hashedPassword = bcrypt.hashSync(password, 10);
 			userData.password = hashedPassword;
 		}
+
 		if (address) {
 			const response = await axios.get(
 				`https://api.geoapify.com/v1/geocode/search?housenumber=${address.housenumber}&street=${address.street}&postcode=${address.postcode}&city=${address.city}&country=germany&format=json&apiKey=${API_KEY}`
 			);
+
 			// Extract latitude and longitude from the response data
 			const lat = response.data.results[0].lat;
 			const lon = response.data.results[0].lon;
@@ -168,9 +168,11 @@ export const updateUser = async (req, res) => {
 			userData.geocode = [lat, lon];
 			userData.formatted_address = formatted_address;
 		}
+
 		const user = await UserCollection.findByIdAndUpdate(id, userData, {
 			new: true,
 		});
+
 		res.json({ success: true, data: user });
 	} catch (err) {
 		res.json({ success: false, message: err.message });

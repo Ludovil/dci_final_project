@@ -1,3 +1,4 @@
+//
 import Message from '../../components/message/Message.jsx';
 import { useContext, useEffect, useState } from 'react';
 import { MyContext } from '../../context/context.js';
@@ -6,7 +7,10 @@ import { io } from 'socket.io-client';
 import { useLocation, useParams } from 'react-router-dom';
 import './messenger.css';
 import { useRef } from 'react';
+import { Link } from 'react-router-dom';
+
 const socket = io('http://localhost:3000', { autoConnect: false });
+
 export default function Messenger() {
 	const [messages, setMessages] = useState([]);
 	const { user } = useContext(MyContext);
@@ -14,6 +18,7 @@ export default function Messenger() {
 	const Ref = useRef();
 	const { id } = useParams();
 	console.log(messages);
+
 	useEffect(() => {
 		socket.connect();
 		socket.on('connect', () => {
@@ -23,12 +28,14 @@ export default function Messenger() {
 			setMessages((allMessages) => [...allMessages, data]);
 		});
 	}, [socket]);
+
 	useEffect(() => {
 		axios.get('http://localhost:3000/messages/' + id).then((res) => {
 			console.log(res.data);
 			setMessages(res.data);
 		});
 	}, [user]);
+
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		const message = {
@@ -39,20 +46,12 @@ export default function Messenger() {
 		socket.emit('sendMessage', id, message);
 		e.target.message.value = '';
 	};
+
 	return (
 		<>
 			<div className="messenger">
 				<div className="chatMenu">
-					<h1>Postbox</h1>
-					<form className="form" onSubmit={handleSubmit}>
-						<input
-							className="input"
-							name="message"
-							type="text"
-							placeholder="your text goes here.."
-						/>
-						<button className="send">send</button>
-					</form>
+					<h1>messages</h1>
 					<div className="messages">
 						{user &&
 							messages.map((m, i) => {
@@ -77,6 +76,15 @@ export default function Messenger() {
 								}
 							})}
 					</div>
+					<form className="form" onSubmit={handleSubmit}>
+						<input
+							className="input"
+							name="message"
+							type="text"
+							placeholder="your text goes here.."
+						/>
+						<button className="send">send</button>
+					</form>
 				</div>
 			</div>
 		</>

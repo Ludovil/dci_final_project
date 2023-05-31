@@ -2,7 +2,7 @@ import { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { MyContext } from '../context/context.js';
-//import Rating from '../components/Rating.jsx';
+import Rating from '../components/Rating.jsx';
 
 function VisitProfile() {
 	const location = useLocation();

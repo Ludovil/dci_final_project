@@ -2,7 +2,6 @@ import { MyContext } from '../context/context.js';
 import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Instruments from './Instruments.jsx';
-
 function Profile() {
 	const navigate = useNavigate();
 	const { user } = useContext(MyContext);
@@ -37,5 +36,4 @@ function Profile() {
 		</div>
 	);
 }
-
 export default Profile;

@@ -1,50 +1,59 @@
 #root {
-	max-width: 1280px;
-	margin: 0 auto;
-	padding: 2rem;
-	text-align: center;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
 }
 
 .leaflet-container {
-	height: 100vh;
+  height: 100vh;
 }
 
 /* ----------------------------------------- */
 .form {
-	border: 1px solid black;
-	padding: 5px;
+  border: 1px solid black;
+  padding: 5px;
 }
 
 .form label {
-	width: 500px;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	margin: 5px;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 5px;
 }
 
 .form input {
-	background-color: lightgrey;
-	height: 25px;
-	border: none;
-	text-align: center;
+  background-color: lightgrey;
+  height: 25px;
+  border: none;
+  text-align: center;
 }
 
 .register_form button {
-	width: 100px;
-	text-align: center;
-	margin-left: 350px;
+  width: 100px;
+  text-align: center;
+  margin-left: 350px;
 }
 /* ----------------------------------------- */
 nav ul {
-	display: flex;
-	justify-content: space-around;
+  display: flex;
+  justify-content: space-around;
 }
 
 nav ul li {
-	list-style-type: none;
+  list-style-type: none;
 }
 
 .navlink {
-	text-decoration: none;
+  text-decoration: none;
+}
+
+li.starListItem {
+  display: inline;
+}
+
+.yellowStar {
+  fill: yellow;
+  /* background-color: yellow; */
 }
