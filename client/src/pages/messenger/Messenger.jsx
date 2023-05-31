@@ -16,22 +16,22 @@ export default function Messenger() {
   const [messages, setMessages] = useState([]);
   const { user } = useContext(MyContext);
   const location = useLocation();
-  const Ref = useRef();  
+  const Ref = useRef();
   const { id } = useParams();
   console.log(messages);
 
   useEffect(() => {
     socket.connect();
-    socket.on("connect", () => {
-      socket.emit("joinConversation", id);
+    socket.on('connect', () => {
+      socket.emit('joinConversation', id);
     });
-    socket.on("getMessage", (data) => {
-      setMessages ( (allMessages)=>[...allMessages, data]);
+    socket.on('getMessage', (data) => {
+      setMessages((allMessages) => [...allMessages, data]);
     });
   }, [socket]);
 
   useEffect(() => {
-    axios.get("http://localhost:3000/messages/" + id).then((res) => {
+    axios.get('http://localhost:3000/messages/' + id).then((res) => {
       console.log(res.data);
       setMessages(res.data);
     });
@@ -44,8 +44,8 @@ export default function Messenger() {
       text: e.target.message.value,
       conversationId: id,
     };
-    socket.emit("sendMessage", id, message);
-    e.target.message.value = "";
+    socket.emit('sendMessage', id, message);
+    e.target.message.value = '';
   };
 
   return (
@@ -58,19 +58,20 @@ export default function Messenger() {
            
             {user &&
               messages.map((m, i) => {
-                if (i===messages.length-1) {
+                if (i === messages.length - 1) {
                   return (
-                <div key={m._id} className="message">
-                  <Message message={m} own={m.sender === user._id} />
-                </div>)} else {
+                    <div key={m._id} className='message'>
+                      <Message message={m} own={m.sender === user._id} />
+                    </div>
+                  );
+                } else {
                   return (
-                    <div  key={m._id} className="message">
-                    <Message message={m} own={m.sender === user._id} />
-                  </div>  
-                  )}
-                  }
-              )}
-    
+                    <div key={m._id} className='message'>
+                      <Message message={m} own={m.sender === user._id} />
+                    </div>
+                  );
+                }
+              })}
           </div>
           <form className="form" onSubmit={handleSubmit}>
             <input className="input"
