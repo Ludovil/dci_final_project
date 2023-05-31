@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 import usersRoute from './routes/usersRoute.js';
 import conversationRoute from './routes/conversationRoutes.js';
 import messagesRoute from './routes/messagesRoutes.js';
+import reviewsRoute from './routes/reviewsRoute.js';
 import http from 'http';
 import { Server } from 'socket.io';
 import Message from './models/messageSchema.js';
@@ -45,6 +46,7 @@ app.use('/users', usersRoute);
 app.use('/instruments', InstrumentsRoute);
 app.use('/conversations', conversationRoute);
 app.use('/messages', messagesRoute);
+app.use('/reviews', reviewsRoute);
 
 // socket code here
 io.on('connection', (socket) => {
