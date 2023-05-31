@@ -54,24 +54,6 @@ export const getConversationByUserIds = async (req, res) => {
     res.status(500).json(err);
   }
 };
-//deleteConversation
-// export const deleteConversation = async (req, res) => {
-//   const { conversationId, userId } = req.params;
-
-//   try {
-//     // Find the conversation by its ID and remove it
-//     await Conversation.findByIdAndRemove(conversationId);
-
-//     // Find the user by their ID and remove the conversation reference from their conversations array
-//     await UserCollection.findByIdAndUpdate(userId, {
-//       $pull: { conversations: conversationId }
-//     });
-
-//     res.status(200).json({ message: 'Conversation deleted successfully.' });
-//   } catch (error) {
-//     res.status(500).json({ error: 'Failed to delete conversation.' });
-//   }
-// };
 
 export const deleteConversation = async (req, res) => {
   const { id } = req.params;

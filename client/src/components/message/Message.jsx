@@ -16,6 +16,7 @@ export default function Message({ message, own }) {
     }
   }, [message]);
 
+
   return (
     <div ref={messageRef} className={own ? "message own" : "message"}>
       <div className="messageTop">

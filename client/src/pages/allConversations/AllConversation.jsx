@@ -21,7 +21,6 @@ export default function AllConversation() {
     }
   };
 
-
   return (
     <div className='conversations'>
       <h3 className='conversations-banner'>Conversations</h3>
