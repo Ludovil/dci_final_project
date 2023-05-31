@@ -4,8 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import Instruments from './Instruments.jsx';
 function Profile() {
 	const navigate = useNavigate();
-	const { user, setUser } = useContext(MyContext);
-	console.log('users profile 1: ', user);
+	const { user } = useContext(MyContext);
 
 	const goToUpdatePage = () => {
 		navigate('/profile/update');
@@ -17,13 +16,13 @@ function Profile() {
 				<div>
 					<h2>{user.userName}</h2>
 					{user.profile_image && (
-						<img src={user.profile_image} 
-						style={{
-							width: '400px',
-							height: '400px',
-							borderRadius: '10%',
-							objectFit: 'cover',
-						}} alt="Profile Image" />
+						<img
+							src={user.profile_image}
+							alt="Profile Image"
+							style={{
+								width: '200px',
+							}}
+						/>
 					)}
 					<p>{user.formatted_address}</p>
 					<p>{user.email}</p>

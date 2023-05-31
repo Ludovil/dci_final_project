@@ -27,10 +27,10 @@ const userSchema = new Schema({
 	apartment_images: [{ type: Schema.Types.ObjectId, ref: 'images' }],
 	reviews: [
 		{
-		  type: Schema.Types.ObjectId,
-		  ref: 'reviews',
+			type: Schema.Types.ObjectId,
+			ref: 'reviews',
 		},
-	  ],
+	],
 	instruments: [
 		{
 			type: Schema.Types.ObjectId,
