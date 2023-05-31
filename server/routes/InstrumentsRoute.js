@@ -22,7 +22,6 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 // UPLOAD images
-//router.post('/urlupload', uploadImage);
 router.post('/filesupload', upload.array('files'), uploadImagesInstruments);
 
 // READ images logged-in USER - userProfile.jsx

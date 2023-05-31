@@ -1,9 +1,9 @@
-import InstrumentsRoute from './routes/InstrumentsRoute.js';
 import express from 'express';
 import mongoose from 'mongoose';
 import usersRoute from './routes/usersRoute.js';
 import conversationRoute from './routes/conversationRoutes.js';
 import messagesRoute from './routes/messagesRoutes.js';
+import InstrumentsRoute from './routes/InstrumentsRoute.js';
 import http from 'http';
 import reviewsRoute from './routes/reviewsRoute.js';
 import { Server } from 'socket.io';
@@ -21,24 +21,24 @@ const io = new Server(server, { cors: 'http://localhost:5173' });
 
 // database
 mongoose
-  .connect('mongodb://127.0.0.1:27017/final_project')
-  .then(() => console.log('Connected to DB'))
-  .catch((err) => console.log(err.message));
+	.connect('mongodb://127.0.0.1:27017/final_project')
+	.then(() => console.log('Connected to DB'))
+	.catch((err) => console.log(err.message));
 
 // json middleware
 app.use(express.static('public'));
 app.use(express.json({ limit: '10mb' }));
 app.use(morgan('dev'));
 app.use(
-  cors({
-    origin: 'http://localhost:5173',
-    exposedHeaders: ['token'],
-    credentials: true,
-  })
+	cors({
+		origin: 'http://localhost:5173',
+		exposedHeaders: ['token'],
+		credentials: true,
+	})
 );
 
 app.get('/', (req, res) => {
-  res.json({ mess: 'hello ' });
+	res.json({ mess: 'hello ' });
 });
 // routes
 app.use('/users', usersRoute);
@@ -61,13 +61,13 @@ io.on('connection', (socket) => {
 			await messageData.populate('sender')
 		);
 	});
-	socket.on("deleteConversation", (conversationId) => {	
-		socket.leave(conversationId);	
-	});	
+	socket.on('deleteConversation', (conversationId) => {
+		socket.leave(conversationId);
+	});
 
-  socket.on('disconnect', () => {
-    console.log('a user disconnected!');
-  });
+	socket.on('disconnect', () => {
+		console.log('a user disconnected!');
+	});
 });
 
 server.listen(PORT, () => console.log('Server is running on PORT', PORT));

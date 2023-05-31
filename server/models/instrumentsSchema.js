@@ -14,6 +14,9 @@ const instrumentsSchema = new Schema({
 	imageUrl: {
 		type: String,
 	},
+	description: {
+		type: String,
+	},
 });
 
 const instrumentsCollection = model('instruments', instrumentsSchema);

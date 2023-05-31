@@ -13,10 +13,7 @@ import About from './pages/About.jsx';
 import Contact from './pages/Contact.jsx';
 import Messenger from './pages/messenger/Messenger';
 import AllConversation from './pages/allConversations/AllConversation';
-import  "./background.css";
-
-
-
+import './background.css';
 
 function App() {
 	return (
@@ -34,7 +31,7 @@ function App() {
 				<Route path="/about" element={<About />} />
 				<Route path="/contact" element={<Contact />} />
 				<Route path="/messenger/:id" element={<Messenger />} />
-				<Route path="/allconversations"element={<AllConversation />} />
+				<Route path="/allconversations" element={<AllConversation />} />
 			</Routes>
 		</BrowserRouter>
 	);
