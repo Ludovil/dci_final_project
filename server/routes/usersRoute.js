@@ -19,6 +19,6 @@ router.get('/refresh', authorized, (req, res) => {
 });
 router.patch('/:id', authorized, updateUser);
 router.get('/:id', readUser);
-router.get('/:id/averagerating', getUserAverageRating); // New route for average rating
+router.get('/:id/averagerating', getUserAverageRating);
 
 export default router;

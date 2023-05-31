@@ -3,7 +3,6 @@ import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 import UserCollection from '../models/usersSchema.js';
-
 dotenv.config();
 const API_KEY = process.env.API_KEY;
 
