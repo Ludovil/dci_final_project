@@ -61,7 +61,9 @@ io.on('connection', (socket) => {
       await messageData.populate('sender')
     );
   });
-
+  socket.on('deleteConversation', (conversationId) => {
+    socket.leave(conversationId);
+  });
   socket.on('disconnect', () => {
     console.log('a user disconnected!');
   });

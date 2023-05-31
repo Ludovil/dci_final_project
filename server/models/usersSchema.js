@@ -18,7 +18,7 @@ const userSchema = new Schema({
     city: { type: String },
     postcode: { type: String },
     street: { type: String },
-    houseNumber: { type: String },
+    housenumber: { type: String },
   },
   geocode: Array,
   formatted_address: {
