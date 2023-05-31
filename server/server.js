@@ -4,7 +4,6 @@ import mongoose from 'mongoose';
 import usersRoute from './routes/usersRoute.js';
 import conversationRoute from './routes/conversationRoutes.js';
 import messagesRoute from './routes/messagesRoutes.js';
-import reviewsRoute from './routes/reviewsRoute.js';
 import http from 'http';
 import reviewsRoute from './routes/reviewsRoute.js';
 import { Server } from 'socket.io';
