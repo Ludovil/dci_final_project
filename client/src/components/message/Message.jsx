@@ -32,12 +32,16 @@ export default function Message({ message, own }) {
             alt=""
           />
           <p className="messageSender">{message?.sender.userName}</p>
+          <div className="messageReceiever">
+          <p >{message?.receiver?.userName}</p>
           </div>
-          <p className="messageText">{message.text}</p>
-          <p className="messageReceiever">{message?.receiver?.userName}</p>
-          <div className="messageBottom">{format(message.createdAt)}</div>
+          </div>
+          <div className="messageText">
+          <p >{message.text}</p>
+          </div>
         </div>
       </div>
+          <div className="messageBottom">{format(message.createdAt)}</div>
     </div>
   );
 }
