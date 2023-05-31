@@ -4,8 +4,8 @@ import mongoose from 'mongoose';
 import usersRoute from './routes/usersRoute.js';
 import conversationRoute from './routes/conversationRoutes.js';
 import messagesRoute from './routes/messagesRoutes.js';
-import reviewsRoute from './routes/reviewsRoute.js';
 import http from 'http';
+import reviewsRoute from './routes/reviewsRoute.js';
 import { Server } from 'socket.io';
 import Message from './models/messageSchema.js';
 import morgan from 'morgan';
@@ -49,18 +49,21 @@ app.use('/reviews', reviewsRoute);
 
 // socket code here
 io.on('connection', (socket) => {
-  socket.on('joinConversation', (conversationId) => {
-    socket.join(conversationId);
-  });
-  socket.on('sendMessage', async (conversationId, message) => {
-    const messageData = new Message(message);
-    await messageData.save();
-    console.log(await messageData.populate('sender'));
-    io.to(conversationId).emit(
-      'getMessage',
-      await messageData.populate('sender')
-    );
-  });
+	socket.on('joinConversation', (conversationId) => {
+		socket.join(conversationId);
+	});
+	socket.on('sendMessage', async (conversationId, message) => {
+		const messageData = new Message(message);
+		await messageData.save();
+		console.log(await messageData.populate('sender'));
+		io.to(conversationId).emit(
+			'getMessage',
+			await messageData.populate('sender')
+		);
+	});
+	socket.on("deleteConversation", (conversationId) => {	
+		socket.leave(conversationId);	
+	});	
 
   socket.on('disconnect', () => {
     console.log('a user disconnected!');

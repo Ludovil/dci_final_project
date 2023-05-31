@@ -19,10 +19,10 @@ const SearchBox = () => {
     <>
     <h1 style={
       {
-        color: 'white',
+        color: 'gray',
         fontSize: '64px', 
         textAlign: 'center',  
-        marginTop: '200px',
+        marginTop: '180px',
         marginBottom: '50px',
         fontFamily: 'Arial',
         fontWeight: 'bold', }

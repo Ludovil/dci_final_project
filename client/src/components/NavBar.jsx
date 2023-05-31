@@ -8,7 +8,7 @@ function NavBar() {
 	const { user } = useContext(MyContext);
 
 	return (
-		<nav>
+		<nav >
 			<ul>
 				<li>
 					<NavLink to="/" className="navlink home">
@@ -24,7 +24,7 @@ function NavBar() {
 					<>
 					<li>
 						<NavLink to="/profile" className="navlink profile">
-							Profile {user.userName}
+							 {user.userName}'s profile'
 						</NavLink>
 					</li>
 					<li>

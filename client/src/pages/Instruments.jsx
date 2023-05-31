@@ -1,7 +1,6 @@
 import { MyContext } from '../context/context.js';
 import { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
-import '../Instruments.css';
 import InstrumentsForm from '../components/InstrumentsForm.jsx';
 
 function Instruments() {

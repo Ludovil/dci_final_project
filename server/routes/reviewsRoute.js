@@ -11,7 +11,7 @@ import { authorized } from '../middlewares/authorized.js';
 const router = express.Router();
 
 router.get('/', readAllReviews);
-// router.post('/:id', /*authorized,*/ createReview);
+
 router.post('/', /*authorized,*/ createReview);
 router.get('/:id', readReview);
 router.patch('/:id', /*authorized,*/ updateReview);

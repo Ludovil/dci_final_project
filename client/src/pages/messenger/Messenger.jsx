@@ -1,14 +1,16 @@
-import Message from '../../components/message/Message.jsx';
-import { useContext, useEffect, useState } from 'react';
-import { MyContext } from '../../context/context.js';
-import axios from 'axios';
-import { io } from 'socket.io-client';
-import { useLocation, useParams } from 'react-router-dom';
-import './messenger.css';
-import { useRef } from 'react';
-import { Link } from 'react-router-dom';
+// 
+import Message from "../../components/message/Message.jsx";
+import { useContext, useEffect, useState } from "react";
+import { MyContext } from "../../context/context.js";
+import axios from "axios";
+import { io } from "socket.io-client";
+import { useLocation, useParams } from "react-router-dom";
+import "./messenger.css";
+import { useRef } from "react";
+import { Link } from "react-router-dom";
 
-const socket = io('http://localhost:3000', { autoConnect: false });
+
+const socket = io("http://localhost:3000", { autoConnect: false });
 
 export default function Messenger() {
   const [messages, setMessages] = useState([]);
@@ -48,19 +50,12 @@ export default function Messenger() {
 
   return (
     <>
-      <div className='messenger'>
-        <div className='chatMenu'>
-          <h1>Postbox</h1>
-          <form className='form' onSubmit={handleSubmit}>
-            <input
-              className='input'
-              name='message'
-              type='text'
-              placeholder='your text goes here..'
-            />
-            <button className='send'>send</button>
-          </form>
-          <div className='messages'>
+      <div className="messenger">
+        <div className="chatMenu">
+
+          <h1>messages</h1>
+          <div className="messages">
+           
             {user &&
               messages.map((m, i) => {
                 if (i === messages.length - 1) {
@@ -78,6 +73,14 @@ export default function Messenger() {
                 }
               })}
           </div>
+          <form className="form" onSubmit={handleSubmit}>
+            <input className="input"
+              name="message"
+              type="text"
+              placeholder="your text goes here.."
+            />
+            <button className="send">send</button>
+          </form>
         </div>
       </div>
     </>

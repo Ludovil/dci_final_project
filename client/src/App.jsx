@@ -12,7 +12,10 @@ import UpdateProfile from './pages/UpdateProfile.jsx';
 import About from './pages/About.jsx';
 import Contact from './pages/Contact.jsx';
 import Messenger from './pages/messenger/Messenger';
-import AllConversation from './pages/AllConversation';
+import AllConversation from './pages/allConversations/AllConversation';
+import  "./background.css";
+
+
 
 
 function App() {
