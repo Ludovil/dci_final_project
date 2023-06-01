@@ -1,10 +1,10 @@
-import Rating from '../components/Rating.jsx';
+import Rating from "../components/Rating.jsx";
 
 function About() {
   return (
     <>
       <div>About</div>
-      <Rating />
+      {/* <Rating /> */}
     </>
   );
 }

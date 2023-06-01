@@ -23,7 +23,6 @@ function Instruments() {
             instrumentsIds: user.instruments,
           }
         );
-
         if (response.status === 200) {
           setInstruments(response.data.instruments);
         } else {
@@ -33,7 +32,6 @@ function Instruments() {
         console.error(error);
       }
     };
-
     if (user && user.instruments && user.instruments.length > 0) {
       fetchInstruments();
     }
@@ -57,7 +55,6 @@ function Instruments() {
       updatedImageSelection.push(true);
       updatedIntrumentDescription.push("");
     }
-
     setSelectedImages(updatedSelectedImages);
     setFileNames(updatedFileNames);
     setImageSelection(updatedImageSelection);
@@ -88,12 +85,10 @@ function Instruments() {
       const formData = new FormData();
       formData.append("userId", user._id);
       //formData.append('description', instrumentDescription); // Add instrumentDescription to the form data
-
       for (let i = 0; i < selectedImages.length; i++) {
         formData.append("files", selectedImages[i]);
         formData.append("description", instrumentDescription[i]);
       }
-
       console.log(formData);
       const response = await axios.post(
         "http://localhost:3000/instruments/filesupload",
@@ -104,7 +99,6 @@ function Instruments() {
           },
         }
       );
-
       if (response.status === 200) {
         //window.location.reload();
         setInstruments(response.data.instruments);
@@ -112,7 +106,6 @@ function Instruments() {
         setFileNames([]);
         setImageSelection([]);
         setInstrumentDescription([]);
-        //setInstrumentDescription(new Array(selectedImages.length).fill("")); // Reset the instrumentDescription to an array of empty strings
         window.location.reload();
       } else {
         console.error("Failed to upload instrument images");
@@ -123,7 +116,6 @@ function Instruments() {
       setIsLoading(false); // Set loading state to false after upload completes
     }
   };
-
   // show / hide delete buttons
   const handleToggleDeleteButtons = () => {
     setShowDeleteButtons(!showDeleteButtons);
@@ -134,7 +126,6 @@ function Instruments() {
       const response = await axios.delete(
         `http://localhost:3000/instruments/${instrumentId}`
       );
-
       if (response.status === 200) {
         // Remove the deleted instrument from the state
         const updatedInstruments = instruments.filter(
@@ -148,7 +139,6 @@ function Instruments() {
       console.error(error);
     }
   };
-
   //
   return (
     <>
@@ -168,5 +158,4 @@ function Instruments() {
     </>
   );
 }
-
 export default Instruments;

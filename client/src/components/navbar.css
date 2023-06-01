@@ -1,0 +1,56 @@
+nav {
+  background-color: black;
+}
+
+.logo {
+  font-size: 2rem;
+}
+
+nav ul {
+  display: flex;
+  justify-content: space-around;
+  margin: 0;
+  padding: 50px;
+}
+
+nav ul li {
+  list-style-type: none;
+}
+
+.navlink {
+  text-decoration: none;
+  color: white;
+}
+
+.profile-link {
+  position: relative;
+}
+
+.profile-link.active .submenu {
+  display: flex;
+}
+
+.submenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  flex-direction: column;
+  display: none;
+  background-color: black;
+  padding: 8px;
+  width: 100%;
+}
+
+.submenu li {
+  margin-top: 8px;
+}
+
+.submenu .navlink {
+  color: white;
+}
+.logout {
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  text-decoration: none;
+}
