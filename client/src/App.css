@@ -10,31 +10,7 @@
 }
 
 /* ----------------------------------------- */
-.form {
-  border: 1px solid black;
-  padding: 5px;
-}
 
-.form label {
-  width: 500px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin: 5px;
-}
-
-.form input {
-  background-color: lightgrey;
-  height: 25px;
-  border: none;
-  text-align: center;
-}
-
-.register_form button {
-  width: 100px;
-  text-align: center;
-  margin-left: 350px;
-}
 /* ----------------------------------------- */
 nav ul {
   display: flex;

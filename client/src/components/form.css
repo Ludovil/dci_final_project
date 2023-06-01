@@ -1,0 +1,92 @@
+.auth-form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.register-form {
+  width: 400px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: lightgrey;
+
+  margin-top: 20px;
+}
+
+.register-form label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.register-form input[type="text"],
+.register-form input[type="email"],
+.register-form input[type="password"],
+.register-form input[type="file"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: white;
+}
+
+/* choose file button */
+.register-form input[type="file"] {
+  display: none;
+}
+
+.file-label {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: white;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+}
+
+.file-label:hover {
+  background-color: #45a049;
+}
+
+.file-label:active {
+  background-color: #408e3d;
+}
+
+/* --------------------------- */
+
+.register-form button {
+  display: inline-block;
+  padding: 10px 20px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #4caf50;
+  color: white;
+  cursor: pointer;
+}
+
+.register-form button[type="submit"] {
+  background-color: #4caf50;
+}
+
+.register-form button[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+.register-form button[type="button"] {
+  background-color: #f44336;
+}
+
+.register-form button[type="button"]:hover {
+  background-color: #e53935;
+}
+
+/* Media Queries */
+@media screen and (max-width: 600px) {
+  .register-form {
+    width: 100%;
+  }
+}
