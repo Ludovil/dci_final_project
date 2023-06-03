@@ -73,7 +73,6 @@ function Register() {
 
   return (
     <div>
-      <h1 style={{ marginBottom: "10px" }}>Register</h1>
       <RegisterForm
         //onChangeHandler={onChangeHandler}
         onSubmitHandler={onSubmitHandler}

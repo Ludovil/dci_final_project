@@ -1,11 +1,17 @@
-import React, { useState, useContext } from "react";
+import { useState, useContext, useEffect, useRef } from "react";
 import { NavLink } from "react-router-dom";
 import { MyContext } from "../context/context.js";
 import "./navbar.css";
+import Logo from "./Logo.jsx";
 
 function NavBar() {
   const { user, setUser } = useContext(MyContext);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [showMobileMenu, setShowMobileMenu] = useState(false);
+
+  const toggleMobileMenu = () => {
+    setShowMobileMenu(!showMobileMenu);
+  };
 
   const logoutUser = () => {
     localStorage.removeItem("token");
@@ -16,14 +22,17 @@ function NavBar() {
     setMenuOpen(!menuOpen);
   };
 
+  const closeMobileMenu = () => {
+    setShowMobileMenu(false);
+  };
+
   return (
     <nav>
-      <ul>
-        <li>
-          <NavLink to="/" className="navlink logo">
-            LOGO
-          </NavLink>
-        </li>
+      <Logo className="logo" />
+      <ul
+        className={`menu ${showMobileMenu ? "show" : ""}`}
+        // onClick={() => setShowMobileMenu(false)}
+      >
         <li>
           <NavLink to="/" className="navlink home">
             Home
@@ -44,17 +53,27 @@ function NavBar() {
             Contact
           </NavLink>
         </li>
+
         {user ? (
           <li className={`profile-link ${menuOpen ? "active" : ""}`}>
             <NavLink
-              to="/profile"
+              //to="/profile"
               className="navlink profile"
               onClick={handleProfileClick}
             >
-              {user.userName}'s profile
+              profile
             </NavLink>
             {menuOpen && (
               <ul className="submenu">
+                <li>
+                  <NavLink
+                    to="/profile"
+                    className="navlink sub-profile"
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    go to
+                  </NavLink>
+                </li>
                 <li>
                   <NavLink
                     to="/allconversations"
@@ -66,14 +85,14 @@ function NavBar() {
                 </li>
                 <li>
                   <NavLink
-                    to="/logout"
+                    to="/"
                     className="navlink logout"
                     onClick={() => {
                       setMenuOpen(false);
                       logoutUser();
                     }}
                   >
-                    Logout
+                    Log out
                   </NavLink>
                 </li>
               </ul>
@@ -83,17 +102,29 @@ function NavBar() {
           <>
             <li>
               <NavLink to="/register" className="navlink register">
-                Register
+                Sign up
               </NavLink>
             </li>
             <li>
               <NavLink to="/login" className="navlink login">
-                Login
+                Log in
               </NavLink>
             </li>
           </>
         )}
       </ul>
+      <div id="mobile">
+        {!showMobileMenu && (
+          <i className="fas fa-bars mobile-icon" onClick={toggleMobileMenu}></i>
+        )}
+        {showMobileMenu && (
+          <i
+            className="fas fa-times mobile-icon"
+            //onClick={toggleMobileMenu}
+            onClick={closeMobileMenu}
+          ></i>
+        )}
+      </div>
     </nav>
   );
 }

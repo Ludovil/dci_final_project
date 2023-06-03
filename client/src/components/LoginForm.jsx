@@ -37,7 +37,6 @@ function LoginForm() {
 
   return (
     <div>
-      <h1>Login</h1>
       <div className="auth-form-container" style={{ flexDirection: "column" }}>
         <form className="register-form" onSubmit={onSubmitHandler}>
           <label>
@@ -61,7 +60,7 @@ function LoginForm() {
           <button>login</button>
         </form>
         <p>
-          You don't have an account yet?{" "}
+          You don&apos;t have an account yet?{" "}
           <a href="#" onClick={handleRegisterClick}>
             Register
           </a>
