@@ -73,14 +73,14 @@ function Register() {
 
   return (
     <div>
-      <h1>Register</h1>
       <RegisterForm
         //onChangeHandler={onChangeHandler}
         onSubmitHandler={onSubmitHandler}
         handleFileUpload={handleFileUpload}
         //formData={formData}
+        onCancelClick={onCancelClick}
       />
-      <button onClick={onCancelClick}>Cancel</button>
+      {/* <button onClick={onCancelClick}>Cancel</button> */}
     </div>
   );
 }

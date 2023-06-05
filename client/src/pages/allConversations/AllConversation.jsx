@@ -28,10 +28,10 @@ export default function AllConversation() {
         <div className='single-conversation' key={c._id}>
           <Link to={`/messenger/${c._id}`}>
             <h2 className='users-conversation'>
-              {c?.guest.userName} and {c?.host.userName}
+              {c?.guest.userName } "started a conversation with" {c?.host.userName}
             </h2>
           </Link>
-          <button className='delete-button' onClick={() => deleteConversation(c._id)}>Delete 🗑️</button>
+          <button className='delete-button' onClick={() => deleteConversation(c._id)}>🗑️</button>
         </div>
       ))}
     </div>

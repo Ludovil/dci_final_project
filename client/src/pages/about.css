@@ -1,0 +1,36 @@
+/* about.css */
+
+h1,
+h2 {
+  padding: 25px 0;
+}
+.about-container {
+  display: flex;
+  justify-content: center;
+}
+
+.about-sub-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+
+  margin: 0 10px;
+}
+
+.about-sub-container img {
+  width: 100%;
+  max-width: 700px; /* Adjust the size of the pictures as needed */
+  height: auto;
+}
+
+.about-sub-container p {
+  text-align: justify;
+  margin-top: 10px;
+  max-width: 700px;
+}
+
+@media (max-width: 881px) {
+  .about-container {
+    flex-direction: column;
+  }
+}

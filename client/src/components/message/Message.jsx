@@ -31,13 +31,13 @@ export default function Message({ message, own }) {
             }
             alt=""
           />
-          <p className="messageSender">{message?.sender.userName}</p>
-          <div className="messageReceiever">
+          <h4 className="messageSender">{message?.sender.userName}</h4>
+          <div  className="messageSender">
           <p >{message?.receiver?.userName}</p>
           </div>
           </div>
           <div className="messageText">
-          <p >{message.text}</p>
+          <h4 className="text" >{message.text}</h4>
           </div>
         </div>
       </div>

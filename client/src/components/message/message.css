@@ -3,7 +3,8 @@
   flex-direction: column;
   width: 100%;
   max-width: 540px;
-  padding: 10px;
+  padding: 2px;
+
 }
 
 .messageTop {
@@ -18,7 +19,6 @@
 .messageBar {
   display: flex;
   align-items: center;
-  background-color: #ffffff;
   padding: 10px;
   border-radius: 10px;
 
@@ -29,59 +29,53 @@
   height: 40px;
   border-radius: 50%;
   object-fit: cover;
-  margin-right: 10px;
+  margin-top: 10px;
 }
 
 .messageSender {
-  font-weight: 500;
-  margin-right: 10px;
-  margin-top: 0px;
-  align-items: flex-start;
-  display: grid;
- 
+  padding-bottom: -10px;
+  margin: 0px;
+  color: gray;
+  font-size: 10px;
+  font-weight: 400;
+  font-size: 12px;
+  font-weight: 400;
+  color: gray
 }
 
-.messageText {
-  margin-right: 10px;
-  margin-top: 0px;
-  align-items: flex-start;
-  display: grid;
-  text-align: left;
-  
-
-}
 .imgSender{
-  margin-right: 10px;
-  margin-top: 16px;
-  justify-content: flex-start;
-  display: grid;
+  border-radius: 10px;
+  padding: 8px;
 }
 
-.messageReceiever {
-  font-weight: bold;
-  margin-right: 10px;
-  align-items: flex-end;
-  display: grid;
-  
+.messageText > h4 {
+  margin-bottom: 5px;
+  font-size: 14px;
+  font-weight: 500;
 }
 
 .messageBottom {
   color: gray;
   font-size: 10px;
   margin-top: 5px;
-
 }
 
 .message.own {
   align-self: flex-end;
 }
 
-.message.own .messageBar {
-  background-color: #dcf8c6;
-  
-}
 
-.message.own .messageText {
-  text-align: right;
+.text {
+  margin-left: 2rem;
+  display: grid;
+  text-align: left;
+  background-color: #ebf7fb;
+  border-radius: 10px;
+  padding: 10px;
+  margin-right: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);  
+  border-radius: 10px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-

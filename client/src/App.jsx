@@ -1,6 +1,6 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import NavBar from './components/NavBar.jsx';
+import NavBar from '../src/components/navbar/NavBar.jsx';
 import Home from './pages/Home.jsx';
 import UsersProfile from './pages/usersProfile/UsersProfile.jsx';
 import VisitProfile from './pages/visitProfile/VisitProfile.jsx';
@@ -13,6 +13,7 @@ import About from './pages/About.jsx';
 import Contact from './pages/Contact.jsx';
 import Messenger from './pages/messenger/Messenger';
 import AllConversation from './pages/allConversations/AllConversation';
+import Footer from './components/Footer.jsx';
 // import './background.css';
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
         <Route path='/messenger/:id' element={<Messenger />} />
         <Route path='/allconversations' element={<AllConversation />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }

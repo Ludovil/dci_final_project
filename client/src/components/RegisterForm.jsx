@@ -1,9 +1,15 @@
 import PropTypes from 'prop-types';
+import './form.css';
 
-function RegisterForm({ onChangeHandler, onSubmitHandler, handleFileUpload }) {
+function RegisterForm({
+  onChangeHandler,
+  onSubmitHandler,
+  handleFileUpload,
+  onCancelClick,
+}) {
   return (
-    <div className='form'>
-      <form onSubmit={onSubmitHandler}>
+    <div className='auth-form-container'>
+      <form className='register-form' onSubmit={onSubmitHandler}>
         <label>
           <span>UserName</span>
           <input type='text' name='userName' onChange={onChangeHandler} />
@@ -20,7 +26,7 @@ function RegisterForm({ onChangeHandler, onSubmitHandler, handleFileUpload }) {
         </label>
         <br />
         <label>
-          <span>Image Profile</span>
+          <span className='file-label'>Choose Image</span>
           <input
             type='file'
             name='profile_image'
@@ -56,6 +62,7 @@ function RegisterForm({ onChangeHandler, onSubmitHandler, handleFileUpload }) {
         </label>
         <br />
         <button type='submit'>Save</button>
+        <button onClick={onCancelClick}>Cancel</button>
         <br />
       </form>
     </div>
@@ -77,6 +84,7 @@ RegisterForm.propTypes = {
   submitedInput: PropTypes.object,
   formData: PropTypes.object,
   handleFileUpload: PropTypes.func,
+  onCancelClick: PropTypes.func,
 };
 
 export default RegisterForm;

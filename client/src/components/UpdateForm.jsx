@@ -1,14 +1,16 @@
 import PropTypes from 'prop-types';
+import './form.css';
 
 function UpdateForm({
   onChangeHandler,
   onSubmitHandler,
   handleFileUpload,
   user,
+  onCancelClick,
 }) {
   return (
-    <div className='form'>
-      <form onSubmit={onSubmitHandler}>
+    <div className='auth-form-container'>
+      <form className='register-form' onSubmit={onSubmitHandler}>
         <label>
           <span>UserName</span>
           <input
@@ -40,7 +42,7 @@ function UpdateForm({
         </label>
         <br />
         <label>
-          <span>Image Profile</span>
+          <span className='file-label'>Image Profile</span>
           <input
             type='file'
             name='profile_image'
@@ -49,6 +51,19 @@ function UpdateForm({
             onChange={handleFileUpload}
           />
         </label>
+        <br />
+        {/* add description */}
+        <label>
+          <span>add description</span>
+          <input
+            type='text'
+            name='profile_description'
+            onChange={onChangeHandler}
+            placeholder='who are you ?'
+            value={user.description}
+          />
+        </label>
+        {/* end of description */}
         <br />
         <label>
           <span>country</span>
@@ -101,6 +116,7 @@ function UpdateForm({
         </label>
         <br />
         <button type='submit'>Save</button>
+        <button onClick={onCancelClick}>Cancel</button>
         <br />
       </form>
     </div>
@@ -122,6 +138,7 @@ UpdateForm.propTypes = {
   submitedInput: PropTypes.object,
   user: PropTypes.object,
   handleFileUpload: PropTypes.func,
+  onCancelClick: PropTypes.func,
 };
 
 export default UpdateForm;

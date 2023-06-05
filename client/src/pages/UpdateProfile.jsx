@@ -77,6 +77,12 @@ function UpdateProfile() {
         }
       });
   };
+  // cancel update process
+  const onCancelClick = () => {
+    // Redirect to profile
+    navigate('/profile');
+  };
+
   return (
     <>
       <UpdateForm
@@ -84,6 +90,7 @@ function UpdateProfile() {
         onSubmitHandler={onSubmitHandler}
         handleFileUpload={handleFileUpload}
         user={formData}
+        onCancelClick={onCancelClick}
       />
     </>
   );

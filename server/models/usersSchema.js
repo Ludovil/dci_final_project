@@ -38,6 +38,9 @@ const userSchema = new Schema({
     },
   ],
   conversations: [{ type: Schema.Types.ObjectId, ref: 'conversations' }],
+  description: {
+    type: String,
+  },
 });
 
 const UserCollection = model('users', userSchema);
