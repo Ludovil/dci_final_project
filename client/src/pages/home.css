@@ -1,0 +1,17 @@
+.div-proof-1 {
+  background-image: url('../../images/guitar.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 450px;
+  width: 50%;
+}
+
+.div-proof-2 {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 50%;
+  margin: auto;
+}

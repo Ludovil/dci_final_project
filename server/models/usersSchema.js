@@ -1,4 +1,4 @@
-import { Schema, model } from "mongoose";
+import { Schema, model } from 'mongoose';
 
 const userSchema = new Schema({
   userName: {
@@ -24,25 +24,25 @@ const userSchema = new Schema({
   formatted_address: {
     type: String,
   },
-  apartment_images: [{ type: Schema.Types.ObjectId, ref: "images" }],
+  apartment_images: [{ type: Schema.Types.ObjectId, ref: 'images' }],
   reviews: [
     {
       type: Schema.Types.ObjectId,
-      ref: "reviews",
+      ref: 'reviews',
     },
   ],
   instruments: [
     {
       type: Schema.Types.ObjectId,
-      ref: "instruments",
+      ref: 'instruments',
     },
   ],
-  conversations: [{ type: Schema.Types.ObjectId, ref: "conversations" }],
+  conversations: [{ type: Schema.Types.ObjectId, ref: 'conversations' }],
   description: {
     type: String,
   },
 });
 
-const UserCollection = model("users", userSchema);
+const UserCollection = model('users', userSchema);
 
 export default UserCollection;

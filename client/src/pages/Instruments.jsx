@@ -1,7 +1,7 @@
-import { MyContext } from "../context/context.js";
-import { useContext, useEffect, useState } from "react";
-import axios from "axios";
-import InstrumentsForm from "../components/instrumentsForm/InstrumentsForm.jsx";
+import { MyContext } from '../context/context.js';
+import { useContext, useEffect, useState } from 'react';
+import axios from 'axios';
+import InstrumentsForm from '../components/instrumentsForm/InstrumentsForm.jsx';
 
 function Instruments() {
   const { user } = useContext(MyContext);
@@ -12,13 +12,12 @@ function Instruments() {
   const [showDeleteButtons, setShowDeleteButtons] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [instrumentDescription, setInstrumentDescription] = useState([]);
-
   // read instruments
   useEffect(() => {
     const fetchInstruments = async () => {
       try {
         const response = await axios.post(
-          "http://localhost:3000/instruments/",
+          'http://localhost:3000/instruments/',
           {
             instrumentsIds: user.instruments,
           }
@@ -26,7 +25,7 @@ function Instruments() {
         if (response.status === 200) {
           setInstruments(response.data.instruments);
         } else {
-          console.error("Failed to fetch Instruments");
+          console.error('Failed to fetch Instruments');
         }
       } catch (error) {
         console.error(error);
@@ -36,7 +35,6 @@ function Instruments() {
       fetchInstruments();
     }
   }, [user]);
-
   // upload instruments
   const handleFileChange = (e) => {
     const files = e.target.files;
@@ -44,7 +42,6 @@ function Instruments() {
     const updatedFileNames = [...fileNames];
     const updatedImageSelection = [...imageSelection];
     const updatedIntrumentDescription = [...instrumentDescription];
-
     for (let i = 0; i < files.length; i++) {
       updatedSelectedImages.push(files[i]);
       // Here, we store an object for each file name, containing both the name and the URL of the image created
@@ -53,49 +50,45 @@ function Instruments() {
         image: URL.createObjectURL(files[i]),
       });
       updatedImageSelection.push(true);
-      updatedIntrumentDescription.push("");
+      updatedIntrumentDescription.push('');
     }
     setSelectedImages(updatedSelectedImages);
     setFileNames(updatedFileNames);
     setImageSelection(updatedImageSelection);
     setInstrumentDescription(updatedIntrumentDescription);
   };
-
   // delete one image before uploading it
   const handleImageDelete = (index) => {
     const updatedSelectedImages = [...selectedImages];
     const updatedFileNames = [...fileNames];
     const updatedImageSelection = [...imageSelection];
     const updatedIntrumentDescription = [...instrumentDescription];
-
     updatedSelectedImages.splice(index, 1);
     updatedFileNames.splice(index, 1);
     updatedImageSelection.splice(index, 1);
     updatedIntrumentDescription.splice(index, 1);
-
     setSelectedImages(updatedSelectedImages);
     setFileNames(updatedFileNames);
     setImageSelection(updatedImageSelection);
     setInstrumentDescription(updatedIntrumentDescription);
   };
-
   const handleImageUpload = async () => {
     try {
       setIsLoading(true);
       const formData = new FormData();
-      formData.append("userId", user._id);
+      formData.append('userId', user._id);
       //formData.append('description', instrumentDescription); // Add instrumentDescription to the form data
       for (let i = 0; i < selectedImages.length; i++) {
-        formData.append("files", selectedImages[i]);
-        formData.append("description", instrumentDescription[i]);
+        formData.append('files', selectedImages[i]);
+        formData.append('description', instrumentDescription[i]);
       }
       console.log(formData);
       const response = await axios.post(
-        "http://localhost:3000/instruments/filesupload",
+        'http://localhost:3000/instruments/filesupload',
         formData,
         {
           headers: {
-            "Content-Type": "multipart/form-data",
+            'Content-Type': 'multipart/form-data',
           },
         }
       );
@@ -108,7 +101,7 @@ function Instruments() {
         setInstrumentDescription([]);
         window.location.reload();
       } else {
-        console.error("Failed to upload instrument images");
+        console.error('Failed to upload instrument images');
       }
     } catch (error) {
       console.error(error);
@@ -133,7 +126,7 @@ function Instruments() {
         );
         setInstruments(updatedInstruments);
       } else {
-        console.error("Failed to delete instrument");
+        console.error('Failed to delete instrument');
       }
     } catch (error) {
       console.error(error);

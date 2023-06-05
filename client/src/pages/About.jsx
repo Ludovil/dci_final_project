@@ -1,13 +1,13 @@
-import "./about.css";
+import './about.css';
 function About() {
   return (
     <>
-      <div className="page about">
+      <div className='page about'>
         <h1>Unleash your Music, Embrace the Community</h1>
 
-        <div className="about-container">
-          <div className="about-sub-container">
-            <img src="../public/about-pic-1.jpg" alt="" />
+        <div className='about-container'>
+          <div className='about-sub-container'>
+            <img src='../public/about-pic-1.jpg' alt='' />
             <h2>Comfortable accommodations</h2>
             <p>
               One of the biggest challenges for musicians traveling to perform
@@ -20,8 +20,8 @@ function About() {
               costs but also fosters a sense of community among musicians.
             </p>
           </div>
-          <div className="about-sub-container">
-            <img src="../public/about-pic-2.jpg" alt="" />
+          <div className='about-sub-container'>
+            <img src='../public/about-pic-2.jpg' alt='' />
             <h2>Musical equipment and instruments</h2>
             <p>
               Amateur musicians no longer need to worry about transporting their

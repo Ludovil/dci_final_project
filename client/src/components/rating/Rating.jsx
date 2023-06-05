@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useContext, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { MyContext } from '../context/context.js';
+import { MyContext } from '../../context/context.js';
 import Star from './Star';
 
 const Rating = () => {
@@ -23,15 +23,9 @@ const Rating = () => {
   const handleStarClick = (index) => {
     const newRating = index + 1;
     setRating(newRating);
-    // console.log('Clicked Star:', newRating);
   };
 
   const handleSendRating = () => {
-    // console.log('Rating:', rating);
-    // console.log('Comment:', comment);
-    // console.log('reviewerUser:', user._id);
-    // console.log('reviewedUser:', location.state._id);
-
     const review = {
       reviewerUser: user._id,
       reviewedUser: location.state._id,
@@ -54,7 +48,7 @@ const Rating = () => {
   };
 
   return (
-    <div style={{ border: '5px solid blue', padding: '10px' }}>
+    <div style={{ border: '1px solid red', padding: '10px' }}>
       <h2>5 Star Rating</h2>
       <ul className='starList'>
         {[1, 2, 3, 4, 5].map((index) => (
