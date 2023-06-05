@@ -3,12 +3,11 @@ import { NavLink } from 'react-router-dom';
 import { MyContext } from '../context/context.js';
 import LogoutButton from './LogoutButton.jsx';
 
-
 function NavBar() {
 	const { user } = useContext(MyContext);
 
 	return (
-		<nav >
+		<nav className='nav'>
 			<ul>
 				<li>
 					<NavLink to="/" className="navlink home">
@@ -23,14 +22,14 @@ function NavBar() {
 				{user ? (
 					<>
 					<li>
+						<NavLink to="/allconversations" className="navlink allconversations">Postbox
+						</NavLink>
+					</li> 
+					<li>
 						<NavLink to="/profile" className="navlink profile">
 							 {user.userName}'s profile'
 						</NavLink>
 					</li>
-					<li>
-						<NavLink to="/allconversations" className="navlink allconversations">Postbox
-						</NavLink>
-					</li> 
 					<li>
 						<NavLink to="/logout" className="navlink logout">	
 							<LogoutButton />	

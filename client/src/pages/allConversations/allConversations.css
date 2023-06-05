@@ -1,35 +1,69 @@
+a {
+  text-decoration: none;
+}
+
 .conversations {
-    margin: 20px;
-  }
+  padding: 20px;
+  background-color: #f2f2f2;
+  color: #333;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   
-  .conversations-banner {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
+}
+
+.conversations-banner {
+  margin: 10px 0px 20px 0px;
+  color: #eedbdb;
+  font-size: 24px;
+  padding: 10px;
+  background-color: #16aeea;
+  border-radius: 5px;
+}
+
+.single-conversation {
+  margin: 10px 0px 10px 0px;
+  display: flex;
+  padding: 10px;
+  background-color: #dce3e6;  
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s;
+  justify-content:space-evenly;
   
-  .single-conversation {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 10px;
-    padding: 10px;
-    background-color: #f0f0f0;
-    border-radius: 5px;
-  }
-  
-  .users-conversation {
-    font-size: 18px;
-    margin: 0;
-  }
-  
-  .delete-button {
-    padding: 5px 10px;
-    font-size: 16px;
-    background-color: #de0606;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
+}
+
+.users-conversation {
+  color: #333;
+  font-size: 18px;
+  font-family: Arial, Helvetica, sans-serif;
+ 
+}
+
+.delete-button {
+  background-color: #f2f2f2;
+  color: #333;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.delete-button:hover {
+  background-color: #e6e6e6;
+}
+
+.users-conversation:hover {
+
+}
+
+.list-item  {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #f2f2f2;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}

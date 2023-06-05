@@ -20,7 +20,7 @@ function LoginForm() {
           localStorage.setItem('token', token);
           console.log(res.data.data);
           setUser(res.data.data);
-          navigate('/profile');
+          navigate('/');
         } else {
           alert('something went wrong :( ');
         }

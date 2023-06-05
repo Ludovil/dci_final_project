@@ -2,8 +2,9 @@ import axios from 'axios';
 import { Input, Button, Space, Tooltip, Divider, List, DatePicker } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { SearchOutlined } from '@ant-design/icons';
-import { useState, useContext } from 'react';
-import { MyContext } from '../context/context.js';
+import { useState, useContext, useEffect } from 'react';
+import { MyContext } from '../../context/context.js';
+import './SearchBox.css';
 
 const NOMINATIM_BASE_URL = 'https://nominatim.openstreetmap.org/search?';
 
@@ -15,25 +16,38 @@ const SearchBox = () => {
   const [listPlace, setListPlace] = useState([]);
   const navigate = useNavigate();
 
+  useEffect(() => {
+    // Add mounted class to title after component mounts
+    const titleElement = document.querySelector('.search-box-title');
+    titleElement.classList.add('mounted');
+
+    // Add mounted class to input after a short delay
+    const inputElement = document.querySelector('.search-box-input');
+    setTimeout(() => {
+      inputElement.classList.add('mounted');
+    }, 500);
+
+    // Add mounted class to search button after 1.5 seconds
+    const buttonElement = document.querySelector('.search-button');
+    setTimeout(() => {
+      buttonElement.classList.add('mounted');
+    }, 1500);
+  }, []);
+
+  
   return (
     <>
-    <h1 style={
-      {
-        color: 'gray',
-        fontSize: '64px', 
-        textAlign: 'center',  
-        marginTop: '180px',
-        marginBottom: '50px',
-        fontFamily: 'Arial',
-        fontWeight: 'bold', }
-
-    }
-     className='area'>​Input your gig address <br /> to discover available hosts<br /> in the area.</h1>
-    <div style={{ display: 'flex', flexDirection: 'column' }}>
-      <div style={{ display: 'flex' }}>
+    <div className='search-box'>  
+    <h1 className='search-box-title' 
+     >​Input your gig address <br /> to discover available hosts<br /> in the area.</h1>
+     </div>
+    <div 
+      className='search-div'>
+      <div>
         <div style={{ flex: 1 }}>
-          <Input
-            style={{ width: '100%' }}
+          <Input  
+            className='search-box-input'
+            
             placeholder='Stay for your next gig here'
             value={searchText}
             onChange={(e) => {
@@ -41,16 +55,19 @@ const SearchBox = () => {
             }}
           />
         </div>
-        <div>
+        <div >
           <Space direction='vertical' size={12}>
             <RangePicker />
           </Space>
         </div>
-        <div style={{ display: 'flex', alignItems: 'center' }}>
+        <div 
+        className='space'
+        >
           <Space direction='vertical'>
             <Space wrap>
               <Tooltip title='search'>
                 <Button
+                  className='search-button'  
                   shape='circle'
                   icon={<SearchOutlined />}
                   onClick={() => {
@@ -80,17 +97,20 @@ const SearchBox = () => {
           </Space>
         </div>
       </div>
-      <div>
-        <List size='small'>
+      <div className='list'>
+        <List
+        
+        size='small'>
           {listPlace.map((item) => {
             return (
-              <div key={item?.osm_id} style={{ display: 'flex' }}>
+              <div key={item?.osm_id} style={{ display: 'flex' }} >
                 <img
                   src='https://img.freepik.com/premium-vector/red-pin-point-isolated-white-background_120819-360.jpg'
                   alt='locationIcon'
                   style={{ width: 38, height: 38 }}
                 />
                 <List.Item
+                  className='list-item'
                   onClick={() => {
                     setPosition(item);
                     navigate(`/mapsearch?lat=${item.lat}&lon=${item.lon}`);

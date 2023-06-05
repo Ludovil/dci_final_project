@@ -1,4 +1,4 @@
-import SearchBox from '../components/SearchBox.jsx';
+import SearchBox from '../components/searchBox/SearchBox';
 
 function Home() {
 	return (

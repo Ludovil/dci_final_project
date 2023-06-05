@@ -14,15 +14,16 @@ export default function LogoutButton() {
          <div> 
               <button style={
                     {   
-                        width: '100px', 
-                        height: '30px',
+                        width: '80px', 
+                        height: '20px',
                         borderRadius: '10%',
                         objectFit: 'cover',
                         backgroundColor: 'red',
                         color: 'white',
-                        fontSize: '16px',
+                        fontSize: '10px',
                         fontWeight: 'bold',
                         cursor: 'pointer'
+                        
                     }
               } onClick={logoutUser}  >logout</button>  
          </div> 
