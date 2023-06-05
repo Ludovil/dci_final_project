@@ -1,8 +1,8 @@
 import { useState, useContext, useEffect, useRef } from "react";
 import { NavLink } from "react-router-dom";
-import { MyContext } from "../context/context.js";
+import { MyContext } from "../../context/context.js";
 import "./navbar.css";
-import Logo from "./Logo.jsx";
+import Logo from "../Logo.jsx";
 
 function NavBar() {
   const { user, setUser } = useContext(MyContext);
