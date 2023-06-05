@@ -2,16 +2,19 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 80vh;
-  background-color: transparent;
+  min-height: 90%;
+  padding: 10px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+
 }
 
 .chatMenu {
   width: 100%;
-  max-width: 540px;
+  max-width: 500px;
   background-color: #fff;
   border-radius: 10px;
-  padding: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .messages {
@@ -20,14 +23,10 @@
   padding-right: 10px;
 }
 
-.message {
-  margin-bottom: 10px;
-  display: flex;
-}
-
 .form {
   display: flex;
-  margin-top: 10px;
+  margin-top: 16px;
+  margin-bottom: 16px;
 }
 
 .input {
@@ -51,3 +50,12 @@
   background-color: #42b9e9; /* Darker shade on hover */
 }
 
+.chat {
+  font-size: 1.5rem;
+  background-color: #16aeea;
+  color: #fff;
+  padding: 10px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  border-radius: 10px;
+  margin-bottom: 24px;
+}

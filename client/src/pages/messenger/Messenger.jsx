@@ -51,7 +51,7 @@ export default function Messenger() {
 		<>
 			<div className="messenger">
 				<div className="chatMenu">
-					<h1>messages</h1>
+					<h1 className='chat'>chat</h1>
 					<div className="messages">
 						{user &&
 							messages.map((m, i) => {
