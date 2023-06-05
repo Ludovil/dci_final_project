@@ -13,8 +13,9 @@ import About from "./pages/About.jsx";
 import Contact from "./pages/Contact.jsx";
 import Messenger from "./pages/messenger/Messenger";
 import AllConversation from "./pages/allConversations/AllConversation";
-import Footer from "./components/Footer";
-import "./background.css";
+import Footer from "./components/Footer.jsx";
+
+
 
 function App() {
   return (

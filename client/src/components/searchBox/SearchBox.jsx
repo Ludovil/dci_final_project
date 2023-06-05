@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { SearchOutlined } from '@ant-design/icons';
 import { useState, useContext, useEffect } from 'react';
 import { MyContext } from '../../context/context.js';
-import './SearchBox.css';
+import "./SearchBox.css"
 
 const NOMINATIM_BASE_URL = "https://nominatim.openstreetmap.org/search?";
 
@@ -37,10 +37,10 @@ const SearchBox = () => {
   
   return (
     <>
-    <div className='search-box'>  
+    <div className='searchBox page search-box'>  
     <h1 className='search-box-title' 
-     >​Input your gig address <br /> to discover available hosts<br /> in the area.</h1>
-     </div>
+     >Input your gig address <br /> to discover available hosts<br /> in the area.</h1>
+     
     <div 
       className='search-div'>
       <div>
@@ -57,7 +57,7 @@ const SearchBox = () => {
         </div>
         <div >
           <Space direction='vertical' size={12}>
-            <RangePicker />
+            {/* <RangePicker /> */}
           </Space>
         </div>
         <div 
@@ -123,6 +123,7 @@ const SearchBox = () => {
           })}
         </List>
       </div>
+    </div>
     </div>
     </>
   );
