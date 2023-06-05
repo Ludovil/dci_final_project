@@ -1,6 +1,7 @@
 import Conversation from '../models/conversationSchema.js';
 import UserCollection from '../models/usersSchema.js';
 
+//
 export const newConversation = async (req, res) => {
   const count = await Conversation.findOne({
     guest: req.body.guest,
@@ -45,7 +46,9 @@ export const getConversationById = async (req, res) => {
 export const getConversationByUserIds = async (req, res) => {
   try {
     const conversation = await Conversation.findOne({
-      members: { $all: [req.params.firstUserId, req.params.secondUserId] },
+      members: {
+        $all: [req.params.firstUserId, req.params.secondUserId],
+      },
     });
 
     res.status(200).json(conversation);

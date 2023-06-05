@@ -1,0 +1,35 @@
+.conversations {
+    margin: 20px;
+  }
+  
+  .conversations-banner {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .single-conversation {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+  }
+  
+  .users-conversation {
+    font-size: 18px;
+    margin: 0;
+  }
+  
+  .delete-button {
+    padding: 5px 10px;
+    font-size: 16px;
+    background-color: #de0606;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  

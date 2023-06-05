@@ -58,7 +58,7 @@ function Register() {
           const token = res.headers.token;
           localStorage.setItem('token', token);
           setUser(res.data.data);
-          navigate('/profile');
+          navigate('/login');
         } else {
           console.log(res.data.message);
         }
