@@ -1,52 +1,10 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-
 .leaflet-container {
   height: 100vh;
-}
-
-/* ----------------------------------------- */
-.form {
-  border: 1px solid black;
-  padding: 5px;
-}
-
-.form label {
-  width: 500px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin: 5px;
-}
-
-.form input {
-  background-color: lightgrey;
-  height: 25px;
-  border: none;
-  text-align: center;
-}
-
-.register_form button {
-  width: 100px;
-  text-align: center;
-  margin-left: 350px;
-}
-/* ----------------------------------------- */
-nav ul {
-  display: flex;
-  justify-content: space-around;
-}
-
-nav ul li {
-  list-style-type: none;
-}
-
-.navlink {
-  text-decoration: none;
 }
 
 li.starListItem {
@@ -56,4 +14,22 @@ li.starListItem {
 .yellowStar {
   fill: yellow;
   /* background-color: yellow; */
+}
+
+.page {
+  height: 90vh;
+}
+
+.contact-page {
+  height: 50vh;
+}
+.searchBox {
+  background-image: url("../public/Rock.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.userProfile {
+  margin: auto;
+  text-align: center;
 }

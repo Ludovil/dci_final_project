@@ -6,13 +6,13 @@ import { useState, useContext, useEffect } from 'react';
 import { MyContext } from '../../context/context.js';
 import './SearchBox.css';
 
-const NOMINATIM_BASE_URL = 'https://nominatim.openstreetmap.org/search?';
+const NOMINATIM_BASE_URL = "https://nominatim.openstreetmap.org/search?";
 
 const { RangePicker } = DatePicker;
 
 const SearchBox = () => {
   const { position, setPosition } = useContext(MyContext);
-  const [searchText, setSearchText] = useState('');
+  const [searchText, setSearchText] = useState("");
   const [listPlace, setListPlace] = useState([]);
   const navigate = useNavigate();
 

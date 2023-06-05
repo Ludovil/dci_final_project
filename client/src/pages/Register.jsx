@@ -1,8 +1,8 @@
-import { useContext, useState } from 'react';
-import RegisterForm from '../components/RegisterForm.jsx';
-import axios from 'axios';
-import { MyContext } from '../context/context.js';
-import { useNavigate } from 'react-router-dom';
+import { useContext, useState } from "react";
+import RegisterForm from "../components/RegisterForm.jsx";
+import axios from "axios";
+import { MyContext } from "../context/context.js";
+import { useNavigate } from "react-router-dom";
 
 function Register() {
   const navigate = useNavigate();
@@ -19,7 +19,7 @@ function Register() {
   // 	housenumber: '',
   // });
 
-  const [profileImage, setProfileImage] = useState({ file: '' });
+  const [profileImage, setProfileImage] = useState({ file: "" });
 
   // const onChangeHandler = (e) => {
   // 	const value = e.target.value;
@@ -29,7 +29,7 @@ function Register() {
   // Profile Image
   const handleFileUpload = async (e) => {
     const file = e.target.files[0];
-    console.log('file:', file);
+    console.log("file:", file);
     const base64 = await convertToBase64(file);
     setProfileImage({ ...profileImage, file: base64 });
   };
@@ -50,15 +50,15 @@ function Register() {
       },
     };
     axios
-      .post('http://localhost:3000/users', JSON.stringify(formData), {
-        headers: { 'Content-Type': 'application/json' },
+      .post("http://localhost:3000/users", JSON.stringify(formData), {
+        headers: { "Content-Type": "application/json" },
       })
       .then((res) => {
         if (res.data.success) {
           const token = res.headers.token;
-          localStorage.setItem('token', token);
+          localStorage.setItem("token", token);
           setUser(res.data.data);
-          navigate('/login');
+          navigate("/login");
         } else {
           console.log(res.data.message);
         }
@@ -68,19 +68,19 @@ function Register() {
   // cancel registration process
   const onCancelClick = () => {
     // Redirect to the home page
-    navigate('/');
+    navigate("/");
   };
 
   return (
     <div>
-      <h1>Register</h1>
       <RegisterForm
         //onChangeHandler={onChangeHandler}
         onSubmitHandler={onSubmitHandler}
         handleFileUpload={handleFileUpload}
         //formData={formData}
+        onCancelClick={onCancelClick}
       />
-      <button onClick={onCancelClick}>Cancel</button>
+      {/* <button onClick={onCancelClick}>Cancel</button> */}
     </div>
   );
 }
