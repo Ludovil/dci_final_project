@@ -2,10 +2,10 @@ import Express from 'express';
 const router = Express.Router();
 
 import {
-	newConversation,
-	getConversationById,
-	getConversationByUserIds,
-	deleteConversation,
+  newConversation,
+  getConversationById,
+  getConversationByUserIds,
+  deleteConversation,
 } from '../controllers/conversationController.js';
 import { authorized } from '../middlewares/authorized.js';
 

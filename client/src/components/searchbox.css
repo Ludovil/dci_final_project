@@ -3,12 +3,11 @@
   background-image: url("../public/Rock.jpg");
   background-repeat: no-repeat;
   background-size: cover;
+  text-align: center;
   /* Add styles for search box container */
 }
 
 .search-box-title {
-  text-align: center;
-
   /* Add styles for the title */
 
   /* Set initial position */

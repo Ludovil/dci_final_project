@@ -24,7 +24,12 @@ const userSchema = new Schema({
   formatted_address: {
     type: String,
   },
-  apartment_images: [{ type: Schema.Types.ObjectId, ref: "images" }],
+  profile_description: {
+    type: String,
+  },
+  music_interests: {
+    type: [String],
+  },
   reviews: [
     {
       type: Schema.Types.ObjectId,

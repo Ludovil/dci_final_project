@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  padding: 10px 0;
 }
 
 .register-form {
@@ -21,7 +21,9 @@
 .register-form input[type="text"],
 .register-form input[type="email"],
 .register-form input[type="password"],
-.register-form input[type="file"] {
+.register-form input[type="file"],
+.register-form textarea,
+.register-form select {
   width: 100%;
   padding: 10px;
   margin-bottom: 10px;
