@@ -14,7 +14,7 @@ function UpdateProfile() {
     email: user.email,
     password: "",
     profile_image: user.profile_image,
-    profile_description: user.profile_description,
+    profile_description: user.profile_description || "",
     music_interests:
       user.music_interests && user.music_interests.length
         ? user.music_interests
@@ -67,7 +67,9 @@ function UpdateProfile() {
         housenumber: e.target.housenumber.value,
       },
     };
-    console.log(updatedFormData);
+    console.log("Form Data:", updatedFormData);
+    console.log("Profile Description:", e.target.profile_description.value);
+
     axios
       .patch(
         `http://localhost:3000/users/${user._id}`,

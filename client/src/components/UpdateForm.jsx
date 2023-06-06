@@ -21,6 +21,7 @@ function UpdateForm({
       target: { name: "music_interests", value: selectedValues },
     });
   };
+
   // Find the selected options that match the user's music interests
   const selectedMusicInterests = options.filter((option) =>
     user.music_interests.includes(option.value)
@@ -76,8 +77,10 @@ function UpdateForm({
             maxLength={500}
             name="profile_description"
             onChange={onChangeHandler}
-            placeholder="who are you ?"
-            value={user.description}
+            placeholder={
+              user.profile_description ? "" : "Tell us more about you "
+            }
+            value={user.profile_description}
             style={{ resize: "none" }}
           />
         </label>

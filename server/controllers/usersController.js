@@ -177,7 +177,10 @@ export const updateUser = async (req, res) => {
       userData.formatted_address = formatted_address;
     }
 
-    if (profile_description) {
+    // if (profile_description) {
+    //   userData.profile_description = profile_description;
+    // }
+    if (typeof profile_description !== "undefined") {
       userData.profile_description = profile_description;
     }
 
