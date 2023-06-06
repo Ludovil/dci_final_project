@@ -1,50 +1,42 @@
-import { MyContext } from '../../context/context.js';
-import { useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
-import Instruments from '../Instruments.jsx';
-import './usersProfile.css';
+import { MyContext } from "../../context/context.js";
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import Instruments from "../Instruments.jsx";
+import "./usersProfile.css";
 
 function Profile() {
   const navigate = useNavigate();
   const { user } = useContext(MyContext);
+  console.log(user.music_interests);
 
   const goToUpdatePage = () => {
-    navigate('/profile/update');
+    navigate("/profile/update");
   };
 
   return (
-    <div className='container'>
+    <div className="container">
       {user && (
         <div>
           {user.profile_image && (
-            <div className='containerImageProfile'>
+            <div className="containerImageProfile">
               <img
-                className='profileImage'
+                className="profileImage"
                 src={user.profile_image}
-                alt='Profile Image'
+                alt="Profile Image"
               />
             </div>
           )}
-          <div className='containerPersonalInformation'>
+          <div className="containerPersonalInformation">
             <h2>{user.userName}</h2>
             <p>Address: </p>
-            <p className='informationDatabase'>{user.formatted_address}</p>
+            <p className="informationDatabase">{user.formatted_address}</p>
             <p>Email:</p>
-            <p className='informationDatabase'>{user.email}</p>
+            <p className="informationDatabase">{user.email}</p>
             {/* <br /> */}
             <p>Who I am:</p>
-            <p className='informationDatabase'>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore,
-              adipisci quos cumque temporibus cum, neque beatae porro ipsa,
-              quisquam autem voluptatum praesentium quis id. Qui animi
-              recusandae corrupti aspernatur voluptas, laboriosam tenetur modi!
-              Inventore soluta voluptatum, quidem architecto totam vero tenetur
-              exercitationem provident! Modi pariatur amet necessitatibus nam
-              voluptates odit libero, est distinctio minus eveniet blanditiis
-              unde, illum aspernatur doloremque.
-            </p>
+            <p className="informationDatabase">{user.profile_description}</p>
             {/* ewradfsdfasdfasdfasdfasdf */}
-            <div className='card'>
+            {/* <div className='card'>
               <input id='card' type='checkbox' />
               <h3>PRUEBA</h3>
               <p>
@@ -66,11 +58,11 @@ function Profile() {
               <label className='buttonNegative, labelRead' for='card'>
                 Read more...
               </label>
-            </div>
+            </div> */}
             {/* ewradfsdfasdfasdfasdfasdf */}
             <p>Interest:</p>
-            <p className='informationDatabase'>
-              <ul className='interestList'>
+            {/* <p className="informationDatabase">
+              <ul className="interestList">
                 <li>Berlin</li>
                 <li>rock</li>
                 <li>metal</li>
@@ -79,16 +71,23 @@ function Profile() {
                 <li>acoustic</li>
                 <li>original music</li>
               </ul>
-            </p>
+            </p> */}
+            <div className="informationDatabase">
+              {user.music_interests.map((item, index) => (
+                <ul key={index} className="interestList">
+                  <li>{item}</li>
+                </ul>
+              ))}
+            </div>
             <button
-              className='file-label, buttonNegative'
+              className="file-label, buttonNegative"
               onClick={goToUpdatePage}
             >
               Update profile
             </button>
           </div>
 
-          <div className='containerInstrumentsGallery'>
+          <div className="containerInstrumentsGallery">
             <Instruments />
           </div>
         </div>

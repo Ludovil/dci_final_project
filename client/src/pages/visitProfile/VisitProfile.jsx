@@ -134,11 +134,11 @@ function VisitProfile() {
 export default VisitProfile;
 */
 
-import { useEffect, useState, useContext } from 'react';
-import axios from 'axios';
-import { useNavigate, useLocation } from 'react-router-dom';
-import { MyContext } from '../../context/context.js';
-import Rating from '../../components/rating/Rating.jsx';
+import { useEffect, useState, useContext } from "react";
+import axios from "axios";
+import { useNavigate, useLocation } from "react-router-dom";
+import { MyContext } from "../../context/context.js";
+import Rating from "../../components/rating/Rating.jsx";
 
 function VisitProfile() {
   const location = useLocation();
@@ -187,11 +187,11 @@ function VisitProfile() {
 
   const createConversation = async () => {
     try {
-      const res = await axios.post('http://localhost:3000/conversations', {
+      const res = await axios.post("http://localhost:3000/conversations", {
         guest: user._id,
         host: location?.state?._id,
       });
-      navigate('/messenger/' + res.data._id);
+      navigate("/messenger/" + res.data._id);
     } catch (err) {
       console.log(err);
     }
@@ -199,9 +199,9 @@ function VisitProfile() {
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', {
-      month: 'long',
-      year: 'numeric',
+    return date.toLocaleDateString("en-US", {
+      month: "long",
+      year: "numeric",
     });
   };
 
@@ -209,8 +209,8 @@ function VisitProfile() {
     return rating.toFixed(1);
   };
 
-  console.log('visit profile:', location?.state);
-  console.log('id: ', location.state._id);
+  console.log("visit profile:", location?.state);
+  console.log("id: ", location.state._id);
 
   return (
     <div>
@@ -222,13 +222,13 @@ function VisitProfile() {
 
         <img
           style={{
-            width: '400px',
-            height: '400px',
-            borderRadius: '10%',
-            objectFit: 'cover',
+            width: "400px",
+            height: "400px",
+            borderRadius: "10%",
+            objectFit: "cover",
           }}
           src={location?.state?.profile_image}
-          alt='Profile Image'
+          alt="Profile Image"
         />
 
         <button onClick={createConversation}>Send Message</button>
@@ -243,19 +243,19 @@ function VisitProfile() {
           <img
             key={instrument._id}
             src={instrument.imageUrl}
-            alt='Cloudinary Image'
-            style={{ width: '200px', marginLeft: '10px' }}
+            alt="Cloudinary Image"
+            style={{ width: "200px", marginLeft: "10px" }}
           />
         ))}
 
         <h2>Reviews:</h2>
-        <p style={{ color: 'red', display: 'inline' }}>
+        <p style={{ color: "red", display: "inline" }}>
           Rating: <span>{reviewCount} || </span>
         </p>
-        <p style={{ color: 'red', display: 'inline' }}>
-          Average: <span>{formatAverageRating(averageRating)}</span>{' '}
+        <p style={{ color: "red", display: "inline" }}>
+          Average: <span>{formatAverageRating(averageRating)}</span>{" "}
         </p>
-        <div style={{ color: 'white' }}>
+        <div style={{ color: "white" }}>
           {location.state?.reviews.map((review) => {
             return (
               <>
