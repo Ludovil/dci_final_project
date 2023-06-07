@@ -1,0 +1,277 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400');
+
+html {
+  font-size: 100%;
+} /*16px*/
+
+body {
+  background: white;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  line-height: 1.75;
+  color: #000000;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin: 3rem 0 1.38rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+h1 {
+  margin: 0;
+  font-size: 3.052rem;
+}
+
+h2 {
+  font-size: 2.441rem;
+}
+
+h3 {
+  font-size: 1.953rem;
+}
+
+h4 {
+  font-size: 1.563rem;
+}
+
+h5 {
+  font-size: 1.25rem;
+}
+
+small,
+.text_small {
+  font-size: 0.8rem;
+}
+
+.visitProfileContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.summaryContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.summaryContainer img {
+  width: 400px;
+  height: 400px;
+  border-radius: 5%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.ratingValues {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 5px;
+}
+
+.ratingValues p {
+  padding: 0;
+}
+
+.personalInformationContainer {
+  width: 100%;
+  text-align: left;
+  padding: 0 20px;
+}
+
+.personalInformationContainer h3 {
+  margin: 22.08px 0;
+}
+
+.galleryContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 150px;
+  padding: 10px;
+  grid-gap: 10px;
+}
+
+.galleryItem {
+  grid-column: span 1;
+  grid-row: span 1;
+}
+
+.galleryItem:nth-child(1) {
+  grid-row: span 2;
+  grid-column: span 2;
+}
+
+.galleryItem:nth-child(2n) {
+  grid-column: span 2;
+  grid-row: span 1;
+}
+
+.galleryItem:nth-child(2) {
+  grid-column: span 1;
+  grid-row-start: span 1;
+}
+
+.galleryItem:nth-child(3n) {
+  grid-row: span 2;
+}
+
+.galleryImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card {
+  padding: 0;
+}
+
+.interestList {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  padding-bottom: 10px;
+}
+
+.interestList li {
+  background-color: rgb(212, 211, 221, 0.3);
+}
+
+.display {
+  display: flex;
+  flex-direction: column;
+}
+
+.display p {
+  margin: 0;
+  padding: 10px 0;
+}
+
+.displayLabel {
+  border: 1px solid green;
+  margin: 0 auto;
+}
+
+.reviewsSection {
+  width: 100%;
+  text-align: left;
+  padding: 0 20px;
+}
+
+.reviewContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  /* grid-column-gap: 4px; */
+  margin: 0 auto;
+  font-size: 12px;
+  text-align: left;
+}
+
+.singleReview {
+  border-radius: 10px;
+  margin: 3px;
+  padding: 10px;
+  background-color: rgb(212, 211, 221, 0.3);
+  display: flex;
+  flex-direction: column;
+}
+
+.singleReview * {
+  padding: 0;
+}
+
+.singleReview > p:first-of-type {
+  margin-bottom: 10px;
+  padding-left: 34px;
+}
+
+.reviewSummary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.reviewSummary p {
+  margin: 0;
+  padding: 0;
+}
+
+.singleReview > p:last-of-type {
+  margin: 0;
+}
+
+.reviewTitle {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+}
+
+.reviewRate {
+  display: flex;
+  justify-self: flex-start;
+  margin-right: 26px;
+}
+
+.ratingSystem {
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+
+.ratingValues p {
+  margin: 0 3px;
+}
+
+.buttonNegative {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: white;
+  border: 1px solid #333;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 5px auto;
+}
+
+.buttonNegative:hover {
+  background-color: #333;
+  border: 1px solid white;
+  color: white;
+}
+
+.buttonNegative:active {
+  background-color: #333;
+}
+
+.displayLabel {
+  font-size: 13.3333px;
+  margin: 5px auto;
+  padding: 10px 20px;
+  border: 1px solid #333;
+  line-height: 13.3333px;
+}
+
+.displayLabel:hover {
+  background-color: #333;
+  border: 1px solid white;
+  color: white;
+}
+
+.importPicsButtonContainer {
+  display: flex;
+}

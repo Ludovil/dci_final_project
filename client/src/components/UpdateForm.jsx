@@ -1,5 +1,10 @@
+import Select from 'react-select';
+import makeAnimated from 'react-select/animated';
 import PropTypes from 'prop-types';
 import './form.css';
+import options from '../musicgenres.js';
+
+const animatedComponents = makeAnimated();
 
 function UpdateForm({
   onChangeHandler,
@@ -8,6 +13,19 @@ function UpdateForm({
   user,
   onCancelClick,
 }) {
+  const handleMusicInterestsChange = (selectedOptions) => {
+    const selectedValues = selectedOptions
+      ? selectedOptions.map((option) => option.value)
+      : [];
+    onChangeHandler({
+      target: { name: 'music_interests', value: selectedValues },
+    });
+  };
+
+  // Find the selected options that match the user's music interests
+  const selectedMusicInterests = options.filter((option) =>
+    user.music_interests.includes(option.value)
+  );
   return (
     <div className='auth-form-container'>
       <form className='register-form' onSubmit={onSubmitHandler}>
@@ -55,16 +73,39 @@ function UpdateForm({
         {/* add description */}
         <label>
           <span>add description</span>
+          <textarea
+            maxLength={500}
+            name='profile_description'
+            onChange={onChangeHandler}
+            placeholder={
+              user.profile_description ? '' : 'Tell us more about you '
+            }
+            value={user.profile_description}
+            style={{ resize: 'none' }}
+          />
+          {/* 
           <input
             type='text'
             name='profile_description'
             onChange={onChangeHandler}
             placeholder='who are you ?'
             value={user.description}
-          />
+          /> */}
         </label>
         {/* end of description */}
         <br />
+        {/* add music interests */}
+        <label htmlFor='music_interests'>Music Interests</label>
+        <Select
+          closeMenuOnSelect={false}
+          components={animatedComponents}
+          defaultValue={selectedMusicInterests}
+          isMulti
+          options={options}
+          onChange={handleMusicInterestsChange}
+        />
+        {/* end of music interests */}
+
         <label>
           <span>country</span>
           <input
@@ -128,6 +169,7 @@ UpdateForm.propTypes = {
   email: PropTypes.string,
   password: PropTypes.string,
   profile_image: PropTypes.string,
+  profile_description: PropTypes.string,
   country: PropTypes.string,
   city: PropTypes.string,
   postcode: PropTypes.string,
