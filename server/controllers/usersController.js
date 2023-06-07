@@ -32,7 +32,7 @@ export const createUser = async (req, res) => {
       profile_image,
       address,
       geocode: [lat, lon],
-      formatted_address: formatted_address,<<<<<<< ricardo-rating-system
+      formatted_address: formatted_address,
     });
 
     await user.save();
