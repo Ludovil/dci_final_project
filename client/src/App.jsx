@@ -10,7 +10,7 @@ import MapSearch from './pages/MapSearch.jsx';
 import Login from './pages/Login.jsx';
 import UpdateProfile from './pages/UpdateProfile.jsx';
 import About from './pages/About.jsx';
-import Contact from './pages/Contact.jsx';
+import Contact from './pages/contact/Contact.jsx';
 import Messenger from './pages/messenger/Messenger';
 import AllConversation from './pages/allConversations/AllConversation';
 import Footer from './components/Footer.jsx';
@@ -34,7 +34,7 @@ function App() {
         <Route path='/messenger/:id' element={<Messenger />} />
         <Route path='/allconversations' element={<AllConversation />} />
       </Routes>
-      <Footer />
+     
     </BrowserRouter>
   );
 }
