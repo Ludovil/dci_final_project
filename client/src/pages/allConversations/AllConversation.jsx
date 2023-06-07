@@ -67,7 +67,6 @@
                 <button className='delete-button' onClick={() => deleteConversation(c._id)}>
                   🗑️
                 </button>
-              
             </div>
           ))}
         </div>
