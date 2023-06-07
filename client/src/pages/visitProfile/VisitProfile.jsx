@@ -53,11 +53,11 @@ function VisitProfile() {
 
   const createConversation = async () => {
     try {
-      const res = await axios.post('http://localhost:3000/conversations', {
+      const res = await axios.post("http://localhost:3000/conversations", {
         guest: user._id,
         host: location?.state?._id,
       });
-      navigate('/messenger/' + res.data._id);
+      navigate("/messenger/" + res.data._id);
     } catch (err) {
       console.log(err);
     }
@@ -65,9 +65,9 @@ function VisitProfile() {
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', {
-      month: 'long',
-      year: 'numeric',
+    return date.toLocaleDateString("en-US", {
+      month: "long",
+      year: "numeric",
     });
   };
 

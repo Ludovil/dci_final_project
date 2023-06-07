@@ -1,24 +1,25 @@
-import { MyContext } from '../../context/context.js';
-import { useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
-import Instruments from '../Instruments.jsx';
-import './usersProfile.css';
+import { MyContext } from "../../context/context.js";
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import Instruments from "../Instruments.jsx";
+import "./usersProfile.css";
 
 function Profile() {
   const navigate = useNavigate();
   const { user } = useContext(MyContext);
+  console.log(user.music_interests);
 
   const goToUpdatePage = () => {
-    navigate('/profile/update');
+    navigate("/profile/update");
   };
 
   return (
-    <div className='container'>
+    <div className="container">
       {user && (
         <>
           <h1>{user.userName}</h1>
           <div>
-            {user.profile_image && (
+            {user.profile_image && (<<<<<<< ricardo-rating-system
               <div className='containerImageProfile'>
                 <img
                   className='profileImage'

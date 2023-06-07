@@ -27,13 +27,13 @@ function UpdateForm({
     user.music_interests.includes(option.value)
   );
   return (
-    <div className='auth-form-container'>
-      <form className='register-form' onSubmit={onSubmitHandler}>
+    <div className="auth-form-container">
+      <form className="register-form" onSubmit={onSubmitHandler}>
         <label>
           <span>UserName</span>
           <input
-            type='text'
-            name='userName'
+            type="text"
+            name="userName"
             onChange={onChangeHandler}
             value={user.userName}
           />
@@ -42,8 +42,8 @@ function UpdateForm({
         <label>
           <span>email</span>
           <input
-            type='email'
-            name='email'
+            type="email"
+            name="email"
             onChange={onChangeHandler}
             value={user.email}
           />
@@ -52,50 +52,42 @@ function UpdateForm({
         <label>
           <span>password</span>
           <input
-            type='password'
-            name='password'
+            type="password"
+            name="password"
             onChange={onChangeHandler}
             placeholder="If you don't update your password it will stay the same"
           />
         </label>
         <br />
         <label>
-          <span className='file-label'>Image Profile</span>
+          <span className="file-label">Image Profile</span>
           <input
-            type='file'
-            name='profile_image'
-            accept='.jpeg, .png, .jpg'
+            type="file"
+            name="profile_image"
+            accept=".jpeg, .png, .jpg"
             //onChange={onChangeHandler}
             onChange={handleFileUpload}
           />
         </label>
         <br />
-        {/* add description */}
+        {/* add profile description */}
         <label>
           <span>add description</span>
           <textarea
             maxLength={500}
-            name='profile_description'
+            name="profile_description"
             onChange={onChangeHandler}
             placeholder={
-              user.profile_description ? '' : 'Tell us more about you '
+              user.profile_description ? "" : "Tell us more about you "
             }
             value={user.profile_description}
-            style={{ resize: 'none' }}
+            style={{ resize: "none" }}
           />
-          {/* 
-          <input
-            type='text'
-            name='profile_description'
-            onChange={onChangeHandler}
-            placeholder='who are you ?'
-            value={user.description}
-          /> */}
         </label>
-        {/* end of description */}
+        {/* end of profile description */}
         <br />
         {/* add music interests */}
-        <label htmlFor='music_interests'>Music Interests</label>
+        <label htmlFor="music_interests">Music Interests</label>
         <Select
           closeMenuOnSelect={false}
           components={animatedComponents}
@@ -105,12 +97,11 @@ function UpdateForm({
           onChange={handleMusicInterestsChange}
         />
         {/* end of music interests */}
-
         <label>
           <span>country</span>
           <input
-            type='text'
-            name='country'
+            type="text"
+            name="country"
             onChange={onChangeHandler}
             value={user.country}
           />
@@ -119,8 +110,8 @@ function UpdateForm({
         <label>
           <span>city</span>
           <input
-            type='text'
-            name='city'
+            type="text"
+            name="city"
             onChange={onChangeHandler}
             value={user.city}
           />
@@ -129,8 +120,8 @@ function UpdateForm({
         <label>
           <span>postcode</span>
           <input
-            type='text'
-            name='postcode'
+            type="text"
+            name="postcode"
             onChange={onChangeHandler}
             value={user.postcode}
           />
@@ -139,8 +130,8 @@ function UpdateForm({
         <label>
           <span>street</span>
           <input
-            type='text'
-            name='street'
+            type="text"
+            name="street"
             onChange={onChangeHandler}
             value={user.street}
           />
@@ -149,14 +140,14 @@ function UpdateForm({
         <label>
           <span>housenumber</span>
           <input
-            type='text'
-            name='housenumber'
+            type="text"
+            name="housenumber"
             onChange={onChangeHandler}
             value={user.housenumber}
           />
         </label>
         <br />
-        <button type='submit'>Save</button>
+        <button type="submit">Save</button>
         <button onClick={onCancelClick}>Cancel</button>
         <br />
       </form>
