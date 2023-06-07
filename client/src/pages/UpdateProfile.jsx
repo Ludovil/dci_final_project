@@ -98,15 +98,13 @@ function UpdateProfile() {
   };
 
   return (
-    <>
-      <UpdateForm
-        onChangeHandler={onChangeHandler}
-        onSubmitHandler={onSubmitHandler}
-        handleFileUpload={handleFileUpload}
-        user={formData}
-        onCancelClick={onCancelClick}
-      />
-    </>
+    <UpdateForm
+      onChangeHandler={onChangeHandler}
+      onSubmitHandler={onSubmitHandler}
+      handleFileUpload={handleFileUpload}
+      user={formData}
+      onCancelClick={onCancelClick}
+    />
   );
 }
 
