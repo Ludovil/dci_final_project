@@ -27,7 +27,7 @@ function NavBar() {
   };
 
   return (
-    <nav>
+    <nav style={{ position: "relative", zIndex: "99" }}>
       <Logo className="logo" />
       <ul
         className={`menu ${showMobileMenu ? "show" : ""}`}
@@ -56,13 +56,14 @@ function NavBar() {
 
         {user ? (
           <li className={`profile-link ${menuOpen ? "active" : ""}`}>
-            <NavLink
-              //to="/profile"
+            {/* issue with navlink profile */}
+            <span
+              to="#"
               className="navlink profile"
               onClick={handleProfileClick}
             >
               profile
-            </NavLink>
+            </span>
             {menuOpen && (
               <ul className="submenu">
                 <li>

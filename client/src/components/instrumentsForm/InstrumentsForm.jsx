@@ -18,6 +18,7 @@ function InstrumentsForm({
   instrumentDescription,
   setInstrumentDescription,
 }) {
+  // clicked image
   const [model, setModel] = useState(false);
   const [tempImgSrc, setTempImgSrc] = useState("");
   // to display the description when one image is displayed :
@@ -47,7 +48,7 @@ function InstrumentsForm({
         onChange={handleFileChange}
         style={{ display: "none" }}
       />
-      {/* version with ...loading */}
+      {/* uploading the images, version with ...loading */}
       {isLoading ? (
         <div style={{ margin: "15px" }}>...loading</div>
       ) : (
@@ -88,12 +89,12 @@ function InstrumentsForm({
           </div>
         )
       )}
-
-      <div className="gallery">
+      {/* displaying the images  */}
+      <div className="gallery galleryContainer">
         {instruments.map((item) => {
           return (
             <div
-              className="pics"
+              className="pics galleryItem"
               key={item._id}
               onClick={() => {
                 getImg(item.imageUrl);
@@ -104,7 +105,8 @@ function InstrumentsForm({
                 src={item.imageUrl}
                 alt=""
                 key={item._id}
-                style={{ width: "100%" }}
+                //style={{ width: "100%" }}
+                className="galleryImage"
               />
 
               {/* <p>{item.description}</p> */}

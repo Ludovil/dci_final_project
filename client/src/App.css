@@ -7,6 +7,9 @@
 .leaflet-container {
   height: 100vh;
 }
+.map-container {
+  z-index: -1;
+}
 
 li.starListItem {
   display: inline;
