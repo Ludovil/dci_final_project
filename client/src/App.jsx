@@ -14,7 +14,6 @@ import Contact from './pages/contact/Contact.jsx';
 import Messenger from './pages/messenger/Messenger';
 import AllConversation from './pages/allConversations/AllConversation';
 import Footer from './components/Footer.jsx';
-// import './background.css';
 
 function App() {
   return (
