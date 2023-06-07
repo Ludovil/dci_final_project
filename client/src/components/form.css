@@ -33,7 +33,7 @@
 }
 
 /* choose file button */
-.register-form input[type="file"] {
+.register-form input[type='file'] {
   display: none;
 }
 
@@ -68,19 +68,19 @@
   cursor: pointer;
 }
 
-.register-form button[type="submit"] {
+.register-form button[type='submit'] {
   background-color: #4caf50;
 }
 
-.register-form button[type="submit"]:hover {
+.register-form button[type='submit']:hover {
   background-color: #45a049;
 }
 
-.register-form button[type="button"] {
+.register-form button[type='button'] {
   background-color: #f44336;
 }
 
-.register-form button[type="button"]:hover {
+.register-form button[type='button']:hover {
   background-color: #e53935;
 }
 

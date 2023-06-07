@@ -4,8 +4,8 @@ const Star = ({ yellow }) => {
   return (
     <svg
       className={yellow ? 'yellowStar' : ''}
-      height='50'
-      width='50'
+      height='15'
+      width='15'
       clipRule='evenodd'
       fillRule='evenodd'
       strokeLinejoin='round'

@@ -42,7 +42,7 @@ const SearchBox = () => {
           <br /> in the area.
         </h1>
 
-        <div className='search-div'>
+        <div className='search-div' style={{ width: '50%', margin: '0 auto' }}>
           <div>
             <div style={{ flex: 1 }}>
               <Input

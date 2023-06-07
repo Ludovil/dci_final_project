@@ -33,12 +33,12 @@ function InstrumentsForm({
     <div>
       <h3>Instruments gallery</h3>
       {/* Image upload form */}
-      <label
-        htmlFor='upload-input'
-        className='custom-file-upload file-label, buttonNegative'
-      >
-        Import instruments pics
-      </label>
+      {/* <label htmlFor='upload-input' className='custom-file-upload, labelRead'> */}
+      <div className='importPicsButtonContainer'>
+        <label className='displayLabel' htmlFor='upload-input'>
+          Import instruments pics
+        </label>
+      </div>
       <input
         id='upload-input'
         type='file'
@@ -126,15 +126,16 @@ function InstrumentsForm({
       </div>
 
       <br />
-      <button className='buttonNegative' onClick={handleImageUpload}>
-        Upload instruments
-      </button>
+      <div className='importPicsButtonContainer'>
+        <button className='buttonNegative' onClick={handleImageUpload}>
+          Upload instruments
+        </button>
 
-      {/* Show/hide delete buttons */}
-      <button className='buttonNegative' onClick={handleToggleDeleteButtons}>
-        {showDeleteButtons ? 'Cancel' : 'Remove instruments'}
-      </button>
-      <br />
+        {/* Show/hide delete buttons */}
+        <button className='buttonNegative' onClick={handleToggleDeleteButtons}>
+          {showDeleteButtons ? 'Cancel' : 'Remove instruments'}
+        </button>
+      </div>
       {/* Read the images with Gallery */}
       <div className={model ? 'model open' : 'model'}>
         <img src={tempImgSrc} alt='' />
