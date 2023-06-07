@@ -37,21 +37,17 @@ const Maps = () => {
   }, []);
 
   return (
+    <div style={{position: "relative", zIndex: "1"}}> 
     <MapContainer
       center={[position.lat, position.lon]}
       zoom={19}
       scrollWheelZoom={true}
-      style={{ width: "100vw", height: "100vh" }}
+      style={{ width: "100vw", height: "100vh", zIndex: "-1"}}
     >
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://api.maptiler.com/maps/basic-v2/256/{z}/{x}/{y}.png?key=NXiDSHMCc2wp2xTFnocG"
       />
-      {position && (
-        <Marker position={{ lat: position.lat, lon: position.lon }}>
-          <Popup>Hi!</Popup>
-        </Marker>
-      )}
       <ResetCenterView position={position} />
       {users.map((user) => {
         return (
@@ -70,6 +66,7 @@ const Maps = () => {
         );
       })}
     </MapContainer>
+    </div>
   );
 };
 export default Maps;

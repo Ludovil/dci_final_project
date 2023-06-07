@@ -1,6 +1,6 @@
 import SearchBox from '../components/searchBox/SearchBox.jsx';
 import About from './About.jsx';
-import Contact from './Contact.jsx';
+import Contact from './contact/Contact.jsx';
 
 function Home() {
   return (
