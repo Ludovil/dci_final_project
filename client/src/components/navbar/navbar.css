@@ -28,7 +28,7 @@ nav ul li {
   color: #4caf50;
 }
 .navlink::after {
-  content: "";
+  content: '';
   width: 0;
   height: 2px;
   background: #4caf50;
@@ -38,7 +38,7 @@ nav ul li {
   transition: width 0.3s ease-in-out;
 }
 .navlink:hover::after {
-  content: "";
+  content: '';
   width: 100%;
   height: 2px;
   background: #4caf50;
@@ -109,13 +109,13 @@ nav ul li {
 }
 
 /* Add this CSS for the responsive menu */
-.menu {
+/* .menu {
   display: flex;
   justify-content: space-around;
   margin: 0;
   padding: 20px;
   list-style-type: none;
-}
+} */
 
 .menu li {
   margin: 0 10px;
@@ -161,6 +161,7 @@ nav ul li {
     margin-left: 25px;
   }
 }
+
 /* Add this CSS for the responsive menu */
 .menu {
   display: flex;
@@ -168,6 +169,7 @@ nav ul li {
   margin: 0;
   padding: 20px;
   list-style-type: none;
+  /* margin-top: 32px; */
 }
 
 .menu li {

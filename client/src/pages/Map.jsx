@@ -1,13 +1,13 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-import "leaflet/dist/leaflet.css";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import 'leaflet/dist/leaflet.css';
+import { Link } from 'react-router-dom';
 
 function Map() {
   const [users, setUsers] = useState([]);
 
-  const URL = "http://localhost:3000";
+  const URL = 'http://localhost:3000';
 
   useEffect(() => {
     axios
@@ -19,10 +19,14 @@ function Map() {
   }, []);
   return (
     <>
-      <MapContainer center={[52.52, 13.405]} zoom={13}>
+      <MapContainer
+        style={{ position: 'relative', zIndex: '1' }}
+        center={[52.52, 13.405]}
+        zoom={13}
+      >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
+          url='https://tile.openstreetmap.org/{z}/{x}/{y}.png'
         />
 
         {users.map((user) => {

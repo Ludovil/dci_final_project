@@ -100,10 +100,8 @@ function VisitProfile() {
     <div className='visitProfileContainer'>
       <div>
         <h1>{location?.state?.userName}</h1>
-        {/* <h2>{location?.state?.email}</h2> */}
         <div className='summaryContainer'>
           <div className='ratingValues'>
-            {/* <h2>Reviews:</h2> */}
             <p>
               Rating: <span>{formatAverageRating(averageRating)}</span>
             </p>
@@ -118,9 +116,6 @@ function VisitProfile() {
         </div>
       </div>
       <div className='personalInformationContainer'>
-        {/* <h2>
-          About <span>{location?.state?.userName}:</span>
-        </h2> */}
         <h3>Description and Interest:</h3>
         <div className='card'>
           <input id='card' type='checkbox' />
@@ -136,7 +131,6 @@ function VisitProfile() {
                 Here you can find my complete address:{' '}
                 {location?.state?.formatted_address}
               </p>
-              {/* <p>{location?.state?.email}</p> */}
               <label className='displayLabel' htmlFor='card'>
                 Show less
               </label>
@@ -146,17 +140,19 @@ function VisitProfile() {
             Read more...
           </label>
         </div>
-        <h3>Instruments:</h3>
+        <h3>Instruments and Place:</h3>
         <div className='galleryContainer'>
           {instruments.map((instrument) => (
-            <div className='galleryItem'>
-              <img
-                key={instrument._id}
-                src={instrument.imageUrl}
-                alt='Cloudinary Image'
-                className='galleryImage'
-              />
-            </div>
+            <>
+              <div className='galleryItem'>
+                <img
+                  key={instrument._id}
+                  src={instrument.imageUrl}
+                  alt='Cloudinary Image'
+                  className='pics galleryImage'
+                />
+              </div>
+            </>
           ))}
         </div>
       </div>
