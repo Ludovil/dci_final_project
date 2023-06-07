@@ -1,8 +1,8 @@
-import Select from 'react-select';
-import makeAnimated from 'react-select/animated';
-import PropTypes from 'prop-types';
-import './form.css';
-import options from '../musicgenres.js';
+import Select from "react-select";
+import makeAnimated from "react-select/animated";
+import PropTypes from "prop-types";
+import "./form.css";
+import options from "../musicgenres.js";
 
 const animatedComponents = makeAnimated();
 
@@ -18,7 +18,7 @@ function UpdateForm({
       ? selectedOptions.map((option) => option.value)
       : [];
     onChangeHandler({
-      target: { name: 'music_interests', value: selectedValues },
+      target: { name: "music_interests", value: selectedValues },
     });
   };
 

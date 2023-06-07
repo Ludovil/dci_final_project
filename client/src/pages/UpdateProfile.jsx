@@ -14,7 +14,7 @@ function UpdateProfile() {
     email: user.email,
     password: "",
     profile_image: user.profile_image,
-    profile_description: user.profile_description || '',
+    profile_description: user.profile_description || "",
     music_interests:
       user.music_interests && user.music_interests.length
         ? user.music_interests
