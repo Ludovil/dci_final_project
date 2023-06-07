@@ -32,7 +32,7 @@ export const createUser = async (req, res) => {
       profile_image,
       address,
       geocode: [lat, lon],
-      formatted_address: formatted_address,
+      formatted_address: formatted_address,<<<<<<< ricardo-rating-system
     });
 
     await user.save();
@@ -40,7 +40,7 @@ export const createUser = async (req, res) => {
   } catch (err) {
     res.status(500).json({
       success: false,
-      message: "Failed to create user",
+      message: 'Failed to create user',
     });
   }
 };
@@ -63,10 +63,10 @@ export const loginUser = async (req, res) => {
         ],
       },
       {
-        path: "reviews",
+        path: 'reviews',
         populate: {
-          path: "reviewerUser",
-          model: "users",
+          path: 'reviewerUser',
+          model: 'users',
         },
       },
     ]);
@@ -74,7 +74,7 @@ export const loginUser = async (req, res) => {
     if (!user) {
       return res.json({
         success: false,
-        message: "This email does not exist",
+        message: 'This email does not exist',
       });
     }
 
@@ -82,17 +82,17 @@ export const loginUser = async (req, res) => {
     if (!verifyPassword) {
       return res.json({
         success: false,
-        message: "The password does not match",
+        message: 'The password does not match',
       });
     }
 
     const token = jwt.sign(
       { _id: user._id, email: user.email },
       process.env.SIGNATURE,
-      { expiresIn: "1h", issuer: "Ludo" }
+      { expiresIn: '1h', issuer: 'Ludo' }
     );
 
-    res.header("token", token).json({ success: true, data: user });
+    res.header('token', token).json({ success: true, data: user });
   } catch (err) {
     res.json({ success: false, message: err.message });
   }
@@ -103,7 +103,7 @@ export const readUser = async (req, res) => {
     const { id } = req.params;
     const user = await UserCollection.findById(id);
     if (!user) {
-      return res.json({ success: false, message: "Invalid user ID" });
+      return res.json({ success: false, message: 'Invalid user ID' });
     }
     res.json({ success: true, data: user });
   } catch (err) {
@@ -115,23 +115,23 @@ export const readAllUsers = async (req, res) => {
   try {
     const users = await UserCollection.find().populate([
       {
-        path: "conversations",
+        path: 'conversations',
         populate: [
           {
-            path: "host",
-            model: "users",
+            path: 'host',
+            model: 'users',
           },
           {
-            path: "guest",
-            model: "users",
+            path: 'guest',
+            model: 'users',
           },
         ],
       },
       {
-        path: "reviews",
+        path: 'reviews',
         populate: {
-          path: "reviewerUser",
-          model: "users",
+          path: 'reviewerUser',
+          model: 'users',
         },
       },
     ]);
@@ -180,7 +180,7 @@ export const updateUser = async (req, res) => {
     // if (profile_description) {
     //   userData.profile_description = profile_description;
     // }
-    if (typeof profile_description !== "undefined") {
+    if (typeof profile_description !== 'undefined') {
       userData.profile_description = profile_description;
     }
 
@@ -191,7 +191,7 @@ export const updateUser = async (req, res) => {
     const user = await UserCollection.findByIdAndUpdate(id, userData, {
       new: true,
     });
-    console.log(user);
+
     res.json({ success: true, data: user });
   } catch (err) {
     res.json({ success: false, message: err.message });
@@ -202,10 +202,10 @@ export const getUserAverageRating = async (req, res) => {
   try {
     const { id } = req.params;
 
-    const user = await UserCollection.findById(id).populate("reviews");
+    const user = await UserCollection.findById(id).populate('reviews');
 
     if (!user) {
-      return res.json({ success: false, message: "User does not exist" });
+      return res.json({ success: false, message: 'User does not exist' });
     }
 
     const reviewCount = user.reviews.length;
