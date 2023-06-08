@@ -62,7 +62,7 @@ function NavBar() {
               className="navlink profile"
               onClick={handleProfileClick}
             >
-              profile
+              {user.userName}'s profile
             </span>
             {menuOpen && (
               <ul className="submenu">

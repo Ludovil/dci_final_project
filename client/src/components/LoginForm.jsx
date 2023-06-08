@@ -37,6 +37,7 @@ function LoginForm() {
 
   return (
     <div>
+      
       <div className="auth-form-container" style={{ flexDirection: "column" }}>
         <form className="register-form" onSubmit={onSubmitHandler}>
           <label>

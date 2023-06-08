@@ -20,10 +20,9 @@ function Map() {
   return (
     <>
       <MapContainer
+        style={{ position: "relative", zIndex: "2" }}
         center={[52.52, 13.405]}
         zoom={13}
-        scrollWheelZoom={true}
-        style={{ position: "relative", zIndex: "1" }}
       >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

@@ -3,6 +3,7 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-family: "sans-serif";
 }
 
 nav ul {
@@ -83,7 +84,7 @@ nav ul li {
   background-color: black;
   width: 200%;
   border: 2px solid white;
-  z-index: 10;
+  z-index: 1;
 }
 
 .submenu .navlink {
@@ -111,13 +112,6 @@ nav ul li {
 }
 
 /* Add this CSS for the responsive menu */
-.menu {
-  display: flex;
-  justify-content: space-around;
-  margin: 0;
-  padding: 20px;
-  list-style-type: none;
-}
 
 .menu li {
   margin: 0 10px;
