@@ -32,7 +32,7 @@ function InstrumentsForm({
   };
   return (
     <div>
-      <h3>Instruments gallery</h3>
+      <h3>What we offer : </h3>
       {/* Image upload form */}
       {/* <label htmlFor='upload-input' className='custom-file-upload, labelRead'> */}
       <div className="importPicsButtonContainer">

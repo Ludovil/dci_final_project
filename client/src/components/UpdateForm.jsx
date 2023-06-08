@@ -1,7 +1,7 @@
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
 import PropTypes from "prop-types";
-import "./form.css";
+import "./updateForm.css";
 import options from "../musicgenres.js";
 
 const animatedComponents = makeAnimated();
@@ -28,8 +28,8 @@ function UpdateForm({
   );
   return (
     <div className="auth-form-container">
-      <form className="register-form" onSubmit={onSubmitHandler}>
-        <div className="sub-register-form">
+      <form className=" update-form" onSubmit={onSubmitHandler}>
+        <div className="sub-update-form">
           <label>
             <span>UserName</span>
             <input
@@ -89,7 +89,7 @@ function UpdateForm({
         {/* end of profile description */}
         <br />
         {/* add music interests */}
-        <div className="sub-register-form">
+        <div className="sub-update-form">
           <label htmlFor="music_interests">
             Music Interests
             <Select
@@ -153,7 +153,7 @@ function UpdateForm({
             />
           </label>
           <br />
-          <div className="register-buttons-container">
+          <div className="update-buttons-container">
             <button type="submit">Save</button>
             <button onClick={onCancelClick}>Cancel</button>
           </div>

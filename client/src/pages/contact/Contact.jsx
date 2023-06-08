@@ -1,6 +1,5 @@
-import Logoo from "../../components/logo-transparent.jsx";
-import "./Contact.css";
-
+import Logoo from "../../components/Logo-transparent.jsx";
+import "./contact.css";
 
 function Contact() {
   return (
@@ -45,7 +44,6 @@ function Contact() {
           </form>
           <div className="Airbngig-info">
             <Logoo className="logo" />
-            
           </div>
         </div>
       </div>

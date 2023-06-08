@@ -17,25 +17,24 @@ function Profile() {
     <div className="container">
       {user && (
         <>
-          <h1>{user.userName}</h1>
+          {/* <h1>{user.userName}</h1> */}
           <div>
             {user.profile_image && (
               <div className="containerImageProfile">
-                <img
-                  className="profileImage"
-                  src={user.profile_image}
-                  alt="Profile Image"
-                />
+                <div className="imageWrapper">
+                  <img
+                    className="profileImage"
+                    src={user.profile_image}
+                    alt="Profile Image"
+                  />
+                  <div className="userName">{user.userName}</div>
+                </div>
               </div>
             )}
             <div className="containerPersonalInformation">
-              <h3>Address: </h3>
-              <p className="informationDatabase">{user.formatted_address}</p>
-              <h3>Email:</h3>
-              <p className="informationDatabase">{user.email}</p>
               <h3>Who I am:</h3>
               <p className="informationDatabase">{user.profile_description}</p>
-              <h3>Interest:</h3>
+              <h4>Interest:</h4>
               <div className="informationDatabase">
                 {user.music_interests.map((item, index) => (
                   <ul key={index} className="interestList">
@@ -43,6 +42,7 @@ function Profile() {
                   </ul>
                 ))}
               </div>
+
               <button className="button" onClick={goToUpdatePage}>
                 Update profile
               </button>
@@ -50,6 +50,10 @@ function Profile() {
             <div>
               <Instruments />
             </div>
+            <h4>Address: </h4>
+            <p className="informationDatabase">{user.formatted_address}</p>
+            <h4>Email:</h4>
+            <p className="informationDatabase">{user.email}</p>
           </div>
         </>
       )}
