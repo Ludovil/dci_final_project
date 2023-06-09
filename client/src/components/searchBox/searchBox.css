@@ -1,129 +1,106 @@
-.searchBox {
-  /* padding-bottom: 180px; */
-  height: auto;
-  min-height: 90.5vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-  background-image: url('../public/Rock.jpg');
+
+.search-box  {
+  padding-top: 20vh;
+  background-image: url("../public/Rock.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   text-align: center;
   color: #f1f1f1;
-  padding-bottom: 80px;
-}
-
-/* .search-box {
-  background-image: url('../public/Rock.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  text-align: center;
-  color: #f1f1f1;
-} */
-
-.supraSearchBoxContainer {
-  width: 70%;
-  display: flex;
-  flex-direction: column;
+  /* Add styles for search box container */
 }
 
 .search-div {
   display: flex;
   align-items: center;
   width: 100%;
-  /* width: 70%; */
-}
 
-.search-div > div {
-  width: 12px;
 }
 
 .search-box-title {
-  position: relative;
-  top: -200px;
-  opacity: 0;
-  margin-bottom: 50px;
-  min-width: 430px;
-  max-width: 600px;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 48px;
-  transition: top 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 1s ease;
-}
+  /* Add styles for the title */
+  
+  /* Set initial position */
+    position: relative;
+    top: -200px;
+    opacity: 0;
+    transition: top 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 1s ease;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 48px;
+  }
+  
+  .search-box-input {
+    /* Add styles for the input */
+    border-radius: 10px;
+    margin: 6px;
+    margin-bottom: 0;
+    width: 71%;
+    padding: 10px 20px;
+    font-size: 18px;
+    opacity: 0;
+    transform: translateY(-50px);
+    transition: opacity 1s ease, transform 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  
+  .search-button {
+    /* Add styles for the search button */
+    opacity: 0;
+    transform: scale(1);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    margin-left: -45px;
+  }
+  
+  /* Animation when the component mounts */
+  .search-box-title.mounted {
+    top: 0;
+    opacity: 1;
+  }
+  
+  .search-box-input.mounted {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .search-button.mounted {
+    opacity: 1;
+    transform: scale(1);
+  }
+  
+  /* Animation when the component unmounts */ 
+  .search-box-title.unmounted {
+    top: -200px;
+    opacity: 0;
+  } 
 
-.search-box-input {
-  border-radius: 10px;
-  margin: 6px;
-  margin-bottom: 0;
-  width: 71%;
-  padding: 10px 20px;
-  font-size: 18px;
-  opacity: 0;
-  transform: translateY(-50px);
-  transition: opacity 1s ease,
-    transform 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-}
+  .search-box-input.unmounted {
+    opacity: 0;
+    transform: translateY(-50px);
+  } 
 
-.search-button {
-  opacity: 0;
-  transform: scale(1);
-  transition: opacity 0.5s ease, transform 0.5s ease;
-  margin-left: -45px;
-}
+  .search-button.unmounted {
+    opacity: 1;
+    transform: scale(0);
+  } 
 
-.search-box-title.mounted {
-  top: 0;
-  opacity: 1;
-  margin-top: 100px;
-}
+  .search-box-input:focus {
+    outline: none;
+  }
 
-.search-box-input.mounted {
-  opacity: 1;
-  transform: translateY(0);
-}
+  .list {
+    width: 70%;
+    margin: 0 auto;
+    border-radius: 5px;
+  }
 
-.search-button.mounted {
-  opacity: 1;
-  transform: scale(1);
-}
+  .list-item:hover {
+    background-color: #f1f1f1;   
+  }
 
-/* Animation when the component unmounts */
-.search-box-title.unmounted {
-  top: -200px;
-  opacity: 0;
-}
+  .list-item  {
+    background-color: #fdfdfd;
+    width: 100%;
+    padding: 10px;  
+  }
 
-.search-box-input.unmounted {
-  opacity: 0;
-  transform: translateY(50px);
-}
-
-.search-button.unmounted {
-  opacity: 1;
-  transform: scale(0);
-}
-
-.search-box-input:focus {
-  outline: none;
-}
-
-.list {
-  width: 70%;
-  margin: 0 auto;
-  border-radius: 5px;
-}
-
-.list-item:hover {
-  background-color: #f1f1f1;
-}
-
-.list-item {
-  background-color: #fdfdfd;
-  width: 100%;
-  padding: 10px;
-}
-
-/* .search-box-input {
-  width: 100%;
-} */
+  .search-box-input {
+     width: '100%'
+  }

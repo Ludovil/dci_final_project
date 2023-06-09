@@ -53,6 +53,11 @@ const Maps = () => {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url='https://api.maptiler.com/maps/basic-v2/256/{z}/{x}/{y}.png?key=NXiDSHMCc2wp2xTFnocG'
         />
+        {position && (
+          <Marker position={{ lat: position.lat, lon: position.lon }}>
+            <Popup>You are here</Popup>
+          </Marker>
+        )}
         <ResetCenterView position={position} />
         {users.map((user) => {
           return (
