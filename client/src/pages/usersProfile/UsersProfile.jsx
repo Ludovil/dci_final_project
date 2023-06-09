@@ -7,6 +7,7 @@ import './usersProfile.css';
 function Profile() {
   const navigate = useNavigate();
   const { user } = useContext(MyContext);
+  console.log(user.music_interests);
 
   const goToUpdatePage = () => {
     navigate('/profile/update');

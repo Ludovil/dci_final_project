@@ -27,7 +27,8 @@ function NavBar() {
   };
 
   return (
-    <nav style={{ position: 'relative', zIndex: '99' }}>
+    // <nav style={{ position: 'relative', zIndex: '99' }}>
+    <nav>
       <Logo className='logo' />
       <ul
         className={`menu ${showMobileMenu ? 'show' : ''}`}
@@ -55,13 +56,16 @@ function NavBar() {
         </li>
 
         {user ? (
-          <li className={`profile-link ${menuOpen ? 'active' : ''}`}>
+          <li
+            style={{ margin: '0' }}
+            className={`profile-link ${menuOpen ? 'active' : ''}`}
+          >
             <NavLink
               //to="/profile"
               className='navlink profile'
               onClick={handleProfileClick}
             >
-              profile
+              {user.userName}'s profile
             </NavLink>
             {menuOpen && (
               <ul className='submenu'>
@@ -71,7 +75,7 @@ function NavBar() {
                     className='navlink sub-profile'
                     onClick={() => setMenuOpen(false)}
                   >
-                    go to
+                    Go to
                   </NavLink>
                 </li>
                 <li>

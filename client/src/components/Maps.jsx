@@ -5,6 +5,7 @@ import { MyContext } from '../context/context.js';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 import axios from 'axios';
+import './maps.css';
 
 const ResetCenterView = ({ position }) => {
   const map = useMap();
@@ -42,7 +43,11 @@ const Maps = () => {
         center={[position.lat, position.lon]}
         zoom={13}
         scrollWheelZoom={true}
-        style={{ width: '100vw', height: '100vh' }}
+        style={{
+          width: '100vw',
+          height: '100vh',
+          zIndex: '-1',
+        }}
       >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -57,7 +62,7 @@ const Maps = () => {
                   {user.userName} <br />
                   {user.formatted_address} <br />
                   <Link to={`/visitprofile/${user._id}`} state={user}>
-                    <button>visit profile</button>
+                    <button className='buttonNegative'>Visit profile</button>
                   </Link>
                 </Popup>
               </Marker>

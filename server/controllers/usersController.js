@@ -1,8 +1,8 @@
-import axios from 'axios';
-import bcrypt from 'bcrypt';
-import jwt from 'jsonwebtoken';
-import dotenv from 'dotenv';
-import UserCollection from '../models/usersSchema.js';
+import axios from "axios";
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
+import UserCollection from "../models/usersSchema.js";
 dotenv.config();
 const API_KEY = process.env.API_KEY;
 
@@ -50,15 +50,15 @@ export const loginUser = async (req, res) => {
     const { email, password } = req.body;
     const user = await UserCollection.findOne({ email }).populate([
       {
-        path: 'conversations',
+        path: "conversations",
         populate: [
           {
-            path: 'host',
-            model: 'users',
+            path: "host",
+            model: "users",
           },
           {
-            path: 'guest',
-            model: 'users',
+            path: "guest",
+            model: "users",
           },
         ],
       },

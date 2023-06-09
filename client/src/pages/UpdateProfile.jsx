@@ -1,8 +1,8 @@
-import UpdateForm from '../components/UpdateForm.jsx';
-import { MyContext } from '../context/context.js';
-import { useContext, useState } from 'react';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import UpdateForm from "../components/UpdateForm.jsx";
+import { MyContext } from "../context/context.js";
+import { useContext, useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function UpdateProfile() {
   const navigate = useNavigate();
@@ -12,7 +12,7 @@ function UpdateProfile() {
   const [formData, setFormData] = useState({
     userName: user.userName,
     email: user.email,
-    password: '',
+    password: "",
     profile_image: user.profile_image,
     profile_description: user.profile_description || '',
     music_interests:
@@ -28,7 +28,7 @@ function UpdateProfile() {
 
   console.log(user.music_interests);
 
-  const [profileImage, setProfileImage] = useState({ file: '' });
+  const [profileImage, setProfileImage] = useState({ file: "" });
 
   const onChangeHandler = (e) => {
     const value = e.target.value;
@@ -38,7 +38,7 @@ function UpdateProfile() {
   // Profile Image
   const handleFileUpload = async (e) => {
     const file = e.target.files[0];
-    console.log('file:', file);
+    console.log("file:", file);
     const base64 = await convertToBase64(file);
     setProfileImage({ ...profileImage, file: base64 });
   };
@@ -67,8 +67,8 @@ function UpdateProfile() {
         housenumber: e.target.housenumber.value,
       },
     };
-    console.log('Form Data:', updatedFormData);
-    console.log('Profile Description:', e.target.profile_description.value);
+    console.log("Form Data:", updatedFormData);
+    console.log("Profile Description:", e.target.profile_description.value);
 
     axios
       .patch(
@@ -76,16 +76,16 @@ function UpdateProfile() {
         JSON.stringify(updatedFormData),
         {
           headers: {
-            'Content-Type': 'application/json',
-            token: localStorage.getItem('token'),
+            "Content-Type": "application/json",
+            token: localStorage.getItem("token"),
           },
         }
       )
       .then((res) => {
         if (res.data.success) {
-          console.log('success');
+          console.log("success");
           setUser(res.data.data);
-          navigate('/profile');
+          navigate("/profile");
         } else {
           console.log(res.data.message);
         }
@@ -94,7 +94,7 @@ function UpdateProfile() {
   // cancel update process
   const onCancelClick = () => {
     // Redirect to profile
-    navigate('/profile');
+    navigate("/profile");
   };
 
   return (

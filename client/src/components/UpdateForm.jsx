@@ -70,7 +70,7 @@ function UpdateForm({
           />
         </label>
         <br />
-        {/* add description */}
+        {/* add profile description */}
         <label>
           <span>add description</span>
           <textarea
@@ -83,16 +83,8 @@ function UpdateForm({
             value={user.profile_description}
             style={{ resize: 'none' }}
           />
-          {/* 
-          <input
-            type='text'
-            name='profile_description'
-            onChange={onChangeHandler}
-            placeholder='who are you ?'
-            value={user.description}
-          /> */}
         </label>
-        {/* end of description */}
+        {/* end of profile description */}
         <br />
         {/* add music interests */}
         <label htmlFor='music_interests'>Music Interests</label>
@@ -105,7 +97,6 @@ function UpdateForm({
           onChange={handleMusicInterestsChange}
         />
         {/* end of music interests */}
-
         <label>
           <span>country</span>
           <input

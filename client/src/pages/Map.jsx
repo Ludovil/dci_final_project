@@ -3,6 +3,7 @@ import axios from 'axios';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import { Link } from 'react-router-dom';
+import './map.css';
 
 function Map() {
   const [users, setUsers] = useState([]);
@@ -20,7 +21,7 @@ function Map() {
   return (
     <>
       <MapContainer
-        style={{ position: 'relative', zIndex: '1' }}
+        style={{ position: 'relative', zIndex: '2' }}
         center={[52.52, 13.405]}
         zoom={13}
       >
@@ -37,7 +38,7 @@ function Map() {
                   {user.userName} <br />
                   {user.formatted_address} <br />
                   <Link to={`/visitprofile/${user._id}`} state={user}>
-                    <button>visit profile</button>
+                    <button className='buttonNegative'>Visit profile</button>
                   </Link>
                 </Popup>
               </Marker>
