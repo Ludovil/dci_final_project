@@ -1,0 +1,19 @@
+.buttonNegative {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: white;
+  border: 1px solid #333;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 5px auto;
+}
+
+.buttonNegative:hover {
+  background-color: #333;
+  border: 1px solid white;
+  color: white;
+}
+
+.buttonNegative:active {
+  background-color: #333;
+}

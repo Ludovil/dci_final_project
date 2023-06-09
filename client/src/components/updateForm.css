@@ -1,0 +1,106 @@
+.auth-form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px 0;
+  width: 900px;
+  margin: 80px auto;
+}
+
+.update-form {
+  width: 900px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: lightgrey;
+  display: flex;
+  justify-content: space-between;
+}
+
+.sub-update-form {
+  max-width: 400px;
+}
+.update-form label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.update-form input[type='text'],
+.update-form input[type='email'],
+.update-form input[type='password'],
+.update-form input[type='file'],
+.update-form textarea,
+.update-form select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: white;
+}
+
+/* choose file button */
+.image-profile-container {
+  text-align: center;
+}
+.update-form input[type='file'] {
+  display: none;
+}
+
+.file-label {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: white;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+}
+
+.file-label:hover {
+  background-color: #45a049;
+}
+
+.file-label:active {
+  background-color: #408e3d;
+}
+
+/* --------------------------- */
+.update-buttons-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.update-form button {
+  display: inline-block;
+  padding: 10px 20px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #4caf50;
+  color: white;
+  cursor: pointer;
+}
+
+.update-form button[type='submit'] {
+  background-color: #4caf50;
+}
+
+.update-form button[type='submit']:hover {
+  background-color: #45a049;
+}
+
+.update-form button[type='button'] {
+  background-color: #f44336;
+}
+
+.update-form button[type='button']:hover {
+  background-color: #e53935;
+}
+
+/* Media Queries */
+@media screen and (max-width: 600px) {
+  .update-form {
+    width: 100%;
+  }
+}
