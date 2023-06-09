@@ -1,7 +1,7 @@
 import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
 import PropTypes from 'prop-types';
-import './form.css';
+import './updateForm.css';
 import options from '../musicgenres.js';
 
 const animatedComponents = makeAnimated();
@@ -28,127 +28,136 @@ function UpdateForm({
   );
   return (
     <div className='auth-form-container'>
-      <form className='register-form' onSubmit={onSubmitHandler}>
-        <label>
-          <span>UserName</span>
-          <input
-            type='text'
-            name='userName'
-            onChange={onChangeHandler}
-            value={user.userName}
-          />
-        </label>
-        <br />
-        <label>
-          <span>email</span>
-          <input
-            type='email'
-            name='email'
-            onChange={onChangeHandler}
-            value={user.email}
-          />
-        </label>
-        <br />
-        <label>
-          <span>password</span>
-          <input
-            type='password'
-            name='password'
-            onChange={onChangeHandler}
-            placeholder="If you don't update your password it will stay the same"
-          />
-        </label>
-        <br />
-        <label>
-          <span className='file-label'>Image Profile</span>
-          <input
-            type='file'
-            name='profile_image'
-            accept='.jpeg, .png, .jpg'
-            //onChange={onChangeHandler}
-            onChange={handleFileUpload}
-          />
-        </label>
-        <br />
-        {/* add profile description */}
-        <label>
-          <span>add description</span>
-          <textarea
-            maxLength={500}
-            name='profile_description'
-            onChange={onChangeHandler}
-            placeholder={
-              user.profile_description ? '' : 'Tell us more about you '
-            }
-            value={user.profile_description}
-            style={{ resize: 'none' }}
-          />
-        </label>
+      <form className=' update-form' onSubmit={onSubmitHandler}>
+        <div className='sub-update-form'>
+          <label>
+            <span>UserName</span>
+            <input
+              type='text'
+              name='userName'
+              onChange={onChangeHandler}
+              value={user.userName}
+            />
+          </label>
+          <br />
+          <label>
+            <span>email</span>
+            <input
+              type='email'
+              name='email'
+              onChange={onChangeHandler}
+              value={user.email}
+            />
+          </label>
+          <br />
+          <label>
+            <span>password</span>
+            <input
+              type='password'
+              name='password'
+              onChange={onChangeHandler}
+              placeholder="If you don't update your password it will stay the same"
+            />
+          </label>
+          <br />
+
+          <label className='image-profile-container'>
+            <span className='file-label'>Profile Image</span>
+            <input
+              type='file'
+              name='profile_image'
+              accept='.jpeg, .png, .jpg'
+              onChange={handleFileUpload}
+            />
+          </label>
+          <br />
+          {/* add profile description */}
+          <label>
+            <span>add description</span>
+            <textarea
+              maxLength={500}
+              name='profile_description'
+              onChange={onChangeHandler}
+              placeholder={
+                user.profile_description ? '' : 'Tell us more about you '
+              }
+              value={user.profile_description}
+              style={{ resize: 'none', height: '200px' }}
+            />
+          </label>
+        </div>
         {/* end of profile description */}
         <br />
         {/* add music interests */}
-        <label htmlFor='music_interests'>Music Interests</label>
-        <Select
-          closeMenuOnSelect={false}
-          components={animatedComponents}
-          defaultValue={selectedMusicInterests}
-          isMulti
-          options={options}
-          onChange={handleMusicInterestsChange}
-        />
-        {/* end of music interests */}
-        <label>
-          <span>country</span>
-          <input
-            type='text'
-            name='country'
-            onChange={onChangeHandler}
-            value={user.country}
-          />
-        </label>
-        <br />
-        <label>
-          <span>city</span>
-          <input
-            type='text'
-            name='city'
-            onChange={onChangeHandler}
-            value={user.city}
-          />
-        </label>
-        <br />
-        <label>
-          <span>postcode</span>
-          <input
-            type='text'
-            name='postcode'
-            onChange={onChangeHandler}
-            value={user.postcode}
-          />
-        </label>
-        <br />
-        <label>
-          <span>street</span>
-          <input
-            type='text'
-            name='street'
-            onChange={onChangeHandler}
-            value={user.street}
-          />
-        </label>
-        <br />
-        <label>
-          <span>housenumber</span>
-          <input
-            type='text'
-            name='housenumber'
-            onChange={onChangeHandler}
-            value={user.housenumber}
-          />
-        </label>
-        <br />
-        <button type='submit'>Save</button>
-        <button onClick={onCancelClick}>Cancel</button>
+        <div className='sub-update-form'>
+          <label htmlFor='music_interests'>
+            Music Interests
+            <Select
+              closeMenuOnSelect={false}
+              components={animatedComponents}
+              defaultValue={selectedMusicInterests}
+              isMulti
+              options={options}
+              onChange={handleMusicInterestsChange}
+            />
+          </label>
+
+          {/* end of music interests */}
+          <label>
+            <span>country</span>
+            <input
+              type='text'
+              name='country'
+              onChange={onChangeHandler}
+              value={user.country}
+            />
+          </label>
+          <br />
+          <label>
+            <span>city</span>
+            <input
+              type='text'
+              name='city'
+              onChange={onChangeHandler}
+              value={user.city}
+            />
+          </label>
+          <br />
+          <label>
+            <span>postcode</span>
+            <input
+              type='text'
+              name='postcode'
+              onChange={onChangeHandler}
+              value={user.postcode}
+            />
+          </label>
+          <br />
+          <label>
+            <span>street</span>
+            <input
+              type='text'
+              name='street'
+              onChange={onChangeHandler}
+              value={user.street}
+            />
+          </label>
+          <br />
+          <label>
+            <span>housenumber</span>
+            <input
+              type='text'
+              name='housenumber'
+              onChange={onChangeHandler}
+              value={user.housenumber}
+            />
+          </label>
+          <br />
+          <div className='update-buttons-container'>
+            <button type='submit'>Save</button>
+            <button onClick={onCancelClick}>Cancel</button>
+          </div>
+        </div>
         <br />
       </form>
     </div>

@@ -54,9 +54,6 @@ function Contact() {
               value='Send Message'
             />
           </form>
-          {/* <div className='Airbngig-info'>
-            <Logoo className='logo' />
-          </div> */}
         </div>
       </div>
     </div>

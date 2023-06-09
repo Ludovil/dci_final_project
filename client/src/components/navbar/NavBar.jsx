@@ -60,13 +60,13 @@ function NavBar() {
             style={{ margin: '0' }}
             className={`profile-link ${menuOpen ? 'active' : ''}`}
           >
-            <NavLink
+            <span
               //to="/profile"
               className='navlink profile'
               onClick={handleProfileClick}
             >
               {user.userName}'s profile
-            </NavLink>
+            </span>
             {menuOpen && (
               <ul className='submenu'>
                 <li>

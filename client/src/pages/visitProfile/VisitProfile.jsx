@@ -5,6 +5,9 @@ import { MyContext } from '../../context/context.js';
 import Rating from '../../components/rating/Rating.jsx';
 import './visitProfile.css';
 
+// clicked images gallery features
+import CloseIcon from '@mui/icons-material/Close';
+
 function VisitProfile() {
   const location = useLocation();
   const navigate = useNavigate();
@@ -14,6 +17,16 @@ function VisitProfile() {
   const [averageRating, setAverageRating] = useState(0);
   const [expandedReviews, setExpandedReviews] = useState([]);
 
+  // clicked images gallery features
+  const [model, setModel] = useState(false);
+  const [tempImgSrc, setTempImgSrc] = useState('');
+  const [description, setDescription] = useState('');
+
+  const getImg = (imgSrc) => {
+    setTempImgSrc(imgSrc);
+    setModel(true);
+  };
+  //
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -141,20 +154,34 @@ function VisitProfile() {
           </label>
         </div>
         <h3>Instruments and Place:</h3>
-        <div className='galleryContainer'>
+        <div className='gallery galleryContainer '>
           {instruments.map((instrument) => (
-            <>
-              <div className='galleryItem'>
-                <img
-                  key={instrument._id}
-                  src={instrument.imageUrl}
-                  alt='Cloudinary Image'
-                  className='pics galleryImage'
-                />
-              </div>
-            </>
+            <div
+              className='pics galleryItem'
+              key={instrument._id}
+              // clicked images gallery features
+              onClick={() => {
+                getImg(instrument.imageUrl);
+                setDescription(instrument.description);
+              }}
+            >
+              <img
+                // key={instrument._id}
+                src={instrument.imageUrl}
+                alt='Cloudinary Image'
+                className='galleryImage'
+              />
+            </div>
           ))}
         </div>
+        {/* clicked images features */}
+        <div className={model ? 'model open' : 'model'}>
+          <img src={tempImgSrc} alt='' />
+          <br />
+          <p style={{ backgroundColor: 'white' }}>{description}</p>
+          <CloseIcon onClick={() => setModel(false)} />
+        </div>
+        {/* end of images features */}
       </div>
       <div className='reviewsSection'>
         <h3>Reviews:</h3>
@@ -162,7 +189,7 @@ function VisitProfile() {
           {location.state?.reviews.map((review) => {
             const isExpanded = isReviewExpanded(review._id);
             return (
-              <div className='singleReview'>
+              <div className='singleReview' key={review._id}>
                 <div className='reviewSummary'>
                   <div className='reviewTitle'>
                     <img

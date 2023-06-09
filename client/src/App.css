@@ -4,8 +4,12 @@
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
 }
+
 .leaflet-container {
   height: 100vh;
+}
+.map-container {
+  z-index: -1;
 }
 
 li.starListItem {
@@ -29,6 +33,13 @@ li.starListItem {
   width: 50%;
 } */
 
+.register-page {
+  background-image: url('../public/logo-black-on-white-background.png');
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: right;
+  padding-right: 150px;
+}
 .userProfile {
   margin: auto;
   text-align: center;
