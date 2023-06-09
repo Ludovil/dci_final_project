@@ -25,12 +25,12 @@
   margin-bottom: 10px;
 }
 
-.update-form input[type="text"],
-.update-form input[type="email"],
-.update-form input[type="password"],
-.update-form input[type="file"],
-.update-form textarea,
-.update-form select {
+.register-form input[type='text'],
+.register-form input[type='email'],
+.register-form input[type='password'],
+.register-form input[type='file'],
+.register-form textarea,
+.register-form select {
   width: 100%;
   padding: 10px;
   margin-bottom: 10px;
@@ -43,7 +43,8 @@
 .image-profile-container {
   text-align: center;
 }
-.update-form input[type="file"] {
+
+.update-form input[type='file'] {
   display: none;
 }
 
@@ -82,19 +83,19 @@
   cursor: pointer;
 }
 
-.update-form button[type="submit"] {
+.update-form button[type='submit'] {
   background-color: #4caf50;
 }
 
-.update-form button[type="submit"]:hover {
+.update-form button[type='submit']:hover {
   background-color: #45a049;
 }
 
-.update-form button[type="button"] {
+.update-form button[type='button'] {
   background-color: #f44336;
 }
 
-.update-form button[type="button"]:hover {
+.update-form button[type='button']:hover {
   background-color: #e53935;
 }
 

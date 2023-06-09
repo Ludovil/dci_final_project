@@ -5,9 +5,11 @@ import Contact from './contact/Contact.jsx';
 function Home() {
   return (
     <>
-      <SearchBox />
-      <About />
-      <Contact />
+      <div className='homeContainer'>
+        <SearchBox />
+        <About />
+        <Contact />
+      </div>
     </>
   );
 }

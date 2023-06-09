@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 .leaflet-container {
@@ -21,16 +21,20 @@ li.starListItem {
   /* background-color: yellow; */
 }
 
-.page {
+/* .page {
   height: 90vh;
-}
+  display: flex;
+  flex-direction: column;
+} */
 
-.contact-page {
+/* .contact-page {
   height: 50vh;
-}
+  background-color: blanchedalmond;
+  width: 50%;
+} */
 
 .register-page {
-  background-image: url("../public/logo-black-on-white-background.png");
+  background-image: url('../public/logo-black-on-white-background.png');
   background-repeat: no-repeat;
   display: flex;
   justify-content: right;
