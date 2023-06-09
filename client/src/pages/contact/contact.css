@@ -151,6 +151,6 @@ form#contact-form .submit:hover {
   }
 
   .image-container {
-    display: none;
+    /* display: none; */
   }
 }
