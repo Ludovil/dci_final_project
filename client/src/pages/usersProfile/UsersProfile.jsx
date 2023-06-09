@@ -19,7 +19,7 @@ function Profile() {
         <>
           <h1>{user.userName}</h1>
           <div>
-            {user.profile_image && (<<<<<<< ricardo-rating-system
+            {user.profile_image && (
               <div className='containerImageProfile'>
                 <img
                   className='profileImage'

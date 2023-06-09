@@ -14,15 +14,10 @@ li.starListItem {
 
 .yellowStar {
   fill: yellow;
-  /* background-color: yellow; */
 }
 
 .page {
   height: 90vh;
-}
-
-.contact-page {
-  height: 50vh;
 }
 
 .userProfile {
