@@ -19,8 +19,11 @@ function Map() {
   }, []);
   return (
     <>
-      <MapContainer style={{position: "relative", zIndex: "2"}}
-      center={[52.52, 13.405]} zoom={13}>
+      <MapContainer
+        style={{ position: "relative", zIndex: "2" }}
+        center={[52.52, 13.405]}
+        zoom={13}
+      >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"

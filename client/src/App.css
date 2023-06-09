@@ -2,10 +2,14 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Roboto", sans-serif; 
+  font-family: "Roboto", sans-serif;
 }
+
 .leaflet-container {
   height: 100vh;
+}
+.map-container {
+  z-index: -1;
 }
 
 li.starListItem {
@@ -25,6 +29,13 @@ li.starListItem {
   height: 50vh;
 }
 
+.register-page {
+  background-image: url("../public/logo-black-on-white-background.png");
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: right;
+  padding-right: 150px;
+}
 .userProfile {
   margin: auto;
   text-align: center;

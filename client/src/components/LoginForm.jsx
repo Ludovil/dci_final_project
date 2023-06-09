@@ -3,7 +3,6 @@ import { useState, useContext } from "react";
 import { MyContext } from "../context/context.js";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import "./form.css";
 
 function LoginForm() {
   const navigate = useNavigate();
@@ -37,7 +36,6 @@ function LoginForm() {
 
   return (
     <div>
-      
       <div className="auth-form-container" style={{ flexDirection: "column" }}>
         <form className="register-form" onSubmit={onSubmitHandler}>
           <label>

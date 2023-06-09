@@ -1,9 +1,12 @@
-import { useEffect, useState, useContext } from 'react';
-import axios from 'axios';
-import { useNavigate, useLocation } from 'react-router-dom';
-import { MyContext } from '../../context/context.js';
-import Rating from '../../components/rating/Rating.jsx';
-import './visitProfile.css';
+import { useEffect, useState, useContext } from "react";
+import axios from "axios";
+import { useNavigate, useLocation } from "react-router-dom";
+import { MyContext } from "../../context/context.js";
+import Rating from "../../components/rating/Rating.jsx";
+import "./visitProfile.css";
+
+// clicked images gallery features
+import CloseIcon from "@mui/icons-material/Close";
 
 function VisitProfile() {
   const location = useLocation();
@@ -14,6 +17,16 @@ function VisitProfile() {
   const [averageRating, setAverageRating] = useState(0);
   const [expandedReviews, setExpandedReviews] = useState([]);
 
+  // clicked images gallery features
+  const [model, setModel] = useState(false);
+  const [tempImgSrc, setTempImgSrc] = useState("");
+  const [description, setDescription] = useState("");
+
+  const getImg = (imgSrc) => {
+    setTempImgSrc(imgSrc);
+    setModel(true);
+  };
+  //
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -90,19 +103,19 @@ function VisitProfile() {
   };
 
   const getButtonLabel = (reviewId) => {
-    return isReviewExpanded(reviewId) ? 'Read less' : 'Read more...';
+    return isReviewExpanded(reviewId) ? "Read less" : "Read more...";
   };
 
-  console.log('visit profile:', location?.state);
-  console.log('id: ', location.state._id);
+  console.log("visit profile:", location?.state);
+  console.log("id: ", location.state._id);
 
   return (
-    <div className='visitProfileContainer'>
+    <div className="visitProfileContainer">
       <div>
         <h1>{location?.state?.userName}</h1>
         {/* <h2>{location?.state?.email}</h2> */}
-        <div className='summaryContainer'>
-          <div className='ratingValues'>
+        <div className="summaryContainer">
+          <div className="ratingValues">
             {/* <h2>Reviews:</h2> */}
             <p>
               Rating: <span>{formatAverageRating(averageRating)}</span>
@@ -111,77 +124,93 @@ function VisitProfile() {
               (<span>{reviewCount}</span>)
             </p>
           </div>
-          <img src={location?.state?.profile_image} alt='Profile Image' />
-          <button className='buttonNegative' onClick={createConversation}>
+          <img src={location?.state?.profile_image} alt="Profile Image" />
+          <button className="buttonNegative" onClick={createConversation}>
             Send Message
           </button>
         </div>
       </div>
-      <div className='personalInformationContainer'>
+      <div className="personalInformationContainer">
         {/* <h2>
           About <span>{location?.state?.userName}:</span>
         </h2> */}
         <h3>Description and Interest:</h3>
-        <div className='card'>
-          <input id='card' type='checkbox' />
-          <ul className='interestList'>
+        <div className="card">
+          <input id="card" type="checkbox" />
+          <ul className="interestList">
             {location?.state?.music_interests.map((genre) => {
               return <li>{genre}</li>;
             })}
           </ul>
-          <div className='content'>
-            <div className='display'>
+          <div className="content">
+            <div className="display">
               <p>{location?.state?.profile_description}</p>
               <p>
-                Here you can find my complete address:{' '}
+                Here you can find my complete address:{" "}
                 {location?.state?.formatted_address}
               </p>
               {/* <p>{location?.state?.email}</p> */}
-              <label className='displayLabel' htmlFor='card'>
+              <label className="displayLabel" htmlFor="card">
                 Show less
               </label>
             </div>
           </div>
-          <label className='displayLabel' htmlFor='card'>
+          <label className="displayLabel" htmlFor="card">
             Read more...
           </label>
         </div>
         <h3>Instruments:</h3>
-        <div className='galleryContainer'>
+        <div className="gallery galleryContainer ">
           {instruments.map((instrument) => (
-            <div className='galleryItem'>
+            <div
+              className="pics galleryItem"
+              key={instrument._id}
+              // clicked images gallery features
+              onClick={() => {
+                getImg(instrument.imageUrl);
+                setDescription(instrument.description);
+              }}
+            >
               <img
-                key={instrument._id}
+                // key={instrument._id}
                 src={instrument.imageUrl}
-                alt='Cloudinary Image'
-                className='galleryImage'
+                alt="Cloudinary Image"
+                className="galleryImage"
               />
             </div>
           ))}
         </div>
+        {/* clicked images features */}
+        <div className={model ? "model open" : "model"}>
+          <img src={tempImgSrc} alt="" />
+          <br />
+          <p style={{ backgroundColor: "white" }}>{description}</p>
+          <CloseIcon onClick={() => setModel(false)} />
+        </div>
+        {/* end of images features */}
       </div>
-      <div className='reviewsSection'>
+      <div className="reviewsSection">
         <h3>Reviews:</h3>
-        <div className='reviewContainer'>
+        <div className="reviewContainer">
           {location.state?.reviews.map((review) => {
             const isExpanded = isReviewExpanded(review._id);
             return (
-              <div className='singleReview'>
-                <div className='reviewSummary'>
-                  <div className='reviewTitle'>
+              <div className="singleReview" key={review._id}>
+                <div className="reviewSummary">
+                  <div className="reviewTitle">
                     <img
                       src={review.reviewerUser?.profile_image}
-                      alt='profile_image'
+                      alt="profile_image"
                       style={{
-                        width: '25px',
-                        height: '25px',
-                        borderRadius: '50%',
-                        marginRight: '10px',
+                        width: "25px",
+                        height: "25px",
+                        borderRadius: "50%",
+                        marginRight: "10px",
                       }}
                     />
                     <p>{review.reviewerUser?.userName}</p>
                   </div>
-                  <div className='reviewRate'>
+                  <div className="reviewRate">
                     <p>Stars:</p>
                     <p> {review.rating}</p>
                   </div>
@@ -189,7 +218,7 @@ function VisitProfile() {
                 <p> {formatDate(review.createdAt)}</p>
                 {isExpanded && <p>{review.comment}</p>}
                 <button
-                  className='buttonNegative'
+                  className="buttonNegative"
                   onClick={() => toggleReviewComment(review._id)}
                 >
                   {getButtonLabel(review._id)}
@@ -199,7 +228,7 @@ function VisitProfile() {
           })}
         </div>
       </div>
-      <div className='ratingSystem'>
+      <div className="ratingSystem">
         <Rating />
       </div>
     </div>

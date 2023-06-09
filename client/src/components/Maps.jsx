@@ -5,6 +5,7 @@ import { MyContext } from "../context/context.js";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import axios from "axios";
+import "../App.css";
 
 const ResetCenterView = ({ position }) => {
   const map = useMap();
@@ -37,35 +38,35 @@ const Maps = () => {
   }, []);
 
   return (
-    <div style={{position: "relative", zIndex: "1"}}> 
-    <MapContainer
-      center={[position.lat, position.lon]}
-      zoom={19}
-      scrollWheelZoom={true}
-      style={{ width: "100vw", height: "100vh", zIndex: "-1"}}
-    >
-      <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        url="https://api.maptiler.com/maps/basic-v2/256/{z}/{x}/{y}.png?key=NXiDSHMCc2wp2xTFnocG"
-      />
-      <ResetCenterView position={position} />
-      {users.map((user) => {
-        return (
-          <div key={user._id}>
-            <Marker position={user.geocode}>
-              <Popup>
-                {user.userName} <br />
-                {user.formatted_address} <br />
-                <Link to={`/visitprofile/${user._id}`} state={user}>
-                  <button>visit profile</button>
-                </Link>
-              </Popup>
-            </Marker>
-            ;
-          </div>
-        );
-      })}
-    </MapContainer>
+    <div style={{ position: "relative", zIndex: "1" }}>
+      <MapContainer
+        center={[position.lat, position.lon]}
+        zoom={19}
+        scrollWheelZoom={true}
+        style={{ width: "100vw", height: "100vh", zIndex: "-1" }}
+      >
+        <TileLayer
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          url="https://api.maptiler.com/maps/basic-v2/256/{z}/{x}/{y}.png?key=NXiDSHMCc2wp2xTFnocG"
+        />
+        <ResetCenterView position={position} />
+        {users.map((user) => {
+          return (
+            <div key={user._id}>
+              <Marker position={user.geocode}>
+                <Popup>
+                  {user.userName} <br />
+                  {user.formatted_address} <br />
+                  <Link to={`/visitprofile/${user._id}`} state={user}>
+                    <button>visit profile</button>
+                  </Link>
+                </Popup>
+              </Marker>
+              ;
+            </div>
+          );
+        })}
+      </MapContainer>
     </div>
   );
 };

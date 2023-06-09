@@ -2,28 +2,35 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 10px 0;
+  padding: 50px 0;
+  width: 900px;
+  margin: 80px auto;
 }
 
-.register-form {
-  width: 400px;
+.update-form {
+  width: 900px;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 10px;
   background-color: lightgrey;
+  display: flex;
+  justify-content: space-between;
 }
 
-.register-form label {
+.sub-update-form {
+  max-width: 400px;
+}
+.update-form label {
   display: block;
   margin-bottom: 10px;
 }
 
-.register-form input[type="text"],
-.register-form input[type="email"],
-.register-form input[type="password"],
-.register-form input[type="file"],
-.register-form textarea,
-.register-form select {
+.update-form input[type="text"],
+.update-form input[type="email"],
+.update-form input[type="password"],
+.update-form input[type="file"],
+.update-form textarea,
+.update-form select {
   width: 100%;
   padding: 10px;
   margin-bottom: 10px;
@@ -33,7 +40,10 @@
 }
 
 /* choose file button */
-.register-form input[type='file'] {
+.image-profile-container {
+  text-align: center;
+}
+.update-form input[type="file"] {
   display: none;
 }
 
@@ -56,8 +66,12 @@
 }
 
 /* --------------------------- */
+.update-buttons-container {
+  display: flex;
+  justify-content: flex-end;
+}
 
-.register-form button {
+.update-form button {
   display: inline-block;
   padding: 10px 20px;
   margin-right: 10px;
@@ -68,25 +82,25 @@
   cursor: pointer;
 }
 
-.register-form button[type='submit'] {
+.update-form button[type="submit"] {
   background-color: #4caf50;
 }
 
-.register-form button[type='submit']:hover {
+.update-form button[type="submit"]:hover {
   background-color: #45a049;
 }
 
-.register-form button[type='button'] {
+.update-form button[type="button"] {
   background-color: #f44336;
 }
 
-.register-form button[type='button']:hover {
+.update-form button[type="button"]:hover {
   background-color: #e53935;
 }
 
 /* Media Queries */
 @media screen and (max-width: 600px) {
-  .register-form {
+  .update-form {
     width: 100%;
   }
 }
