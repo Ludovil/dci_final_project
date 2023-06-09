@@ -5,6 +5,9 @@ import { MyContext } from '../../context/context.js';
 import Rating from '../../components/rating/Rating.jsx';
 import './visitProfile.css';
 
+// clicked images gallery features
+import CloseIcon from '@mui/icons-material/Close';
+
 function VisitProfile() {
   const location = useLocation();
   const navigate = useNavigate();
@@ -14,6 +17,16 @@ function VisitProfile() {
   const [averageRating, setAverageRating] = useState(0);
   const [expandedReviews, setExpandedReviews] = useState([]);
 
+  // clicked images gallery features
+  const [model, setModel] = useState(false);
+  const [tempImgSrc, setTempImgSrc] = useState('');
+  const [description, setDescription] = useState('');
+
+  const getImg = (imgSrc) => {
+    setTempImgSrc(imgSrc);
+    setModel(true);
+  };
+  //
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -53,11 +66,11 @@ function VisitProfile() {
 
   const createConversation = async () => {
     try {
-      const res = await axios.post("http://localhost:3000/conversations", {
+      const res = await axios.post('http://localhost:3000/conversations', {
         guest: user._id,
         host: location?.state?._id,
       });
-      navigate("/messenger/" + res.data._id);
+      navigate('/messenger/' + res.data._id);
     } catch (err) {
       console.log(err);
     }
@@ -65,9 +78,9 @@ function VisitProfile() {
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
-    return date.toLocaleDateString("en-US", {
-      month: "long",
-      year: "numeric",
+    return date.toLocaleDateString('en-US', {
+      month: 'long',
+      year: 'numeric',
     });
   };
 
@@ -100,10 +113,8 @@ function VisitProfile() {
     <div className='visitProfileContainer'>
       <div>
         <h1>{location?.state?.userName}</h1>
-        {/* <h2>{location?.state?.email}</h2> */}
         <div className='summaryContainer'>
           <div className='ratingValues'>
-            {/* <h2>Reviews:</h2> */}
             <p>
               Rating: <span>{formatAverageRating(averageRating)}</span>
             </p>
@@ -118,9 +129,6 @@ function VisitProfile() {
         </div>
       </div>
       <div className='personalInformationContainer'>
-        {/* <h2>
-          About <span>{location?.state?.userName}:</span>
-        </h2> */}
         <h3>Description and Interest:</h3>
         <div className='card'>
           <input id='card' type='checkbox' />
@@ -136,7 +144,6 @@ function VisitProfile() {
                 Here you can find my complete address:{' '}
                 {location?.state?.formatted_address}
               </p>
-              {/* <p>{location?.state?.email}</p> */}
               <label className='displayLabel' htmlFor='card'>
                 Show less
               </label>
@@ -146,12 +153,20 @@ function VisitProfile() {
             Read more...
           </label>
         </div>
-        <h3>Instruments:</h3>
-        <div className='galleryContainer'>
+        <h3>Instruments and Place:</h3>
+        <div className='gallery galleryContainer '>
           {instruments.map((instrument) => (
-            <div className='galleryItem'>
+            <div
+              className='pics galleryItem'
+              key={instrument._id}
+              // clicked images gallery features
+              onClick={() => {
+                getImg(instrument.imageUrl);
+                setDescription(instrument.description);
+              }}
+            >
               <img
-                key={instrument._id}
+                // key={instrument._id}
                 src={instrument.imageUrl}
                 alt='Cloudinary Image'
                 className='galleryImage'
@@ -159,6 +174,14 @@ function VisitProfile() {
             </div>
           ))}
         </div>
+        {/* clicked images features */}
+        <div className={model ? 'model open' : 'model'}>
+          <img src={tempImgSrc} alt='' />
+          <br />
+          <p style={{ backgroundColor: 'white' }}>{description}</p>
+          <CloseIcon onClick={() => setModel(false)} />
+        </div>
+        {/* end of images features */}
       </div>
       <div className='reviewsSection'>
         <h3>Reviews:</h3>
@@ -166,7 +189,7 @@ function VisitProfile() {
           {location.state?.reviews.map((review) => {
             const isExpanded = isReviewExpanded(review._id);
             return (
-              <div className='singleReview'>
+              <div className='singleReview' key={review._id}>
                 <div className='reviewSummary'>
                   <div className='reviewTitle'>
                     <img

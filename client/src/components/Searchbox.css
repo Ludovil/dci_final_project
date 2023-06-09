@@ -1,6 +1,6 @@
 .search-box {
   padding-top: 24vh;
-  background-image: url("../public/Rock.jpg");
+  background-image: url('../public/Rock.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   text-align: center;
@@ -56,13 +56,17 @@
   transform: scale(1);
 }
 .list {
-  display: "flex";
-  align-items: "center";
+  display: 'flex';
+  align-items: 'center';
 }
 .list-item {
   width: 100%;
   background-color: white;
 }
 .search-box-input {
-  width: "100%";
+  width: '100%';
+}
+
+.searchBox {
+  border: 10px solid red;
 }

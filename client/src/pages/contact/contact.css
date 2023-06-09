@@ -1,99 +1,156 @@
-.page.contact-page {
-    display: flex;
+.contact-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contact-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 60%;
+}
+
+.contact-presentation {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  padding-right: 2em;
+}
+
+.image-container img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+}
+
+p {
+  margin: 0;
+  padding: 1em;
+}
+
+.contact-form {
+  width: 50%;
+  min-width: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contact-form > form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+form > * {
+  margin: 10px 0;
+}
+
+/* .contact-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+} */
+
+/* .contact-subtitle {
+  font-size: 16px;
+  text-align: center;
+  margin-bottom: 20px;
+} */
+
+/* .contact-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  width: 100%;
+} */
+
+form#contact-form .form-control {
+  width: 100%;
+  height: 40px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+form#contact-form textarea.form-control {
+  height: 320px;
+  resize: none;
+}
+
+form#contact-form .submit {
+  background-color: #333;
+  color: #fff;
+  cursor: pointer;
+  width: 140px;
+  padding: 10px 20px;
+  border: 1px solid #fff;
+}
+
+form#contact-form .submit:hover {
+  width: 140px;
+  padding: 10px 20px;
+  border: 1px solid #333;
+  background-color: #fff;
+  color: #333;
+  cursor: pointer;
+}
+
+/* .Airbngig-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 500px;
+  width: 100%;
+  margin-top: 20px;
+} */
+
+/* .logo {
+  width: 150px;
+  height: auto;
+  margin-bottom: 10px;
+} */
+
+/* .Airbngig-info .description {
+  font-size: 14px;
+  text-align: left;
+  margin-bottom: 0;
+} */
+
+/* Responsive Design */
+/* @media (min-width: 768px) {
+  .contact-container {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .contact-form {
+    width: 100%;
+    margin-right: 20px;
+    margin: 60px 30px 30px 0;
+  }
+
+  .Airbngig-info {
+    width: 40%;
+    margin-top: 50px;
+  }
+} */
+
+@media (max-width: 1500px) {
+  .contact-container {
     flex-direction: column;
     align-items: center;
-    padding: 20px;
-    width: 100%;
-    height: 100%;
+    min-width: 700px;
   }
-  
-  .contact-title {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-  
-  .contact-subtitle {
-    font-size: 16px;
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .contact-container {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-  
-  .contact-form {
-    display: flex;
-    flex-direction: column;
-    max-width: 500px;
-    width: 100%;
-  }
-  
-  form#contact-form .form-control {
-    width: 100%;
-    height: 40px;
-    padding: 5px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  form#contact-form textarea.form-control {
-    height: 120px;
-    resize: none;
-  }
-  
-  form#contact-form .submit {
-    background-color: #333;
-    color: #fff;
-    cursor: pointer;
-  }
-  
-  .Airbngig-info {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    max-width: 500px;
-    width: 100%;
-    margin-top: 20px;
-  }
-  
-  .logo {
-    width: 150px;
-    height: auto;
-    margin-bottom: 10px;
-    
 
+  .contact-presentation {
+    padding: 0;
   }
-  
-  .Airbngig-info .description {
-    font-size: 14px;
-    text-align: left;
-    margin-bottom: 0;
 
+  .image-container {
+    display: none;
   }
-  
-  /* Responsive Design */
-  @media (min-width: 768px) {
-    .contact-container {
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: flex-start;
-    }
-  
-    .contact-form {
-      width: 100%;
-      margin-right: 20px;
-      margin: 60px 30px 30px 0;
-      
-    }
-  
-    .Airbngig-info {
-      width: 40%;
-      margin-top: 50px;
-    }
-  }
-  
+}
