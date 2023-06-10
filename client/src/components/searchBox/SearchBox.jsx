@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { SearchOutlined } from '@ant-design/icons';
 import { useState, useContext, useEffect } from 'react';
 import { MyContext } from '../../context/context.js';
-import './SearchBox.css';
+import './searchBox.css';
 
 const NOMINATIM_BASE_URL = 'https://nominatim.openstreetmap.org/search?';
 
@@ -63,56 +63,61 @@ const SearchBox = () => {
   return (
     <div className='searchBox page search-box'>
       <h1 className='search-box-title'>
-        Input your gig address <br /> to discover available hosts
-        <br /> in the area.
+        Input your gig address to discover available hosts in the area
       </h1>
 
-      <div className='search-div'>
-        <div style={{ flex: 1 }}>
-          <Input
-            className='search-box-input'
-            placeholder='Stay for your next gig here'
-            value={searchText}
-            onChange={(e) => {
-              setSearchText(e.target.value);
-            }}
-            onKeyPress={handleKeyPress}
-          />
-          <Button
-            className='search-button'
-            shape='circle'
-            icon={<SearchOutlined />}
-            onClick={handleSearch}
-          />
+      <div className='supraSearchBoxContainer'>
+        <div className='search-div'>
+          <div style={{ flex: 1 }}>
+            <Input
+              className='search-box-input'
+              placeholder='Stay for your next gig here'
+              value={searchText}
+              onChange={(e) => {
+                setSearchText(e.target.value);
+              }}
+              onKeyPress={handleKeyPress}
+            />
+            <Button
+              className='search-button'
+              shape='circle'
+              icon={<SearchOutlined />}
+              onClick={handleSearch}
+            />
+          </div>
+          <div>
+            <Space direction='vertical' size={12}>
+              {/* <RangePicker />  */}
+            </Space>
+          </div>
         </div>
-        <div>
-          <Space direction='vertical' size={12}>
-            {/* <RangePicker /> */}
-          </Space>
-        </div>
-      </div>
-
-      <div className='list'>
-        <List size='small'>
-          {listPlace.map((item) => (
-            <div key={item?.osm_id} style={{ display: 'flex' }}>
-              <img
-                src='https://img.freepik.com/premium-vector/red-pin-point-isolated-white-background_120819-360.jpg'
-                alt='locationIcon'
-                style={{ width: 38, height: 38 }}
-              />
-              <List.Item
-                className='list-item'
-                onClick={() => {
-                  setPosition(item);
-                  navigate(`/mapsearch?lat=${item.lat}&lon=${item.lon}`);
+        <div className='list'>
+          <List size='small'>
+            {listPlace.map((item) => (
+              <div
+                key={item?.osm_id}
+                style={{
+                  display: 'flex',
                 }}
               >
-                {item?.display_name}
-              </List.Item>
-            </div>
-          ))}
-        </List>
+                <img
+                  src='https://img.freepik.com/premium-vector/red-pin-point-isolated-white-background_120819-360.jpg'
+                  alt='locationIcon'
+                  style={{ width: 38, height: 38 }}
+                />
+                <List.Item
+                  className='list-item'
+                  onClick={() => {
+                    setPosition(item);
+                    navigate(`/mapsearch?lat=${item.lat}&lon=${item.lon}`);
+                  }}
+                >
+                  {item?.display_name}
+                </List.Item>
+              </div>
+            ))}
+          </List>
+        </div>
       </div>
     </div>
   );

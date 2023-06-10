@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect, useRef } from "react";
 import { NavLink } from "react-router-dom";
 import { MyContext } from "../../context/context.js";
 import "./navbar.css";
@@ -27,7 +27,8 @@ function NavBar() {
   };
 
   return (
-    <nav style={{ position: "relative", zIndex: "99" }}>
+    // <nav style={{ position: 'relative', zIndex: '99' }}>
+    <nav>
       <Logo className="logo" />
       <ul
         className={`menu ${showMobileMenu ? "show" : ""}`}
@@ -55,10 +56,12 @@ function NavBar() {
         </li>
 
         {user ? (
-          <li className={`profile-link ${menuOpen ? "active" : ""}`}>
-            {/* issue with navlink profile */}
+          <li
+            style={{ margin: "0" }}
+            className={`profile-link ${menuOpen ? "active" : ""}`}
+          >
             <span
-              to="#"
+              //to="/profile"
               className="navlink profile"
               onClick={handleProfileClick}
             >
@@ -72,7 +75,7 @@ function NavBar() {
                     className="navlink sub-profile"
                     onClick={() => setMenuOpen(false)}
                   >
-                    go to
+                    Go to
                   </NavLink>
                 </li>
                 <li>
