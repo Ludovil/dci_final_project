@@ -20,15 +20,13 @@ li.starListItem {
   fill: yellow;
 }
 
-.register-page {
-  background-image: url("../public/logo-black-on-white-background.png");
-  background-repeat: no-repeat;
-  display: flex;
-  justify-content: right;
-  padding-right: 150px;
-}
-
 .userProfile {
   margin: auto;
   text-align: center;
+}
+.register-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
 }

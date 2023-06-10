@@ -2,106 +2,93 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 50px 0;
-  width: 900px;
-  margin: 80px auto;
+  height: 100vh;
 }
 
 .update-form {
-  width: 900px;
+  width: 100%;
+  max-width: 900px;
   padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  background-color: lightgrey;
+  background-color: #f7f7f7;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
+
 }
 
 .sub-update-form {
-  max-width: 400px;
+  width: 48%;
+  margin-bottom: 20px;
 }
-.update-form label {
+
+.sub-update-form label {
   display: block;
   margin-bottom: 10px;
+  font-weight: bold;
 }
 
-.register-form input[type="text"],
-.register-form input[type="email"],
-.register-form input[type="password"],
-.register-form input[type="file"],
-.register-form textarea,
-.register-form select {
+.sub-update-form input,
+.sub-update-form textarea {
   width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
+  height: 40px;
+  padding: 5px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  background-color: white;
+  transition: border-color 0.3s ease;
+  cursor: pointer;
 }
 
-/* choose file button */
-.image-profile-container {
-  text-align: center;
+.sub-update-form textarea {
+  height: 200px;
+  resize: none;
 }
 
-.update-form input[type="file"] {
+.sub-update-form input:focus,
+.sub-update-form textarea:focus {
+  outline: none;
+  border-color: #333;
+}
+
+.image-profile-container input[type="file"] {
   display: none;
 }
 
 .file-label {
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: #fa4353;
-  color: white;
   cursor: pointer;
-  border: none;
+  color: rgb(55, 55, 55);
+  padding: 10px 0px;
   border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  background-color: rgb(255, 255, 255);
+
 }
 
-.file-label:hover {
-  background-color: #fa4353;
-}
-
-.file-label:active {
-  background-color: #f53848;
-}
-
-/* --------------------------- */
 .update-buttons-container {
+  width: 100%;
   display: flex;
   justify-content: flex-end;
+  margin-top: 20px;
 }
 
-.update-form button {
-  display: inline-block;
-  padding: 10px 20px;
-  margin-right: 10px;
-  border: none;
-  border-radius: 5px;
-  background-color: #fa4353;
-  color: white;
+.update-buttons-container button {
+  background-color: #FA4353;
+  color: #fff;
   cursor: pointer;
+  padding: 10px 20px;
+  border: 1px solid #fff;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.update-form button[type="submit"] {
-  background-color: #fa4353;
+.update-buttons-container button:hover {
+  background-color: #fff;
+  color: #333;
 }
 
-.update-form button[type="submit"]:hover {
-  background-color: #f53848;
-}
-
-.update-form button[type="button"] {
-  background-color: #f44336;
-}
-
-.update-form button[type="button"]:hover {
-  background-color: #e53935;
-}
-
-/* Media Queries */
-@media screen and (max-width: 600px) {
-  .update-form {
+@media (max-width: 600px) {
+  .sub-update-form {
     width: 100%;
   }
 }
