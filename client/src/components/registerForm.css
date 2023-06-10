@@ -2,77 +2,97 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 50px 0;
-  width: 600px;
-}
-.register-form {
-  width: 900px;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  background-color: rgba(211, 211, 211, 0.5);
-  display: flex;
-  flex-direction: column;
+  height: 100vh;
+  
 }
 
-.sub-regsiter-form {
-  max-width: 400px;
+.register-form {
+  width: 100%;
+  max-width: 800px;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
-.register-form label {
+.register-logo {
+  width: 50%;
+  text-align: center;
+  margin: 6vh 0 0 9vh;
+}
+
+.sub-register-form {
+  width: 48%;
+  margin-bottom: 20px;
+}
+
+.sub-register-form label {
   display: block;
   margin-bottom: 10px;
+  font-weight: bold;
 }
-.register-form input[type='text'],
-.register-form input[type='email'],
-.register-form input[type='password'],
-.register-form input[type='file'],
-.register-form textarea,
-.register-form select {
+
+.file-input {
+  background-color: #fff;
+  color: #fff;
+  cursor: pointer;
+  padding: 10px 20px;
+  border: 1px solid #fff;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+
+}
+
+.file-label {
+  cursor: pointer;
+  color: rgb(55, 55, 55);
+  padding: 10px 0px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  background-color: rgb(255, 255, 255);
+
+}
+.sub-register-form input {
   width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
+  height: 40px;
+  padding: 5px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  background-color: white;
+  transition: border-color 0.3s ease;
 }
 
-/* choose file button */
-.image-profile-container {
-  text-align: center;
-}
-.register-form input[type='file'] {
-  display: none;
+.sub-register-form input:focus {
+  outline: none;
+  border-color: #333;
 }
 
-/* --------------------------- */
-.register-buttons-container {
+.register-button-container {
+  width: 100%;
   display: flex;
   justify-content: flex-end;
+  margin-top: 20px;
 }
 
-.register-form button {
-  display: inline-block;
-  padding: 10px 20px;
-  margin-right: 10px;
-  border: none;
-  border-radius: 5px;
-  background-color: #4caf50;
-  color: white;
+.register-button-container button {
+  background-color: #FA4353;
+  color: #fff;
   cursor: pointer;
+  padding: 10px 20px;
+  border: 1px solid #fff;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.register-form button[type='submit'] {
-  background-color: #4caf50;
+.register-button-container button:hover {
+  background-color: #fa3243;
+  color: #fff;
 }
 
-.register-form button[type='submit']:hover {
-  background-color: #45a049;
-}
-
-.register-form button[type='button'] {
-  background-color: #f44336;
-}
-
-.register-form button[type='button']:hover {
-  background-color: #e53935;
+@media (max-width: 600px) {
+  .register-form-container  {
+    width: 100%;
+    
+  }
 }

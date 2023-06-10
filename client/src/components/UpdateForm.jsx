@@ -62,7 +62,7 @@ function UpdateForm({
           <br />
 
           <label className='image-profile-container'>
-            <span className='file-label'>Profile Image</span>
+            <span className='file-label'>Update profile image</span>
             <input
               type='file'
               name='profile_image'
