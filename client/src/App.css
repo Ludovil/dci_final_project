@@ -18,20 +18,7 @@ li.starListItem {
 
 .yellowStar {
   fill: yellow;
-  /* background-color: yellow; */
 }
-
-/* .page {
-  height: 90vh;
-  display: flex;
-  flex-direction: column;
-} */
-
-/* .contact-page {
-  height: 50vh;
-  background-color: blanchedalmond;
-  width: 50%;
-} */
 
 .register-page {
   background-image: url('../public/logo-black-on-white-background.png');
@@ -40,6 +27,7 @@ li.starListItem {
   justify-content: right;
   padding-right: 150px;
 }
+
 .userProfile {
   margin: auto;
   text-align: center;
