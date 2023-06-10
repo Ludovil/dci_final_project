@@ -56,17 +56,17 @@
   margin-right: 10px;
   border: none;
   border-radius: 5px;
-  background-color: #4caf50;
+  background-color: #fa4353;
   color: white;
   cursor: pointer;
 }
 
 .register-form button[type="submit"] {
-  background-color: #4caf50;
+  background-color: #fa4353;
 }
 
 .register-form button[type="submit"]:hover {
-  background-color: #45a049;
+  background-color: #fa4353;
 }
 
 .register-form button[type="button"] {

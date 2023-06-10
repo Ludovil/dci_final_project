@@ -11,7 +11,7 @@ function Logo() {
     // </a>
     <a href="/">
       <img
-        src="../../public/logo-transparent.png"
+        src="../../public/logo-red.png"
         alt=""
         style={{
           width: "100px",

@@ -50,7 +50,7 @@
 .file-label {
   display: inline-block;
   padding: 10px 20px;
-  background-color: #4caf50;
+  background-color: #fa4353;
   color: white;
   cursor: pointer;
   border: none;
@@ -58,11 +58,11 @@
 }
 
 .file-label:hover {
-  background-color: #45a049;
+  background-color: #fa4353;
 }
 
 .file-label:active {
-  background-color: #408e3d;
+  background-color: #f53848;
 }
 
 /* --------------------------- */
@@ -77,17 +77,17 @@
   margin-right: 10px;
   border: none;
   border-radius: 5px;
-  background-color: #4caf50;
+  background-color: #fa4353;
   color: white;
   cursor: pointer;
 }
 
 .update-form button[type="submit"] {
-  background-color: #4caf50;
+  background-color: #fa4353;
 }
 
 .update-form button[type="submit"]:hover {
-  background-color: #45a049;
+  background-color: #f53848;
 }
 
 .update-form button[type="button"] {

@@ -26,14 +26,14 @@ nav ul li {
   position: relative;
 }
 .navlink:hover {
-  color: #4caf50;
+  color: #fa4353;
   cursor: pointer;
 }
 .navlink::after {
   content: "";
   width: 0;
   height: 2px;
-  background: #4caf50;
+  background: #fa4353;
   position: absolute;
   bottom: -2px;
   left: 0;
@@ -43,7 +43,7 @@ nav ul li {
   content: "";
   width: 100%;
   height: 2px;
-  background: #4caf50;
+  background: #fa4353;
   position: absolute;
   bottom: -2px;
   left: 0;

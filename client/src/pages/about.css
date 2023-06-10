@@ -1,6 +1,6 @@
 /* about.css */
 
-h1,
+/* h1,
 h2 {
   padding: 25px 0;
 }
@@ -19,7 +19,7 @@ h2 {
 
 .about-sub-container img {
   width: 100%;
-  max-width: 700px; /* Adjust the size of the pictures as needed */
+  max-width: 700px;
   height: auto;
 }
 
@@ -33,4 +33,58 @@ h2 {
   .about-container {
     flex-direction: column;
   }
+} */
+
+/* about.css */
+h2,
+h3 {
+  text-align: center;
 }
+
+.about-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.about-sub-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+  min-width: 530px;
+  padding: 1em;
+}
+
+.imageContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  height: 400px;
+  overflow: hidden;
+  margin: 1.5em;
+}
+
+.imageContainer img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.textContainer h3 {
+  margin: 0;
+  padding-bottom: 1em;
+}
+
+p {
+  padding: 0 0.5em;
+  text-align: justify;
+}
+
+/* @media (max-width: 881px) {
+  .about-container {
+    flex-direction: column;
+    align-items: center;
+  }
+} */
