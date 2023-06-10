@@ -32,11 +32,14 @@ li.starListItem {
 }
 
 .about {
-  min-height: 100vh;
+  min-height: 90vh;
 }
 .contact-page {
-  min-height: 100vh;
+  min-height: 90vh;
 }
 .conversations {
-  min-height: 100vh;
+  min-height: 90vh;
+}
+.messenger {
+  min-height: 90vh;
 }
