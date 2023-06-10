@@ -44,8 +44,7 @@ const Maps = () => {
         zoom={13}
         scrollWheelZoom={true}
         style={{
-          width: '100vw',
-          height: '100vh',
+          height: '90vh',
           zIndex: '-1',
         }}
       >
@@ -54,10 +53,7 @@ const Maps = () => {
           url='https://api.maptiler.com/maps/basic-v2/256/{z}/{x}/{y}.png?key=NXiDSHMCc2wp2xTFnocG'
         />
         {position && (
-          <Marker
-            style={{ color: 'red', backgroundColor: 'red' }}
-            position={{ lat: position.lat, lon: position.lon }}
-          >
+          <Marker position={{ lat: position.lat, lon: position.lon }}>
             <Popup>You are here</Popup>
           </Marker>
         )}
