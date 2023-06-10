@@ -92,7 +92,7 @@ function Footer() {
               </ul>
             </li>
             <li className='displayedListFooterItem'>
-              Airbngiggig
+              Airbngig
               <ul className='displayedSubListFooter'>
                 <li>
                   <a href=''>Newsroom</a>
@@ -205,7 +205,7 @@ function Footer() {
         <p
           className={showAlternateFooter ? 'undisplayedText' : 'displayedText'}
         >
-          ©{currentYear} Airbngiggig
+          ©{currentYear} Airbngig
         </p>
         <div className='footerSecondary' ref={scrollContainerRef}>
           {renderFooterContent()}
