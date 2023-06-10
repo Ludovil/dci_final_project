@@ -10,7 +10,7 @@ function Home() {
         <SearchBox />
         <About />
         <Contact />
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </>
   );

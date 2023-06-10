@@ -13,6 +13,7 @@ import About from './pages/About.jsx';
 import Contact from './pages/contact/Contact.jsx';
 import Messenger from './pages/messenger/Messenger';
 import AllConversation from './pages/allConversations/AllConversation';
+import Footer from './components/footer/Footer.jsx';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
         <Route path='/messenger/:id' element={<Messenger />} />
         <Route path='/allconversations' element={<AllConversation />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }

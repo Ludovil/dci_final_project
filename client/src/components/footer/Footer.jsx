@@ -197,7 +197,7 @@ function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <div>
+    <div className='megaContainer'>
       <div
         className={`footer ${showAlternateFooter ? 'expanded' : ''}`}
         ref={footerRef}

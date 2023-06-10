@@ -1,3 +1,10 @@
+.megaContainer {
+  border: 3px solid red;
+  position: fixed;
+  width: 100%;
+  bottom: 0px;
+}
+
 .footer {
   display: flex;
   align-items: center;
