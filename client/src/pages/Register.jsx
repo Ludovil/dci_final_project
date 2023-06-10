@@ -7,24 +7,9 @@ import { useNavigate } from "react-router-dom";
 function Register() {
   const navigate = useNavigate();
   const { setUser } = useContext(MyContext);
-  // const [formData, setFormData] = useState({
-  // 	userName: '',
-  // 	email: '',
-  // 	password: '',
-  // 	profile_image: '',
-  // 	country: '',
-  // 	city: '',
-  // 	postcode: '',
-  // 	street: '',
-  // 	housenumber: '',
-  // });
+
 
   const [profileImage, setProfileImage] = useState({ file: "" });
-
-  // const onChangeHandler = (e) => {
-  // 	const value = e.target.value;
-  // 	setFormData({ ...formData, [e.target.name]: value });
-  // };
 
   // Profile Image
   const handleFileUpload = async (e) => {

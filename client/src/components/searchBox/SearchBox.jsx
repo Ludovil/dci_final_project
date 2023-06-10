@@ -65,7 +65,6 @@ const SearchBox = () => {
       <h1 className='search-box-title'>
         Input your gig address to discover available hosts in the area
       </h1>
-
       <div className='supraSearchBoxContainer'>
         <div className='search-div'>
           <div style={{ flex: 1 }}>

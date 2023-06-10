@@ -26,14 +26,20 @@ function RegisterForm({
           </label>
           <br />
           <label>
-            <span className="file-label">Choose Image</span>
-            <input
+            <div className="file-label-1">Choose Image</div>
+            <input className="file-input"
               type="file"
               name="profile_image"
               accept=".jpeg, .png, .jpg"
               onChange={handleFileUpload}
             />
           </label>
+          <div>
+      <img className="register-logo"
+        src="../../public/airbngig-low-resolution-logo-color-on-transparent-background.png"
+        alt="airbngig-logo"
+      />
+    </div>
         </div>
         <br />
         <div className="sub-register-form">
@@ -63,7 +69,7 @@ function RegisterForm({
           </label>
           <br />
           <div className="register-button-container">
-            <button type="submit">Save</button>
+            <button type="submit">Register</button>
             <button onClick={onCancelClick}>Cancel</button>
           </div>
           <br />

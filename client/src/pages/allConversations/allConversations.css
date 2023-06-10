@@ -1,89 +1,58 @@
 .conversations {
-  padding: 20px;
-  background-color: #dfdcdc;
-  border-radius: 5px;
-  margin-bottom: 20px;  
-
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .conversations-banner {
   font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 20px;
-  color: #333;
-  text-align: center;
+  margin-bottom: 10px;
 }
 
 .conversation-list {
-  display: flex;
-  flex-direction: column;
-  align-items:center;
-  width: 100%;
+  background-color: #f5f5f5;
+  border-radius: 5px;
+  padding: 20px;
+  width: 50%;
+}
 
+.has-new-message {
+  background-color: #fffacd;
 }
 
 .single-conversation {
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
-  background-color: #333;
+  justify-content: space-between;
   padding: 10px;
+  margin-bottom: 10px;
+  background-color: #ffffff;
+  border: 1px solid #e5e5e5;
   border-radius: 5px;
-  width: 80%;
-  height: 4rem;
-  transition: background-color 0.3s ease;
-  
 }
 
 .conversation-link {
   text-decoration: none;
-  display: flex;
-  align-items: center;
-  width: 100%;
+  color: #000000;
 }
 
 .conversation-info {
-  flex-grow: 1;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 80%;
-  
-  margin-left: 16px;
+  flex: 1;
 }
 
 .users-conversation {
-  font-size: 18px;
-  margin-right: 10px;
-  color: #edeaea;
-  transition: color 0.3s ease;
-
+  font-size: 16px;
+  margin: 0;
 }
 
 .delete-button {
-  background-color: transparent;
-  padding: 8px;
-  font-size: 18px;
+  font-size: 16px;
+  color: #fefefe;
+  background:  #f0f0f0;
+  border: none;
   cursor: pointer;
-  color: #999;
-  transition: color 0.3s ease;
-  margin-right: 16px;
-}
-
-.delete-button:hover {
-  background-color:  #4e4c4c; 
-}
-
-.has-new-message .single-conversation {
-  background-color: #3ab00f;  
-  width: 5rem;
-  height: 5rem;
-  /* border-radius: 50%;
-  transition: background-color 0.3s ease; */
-}
-
-.has-new-message .users-conversation {  
-  color: rgb(208, 255, 0);
-
-  font-weight: bold;
+  padding: 6px;
+  border-radius: 5px;
 }
