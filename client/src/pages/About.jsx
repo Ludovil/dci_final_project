@@ -1,4 +1,5 @@
 import "./about.css";
+import Footer from "../components/footer/Footer";
 function About() {
   return (
     <>
