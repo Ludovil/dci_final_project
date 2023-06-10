@@ -27,7 +27,7 @@ label {
 }
 
 .labelRead {
-  border: 10px solid #4caf50;
+  border: 10px solid #fa4353;
   border-radius: 5px;
   padding: 10px 20px;
   margin: 0 auto;
@@ -36,7 +36,7 @@ label {
 }
 
 .labelRead:hover {
-  background-color: #4caf50;
+  background-color: #fa4353;
   border: 1px solid white;
   color: white;
 }

@@ -8,22 +8,22 @@ import "./loginForm.css";
 function LoginForm() {
   const navigate = useNavigate();
   const { setUser } = useContext(MyContext);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:3000/users/login", { email, password })
+      .post('http://localhost:3000/users/login', { email, password })
       .then((res) => {
         if (res.data.success) {
           const token = res.headers.token;
-          localStorage.setItem("token", token);
+          localStorage.setItem('token', token);
           console.log(res.data.data);
           setUser(res.data.data);
-          navigate("/profile");
+          navigate('/profile');
         } else {
-          alert("something went wrong :( ");
+          alert('something went wrong :( ');
         }
       })
       .catch((error) => {
@@ -32,7 +32,7 @@ function LoginForm() {
   };
 
   const handleRegisterClick = () => {
-    navigate("/register");
+    navigate('/register');
   };
 
   return (

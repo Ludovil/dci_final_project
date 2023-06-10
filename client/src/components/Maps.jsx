@@ -44,8 +44,7 @@ const Maps = () => {
         zoom={13}
         scrollWheelZoom={true}
         style={{
-          width: '100vw',
-          height: '100vh',
+          height: '90vh',
           zIndex: '-1',
         }}
       >

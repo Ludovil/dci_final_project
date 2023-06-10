@@ -1,17 +1,37 @@
-import Logoo from '../../components/Logo-transparent.jsx';
-import './contact.css';
+import axios from "axios";
+import "./contact.css";
 
 function Contact() {
+  const onSubmitHandler = (e) => {
+    e.preventDefault();
+    const formData = {
+      contactName: e.target.name.value,
+      contactEmail: e.target.email.value,
+      contactMessage: e.target.message.value,
+    };
+    axios
+      .post("http://localhost:3000/contact", formData)
+
+      .then((res) => {
+        console.log(res);
+        alert("Thank you for your message!");
+        //reset fields to empty values
+        e.target.reset();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
-    <div className='page contact-page'>
+    <div className="page contact-page">
       <h2>Contact us</h2>
-      <div className='contact-container'>
-        <div className='contact-presentation'>
-          <div className='image-container'>
+      <div className="contact-container">
+        <div className="contact-presentation">
+          <div className="image-container">
             <img
-              src='
-          ../../../public/guitar.jpg'
-              alt='guitar_bed'
+              src="
+          ../../../public/guitar.jpg"
+              alt="guitar_bed"
             />
           </div>
           <p>
@@ -25,33 +45,33 @@ function Contact() {
             platform for your accommodation needs!
           </p>
         </div>
-        <div className='contact-form'>
-          <form id='contact-form' method='POST'>
+        <div className="contact-form">
+          <form id="contact-form" onSubmit={onSubmitHandler}>
             <input
-              name='name'
-              type='text'
-              className='form-control'
-              placeholder='Your Name'
+              name="name"
+              type="text"
+              className="form-control"
+              placeholder="Your Name"
               required
             />
             <input
-              name='email'
-              type='email'
-              className='form-control'
-              placeholder='Your Email'
+              name="email"
+              type="email"
+              className="form-control"
+              placeholder="Your Email"
               required
             />
             <textarea
-              name='message'
-              className='form-control'
-              placeholder='Message'
-              rows='4'
+              name="message"
+              className="form-control"
+              placeholder="Message"
+              rows="4"
               required
             ></textarea>
             <input
-              type='submit'
-              className='form-control submit'
-              value='Send Message'
+              type="submit"
+              className="form-control submit"
+              value="Send Message"
             />
           </form>
         </div>

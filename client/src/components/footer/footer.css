@@ -1,0 +1,190 @@
+.megaContainer {
+  position: fixed;
+  width: 100%;
+  bottom: 0px;
+  z-index: 99;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0;
+  padding: 16px;
+  background-color: #333;
+  color: white;
+}
+.footer * {
+  font-size: 0.9rem;
+}
+
+.footer > p {
+  align-self: start;
+  margin: 0;
+}
+
+.undisplayedText {
+  padding-top: 0;
+}
+
+li {
+  list-style-type: none;
+}
+
+.footerSecondary {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+}
+
+.footerSecondary p {
+  margin: 0;
+}
+
+/* undisplayed list */
+.undisplayedListFooter {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.undisplayedListFooter li {
+  padding: 0 6px;
+  list-style-type: none;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+}
+
+.icon a {
+  margin: 0;
+  line-height: 0;
+}
+
+.iconItems {
+  display: flex;
+  justify-content: center;
+}
+
+.noIconItems {
+  display: flex;
+  margin-right: 16px;
+}
+
+/* displayed list */
+.displayedListFooter {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  padding: 0 1em;
+}
+
+.displayedListFooterItem {
+  font-weight: bold;
+  margin-right: 20px;
+}
+
+.displayedSubListFooter {
+  font-weight: normal;
+}
+
+.displayedSubListFooter li {
+  padding-left: 19px;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.footerSecondary button {
+  margin: 0;
+}
+
+.buttonNegative {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: white;
+  border: 1px solid #333;
+  border-radius: 5px;
+  margin: 5px auto;
+  width: 150px;
+  cursor: pointer;
+}
+
+.buttonNegative:hover {
+  background-color: #333;
+  border: 1px solid white;
+  color: white;
+}
+
+.buttonNegative:active {
+  background-color: #333;
+}
+
+.listFooter {
+  height: 500px;
+}
+
+/* UNDISPLAYED */
+@media (max-width: 959px) {
+  .footerSecondary {
+    align-items: center;
+  }
+
+  .undisplayedListFooter {
+    border: 2px solid green;
+    flex-direction: column;
+    margin-right: 16px;
+  }
+
+  @media (max-width: 759px) {
+    .noIconItems {
+      display: none;
+    }
+  }
+
+  /* DISPLAYED */
+  @media (max-width: 1279px) {
+    .footerSecondary {
+      flex: 1;
+    }
+    .displayedListFooter {
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .displayedListFooter {
+      align-items: flex-start;
+    }
+
+    .displayedListFooterItem {
+      width: 40%;
+      min-width: 190px;
+    }
+  }
+
+  @media (max-width: 959px) {
+    .footerSecondary > div {
+      align-self: start;
+    }
+  }
+
+  @media (max-width: 629px) {
+    .displayedListFooter {
+      display: none;
+    }
+
+    .footerSecondary {
+      justify-content: end;
+    }
+  }
+}
