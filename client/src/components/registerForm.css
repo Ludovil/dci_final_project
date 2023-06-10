@@ -22,10 +22,10 @@
   display: block;
   margin-bottom: 10px;
 }
-.register-form input[type='text'],
-.register-form input[type='email'],
-.register-form input[type='password'],
-.register-form input[type='file'],
+.register-form input[type="text"],
+.register-form input[type="email"],
+.register-form input[type="password"],
+.register-form input[type="file"],
 .register-form textarea,
 .register-form select {
   width: 100%;
@@ -40,7 +40,7 @@
 .image-profile-container {
   text-align: center;
 }
-.register-form input[type='file'] {
+.register-form input[type="file"] {
   display: none;
 }
 
@@ -56,23 +56,23 @@
   margin-right: 10px;
   border: none;
   border-radius: 5px;
-  background-color: #4caf50;
+  background-color: #fa4353;
   color: white;
   cursor: pointer;
 }
 
-.register-form button[type='submit'] {
-  background-color: #4caf50;
+.register-form button[type="submit"] {
+  background-color: #fa4353;
 }
 
-.register-form button[type='submit']:hover {
-  background-color: #45a049;
+.register-form button[type="submit"]:hover {
+  background-color: #fa4353;
 }
 
-.register-form button[type='button'] {
+.register-form button[type="button"] {
   background-color: #f44336;
 }
 
-.register-form button[type='button']:hover {
+.register-form button[type="button"]:hover {
   background-color: #e53935;
 }

@@ -1,15 +1,15 @@
-import './about.css';
+import "./about.css";
 function About() {
   return (
     <>
-      <div className='page about'>
+      <div className="page about">
         <h2>Unleash your Music. Embrace the Community</h2>
-        <div className='about-container'>
-          <div className='about-sub-container'>
-            <div className='imageContainer'>
-              <img src='../public/about-pic-1.jpg' alt='' />
+        <div className="about-container">
+          <div className="about-sub-container">
+            <div className="imageContainer">
+              <img src="../public/about-pic-1.jpg" alt="" />
             </div>
-            <div className='textContainer'>
+            <div className="textContainer">
               <h3>Comfortable accommodations</h3>
               <p>
                 One of the biggest challenges for musicians traveling to perform
@@ -24,11 +24,11 @@ function About() {
               </p>
             </div>
           </div>
-          <div className='about-sub-container'>
-            <div className='imageContainer'>
-              <img src='../public/about-pic-2.jpg' alt='' />
+          <div className="about-sub-container">
+            <div className="imageContainer">
+              <img src="../public/about-pic-2.jpg" alt="" />
             </div>
-            <div className='textContainer'>
+            <div className="textContainer">
               <h3>Equipment and instruments</h3>
               <p>
                 Amateur musicians no longer need to worry about transporting
