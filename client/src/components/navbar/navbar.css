@@ -9,7 +9,6 @@ nav {
   font-family: "sans-serif";
 }
 
-/* added to push again can be deleted  */
 nav ul {
   /* display: flex; */
   /* justify-content: space-between; */
@@ -57,23 +56,6 @@ nav ul li {
   left: 0;
 }
 
-.map,
-.about,
-.contact {
-  /* margin-left: 150px; */
-}
-.contact {
-  /* margin-right: 150px; */
-}
-.register {
-  /* margin-left: 300px; */
-}
-.login {
-  /* margin-left: 50px; */
-}
-.profile {
-  /* margin-right: 100px; */
-}
 .profile-link {
   position: relative;
   /* margin: 0; */
