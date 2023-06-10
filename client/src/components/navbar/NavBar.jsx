@@ -60,6 +60,7 @@ function NavBar() {
             style={{ margin: "0" }}
             className={`profile-link ${menuOpen ? "active" : ""}`}
           >
+            {/* issue with navlink profile */}
             <span
               //to="/profile"
               className="navlink profile"
