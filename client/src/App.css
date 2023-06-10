@@ -2,7 +2,11 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
+}
+
+.app-container {
+  margin-bottom: 12em;
 }
 
 .leaflet-container {
@@ -30,3 +34,13 @@ li.starListItem {
   align-items: center;
   height: 90vh;
 }
+.about {
+  min-height: 100vh;
+}
+.contact-page {
+  min-height: 100vh;
+}
+.conversations {
+  min-height: 100vh;
+}
+

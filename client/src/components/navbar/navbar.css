@@ -25,7 +25,6 @@ nav ul li {
 
 .navlink {
   position: relative;
-  text-decoration: none;
   font-size: 1.1rem;
   font-weight: 600;
   color: white;
@@ -35,6 +34,7 @@ nav ul li {
 .navlink:hover {
   color: #fa4353;
   cursor: pointer;
+  text-decoration: none;
 }
 .navlink::after {
   content: "";
@@ -225,13 +225,17 @@ nav ul li {
     background-color: black;
   }
 
+  
   .submenu li {
     margin-top: 10px;
   }
-
+  
   .submenu .navlink {
     margin: 0;
     color: white;
+  }
+  .submenu .navlink:hover {
+    color: #FA4353;
   }
 
   .logout {
