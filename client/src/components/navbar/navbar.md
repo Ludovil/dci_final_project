@@ -1,40 +1,34 @@
 nav {
-  position: relative;
-  z-index: 99;
+  background-color: black;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: 12px;
-  background-color: black;
   font-family: "sans-serif";
 }
 
 nav ul {
-  /* display: flex; */
-  /* justify-content: space-between; */
+  display: flex;
+  justify-content: space-between;
   margin: 0;
   padding: 20px;
-  width: 80%;
 }
 
 nav ul li {
   list-style-type: none;
-  margin: 0;
-  /* text-align: right; */
+  text-decoration: none;
 }
 
 .navlink {
-  position: relative;
+  text-decoration: none;
   font-size: 1.1rem;
   font-weight: 600;
   color: white;
   transition: 0.3s ease-in-out;
+  position: relative;
 }
-
 .navlink:hover {
   color: #fa4353;
   cursor: pointer;
-  text-decoration: none;
 }
 .navlink::after {
   content: "";
@@ -56,14 +50,29 @@ nav ul li {
   left: 0;
 }
 
+.map,
+.about,
+.contact {
+  margin-left: 150px;
+}
+.contact {
+  margin-right: 150px;
+}
+.register {
+  margin-left: 300px;
+}
+.login {
+  margin-left: 50px;
+}
+.profile {
+  margin-right: 100px;
+}
 .profile-link {
   position: relative;
-  /* margin: 0; */
 }
 
 .profile-link.active .submenu {
   display: flex;
-  /* margin: 0; */
 }
 
 /* postbox / logout */
@@ -75,24 +84,21 @@ nav ul li {
   display: none;
   background-color: black;
   width: 200%;
+  border: 2px solid white;
   z-index: 1;
 }
 
 .submenu .navlink {
   color: white;
   margin-top: 25px;
-  margin-top: 0px;
-}
-.submenu .navlink:hover {
-  color: #fa4353;
 }
 .allconversations {
   display: inline-block;
-  /* margin-top: 25px; */
+  margin-top: 25px;
 }
 .logout {
   display: inline-block;
-  /* margin-top: 25px; */
+  margin-top: 25px;
   color: white;
   text-decoration: none;
 }
@@ -107,6 +113,7 @@ nav ul li {
 }
 
 /* Add this CSS for the responsive menu */
+
 .menu li {
   margin: 0 10px;
 }
@@ -116,55 +123,53 @@ nav ul li {
   .map,
   .about,
   .contact {
-    /* margin-left: 100px; */
+    margin-left: 100px;
   }
   .register {
-    /* margin-left: 150px; */
+    margin-left: 150px;
   }
   .login {
-    /* margin-left: 50px; */
+    margin-left: 50px;
   }
 }
 @media (max-width: 1237px) {
   .map,
   .about,
   .contact {
-    /* margin-left: 40px; */
+    margin-left: 40px;
   }
   .register {
-    /* margin-left: 65px; */
+    margin-left: 65px;
   }
   .login {
-    /* margin-left: 40px; */
+    margin-left: 40px;
   }
 }
 @media (max-width: 959px) {
   .map,
   .about,
   .contact {
-    /* margin-left: 25px; */
+    margin-left: 25px;
   }
   .register {
-    /* margin-left: 50px; */
+    margin-left: 50px;
   }
   .login {
-    /* margin-left: 25px; */
+    margin-left: 25px;
   }
 }
-
 /* Add this CSS for the responsive menu */
 .menu {
   display: flex;
   justify-content: space-around;
-  /* margin: 0; */
-  /* padding: 20px; */
+  margin: 0;
+  padding: 20px;
   list-style-type: none;
-  /* margin-top: 32px; */
+  margin-top: 32px;
 }
 
 .menu li {
-  /* margin: 0 10px; */
-  margin: 0;
+  margin: 0 10px;
 }
 
 /* Mobile view  */
@@ -178,70 +183,53 @@ nav ul li {
   font-size: 24px;
 }
 
-@media (max-width: 930px) {
+@media (max-width: 881px) {
   /* Show the mobile icons and hide the rest of the links */
   nav ul {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: flex-end;
+    align-items: flex-start;
     position: fixed;
     top: 30px;
     right: -300px;
-    width: 200px;
-    /* height: 40vh; */
-    height: 230px;
+    width: 300px;
+    height: 50vh;
     background-color: black;
     transition: 0.3s ease-in-out;
   }
-
   .show {
     right: 0px;
-    top: 55px;
-    padding: 0;
   }
-
   .navlink {
     margin: 24px;
-    /* margin: 24px 0; */
   }
-
   nav ul li {
     margin-bottom: 25px;
   }
-
   #mobile {
     display: block;
   }
-
   .submenu {
     position: absolute;
-    top: 28px;
-    left: -60px;
-    /* display: none; */
+    left: 0;
     flex-direction: column;
-    height: 140px;
-    width: 200px;
-    padding: 0 20px;
+    display: none;
     background-color: black;
+    height: 200px;
+    width: 270px;
   }
 
-  
   .submenu li {
-    margin-top: 10px;
+    margin-top: 8px;
   }
-  
+
   .submenu .navlink {
-    margin: 0;
     color: white;
   }
-  .submenu .navlink:hover {
-    color: #FA4353;
-  }
-
   .logout {
     display: inline-block;
-    /* padding: 8px; */
+    padding: 8px;
     color: white;
     text-decoration: none;
   }
