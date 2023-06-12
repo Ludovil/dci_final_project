@@ -37,7 +37,7 @@ function InstrumentsForm({
       {/* <label htmlFor='upload-input' className='custom-file-upload, labelRead'> */}
       <div className="importPicsButtonContainer">
         <label className="displayLabel" htmlFor="upload-input">
-          Import instruments pics
+          Import Pictures
         </label>
       </div>
       <input
@@ -130,12 +130,12 @@ function InstrumentsForm({
       <br />
       <div className="importPicsButtonContainer">
         <button className="buttonNegative" onClick={handleImageUpload}>
-          Upload instruments
+          Upload Pictures
         </button>
 
         {/* Show/hide delete buttons */}
         <button className="buttonNegative" onClick={handleToggleDeleteButtons}>
-          {showDeleteButtons ? "Cancel" : "Remove instruments"}
+          {showDeleteButtons ? "Cancel" : "Remove Pictures"}
         </button>
       </div>
       {/* Read the images with Gallery */}

@@ -30,7 +30,7 @@ function Contact() {
           <div className="image-container">
             <img
               src="
-          ../../../public/guitar.jpg"
+          ../../../public/guitar-bed.jpg"
               alt="guitar_bed"
             />
           </div>

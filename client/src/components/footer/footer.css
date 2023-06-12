@@ -140,7 +140,6 @@ a:hover {
   }
 
   .undisplayedListFooter {
-    border: 2px solid green;
     flex-direction: column;
     margin-right: 16px;
   }

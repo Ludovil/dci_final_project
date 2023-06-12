@@ -69,6 +69,16 @@ small,
   align-items: center;
 }
 
+@media (max-width: 924px) {
+  .container {
+    width: 80%;
+  }
+}
+@media (max-width: 559px) {
+  .container {
+    width: 90%;
+  }
+}
 .containerImageProfile {
   text-align: center;
 }
@@ -84,7 +94,20 @@ small,
   display: block;
   width: 100%;
   height: auto;
-  height: 400px;
+  max-height: 400px;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .profileImage {
+    max-height: 300px; /* Adjust the maximum height for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .profileImage {
+    max-height: 200px; /* Adjust the maximum height for even smaller screens */
+  }
 }
 
 .userName {
