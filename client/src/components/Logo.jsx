@@ -5,9 +5,9 @@ function Logo() {
         src="../../public/logo-red.png"
         alt=""
         style={{
-          width: "100px",
+          width: "80px",
           height: "auto",
-          marginLeft: "50px",
+          
         }}
       />
     </a>

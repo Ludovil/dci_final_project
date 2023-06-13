@@ -86,6 +86,7 @@ nav ul li {
   width: 200%;
   border: 2px solid white;
   z-index: 1;
+  border
 }
 
 .submenu .navlink {

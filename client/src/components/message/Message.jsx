@@ -30,7 +30,7 @@ export default function Message({ message, own }) {
             />
             <h4 className="messageSender">{message?.sender?.userName}</h4>
             <div className="messageSender">
-              <p>{message?.receiver?.userName}</p>
+              {/* <p>{message?.receiver?.userName}</p> */}
             </div>
           </div>
           <div className="messageText">

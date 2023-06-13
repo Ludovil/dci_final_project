@@ -1,38 +1,40 @@
-/* about.css */
-h2,
-h3 {
-  text-align: center;
-}
-
 .about-container {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-between;
+  width: 70%;
+  margin: auto;
 }
-
 .about-sub-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 50%;
-  min-width: 530px;
-  padding: 1em;
+  width: 49%;
+}
+
+.main-about-title-column {
+  display: none;
+}
+
+.main-about-title {
+  text-align: center;
+  text-decoration: none;
+}
+.sub-about-title {
+  text-align: center;
+  text-decoration: none;
 }
 
 .imageContainer {
-  display: flex;
-  justify-content: center;
   align-items: center;
-  width: fit-content;
-  height: 400px;
+  width: 100%;
+  max-height: 400px;
   overflow: hidden;
-  margin: 1.5em;
 }
 
 .imageContainer img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .textContainer h3 {
@@ -40,7 +42,61 @@ h3 {
   padding-bottom: 1em;
 }
 
-p {
-  padding: 0 0.5em;
+.text-about {
+  padding: 0;
   text-align: justify;
+}
+
+/* responsive */
+
+/* Avoid the difference of height between the 2 pictures */
+@media (max-width: 1714px) {
+  .imageContainer {
+    padding-bottom: 10%;
+  }
+}
+/* ------------------------------------ */
+@media (max-width: 1500px) {
+  .imageContainer {
+    padding-bottom: 0;
+  }
+  .main-about-title {
+    display: none;
+  }
+  .main-about-title-column {
+    display: block;
+    width: 80%;
+  }
+  .about-container {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .about-sub-container {
+    width: 80%;
+  }
+}
+/* ------------------------------------ */
+@media (max-width: 768px) {
+  .main-about-title-column {
+    font-size: 2em;
+  }
+  .sub-about-title {
+    font-size: 1.5em;
+  }
+}
+/* ------------------------------------ */
+@media (max-width: 540px) {
+  .about-container {
+    width: 100%;
+  }
+  .main-about-title-column {
+    font-size: 1.5em;
+  }
+  .sub-about-title {
+    font-size: 1.2em;
+  }
+  .text-about {
+    font-size: 0.9em;
+  }
 }
