@@ -209,11 +209,11 @@ function Footer() {
         </p>
         <div className='footerSecondary' ref={scrollContainerRef}>
           {renderFooterContent()}
-          <div>
-            <button className='buttonNegative' onClick={toggleFooter}>
-              {buttonText}
-            </button>
-          </div>
+        </div>
+        <div>
+          <button className='buttonNegative' onClick={toggleFooter}>
+            {buttonText}
+          </button>
         </div>
       </div>
     </div>
