@@ -14,27 +14,35 @@ import Contact from "./pages/contact/Contact.jsx";
 import Messenger from "./pages/messenger/Messenger";
 import AllConversation from "./pages/allConversations/AllConversation";
 import Footer from "./components/footer/Footer.jsx";
+import Test from "./pages/Test.jsx";
 
 function App() {
   return (
-    <BrowserRouter>
-      <NavBar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/map" element={<Map />} />
-        <Route path="/mapsearch" element={<MapSearch />} />
-        <Route path="/profile" element={<UsersProfile />} />
-        <Route path="/visitprofile/:id" element={<VisitProfile />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/profile/update" element={<UpdateProfile />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/messenger/:id" element={<Messenger />} />
-        <Route path="/allconversations" element={<AllConversation />} />
-      </Routes>
-      <Footer />
-    </BrowserRouter>
+    <>
+      <div className="app">
+        <BrowserRouter>
+          <NavBar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/map" element={<Map />} />
+            <Route path="/mapsearch" element={<MapSearch />} />
+            <Route path="/profile" element={<UsersProfile />} />
+            <Route path="/visitprofile/:id" element={<VisitProfile />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/profile/update" element={<UpdateProfile />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/messenger/:id" element={<Messenger />} />
+            <Route path="/allconversations" element={<AllConversation />} />
+            <Route path="/test" element={<Test />} />
+          </Routes>
+        </BrowserRouter>
+        <div className="main-footer">
+          <Footer />
+        </div>
+      </div>
+    </>
   );
 }
 

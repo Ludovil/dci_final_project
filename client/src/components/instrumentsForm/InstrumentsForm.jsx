@@ -32,7 +32,7 @@ function InstrumentsForm({
   };
   return (
     <div>
-      <h3>What we offer : </h3>
+      <h3>Gear & Sleeping facilities </h3>
       {/* Image upload form */}
       {/* <label htmlFor='upload-input' className='custom-file-upload, labelRead'> */}
       <div className="importPicsButtonContainer">
@@ -105,21 +105,19 @@ function InstrumentsForm({
                 src={item.imageUrl}
                 alt=""
                 key={item._id}
-                //style={{ width: "100%" }}
                 className="galleryImage"
               />
 
-              {/* <p>{item.description}</p> */}
+              {/* delete images */}
               {showDeleteButtons && (
                 <div className="delete-button-container">
-                  <button
+                  <CloseIcon
+                    style={{ color: "white", backgroundColor: "black" }}
                     onClick={(e) => {
                       e.stopPropagation(); // avoid triggering the previous onClick event (getImg())
                       handleInstrumentDelete(item._id);
                     }}
-                  >
-                    Delete
-                  </button>
+                  ></CloseIcon>
                 </div>
               )}
             </div>

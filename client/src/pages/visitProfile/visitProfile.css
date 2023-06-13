@@ -1,65 +1,14 @@
-@import url("https://fonts.googleapis.com/css?family=Poppins:400");
-
-html {
-  font-size: 100%;
-} /*16px*/
-
-body {
-  background: white;
-  font-family: "Poppins", sans-serif;
-  font-weight: 400;
-  line-height: 1.75;
-  color: #000000;
-}
-
-p {
-  margin-bottom: 1rem;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5 {
-  margin: 3rem 0 1.38rem;
-  font-family: "Poppins", sans-serif;
-  font-weight: 400;
-  line-height: 1.3;
-}
-
-h1 {
-  margin: 0;
-  font-size: 3.052rem;
-}
-
-h2 {
-  font-size: 2.441rem;
-}
-
-h3 {
-  font-size: 1.953rem;
-}
-
-h4 {
-  font-size: 1.563rem;
-}
-
-h5 {
-  font-size: 1.25rem;
-}
-
-small,
-.text_small {
-  font-size: 0.8rem;
-}
-
 .visitProfileContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 50%;
-  margin: 0 auto;
+  margin: 15px auto;
+  padding: 15px;
   text-align: center;
+  border: 1px solid lightgrey;
+  border-radius: 10px;
+  background-color: white;
 }
 
 @media (max-width: 924px) {
@@ -77,34 +26,30 @@ small,
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 50%;
+
   margin: 0 auto;
 }
 
-/* profile img is cut - has to be fixed */
-.summaryContainer img {
-  max-width: 600px;
+/* -------------------------------- */
+.containerImageProfile {
+  text-align: center;
+}
+
+.imageWrapper {
+  position: relative;
+  display: inline-block;
+  border: 10px solid lightgrey;
+  border-radius: 5px;
+}
+
+.profileImage {
+  display: block;
+  width: 100%;
   height: auto;
-  /* border-radius: 5%; */
-  object-fit: cover;
-  margin-bottom: 10px;
+  max-height: 400px;
 }
 
-/* Responsive adjustments for smaller screens */
-@media (max-width: 768px) {
-  .summaryContainer img {
-    max-width: 300px; /* Adjust the maximum height for smaller screens */
-    height: auto;
-  }
-}
-
-@media (max-width: 480px) {
-  .summaryContainer img {
-    max-width: 150px; /* Adjust the maximum height for even smaller screens */
-    height: auto;
-  }
-}
-
+/* ------------------------------------ */
 .ratingValues {
   width: 100%;
   display: flex;
@@ -203,7 +148,6 @@ small,
 .reviewContainer {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  /* grid-column-gap: 4px; */
   margin: 0 auto;
   font-size: 12px;
   text-align: left;
@@ -313,7 +257,6 @@ small,
   -moz-column-width: 33%;
   column-width: 33%;
   padding: 12px;
-  /* background-color: #000000; */
   margin-top: 10px;
 }
 

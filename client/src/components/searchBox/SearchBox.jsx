@@ -63,7 +63,6 @@ const SearchBox = () => {
   return (
     <div className="searchBox page search-box">
       <h1 className="search-box-title">
-        {/* Input your gig address to discover available hosts in the area */}
         Input the address of your upcoming venue and discover fellow users in
         close proximity
       </h1>

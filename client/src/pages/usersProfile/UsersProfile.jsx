@@ -32,7 +32,7 @@ function Profile() {
               </div>
             )}
             <div className="containerPersonalInformation">
-              <h3>Who are we:</h3>
+              <h3>Description and Interests</h3>
               <p className="informationDatabase">{user.profile_description}</p>
               <h4>Interests:</h4>
               <div className="informationDatabase">

@@ -6,11 +6,11 @@ import Contact from "./contact/Contact.jsx";
 function Home() {
   return (
     <>
-      <div className="homeContainer">
-        <SearchBox />
-        <About />
-        <Contact />
-      </div>
+      {/* <div className="homeContainer"> */}
+      <SearchBox />
+      <About />
+      <Contact />
+      {/* </div> */}
     </>
   );
 }

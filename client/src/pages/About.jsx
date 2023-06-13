@@ -1,18 +1,22 @@
 import "./about.css";
-import Footer from "../components/footer/Footer";
 function About() {
   return (
     <>
       <div className="page about">
-        <h2>Unleash your Music. Embrace the Community</h2>
+        <h2 className="main-about-title">
+          Unleash your Music. Embrace the Community
+        </h2>
         <div className="about-container">
+          <h2 className="main-about-title-column">
+            Unleash your Music. Embrace the Community
+          </h2>
           <div className="about-sub-container">
             <div className="imageContainer">
               <img src="../public/about-pic-1.jpg" alt="" />
             </div>
             <div className="textContainer">
-              <h3>Comfortable accommodations</h3>
-              <p>
+              <h3 className="sub-about-title">Comfortable accommodations</h3>
+              <p className="text-about">
                 One of the biggest challenges for musicians traveling to perform
                 in unfamiliar cities is finding affordable and comfortable
                 accommodations. 'airbngig' addresses this issue by providing a
@@ -30,8 +34,8 @@ function About() {
               <img src="../public/about-pic-2.jpg" alt="" />
             </div>
             <div className="textContainer">
-              <h3>Equipment and instruments</h3>
-              <p>
+              <h3 className="sub-about-title">Equipment and instruments</h3>
+              <p className="text-about">
                 Amateur musicians no longer need to worry about transporting
                 their gear to distant locations. The app allows musicians to
                 connect with hosts who offer a variety of musical equipment and
