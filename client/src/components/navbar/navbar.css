@@ -6,12 +6,9 @@ nav {
   align-items: center;
   padding-top: 12px;
   background-color: black;
-  /* font-family: "sans-serif"; */
 }
 
 nav ul {
-  /* display: flex; */
-  /* justify-content: space-between; */
   margin: 0;
   padding: 20px;
   width: 80%;
@@ -20,7 +17,6 @@ nav ul {
 nav ul li {
   list-style-type: none;
   margin: 0;
-  /* text-align: right; */
 }
 
 .navlink {
@@ -29,15 +25,18 @@ nav ul li {
   font-size: 1.1rem;
   font-weight: 600;
   color: white;
-  transition: 0.3s ease-in-out;
+  /* transition: 0.3s ease-in-out; */
+  padding: 5px;
 }
 
 .navlink:hover {
   color: #fa4353;
   cursor: pointer;
   text-decoration: none;
+  background-color: rgb(12, 11, 11);
+  border-radius: 16px;
 }
-.navlink::after {
+/* .navlink::after {
   content: "";
   width: 0;
   height: 2px;
@@ -55,30 +54,43 @@ nav ul li {
   position: absolute;
   bottom: -2px;
   left: 0;
-}
+} */
 
 .profile-link {
   position: relative;
-  /* margin: 0; */
 }
 
 .profile-link.active .submenu {
   display: flex;
-  /* margin: 0; */
+  opacity: 1; /* Show submenu with smooth opacity transition */
 }
 
 /* postbox / logout */
 .submenu {
   position: absolute;
   top: 120%;
-  left: 10px;
+  border: 1px solid white;
+  /* left: 10px; */
+  right: 0px;
   flex-direction: column;
   display: none;
   background-color: black;
-  width: 200%;
+  width: 200px;
   z-index: 1;
+  opacity: 0; /* Initially hidden */
+  transition: opacity 0.9s ease-in-out; /* Add transition for opacity */
+  margin: auto;
+  box-shadow: 2.8px 2.8px 2.2px rgba(0, 0, 0, 0.02),
+    6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
+    12.5px 12.5px 10px rgba(0, 0, 0, 0.035),
+    22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),
+    41.8px 41.8px 33.4px rgba(0, 0, 0, 0.05),
+    100px 100px 80px rgba(0, 0, 0, 0.07);
 }
-
+.profile-link.active .submenu {
+  display: flex;
+  opacity: 1; /* Show submenu with smooth opacity transition */
+}
 .submenu .navlink {
   color: white;
   margin-top: 25px;
@@ -89,11 +101,10 @@ nav ul li {
 }
 .allconversations {
   display: inline-block;
-  /* margin-top: 25px; */
 }
 .logout {
   display: inline-block;
-  /* margin-top: 25px; */
+
   color: white;
   text-decoration: none;
 }
@@ -110,47 +121,6 @@ nav ul li {
 /* Add this CSS for the responsive menu */
 .menu li {
   margin: 0 10px;
-}
-
-/* responsive */
-@media (max-width: 1530px) {
-  .map,
-  .about,
-  .contact {
-    /* margin-left: 100px; */
-  }
-  .register {
-    /* margin-left: 150px; */
-  }
-  .login {
-    /* margin-left: 50px; */
-  }
-}
-@media (max-width: 1237px) {
-  .map,
-  .about,
-  .contact {
-    /* margin-left: 40px; */
-  }
-  .register {
-    /* margin-left: 65px; */
-  }
-  .login {
-    /* margin-left: 40px; */
-  }
-}
-@media (max-width: 959px) {
-  .map,
-  .about,
-  .contact {
-    /* margin-left: 25px; */
-  }
-  .register {
-    /* margin-left: 50px; */
-  }
-  .login {
-    /* margin-left: 25px; */
-  }
 }
 
 /* Add this CSS for the responsive menu */
@@ -204,7 +174,6 @@ nav ul li {
 
   .navlink {
     margin: 24px;
-    /* margin: 24px 0; */
   }
 
   nav ul li {
@@ -217,9 +186,8 @@ nav ul li {
 
   .submenu {
     position: absolute;
-    top: 28px;
-    left: -60px;
-    /* display: none; */
+    top: 38px;
+    right: 0;
     flex-direction: column;
     height: 140px;
     width: 200px;
@@ -238,7 +206,6 @@ nav ul li {
 
   .logout {
     display: inline-block;
-    /* padding: 8px; */
     color: white;
     text-decoration: none;
   }
