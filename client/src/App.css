@@ -87,9 +87,13 @@ small,
 
 /* -------------------------------------- */
 .leaflet-container {
-  height: 100vh;
+  height: 86.55vh;
 }
 
+.map-page {
+  height: 86.55vh;
+  z-index: 1;
+}
 .map-container {
   z-index: -1;
 }

@@ -54,13 +54,13 @@ const Maps = () => {
   }, []);
 
   return (
-    <div style={{ position: "relative", zIndex: "1" }}>
+    <div className="map-page">
       <MapContainer
         center={[position.lat, position.lon]}
         zoom={13}
         scrollWheelZoom={true}
         style={{
-          height: "90vh",
+          // height: "90vh",
           zIndex: "-1",
         }}
       >
