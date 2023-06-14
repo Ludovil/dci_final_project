@@ -16,8 +16,6 @@ nav ul {
 nav ul li {
   list-style-type: none;
   margin: 0;
-
-
 }
 
 .navlink {
@@ -29,18 +27,17 @@ nav ul li {
 
   /* transition: 0.3s ease-in-out; */
   padding: 5px;
-
 }
 
 .navlink:hover {
   color: #fa4353;
   cursor: pointer;
   text-decoration: none;
-  background-color: rgb(12, 11, 11);
-  border-radius: 16px;
+  /* background-color: rgb(12, 11, 11); */
+  /* border-radius: 16px; */
 }
 
-/* .navlink::after {
+.navlink::after {
   content: "";
 
   width: 0;
@@ -53,14 +50,14 @@ nav ul li {
 }
 
 .navlink:hover::after {
-  content: '';
+  content: "";
   width: 100%;
   height: 2px;
   background: #fa4353;
   position: absolute;
   bottom: -2px;
   left: 0;
-} */
+}
 
 .profile-link {
   position: relative;
@@ -70,7 +67,6 @@ nav ul li {
   display: flex;
 
   opacity: 1; /* Show submenu with smooth opacity transition */
-
 }
 
 .submenu {
@@ -88,6 +84,7 @@ nav ul li {
   opacity: 0; /* Initially hidden */
   transition: opacity 0.9s ease-in-out; /* Add transition for opacity */
   margin: auto;
+  padding: 5px;
   box-shadow: 2.8px 2.8px 2.2px rgba(0, 0, 0, 0.02),
     6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
     12.5px 12.5px 10px rgba(0, 0, 0, 0.035),
@@ -98,7 +95,6 @@ nav ul li {
 .profile-link.active .submenu {
   display: flex;
   opacity: 1; /* Show submenu with smooth opacity transition */
-
 }
 .submenu .navlink {
   color: white;
@@ -116,8 +112,6 @@ nav ul li {
 .logout {
   display: inline-block;
 
-
-
   color: white;
   text-decoration: none;
 }
@@ -129,7 +123,6 @@ nav ul li {
   cursor: pointer;
   margin-right: 10px;
 }
-
 
 /* Add this CSS for the responsive menu */
 .menu li {
