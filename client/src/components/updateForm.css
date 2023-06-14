@@ -1,8 +1,7 @@
-.auth-form-container {
+.update-auth-form-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
 }
 
 .update-form {
@@ -15,12 +14,11 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-
 }
 
 .sub-update-form {
   width: 48%;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
 }
 
 .sub-update-form label {
@@ -62,7 +60,6 @@
   border-radius: 5px;
   transition: background-color 0.3s ease, color 0.3s ease;
   background-color: rgb(255, 255, 255);
-
 }
 
 .update-buttons-container {
@@ -73,7 +70,7 @@
 }
 
 .update-buttons-container button {
-  background-color: #FA4353;
+  background-color: #fa4353;
   color: #fff;
   cursor: pointer;
   padding: 10px 20px;

@@ -1,3 +1,4 @@
+
 import React, { useContext, useEffect, useState, useRef } from 'react';
 import { MyContext } from '../../context/context.js';
 import { io } from 'socket.io-client';
@@ -6,13 +7,15 @@ import { Link, useParams } from 'react-router-dom';
 import Message from '../../components/message/Message.jsx';
 import './messenger.css';
 
-const socket = io('http://localhost:3000', { autoConnect: false });
+
+const socket = io("http://localhost:3000", { autoConnect: false });
 
 export default function Messenger() {
   const { user } = useContext(MyContext);
   const [messages, setMessages] = useState([]);
   const { id } = useParams();
   const messageRef = useRef();
+
 
   useEffect(() => {
     socket.connect();
@@ -59,11 +62,14 @@ export default function Messenger() {
     messageRef.current.value = '';
   };
 
+
   return (
     <div className="messenger">
       <div className="chatMenu">
         <Link to="/allconversations" className="backButton">
+
         ◄
+
         </Link>
         <h1 className="chat">Chat</h1>
         <div className="messages-messenger">
@@ -81,7 +87,9 @@ export default function Messenger() {
             placeholder="Your text goes here..."
           />
           <button className="send-messenger" type="submit">
+
           &#9658;
+
           </button>
         </form>
       </div>

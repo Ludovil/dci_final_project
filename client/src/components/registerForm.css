@@ -2,8 +2,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  
 }
 
 .register-form {
@@ -42,7 +40,6 @@
   border: 1px solid #fff;
   border-radius: 5px;
   transition: background-color 0.3s ease, color 0.3s ease;
-
 }
 
 .file-label {
@@ -52,7 +49,6 @@
   border-radius: 5px;
   transition: background-color 0.3s ease, color 0.3s ease;
   background-color: rgb(255, 255, 255);
-
 }
 .sub-register-form input {
   width: 100%;
@@ -76,7 +72,7 @@
 }
 
 .register-button-container button {
-  background-color: #FA4353;
+  background-color: #fa4353;
   color: #fff;
   cursor: pointer;
   padding: 10px 20px;
@@ -90,9 +86,25 @@
   color: #fff;
 }
 
+@media (max-width: 768px) {
+  .register-form {
+    flex-direction: column;
+    border: 1px solid green;
+  }
+  .sub-register-form {
+    margin: auto;
+    width: 60%;
+  }
+}
 @media (max-width: 600px) {
-  .register-form-container  {
+  .register-form-container {
     width: 100%;
-    
+  }
+}
+
+@media (max-width: 425px) {
+  .sub-register-form {
+    margin: auto;
+    width: 90%;
   }
 }

@@ -32,12 +32,12 @@ function InstrumentsForm({
   };
   return (
     <div>
-      <h3>What we offer : </h3>
+      <h3>Gear & Sleeping facilities </h3>
       {/* Image upload form */}
       {/* <label htmlFor='upload-input' className='custom-file-upload, labelRead'> */}
       <div className="importPicsButtonContainer">
         <label className="displayLabel" htmlFor="upload-input">
-          Import instruments pics
+          Import Pictures
         </label>
       </div>
       <input
@@ -105,21 +105,19 @@ function InstrumentsForm({
                 src={item.imageUrl}
                 alt=""
                 key={item._id}
-                //style={{ width: "100%" }}
                 className="galleryImage"
               />
 
-              {/* <p>{item.description}</p> */}
+              {/* delete images */}
               {showDeleteButtons && (
                 <div className="delete-button-container">
-                  <button
+                  <CloseIcon
+                    style={{ color: "white", backgroundColor: "black" }}
                     onClick={(e) => {
                       e.stopPropagation(); // avoid triggering the previous onClick event (getImg())
                       handleInstrumentDelete(item._id);
                     }}
-                  >
-                    Delete
-                  </button>
+                  ></CloseIcon>
                 </div>
               )}
             </div>
@@ -130,12 +128,16 @@ function InstrumentsForm({
       <br />
       <div className="importPicsButtonContainer">
         <button className="buttonNegative" onClick={handleImageUpload}>
-          Upload pics
+
+          Upload Pictures
+
         </button>
 
         {/* Show/hide delete buttons */}
         <button className="buttonNegative" onClick={handleToggleDeleteButtons}>
-          {showDeleteButtons ? "Cancel" : "Remove pics"}
+
+          {showDeleteButtons ? "Cancel" : "Remove Pictures"}
+
         </button>
       </div>
       {/* Read the images with Gallery */}

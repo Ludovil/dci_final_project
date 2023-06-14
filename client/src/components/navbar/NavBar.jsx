@@ -1,8 +1,10 @@
-import { useState, useContext, useEffect, useRef } from 'react';
-import { NavLink } from 'react-router-dom';
-import { MyContext } from '../../context/context.js';
-import './navbar.css';
-import Logo from '../Logo.jsx';
+
+import { useState, useContext, useEffect } from "react";
+import { NavLink } from "react-router-dom";
+import { MyContext } from "../../context/context.js";
+import "./navbar.css";
+import Logo from "../Logo.jsx";
+
 
 function NavBar() {
   const { user, setUser } = useContext(MyContext);
@@ -39,20 +41,37 @@ function NavBar() {
     }
   };
 
+  // close hamburger menu by scrolling
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowMobileMenu(false);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <nav>
+
       <Logo className='logo' />
       <ul className={`menu ${showMobileMenu ? 'show' : ''}`}>
+
         <li>
           <NavLink to='/' className='navlink home'>
             Home
           </NavLink>
         </li>
-        <li>
-          <NavLink to='/map' className='navlink map'>
+
+        {/* <li>
+          <NavLink to="/map" className="navlink map">
+
             Map
           </NavLink>
-        </li>
+        </li> */}
         <li>
           <NavLink to='/about' className='navlink about'>
             About
@@ -70,8 +89,15 @@ function NavBar() {
             className={`profile-link ${menuOpen ? 'active' : ''}`}
             // onMouseLeave={toggleMobileMenu}
           >
-            <span className='navlink profile' onClick={handleProfileClick}>
-              {user.userName}'s profile
+
+            {/* issue with navlink profile */}
+            <span
+              //to="/profile"
+              className="navlink profile"
+              onClick={handleProfileClick}
+            >
+              profile
+
             </span>
             <ul className='submenu' ref={submenuRef} onClick={toggleMobileMenu}>
               <li>
@@ -127,10 +153,9 @@ function NavBar() {
         )}
 
         {showMobileMenu && (
-          <i
-            className='fas fa-times mobile-icon'
-            onClick={toggleMobileMenu}
-          ></i>
+
+          <i className="fas fa-times mobile-icon" onClick={closeMobileMenu}></i>
+
         )}
       </div>
     </nav>
