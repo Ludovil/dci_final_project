@@ -4,6 +4,7 @@ import { MyContext } from "../context/context.js";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./loginForm.css";
+import toast from "react-hot-toast";
 
 function LoginForm() {
   const navigate = useNavigate();
@@ -20,10 +21,11 @@ function LoginForm() {
           const token = res.headers.token;
           localStorage.setItem("token", token);
           console.log(res.data.data);
+          toast.success(`Welcome ${res.data.data.userName}`);
           setUser(res.data.data);
           navigate("/profile");
         } else {
-          alert("something went wrong :( ");
+          toast.error(res.data.message);
         }
       })
       .catch((error) => {

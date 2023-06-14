@@ -3,11 +3,11 @@ import RegisterForm from "../components/RegisterForm.jsx";
 import axios from "axios";
 import { MyContext } from "../context/context.js";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 function Register() {
   const navigate = useNavigate();
   const { setUser } = useContext(MyContext);
-
 
   const [profileImage, setProfileImage] = useState({ file: "" });
 
@@ -45,7 +45,17 @@ function Register() {
           setUser(res.data.data);
           navigate("/login");
         } else {
-          console.log(res.data.message);
+          console.log(res.data.message[0].error);
+          const errorMessages = res.data.message;
+          const errors = errorMessages.map((e) => e.error);
+          toast.error(errors.join("\n\n"), {
+            style: {
+              borderRadius: "10px",
+              background: "#333",
+              color: "#fff",
+            },
+          });
+          //alert(`${res.data.message[0].error}`);
         }
       });
   };

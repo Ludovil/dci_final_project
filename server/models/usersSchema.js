@@ -3,22 +3,26 @@ import { Schema, model } from "mongoose";
 const userSchema = new Schema({
   userName: {
     type: String,
+    required: true,
   },
   email: {
     type: String,
+    required: true,
+    unique: true,
   },
   password: {
     type: String,
+    required: true,
   },
   profile_image: {
     type: String,
   },
   address: {
-    country: { type: String },
-    city: { type: String },
-    postcode: { type: String },
-    street: { type: String },
-    housenumber: { type: String },
+    country: { type: String, required: true },
+    city: { type: String, required: true },
+    postcode: { type: String, required: true },
+    street: { type: String, required: true },
+    housenumber: { type: String, required: true },
   },
   geocode: Array,
   formatted_address: {
@@ -47,6 +51,9 @@ const userSchema = new Schema({
     type: String,
   },
 });
+
+// set email as an index
+userSchema.indexes({ email: 1 });
 
 const UserCollection = model("users", userSchema);
 

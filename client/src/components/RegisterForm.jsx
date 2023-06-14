@@ -22,12 +22,18 @@ function RegisterForm({
           <br />
           <label>
             <span>password</span>
-            <input type="password" name="password" onChange={onChangeHandler} />
+            <input
+              type="password"
+              name="password"
+              onChange={onChangeHandler}
+              placeholder="Min 6 characters include a special one"
+            />
           </label>
           <br />
           <label>
             <div className="file-label-1">Choose Image</div>
-            <input className="file-input"
+            <input
+              className="file-input"
               type="file"
               name="profile_image"
               accept=".jpeg, .png, .jpg"
@@ -35,11 +41,12 @@ function RegisterForm({
             />
           </label>
           <div>
-      <img className="register-logo"
-        src="../../public/airbngig-low-resolution-logo-color-on-transparent-background.png"
-        alt="airbngig-logo"
-      />
-    </div>
+            <img
+              className="register-logo"
+              src="../../public/airbngig-low-resolution-logo-color-on-transparent-background.png"
+              alt="airbngig-logo"
+            />
+          </div>
         </div>
         <br />
         <div className="sub-register-form">

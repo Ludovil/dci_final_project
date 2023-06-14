@@ -15,11 +15,13 @@ import Messenger from "./pages/messenger/Messenger";
 import AllConversation from "./pages/allConversations/AllConversation";
 import Footer from "./components/footer/Footer.jsx";
 import Test from "./pages/Test.jsx";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   return (
     <>
       <div className="app">
+        <Toaster />
         <BrowserRouter>
           <NavBar />
           <Routes>

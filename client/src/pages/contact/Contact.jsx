@@ -1,5 +1,6 @@
 import axios from "axios";
 import "./contact.css";
+import toast from "react-hot-toast";
 
 function Contact() {
   const onSubmitHandler = (e) => {
@@ -14,7 +15,7 @@ function Contact() {
 
       .then((res) => {
         console.log(res);
-        alert("Thank you for your message!");
+        toast.success("Thank you for your message!");
         //reset fields to empty values
         e.target.reset();
       })
