@@ -2,7 +2,7 @@ import axios from "axios";
 import { Input, Button, Space, Tooltip, List } from "antd";
 import { useNavigate } from "react-router-dom";
 import { SearchOutlined } from "@ant-design/icons";
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext, useEffect, useRef } from "react";
 import { MyContext } from "../../context/context.js";
 import "./searchBox.css";
 
@@ -13,6 +13,7 @@ const SearchBox = () => {
   const [searchText, setSearchText] = useState("");
   const [listPlace, setListPlace] = useState([]);
   const navigate = useNavigate();
+  const listRef = useRef();
 
   useEffect(() => {
     // Add mounted class to title after component mounts
@@ -30,6 +31,14 @@ const SearchBox = () => {
     setTimeout(() => {
       buttonElement.classList.add("mounted");
     }, 1500);
+
+    // Add event listener to handle click outside the list
+    document.addEventListener("click", handleClickOutside);
+
+    return () => {
+      // Remove event listener when component unmounts
+      document.removeEventListener("click", handleClickOutside);
+    };
   }, []);
 
   const handleSearch = () => {
@@ -54,19 +63,37 @@ const SearchBox = () => {
       .catch((err) => console.log("err: ", err));
   };
 
-  const handleKeyPress = (event) => {
-    if (event.key === "Enter") {
-      handleSearch();
+  // const handleKeyPress = (event) => {
+  //   if (event.key === "Enter") {
+  //     handleSearch();
+  //   }
+  // };
+
+  // const handleArrowKeyPress = (event) => {
+  //   if (event.key === "ArrowUp" || event.key === "ArrowDown") {
+  //     event.preventDefault();
+  //     const activeElement = document.activeElement;
+  //     if (activeElement === listRef.current) {
+  //       const listItemElements = listRef.current.querySelectorAll("li");
+  //       if (listItemElements.length > 0) {
+  //         const firstListItem = listItemElements[0];
+  //         firstListItem.focus();
+  //       }
+  //     }
+  //   }
+  // };
+
+  const handleClickOutside = (event) => {
+    if (listRef.current && !listRef.current.contains(event.target)) {
+      setListPlace([]);
     }
   };
 
   return (
     <div className="searchBox page search-box">
       <h1 className="search-box-title">
-
         Input the address of your upcoming venue and discover fellow users in
         close proximity
-
       </h1>
       <div className="supraSearchBoxContainer">
         <div className="search-div">
@@ -78,7 +105,8 @@ const SearchBox = () => {
               onChange={(e) => {
                 setSearchText(e.target.value);
               }}
-              onKeyPress={handleKeyPress}
+              // onKeyPress={handleKeyPress}
+              // onKeyDown={handleArrowKeyPress}
             />
             <Button
               className="search-button"
@@ -89,11 +117,11 @@ const SearchBox = () => {
           </div>
           <div>
             <Space direction="vertical" size={12}>
-              {/* <RangePicker />  */}
+              {/* <RangePicker /> */}
             </Space>
           </div>
         </div>
-        <div className="list">
+        <div className="list" ref={listRef}>
           <List size="small">
             {listPlace.map((item) => (
               <div

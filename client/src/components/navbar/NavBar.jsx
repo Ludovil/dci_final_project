@@ -83,17 +83,20 @@ function NavBar() {
           <li
             style={{ margin: "0" }}
             className={`profile-link ${menuOpen ? "active" : ""}`}
-            // onMouseLeave={toggleMobileMenu}
           >
             {/* issue with navlink profile */}
             <span
               //to="/profile"
               className="navlink profile"
-              onClick={handleProfileClick}
+              onMouseEnter={handleProfileClick}
             >
               Profile
             </span>
-            <ul className="submenu" ref={submenuRef} onClick={toggleMobileMenu}>
+            <ul
+              className="submenu"
+              ref={submenuRef}
+              onMouseLeave={handleProfileClick}
+            >
               <li>
                 <NavLink
                   to="/profile"

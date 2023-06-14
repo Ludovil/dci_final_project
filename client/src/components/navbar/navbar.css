@@ -69,20 +69,20 @@ nav ul li {
   opacity: 1; /* Show submenu with smooth opacity transition */
 }
 
-.submenu {
+/* .submenu {
   position: absolute;
   top: 120%;
 
   border: 1px solid white;
-  /* left: 10px; */
+
   right: 0px;
   flex-direction: column;
   display: none;
   background-color: black;
   width: 200px;
   z-index: 1;
-  opacity: 0; /* Initially hidden */
-  transition: opacity 0.9s ease-in-out; /* Add transition for opacity */
+  opacity: 0;
+  transition: opacity 0.9s ease-in-out;
   margin: auto;
   padding: 5px;
   box-shadow: 2.8px 2.8px 2.2px rgba(0, 0, 0, 0.02),
@@ -91,7 +91,30 @@ nav ul li {
     22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),
     41.8px 41.8px 33.4px rgba(0, 0, 0, 0.05),
     100px 100px 80px rgba(0, 0, 0, 0.07);
+} */
+.submenu {
+  position: absolute;
+  top: 185%;
+  padding: 15px;
+  border: 1px solid white;
+  /* left: 10px; */
+  right: -32px;
+  border-top: none;
+  flex-direction: column;
+  display: none;
+  background-color: black;
+  width: 125px;
+  z-index: 1;
+  opacity: 0; /* Initially hidden */
+  transition: opacity 0.9s ease-in-out; /* Add transition for opacity */
+  margin: auto;
+  box-shadow: 2.8px 2.8px 2.2px rgba(0, 0, 0, 0.02),
+    6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
+    12.5px 12.5px 10px rgba(0, 0, 0, 0.035),
+    22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),
+    41.8px 41.8px 33.4px rgba(0, 0, 0, 0.05);
 }
+
 .profile-link.active .submenu {
   display: flex;
   opacity: 1; /* Show submenu with smooth opacity transition */
@@ -198,7 +221,7 @@ nav ul li {
     right: 0;
 
     flex-direction: column;
-    height: 140px;
+    height: 150px;
     width: 200px;
     padding: 0 20px;
     background-color: black;
