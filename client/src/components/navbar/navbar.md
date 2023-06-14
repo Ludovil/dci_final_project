@@ -77,6 +77,7 @@ display: flex;
 
 /_ postbox / logout _/
 .submenu {
+
 position: absolute;
 top: 120%;
 left: 10px;
@@ -86,6 +87,7 @@ background-color: black;
 width: 200%;
 border: 2px solid white;
 z-index: 1;
+
 }
 
 .submenu .navlink {

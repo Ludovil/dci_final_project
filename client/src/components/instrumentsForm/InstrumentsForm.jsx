@@ -128,12 +128,16 @@ function InstrumentsForm({
       <br />
       <div className="importPicsButtonContainer">
         <button className="buttonNegative" onClick={handleImageUpload}>
+
           Upload Pictures
+
         </button>
 
         {/* Show/hide delete buttons */}
         <button className="buttonNegative" onClick={handleToggleDeleteButtons}>
+
           {showDeleteButtons ? "Cancel" : "Remove Pictures"}
+
         </button>
       </div>
       {/* Read the images with Gallery */}
