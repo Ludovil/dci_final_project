@@ -53,8 +53,9 @@
 }
 
 .login-form button:hover {
-  background-color: #fa4353;
-  color: #fff;
+  background-color: white;
+  color: #fa4353;
+  border: 1px solid #fa4353;
 }
 
 .login-form p {
