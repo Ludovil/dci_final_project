@@ -2,9 +2,10 @@ import cloudinary from "cloudinary";
 import UserCollection from "../models/usersSchema.js";
 import instrumentsCollection from "../models/instrumentsSchema.js";
 import fs from "fs";
+import { createReadStream } from "streamifier";
 
 // upload several images as files
-export const uploadImagesInstruments = async (req, res) => {
+export const uploadImagesInstruments = async (req, resp) => {
   try {
     const { userId, description } = req.body;
     const files = req.files;
@@ -19,60 +20,119 @@ export const uploadImagesInstruments = async (req, res) => {
       descriptions = [descriptions];
     }
 
+    console.log(files);
     // Upload images to Cloudinary
-    for (let i = 0; i < files.length; i++) {
-      const file = files[i];
-      const cloudinaryResponse = await cloudinary.v2.uploader.upload(
-        `./uploads/${file.filename}`,
-        { folder: "final_project/instruments" }
-      );
-      const instruments = new instrumentsCollection({
-        userId: userId,
-        imageUrl: cloudinaryResponse.secure_url,
-        // see lines 14 to 20 :
-        description: descriptions[i] || "",
-      });
-      await instruments.save();
-      uploadedImages.push(instruments);
-    }
+    if (Array.isArray(files.files)) {
+      for (let i = 0; i < files.files.length; i++) {
+        // const cloudinaryResponse = cloudinary.v2.uploader.upload_stream({
+        //   folder: "final_project/instruments",
+        // });
+        cloudinary.v2.uploader
+          .upload_stream(
+            { folder: "final_project/instruments" },
+            async (err, res) => {
+              if (err) {
+                console.log(err);
+              } else {
+                console.log(res);
 
+                const instruments = new instrumentsCollection({
+                  userId: userId,
+                  imageUrl: res.secure_url,
+                  // see lines 14 to 20 :
+                  description: descriptions[i] || "",
+                });
+                await instruments.save();
+                uploadedImages.push(instruments);
+                const user = await UserCollection.findByIdAndUpdate(
+                  userId,
+                  {
+                    $push: {
+                      instruments: {
+                        $each: uploadedImages.map((img) => img._id),
+                      },
+                    },
+                  },
+                  { new: true }
+                );
+                return resp.json(user);
+              }
+            }
+          )
+          .end(files.files[i].data);
+      }
+    } else if (files.files) {
+      cloudinary.v2.uploader
+        .upload_stream(
+          { folder: "final_project/instruments" },
+          async (err, res) => {
+            if (err) {
+              console.log(err);
+            } else {
+              console.log(description);
+
+              const instruments = new instrumentsCollection({
+                userId: userId,
+                imageUrl: res.secure_url,
+                // see lines 14 to 20 :
+                description: description || " ",
+              });
+              await instruments.save();
+              uploadedImages.push(instruments);
+              const user = await UserCollection.findByIdAndUpdate(
+                userId,
+                {
+                  $push: {
+                    instruments: {
+                      $each: uploadedImages.map((img) => img._id),
+                    },
+                  },
+                },
+                { new: true }
+              );
+              return resp.json(user);
+            }
+          }
+        )
+        .end(files.files.data);
+    }
+    console.log(uploadedImages);
     // Update user's instruments field
-    const user = await UserCollection.findByIdAndUpdate(
-      userId,
-      {
-        $push: {
-          instruments: {
-            $each: uploadedImages.map((img) => img._id),
-          },
-        },
-      },
-      { new: true }
-    );
+    // const user = await UserCollection.findByIdAndUpdate(
+    //   userId,
+    //   {
+    //     $push: {
+    //       instruments: {
+    //         $each: uploadedImages.map((img) => img._id),
+    //       },
+    //     },
+    //   },
+    //   { new: true }
+    // );
 
     // Empty the /uploads folder
-    const folderPath = "./uploads";
-    fs.readdir(folderPath, (err, files) => {
-      if (err) {
-        console.error("Error reading folder:", err);
-        return;
-      }
+    // const folderPath = "./uploads";
+    // fs.readdir(folderPath, (err, files) => {
+    //   if (err) {
+    //     console.error("Error reading folder:", err);
+    //     return;
+    //   }
 
-      files.forEach((file) => {
-        const filePath = `${folderPath}/${file}`;
+    //   files.forEach((file) => {
+    //     const filePath = `${folderPath}/${file}`;
 
-        fs.unlink(filePath, (err) => {
-          if (err) {
-            console.error("Error deleting file:", err);
-            return;
-          }
-          console.log("File deleted:", filePath);
-        });
-      });
-    });
-    res.json(user);
+    //     fs.unlink(filePath, (err) => {
+    //       if (err) {
+    //         console.error("Error deleting file:", err);
+    //         return;
+    //       }
+    //       console.log("File deleted:", filePath);
+    //     });
+    //   });
+    // });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "Server Error" });
+    resp.status(500).json({ error: "Server Error" });
   }
 };
 

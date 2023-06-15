@@ -12,6 +12,7 @@ import Message from "./models/messageSchema.js";
 import morgan from "morgan";
 import cors from "cors";
 import dotenv from "dotenv";
+import fileUpload from "express-fileupload";
 dotenv.config();
 
 // server
@@ -43,7 +44,7 @@ app.use(
     credentials: true,
   })
 );
-
+app.use(fileUpload());
 app.get("/", (req, res) => {
   res.sendFile("./views/dist/index.html", { root: "." });
 });
