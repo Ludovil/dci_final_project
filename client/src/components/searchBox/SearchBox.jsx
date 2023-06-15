@@ -63,25 +63,25 @@ const SearchBox = () => {
       .catch((err) => console.log("err: ", err));
   };
 
-  // const handleKeyPress = (event) => {
-  //   if (event.key === "Enter") {
-  //     handleSearch();
-  //   }
-  // };
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      handleSearch();
+    }
+  };
 
-  // const handleArrowKeyPress = (event) => {
-  //   if (event.key === "ArrowUp" || event.key === "ArrowDown") {
-  //     event.preventDefault();
-  //     const activeElement = document.activeElement;
-  //     if (activeElement === listRef.current) {
-  //       const listItemElements = listRef.current.querySelectorAll("li");
-  //       if (listItemElements.length > 0) {
-  //         const firstListItem = listItemElements[0];
-  //         firstListItem.focus();
-  //       }
-  //     }
-  //   }
-  // };
+  const handleArrowKeyPress = (event) => {
+    if (event.key === "ArrowUp" || event.key === "ArrowDown") {
+      event.preventDefault();
+      const activeElement = document.activeElement;
+      if (activeElement === listRef.current) {
+        const listItemElements = listRef.current.querySelectorAll("li");
+        if (listItemElements.length > 0) {
+          const firstListItem = listItemElements[0];
+          firstListItem.focus();
+        }
+      }
+    }
+  };
 
   const handleClickOutside = (event) => {
     if (listRef.current && !listRef.current.contains(event.target)) {
@@ -105,8 +105,8 @@ const SearchBox = () => {
               onChange={(e) => {
                 setSearchText(e.target.value);
               }}
-              // onKeyPress={handleKeyPress}
-              // onKeyDown={handleArrowKeyPress}
+              onKeyPress={handleKeyPress}
+              onKeyDown={handleArrowKeyPress}
             />
             <Button
               className="search-button"
