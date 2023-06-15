@@ -82,8 +82,9 @@
 }
 
 .register-button-container button:hover {
-  background-color: #fa3243;
-  color: #fff;
+  background-color: white;
+  color: #fa4353;
+  border: 1px solid #fa4353;
 }
 
 @media (max-width: 768px) {
