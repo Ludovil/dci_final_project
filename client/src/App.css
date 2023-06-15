@@ -85,6 +85,9 @@ small,
   margin-top: auto;
 }
 
+.home-page {
+  margin-bottom: 150px;
+}
 /* -------------------------------------- */
 .leaflet-container {
   height: 86.55vh;
@@ -113,4 +116,3 @@ li.starListItem {
 .messenger {
   min-height: 60vh;
 }
-

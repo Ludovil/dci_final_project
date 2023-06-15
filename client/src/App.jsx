@@ -14,7 +14,6 @@ import Contact from "./pages/contact/Contact.jsx";
 import Messenger from "./pages/messenger/Messenger";
 import AllConversation from "./pages/allConversations/AllConversation";
 import Footer from "./components/footer/Footer.jsx";
-import Test from "./pages/Test.jsx";
 import { Toaster } from "react-hot-toast";
 
 function App() {
@@ -37,7 +36,6 @@ function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/messenger/:id" element={<Messenger />} />
             <Route path="/allconversations" element={<AllConversation />} />
-            <Route path="/test" element={<Test />} />
           </Routes>
         </BrowserRouter>
         <div className="main-footer">

@@ -3,10 +3,8 @@
   justify-content: center;
   align-items: center;
 
-  padding: 10px;  
+  padding: 10px;
   background-color: #f5f5f5;
-  
-
 }
 
 .chatMenu {
@@ -17,7 +15,7 @@
   padding-left: 10px;
   padding-right: 10px;
 
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);  
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 
   border-radius: 10px;
 }
@@ -39,9 +37,6 @@
   margin-left: 10px;
   cursor: pointer;
   color: #000;
-
-  
-
 }
 
 .backButton:hover {
@@ -49,9 +44,8 @@
   text-decoration: none;
   color: #fff;
 
-  border:#f5f5f5 1px solid ;
-} 
-
+  border: #f5f5f5 1px solid;
+}
 
 .form-messenger {
   display: flex;
@@ -59,36 +53,43 @@
   margin-bottom: 16px;
   justify-content: space-between;
   align-items: center;
-
-  
-
+  border: 1px solid #333;
+  border-radius: 10px;
+  padding: 5px;
 }
 
 .input-messenger {
   display: flex;
   flex: 1;
-  border: 1px solid #333;
-  border-radius: 5px;
+  /* border-radius: 5px; */
   margin-right: -35px;
   margin-left: 0px;
   padding: 10px;
+  word-wrap: break-word;
+  width: 70%;
+  height: 50px;
+  outline: none;
+  border: none;
 }
 
 .send-messenger {
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-  background-color: #FA4353;
-
+.send-button {
+  background-color: #fa4353;
   color: #fff;
   border: none;
   border-radius: 5px;
   padding: 5px 15px;
   cursor: pointer;
   position: relative;
-  left: -20px;
+  right: -20px;
 }
-
-
-.send-messenger:hover {
+.send-button:hover {
   background-color: rgb(241, 58, 73); /* Darker shade on hover */
 }
 
