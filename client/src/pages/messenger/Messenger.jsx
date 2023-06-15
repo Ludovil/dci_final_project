@@ -59,6 +59,12 @@ export default function Messenger() {
     messageRef.current.value = "";
   };
 
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      handleSubmit(e);
+    }
+  };
+
   return (
     <div className="messenger">
       <div className="chatMenu">
@@ -79,6 +85,7 @@ export default function Messenger() {
             ref={messageRef}
             type="text"
             placeholder="Your text goes here..."
+            onKeyDown={handleKeyPress}
           />
           <div className="send-messenger">
             <button className="send-button" type="submit">
