@@ -1,7 +1,7 @@
-import { MyContext } from '../context/context.js';
-import { useContext, useEffect, useState } from 'react';
-import axios from 'axios';
-import InstrumentsForm from '../components/instrumentsForm/InstrumentsForm.jsx';
+import { MyContext } from "../context/context.js";
+import { useContext, useEffect, useState } from "react";
+import axios from "axios";
+import InstrumentsForm from "../components/instrumentsForm/InstrumentsForm.jsx";
 
 function Instruments() {
   const { user } = useContext(MyContext);
@@ -16,16 +16,13 @@ function Instruments() {
   useEffect(() => {
     const fetchInstruments = async () => {
       try {
-        const response = await axios.post(
-          'http://localhost:3000/instruments/',
-          {
-            instrumentsIds: user.instruments,
-          }
-        );
+        const response = await axios.post("/instruments/", {
+          instrumentsIds: user.instruments,
+        });
         if (response.status === 200) {
           setInstruments(response.data.instruments);
         } else {
-          console.error('Failed to fetch Instruments');
+          console.error("Failed to fetch Instruments");
         }
       } catch (error) {
         console.error(error);
@@ -50,7 +47,7 @@ function Instruments() {
         image: URL.createObjectURL(files[i]),
       });
       updatedImageSelection.push(true);
-      updatedIntrumentDescription.push('');
+      updatedIntrumentDescription.push("");
     }
     setSelectedImages(updatedSelectedImages);
     setFileNames(updatedFileNames);
@@ -76,22 +73,18 @@ function Instruments() {
     try {
       setIsLoading(true);
       const formData = new FormData();
-      formData.append('userId', user._id);
+      formData.append("userId", user._id);
       //formData.append('description', instrumentDescription); // Add instrumentDescription to the form data
       for (let i = 0; i < selectedImages.length; i++) {
-        formData.append('files', selectedImages[i]);
-        formData.append('description', instrumentDescription[i]);
+        formData.append("files", selectedImages[i]);
+        formData.append("description", instrumentDescription[i]);
       }
       console.log(formData);
-      const response = await axios.post(
-        'http://localhost:3000/instruments/filesupload',
-        formData,
-        {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-          },
-        }
-      );
+      const response = await axios.post("/instruments/filesupload", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
       if (response.status === 200) {
         //window.location.reload();
         setInstruments(response.data.instruments);
@@ -101,7 +94,7 @@ function Instruments() {
         setInstrumentDescription([]);
         window.location.reload();
       } else {
-        console.error('Failed to upload instrument images');
+        console.error("Failed to upload instrument images");
       }
     } catch (error) {
       console.error(error);
@@ -116,9 +109,7 @@ function Instruments() {
   // delete an image / instrument from the DB / collection
   const handleInstrumentDelete = async (instrumentId) => {
     try {
-      const response = await axios.delete(
-        `http://localhost:3000/instruments/${instrumentId}`
-      );
+      const response = await axios.delete(`/instruments/${instrumentId}`);
       if (response.status === 200) {
         // Remove the deleted instrument from the state
         const updatedInstruments = instruments.filter(
@@ -126,7 +117,7 @@ function Instruments() {
         );
         setInstruments(updatedInstruments);
       } else {
-        console.error('Failed to delete instrument');
+        console.error("Failed to delete instrument");
       }
     } catch (error) {
       console.error(error);

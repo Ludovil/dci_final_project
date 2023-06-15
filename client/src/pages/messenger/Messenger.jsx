@@ -6,7 +6,7 @@ import { Link, useParams } from "react-router-dom";
 import Message from "../../components/message/Message.jsx";
 import "./messenger.css";
 
-const socket = io("http://localhost:3000", { autoConnect: false });
+const socket = io(process.env.REACT_APP_SERVER, { autoConnect: false });
 
 export default function Messenger() {
   const { user } = useContext(MyContext);
@@ -32,7 +32,7 @@ export default function Messenger() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/messages/${id}`)
+      .get(`/messages/${id}`)
       .then((res) => {
         setMessages(res.data);
       })

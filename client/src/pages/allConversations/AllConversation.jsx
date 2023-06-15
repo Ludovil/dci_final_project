@@ -10,12 +10,9 @@ export default function AllConversations() {
 
   const deleteConversation = async (conversationId) => {
     try {
-      await axios.delete(
-        `http://localhost:3000/conversations/${conversationId}`,
-        {
-          headers: { token: localStorage.getItem("token") },
-        }
-      );
+      await axios.delete(`/conversations/${conversationId}`, {
+        headers: { token: localStorage.getItem("token") },
+      });
 
       const updatedUser = { ...user };
       updatedUser.conversations = updatedUser.conversations.filter(

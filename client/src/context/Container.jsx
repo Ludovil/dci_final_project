@@ -12,7 +12,7 @@ export default function Container({ children }) {
   useEffect(() => {
     if (localStorage.getItem("token")) {
       axios
-        .get("http://localhost:3000/users/refresh", {
+        .get("/users/refresh", {
           headers: { token: localStorage.getItem("token") },
         })
         .then((res) => {
@@ -35,7 +35,6 @@ export default function Container({ children }) {
   // Render loading state or placeholder content
   if (isLoading) {
     return (
-
       <div className="loader">
         <div className="bar1"></div>
         <div className="bar2"></div>
@@ -49,7 +48,6 @@ export default function Container({ children }) {
         <div className="bar10"></div>
         <div className="bar11"></div>
         <div className="bar12"></div>
-
       </div>
     );
   }

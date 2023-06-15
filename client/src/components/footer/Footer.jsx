@@ -127,7 +127,7 @@ function Footer() {
                     padding: "2px",
                     borderRadius: "50%",
                   }}
-                  src="../../../public/icons/icons8-facebook.svg"
+                  src="..//icons/icons8-facebook.svg"
                   alt=""
                 />
               </a>
@@ -141,7 +141,7 @@ function Footer() {
                     padding: "5px",
                     borderRadius: "50%",
                   }}
-                  src="../../../public/icons/icons8-twitter.svg"
+                  src="..//icons/icons8-twitter.svg"
                   alt=""
                 />
               </a>
@@ -155,7 +155,7 @@ function Footer() {
                     padding: "5px",
                     borderRadius: "50%",
                   }}
-                  src="../../../public/icons/icons8-instagram.svg"
+                  src="..//icons/icons8-instagram.svg"
                   alt=""
                 />
               </a>
@@ -169,7 +169,7 @@ function Footer() {
                     padding: "5px",
                     borderRadius: "50%",
                   }}
-                  src="../../../public/icons/icons8-github.svg"
+                  src="..//icons/icons8-github.svg"
                   alt=""
                 />
               </a>
@@ -211,9 +211,7 @@ function Footer() {
           {renderFooterContent()}
         </div>
         <div>
-
-          <button className='buttonNegative' onClick={toggleFooter}>
-
+          <button className="buttonNegative" onClick={toggleFooter}>
             {buttonText}
           </button>
         </div>

@@ -23,8 +23,7 @@ const ResetCenterView = ({ position }) => {
 
 const redIcon = L.icon({
   iconUrl:
-
-    'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
+    "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png",
 
   iconSize: [25, 41],
   iconAnchor: [12, 41],
@@ -33,8 +32,7 @@ const redIcon = L.icon({
 
 const blueIcon = L.icon({
   iconUrl:
-
-    'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-blue.png',
+    "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-blue.png",
 
   iconSize: [25, 41],
   iconAnchor: [12, 41],
@@ -46,7 +44,7 @@ const Maps = () => {
   const location = useLocation();
   const [users, setUsers] = useState([]);
 
-  const URL = "http://localhost:3000";
+  const URL = "";
 
   useEffect(() => {
     axios

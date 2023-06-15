@@ -1,5 +1,5 @@
 import "./App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import NavBar from "../src/components/navbar/NavBar.jsx";
 import Home from "./pages/Home.jsx";
 import UsersProfile from "./pages/usersProfile/UsersProfile.jsx";
@@ -21,7 +21,7 @@ function App() {
     <>
       <div className="app">
         <Toaster />
-        <BrowserRouter>
+        <HashRouter>
           <NavBar />
           <Routes>
             <Route path="/" element={<Home />} />
@@ -37,7 +37,8 @@ function App() {
             <Route path="/messenger/:id" element={<Messenger />} />
             <Route path="/allconversations" element={<AllConversation />} />
           </Routes>
-        </BrowserRouter>
+        </HashRouter>
+
         <div className="main-footer">
           <Footer />
         </div>

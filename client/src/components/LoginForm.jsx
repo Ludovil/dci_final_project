@@ -15,7 +15,7 @@ function LoginForm() {
   const onSubmitHandler = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:3000/users/login", { email, password })
+      .post("/users/login", { email, password })
       .then((res) => {
         if (res.data.success) {
           const token = res.headers.token;
@@ -76,7 +76,7 @@ function LoginForm() {
         <div>
           <img
             className="login-logo"
-            src="../../public/airbngig-low-resolution-logo-color-on-transparent-background.png"
+            src="/airbngig-low-resolution-logo-color-on-transparent-background.png"
             alt="airbngig-logo"
           />
         </div>

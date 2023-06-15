@@ -71,16 +71,12 @@ function UpdateProfile() {
     console.log("Profile Description:", e.target.profile_description.value);
 
     axios
-      .patch(
-        `http://localhost:3000/users/${user._id}`,
-        JSON.stringify(updatedFormData),
-        {
-          headers: {
-            "Content-Type": "application/json",
-            token: localStorage.getItem("token"),
-          },
-        }
-      )
+      .patch(`/users/${user._id}`, JSON.stringify(updatedFormData), {
+        headers: {
+          "Content-Type": "application/json",
+          token: localStorage.getItem("token"),
+        },
+      })
       .then((res) => {
         if (res.data.success) {
           console.log("success");

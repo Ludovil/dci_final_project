@@ -1,16 +1,16 @@
 // new
-import axios from 'axios';
-import React, { useContext, useState } from 'react';
-import { useLocation } from 'react-router-dom';
-import { MyContext } from '../../context/context.js';
-import Star from './Star';
-import './rating.css';
+import axios from "axios";
+import React, { useContext, useState } from "react";
+import { useLocation } from "react-router-dom";
+import { MyContext } from "../../context/context.js";
+import Star from "./Star";
+import "./rating.css";
 
 const Rating = () => {
   const { user } = useContext(MyContext);
   const [hoverIndex, setHoverIndex] = useState(0);
   const [rating, setRating] = useState(0);
-  const [comment, setComment] = useState('');
+  const [comment, setComment] = useState("");
   const [hideRating, setHideRating] = useState(false); // New state variable
   const location = useLocation();
 
@@ -20,7 +20,7 @@ const Rating = () => {
 
   const handleClearRating = () => {
     setRating(0);
-    setComment('');
+    setComment("");
   };
 
   const handleStarClick = (index) => {
@@ -37,8 +37,8 @@ const Rating = () => {
     };
 
     axios
-      .post('http://localhost:3000/reviews', JSON.stringify(review), {
-        headers: { 'Content-Type': 'application/json' },
+      .post("/reviews", JSON.stringify(review), {
+        headers: { "Content-Type": "application/json" },
       })
       .then((res) => {
         setHideRating(true); // Set hideRating to true after sending the rating
@@ -47,7 +47,7 @@ const Rating = () => {
 
   const formatCreatedAt = (createdAt) => {
     const date = new Date(createdAt);
-    const month = date.toLocaleString('default', { month: 'long' });
+    const month = date.toLocaleString("default", { month: "long" });
     const year = date.getFullYear();
     return `${month} ${year}`;
   };
@@ -58,30 +58,30 @@ const Rating = () => {
 
   return (
     <div>
-      <ul className='starList'>
+      <ul className="starList">
         {[1, 2, 3, 4, 5].map((index) => (
           <li
             key={index}
             onMouseEnter={() => setHoverIndex(index)}
             onMouseLeave={() => setHoverIndex(0)}
             onClick={() => handleStarClick(index)}
-            className='starListItem'
+            className="starListItem"
           >
             <Star yellow={shouldBeHighlighted(index)} />
           </li>
         ))}
       </ul>
       <textarea
-        placeholder='Comment your experience...'
+        placeholder="Comment your experience..."
         value={comment}
         onChange={(e) => setComment(e.target.value)}
       ></textarea>
       <br />
-      <div className='prueba'>
-        <button className='buttonNegative' onClick={handleSendRating}>
+      <div className="prueba">
+        <button className="buttonNegative" onClick={handleSendRating}>
           Send Rating
         </button>
-        <button className='buttonNegative' onClick={handleClearRating}>
+        <button className="buttonNegative" onClick={handleClearRating}>
           Clear Rating
         </button>
       </div>

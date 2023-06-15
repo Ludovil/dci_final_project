@@ -35,7 +35,7 @@ function Register() {
       },
     };
     axios
-      .post("http://localhost:3000/users", JSON.stringify(formData), {
+      .post("/users", JSON.stringify(formData), {
         headers: { "Content-Type": "application/json" },
       })
       .then((res) => {

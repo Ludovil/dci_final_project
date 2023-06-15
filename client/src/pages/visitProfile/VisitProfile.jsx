@@ -31,13 +31,11 @@ function VisitProfile() {
     const fetchData = async () => {
       try {
         const instrumentPromise = axios.get(
-          `http://localhost:3000/instruments/${location.state._id}`
+          `/instruments/${location.state._id}`
         );
-        const reviewPromise = axios.get(
-          `http://localhost:3000/users/${location.state._id}`
-        );
+        const reviewPromise = axios.get(`/users/${location.state._id}`);
         const averageRatingPromise = axios.get(
-          `http://localhost:3000/users/${location.state._id}/averagerating`
+          `/users/${location.state._id}/averagerating`
         );
 
         const [instrumentResponse, reviewResponse, averageRatingResponse] =
@@ -66,7 +64,7 @@ function VisitProfile() {
 
   const createConversation = async () => {
     try {
-      const res = await axios.post("http://localhost:3000/conversations", {
+      const res = await axios.post("/conversations", {
         guest: user._id,
         host: location?.state?._id,
       });

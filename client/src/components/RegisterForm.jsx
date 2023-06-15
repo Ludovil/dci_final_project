@@ -43,7 +43,7 @@ function RegisterForm({
           <div>
             <img
               className="register-logo"
-              src="../../public/airbngig-low-resolution-logo-color-on-transparent-background.png"
+              src="/airbngig-low-resolution-logo-color-on-transparent-background.png"
               alt="airbngig-logo"
             />
           </div>

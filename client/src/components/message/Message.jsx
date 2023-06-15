@@ -23,7 +23,7 @@ export default function Message({ message, own }) {
           <div className="imgSender">
             <img
               className="messageImg"
-              src={message?.sender?.profile_image || "../public/avatar.jpg"}
+              src={message?.sender?.profile_image || "/avatar.jpg"}
               alt=""
             />
             <h4 className="messageSender">{message?.sender?.userName}</h4>

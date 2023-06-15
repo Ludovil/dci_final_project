@@ -11,7 +11,7 @@ function Contact() {
       contactMessage: e.target.message.value,
     };
     axios
-      .post("http://localhost:3000/contact", formData)
+      .post("/contact", formData)
 
       .then((res) => {
         console.log(res);
@@ -31,7 +31,7 @@ function Contact() {
           <div className="image-container">
             <img
               src="
-          ../../../public/guitar.jpg"
+          ..//guitar.jpg"
               alt="guitar_bed"
             />
           </div>

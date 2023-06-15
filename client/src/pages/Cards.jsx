@@ -10,7 +10,7 @@ function Cards() {
         </p>
         <div className="home-logo">
           <img
-            src="../public/airbngig-low-resolution-logo-black-on-transparent-background.png"
+            src="/airbngig-low-resolution-logo-black-on-transparent-background.png"
             alt=""
           />
         </div>
@@ -24,7 +24,7 @@ function Cards() {
         </p>
         <div className="home-logo">
           <img
-            src="../public/airbngig-low-resolution-logo-black-on-transparent-background.png"
+            src="/airbngig-low-resolution-logo-black-on-transparent-background.png"
             alt=""
           />
         </div>
@@ -37,7 +37,7 @@ function Cards() {
         </p>
         <div className="home-logo">
           <img
-            src="../public/airbngig-low-resolution-logo-black-on-transparent-background.png"
+            src="/airbngig-low-resolution-logo-black-on-transparent-background.png"
             alt=""
           />
         </div>

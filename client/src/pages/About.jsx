@@ -12,7 +12,7 @@ function About() {
           </h2>
           <div className="about-sub-container">
             <div className="imageContainer">
-              <img src="../public/about-pic-1.jpg" alt="" />
+              <img src="/about-pic-1.jpg" alt="" />
             </div>
             <div className="textContainer">
               <h3 className="sub-about-title">Comfortable accommodations</h3>
@@ -31,7 +31,7 @@ function About() {
           </div>
           <div className="about-sub-container">
             <div className="imageContainer">
-              <img src="../public/about-pic-2.jpg" alt="" />
+              <img src="/about-pic-2.jpg" alt="" />
             </div>
             <div className="textContainer">
               <h3 className="sub-about-title">Equipment and instruments</h3>

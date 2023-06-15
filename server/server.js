@@ -33,7 +33,7 @@ mongoose
   .catch((err) => console.log(err.message));
 
 // json middleware
-app.use(express.static("public"));
+app.use(express.static("views/dist"));
 app.use(express.json({ limit: "10mb" }));
 app.use(morgan("dev"));
 app.use(
@@ -45,7 +45,7 @@ app.use(
 );
 
 app.get("/", (req, res) => {
-  res.json({ mess: "hello " });
+  res.sendFile("./views/dist/index.html", { root: "." });
 });
 
 // routes

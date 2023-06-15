@@ -2,7 +2,7 @@ function Logoo() {
   return (
     <div>
       <img
-        src="../../public/airbngig-transparent.png"
+        src="/airbngig-transparent.png"
         // width="350vh"
         // alt=""
       />
