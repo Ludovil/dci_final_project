@@ -61,10 +61,8 @@
   font-size: 18px;
   opacity: 0;
   transform: translateY(-50px);
-
   transition: opacity 1s ease,
     transform 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-
   border: 1px solid #ccc;
 }
 
@@ -117,6 +115,7 @@
   width: 70%;
   margin: 0 auto;
   border-radius: 5px;
+  background-color: #fdfdfd;
   cursor: pointer;
 }
 
@@ -128,6 +127,7 @@
   background-color: #fdfdfd;
   width: 100%;
   padding: 10px;
+  text-align: left;
 }
 
 @media (max-width: 1024px) {
