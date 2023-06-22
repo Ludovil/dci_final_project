@@ -4,7 +4,9 @@
   justify-content: center;
   align-items: center;
   align-content: center;
-  background-image: url("../public/Rock.jpg");
+
+  background-image: url('../public/Rock.jpg');
+
   background-repeat: no-repeat;
   background-size: cover;
   text-align: center;
@@ -44,8 +46,9 @@
   max-width: 600px;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 48px;
-  transition: opacity 1s ease,
-    transform 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+  transition: opacity 1s ease, transform 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
   color: #fff;
   text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
   font-weight: bold;
@@ -61,8 +64,9 @@
   font-size: 18px;
   opacity: 0;
   transform: translateY(-50px);
-  transition: opacity 1s ease,
-    transform 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+  transition: opacity 1s ease, transform 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
   border: 1px solid #ccc;
 }
 
@@ -152,4 +156,6 @@
   .supraSearchBoxContainer {
     width: 100%;
   }
+
 }
+

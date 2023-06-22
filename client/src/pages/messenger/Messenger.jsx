@@ -1,10 +1,12 @@
-import React, { useContext, useEffect, useState, useRef } from "react";
-import { MyContext } from "../../context/context.js";
-import { io } from "socket.io-client";
-import axios from "axios";
-import { Link, useParams } from "react-router-dom";
-import Message from "../../components/message/Message.jsx";
-import "./messenger.css";
+
+import React, { useContext, useEffect, useState, useRef } from 'react';
+import { MyContext } from '../../context/context.js';
+import { io } from 'socket.io-client';
+import axios from 'axios';
+import { Link, useParams } from 'react-router-dom';
+import Message from '../../components/message/Message.jsx';
+import './messenger.css';
+
 
 const socket = io("http://localhost:3000", { autoConnect: false });
 
@@ -14,14 +16,15 @@ export default function Messenger() {
   const { id } = useParams();
   const messageRef = useRef();
 
+
   useEffect(() => {
     socket.connect();
 
-    socket.on("connect", () => {
-      socket.emit("joinConversation", id);
+    socket.on('connect', () => {
+      socket.emit('joinConversation', id);
     });
 
-    socket.on("getMessage", (data) => {
+    socket.on('getMessage', (data) => {
       setMessages((prevMessages) => [...prevMessages, data]);
     });
 
@@ -37,7 +40,7 @@ export default function Messenger() {
         setMessages(res.data);
       })
       .catch((error) => {
-        console.error("Error fetching messages:", error);
+        console.error('Error fetching messages:', error);
       });
   }, [id]);
 
@@ -45,7 +48,7 @@ export default function Messenger() {
     e.preventDefault();
     const text = messageRef.current.value.trim();
 
-    if (text === "") {
+    if (text === '') {
       return;
     }
 
@@ -55,15 +58,18 @@ export default function Messenger() {
       conversationId: id,
     };
 
-    socket.emit("sendMessage", id, message);
-    messageRef.current.value = "";
+    socket.emit('sendMessage', id, message);
+    messageRef.current.value = '';
   };
+
 
   return (
     <div className="messenger">
       <div className="chatMenu">
         <Link to="/allconversations" className="backButton">
-          ◄
+
+        ◄
+
         </Link>
         <h1 className="chat">Chat</h1>
         <div className="messages-messenger">
@@ -81,7 +87,9 @@ export default function Messenger() {
             placeholder="Your text goes here..."
           />
           <button className="send-messenger" type="submit">
-            &#9658;
+
+          &#9658;
+
           </button>
         </form>
       </div>

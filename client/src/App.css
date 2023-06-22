@@ -94,6 +94,7 @@ small,
   height: 86.55vh;
   z-index: 1;
 }
+
 .map-container {
   z-index: -1;
 }
@@ -105,3 +106,11 @@ li.starListItem {
 .yellowStar {
   fill: yellow;
 }
+
+.conversations {
+  min-height: 90.7vh;
+}
+.messenger {
+  min-height: 60vh;
+}
+

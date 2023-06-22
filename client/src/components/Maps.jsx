@@ -23,7 +23,9 @@ const ResetCenterView = ({ position }) => {
 
 const redIcon = L.icon({
   iconUrl:
-    "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png",
+
+    'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
+
   iconSize: [25, 41],
   iconAnchor: [12, 41],
   popupAnchor: [1, -34],
@@ -31,7 +33,9 @@ const redIcon = L.icon({
 
 const blueIcon = L.icon({
   iconUrl:
-    "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-blue.png",
+
+    'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-blue.png',
+
   iconSize: [25, 41],
   iconAnchor: [12, 41],
   popupAnchor: [1, -34],

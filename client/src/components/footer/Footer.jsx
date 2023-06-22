@@ -211,7 +211,9 @@ function Footer() {
           {renderFooterContent()}
         </div>
         <div>
-          <button className="buttonNegative" onClick={toggleFooter}>
+
+          <button className='buttonNegative' onClick={toggleFooter}>
+
             {buttonText}
           </button>
         </div>

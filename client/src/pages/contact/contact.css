@@ -17,14 +17,18 @@
 }
 .contact-para {
   text-align: justify;
+
   /* because we don't see the footer on the contact page set to 90% */
   width: 90%;
+
 }
 
 .image-container img {
   display: block;
+
   /* because we don't see the footer on the contact page set to 90% */
   max-width: 90%;
+
   max-height: 100%;
   object-fit: cover;
 }
@@ -84,6 +88,7 @@
 }
 /* ---------------------------------- */
 
+
 @media (max-width: 1500px) {
   .contact-page {
     padding: 0 10%;
@@ -131,6 +136,7 @@
     width: 80%;
   }
 
+
   .contact-textarea {
     flex: 1;
     margin: 5px 0;
@@ -170,6 +176,7 @@
   }
   .contact-textarea {
     min-width: 100px;
+
   }
 }
 /* ---------------------------------- */
@@ -187,5 +194,26 @@
 @media (max-width: 320px) {
   .contact-page {
     min-width: 100px;
+
+  }
+}
+/* ---------------------------------- */
+@media (max-width: 360px) {
+  .contact-page {
+    min-width: 300px;
+  }
+  .form-container,
+  .contact-form {
+    max-width: 300px;
+  }
+}
+/* ---------------------------------- */
+
+@media (max-width: 320px) {
+  .contact-page {
+    min-width: 100px;
+  }
+  .contact-form {
+    min-width: 100%;
   }
 }

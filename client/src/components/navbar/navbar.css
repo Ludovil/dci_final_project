@@ -4,19 +4,20 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: 12px;
+  padding: 12px 0;
   background-color: black;
 }
 
 nav ul {
   margin: 0;
-  padding: 20px;
-  width: 80%;
+  flex: 1;
 }
 
 nav ul li {
   list-style-type: none;
   margin: 0;
+
+
 }
 
 .navlink {
@@ -25,8 +26,10 @@ nav ul li {
   font-size: 1.1rem;
   font-weight: 600;
   color: white;
+
   /* transition: 0.3s ease-in-out; */
   padding: 5px;
+
 }
 
 .navlink:hover {
@@ -36,8 +39,10 @@ nav ul li {
   background-color: rgb(12, 11, 11);
   border-radius: 16px;
 }
+
 /* .navlink::after {
   content: "";
+
   width: 0;
   height: 2px;
   background: #fa4353;
@@ -46,8 +51,9 @@ nav ul li {
   left: 0;
   transition: width 0.3s ease-in-out;
 }
+
 .navlink:hover::after {
-  content: "";
+  content: '';
   width: 100%;
   height: 2px;
   background: #fa4353;
@@ -62,13 +68,15 @@ nav ul li {
 
 .profile-link.active .submenu {
   display: flex;
+
   opacity: 1; /* Show submenu with smooth opacity transition */
+
 }
 
-/* postbox / logout */
 .submenu {
   position: absolute;
   top: 120%;
+
   border: 1px solid white;
   /* left: 10px; */
   right: 0px;
@@ -90,33 +98,38 @@ nav ul li {
 .profile-link.active .submenu {
   display: flex;
   opacity: 1; /* Show submenu with smooth opacity transition */
+
 }
 .submenu .navlink {
   color: white;
-  margin-top: 25px;
-  margin-top: 0px;
+  margin: 10px 20px 0 0;
 }
+
 .submenu .navlink:hover {
   color: #fa4353;
 }
+
 .allconversations {
   display: inline-block;
 }
+
 .logout {
   display: inline-block;
+
+
 
   color: white;
   text-decoration: none;
 }
 
-/* Add this CSS for the hamburger menu icon */
 .menu-icon {
-  display: none; /* Hide by default */
+  display: none;
   color: white;
   font-size: 1.5rem;
   cursor: pointer;
   margin-right: 10px;
 }
+
 
 /* Add this CSS for the responsive menu */
 .menu li {
@@ -124,24 +137,21 @@ nav ul li {
 }
 
 /* Add this CSS for the responsive menu */
+
 .menu {
   display: flex;
   justify-content: space-around;
-  /* margin: 0; */
-  /* padding: 20px; */
   list-style-type: none;
-  /* margin-top: 32px; */
 }
 
 .menu li {
-  /* margin: 0 10px; */
   margin: 0;
 }
 
-/* Mobile view  */
 #mobile {
   display: none;
 }
+
 #mobile i {
   color: white;
   padding-right: 20px;
@@ -150,7 +160,6 @@ nav ul li {
 }
 
 @media (max-width: 930px) {
-  /* Show the mobile icons and hide the rest of the links */
   nav ul {
     display: flex;
     flex-direction: column;
@@ -160,16 +169,17 @@ nav ul li {
     top: 30px;
     right: -300px;
     width: 200px;
-    /* height: 40vh; */
     height: 230px;
     background-color: black;
     transition: 0.3s ease-in-out;
   }
 
   .show {
+    position: absolute;
     right: 0px;
     top: 55px;
     padding: 0;
+    border-radius: 5px;
   }
 
   .navlink {
@@ -184,10 +194,16 @@ nav ul li {
     display: block;
   }
 
+  #mobile:hover .fas {
+    display: block;
+  }
+
   .submenu {
     position: absolute;
+
     top: 38px;
     right: 0;
+
     flex-direction: column;
     height: 140px;
     width: 200px;
