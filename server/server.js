@@ -50,7 +50,6 @@ app.get("/", (req, res) => {
 
 // routes
 app.use("/users", usersRoute);
-// test merging with main
 app.use("/instruments", InstrumentsRoute);
 app.use("/conversations", conversationRoute);
 app.use("/messages", messagesRoute);
