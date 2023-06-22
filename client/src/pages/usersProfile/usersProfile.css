@@ -1,0 +1,166 @@
+.container {
+  background-color: white;
+  border-radius: 10px;
+  width: 50%;
+  margin: 15px auto;
+  padding: 15px;
+  min-width: 350px;
+  border: 1px solid lightgray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.containerImageProfile {
+  text-align: center;
+}
+
+.imageWrapper {
+  position: relative;
+  display: inline-block;
+  border: 10px solid lightgrey;
+  border-radius: 5px;
+}
+
+.profileImage {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 400px;
+}
+
+.userName {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 8px;
+  font-size: 36px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.containerPersonalInformation {
+  padding: 20px 0;
+}
+
+.informationDatabase {
+  padding: 0 15px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.interestList {
+  padding-left: 5px;
+}
+
+.interestList > li {
+  list-style-type: none;
+  margin: 2px;
+  padding: 6px;
+  border-radius: 5px;
+  /* display: flex; */
+}
+
+.card {
+  padding: 22px 30px;
+  border-radius: 5px;
+  line-height: 1.8;
+  display: flex;
+  flex-direction: column;
+}
+
+#card {
+  display: none;
+}
+
+#card:checked ~ .content {
+  display: block;
+}
+
+#card:checked ~ label {
+  display: none;
+}
+
+.content {
+  display: none;
+}
+
+label {
+  display: inline-block;
+  cursor: pointer;
+  padding: 3px 13px;
+  border-radius: 5px;
+  margin-top: 12px;
+}
+
+.labelRead {
+  border: 1px solid #333;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin: 5px auto;
+  font-size: 13.3333px;
+  line-height: 13.3333px;
+  font-family: arial;
+}
+
+.labelRead:hover {
+  background-color: #333;
+  border: 1px solid white;
+  color: white;
+}
+
+.button {
+  display: block;
+  border: 1px solid #333;
+  border-radius: 5px;
+  background-color: white;
+  margin: 0 auto;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #333;
+  border: 1px solid white;
+  color: white;
+}
+
+.button:active {
+  background-color: #333;
+}
+
+/* ------------------------------------ */
+@media (max-width: 924px) {
+  .container {
+    width: 80%;
+  }
+}
+
+@media (max-width: 768px) {
+  .profileImage {
+    max-height: 300px;
+  }
+}
+
+@media (max-width: 559px) {
+  .container {
+    width: 90%;
+  }
+}
+
+@media (max-width: 480px) {
+  .profileImage {
+    max-height: 200px;
+  }
+}
+@media (max-width: 366px) {
+  .container {
+    margin: 0 auto;
+    width: 100%;
+  }
+
+}
+

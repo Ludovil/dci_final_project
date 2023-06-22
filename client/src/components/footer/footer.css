@@ -1,0 +1,196 @@
+.megaContainer {
+  z-index: 99;
+  min-width: 300px;
+}
+
+.footer {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-around;
+  margin: 0;
+  padding: 5px;
+  background-color: #333;
+  color: white;
+}
+.footer * {
+  font-size: 0.9em;
+}
+
+.footer > p {
+  margin: 0;
+  min-width: fit-content;
+}
+
+.undisplayedText {
+  padding-top: 0;
+}
+
+li {
+  list-style-type: none;
+}
+
+.footerSecondary {
+  display: flex;
+  justify-content: space-between;
+  align-self: center;
+  width: 80%;
+}
+
+.footerSecondary p {
+  margin: 0;
+}
+
+/* undisplayed list */
+.undisplayedListFooter {
+  display: flex;
+  flex: 1;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.undisplayedListFooter li {
+  padding: 0 6px;
+  list-style-type: none;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+}
+
+.icon a {
+  margin: 0;
+  line-height: 0;
+}
+
+.iconItems {
+  display: flex;
+  justify-content: center;
+}
+
+.noIconItems {
+  display: flex;
+  justify-content: space-between;
+  width: 250px;
+}
+
+.noIconItems > li {
+  padding: 0;
+}
+
+/* displayed list */
+.displayedListFooter {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  padding: 0 1em;
+}
+
+.displayedListFooterItem {
+  font-weight: bold;
+  margin-right: 20px;
+}
+
+.displayedListFooter {
+  font-size: 1rem;
+}
+
+.displayedSubListFooter {
+  font-weight: normal;
+}
+
+.displayedSubListFooter li {
+  padding-left: 19px;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.footerSecondary button {
+  margin: 0;
+}
+
+.buttonNegative {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: white;
+  border: 1px solid #333;
+  border-radius: 5px;
+  margin: 5px auto;
+  width: 150px;
+  cursor: pointer;
+}
+
+.buttonNegative:hover {
+  background-color: #333;
+  border: 1px solid white;
+  color: white;
+}
+
+.buttonNegative:active {
+  background-color: #333;
+}
+
+.listFooter {
+  height: 500px;
+}
+
+/* UNDISPLAYED */
+@media (max-width: 695px) {
+  .noIconItems {
+    display: none;
+  }
+}
+
+@media (max-width: 530px) {
+  .undisplayedListFooter {
+    justify-content: flex-start;
+  }
+
+  .displayedText {
+    display: none;
+  }
+}
+
+@media (max-width: 415px) {
+  .footer {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footerSecondary {
+    order: 2;
+  }
+}
+
+.undisplayedListFooter {
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+/* DISPLAYED */
+@media (max-width: 950px) {
+  .undisplayedText {
+    display: none;
+  }
+}
+
+@media (max-width: 725px) {
+  .displayedSubListFooter li {
+    display: none;
+  }
+}
+
+@media (max-width: 570px) {
+  .displayedListFooter {
+    flex-direction: column;
+    min-width: 100px;
+  }
+}

@@ -1,0 +1,228 @@
+nav {
+  position: relative;
+  z-index: 99;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  background-color: black;
+}
+
+nav ul {
+  margin: 0;
+  flex: 1;
+}
+
+nav ul li {
+  list-style-type: none;
+  margin: 0;
+
+
+}
+
+.navlink {
+  position: relative;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: white;
+
+  /* transition: 0.3s ease-in-out; */
+  padding: 5px;
+
+}
+
+.navlink:hover {
+  color: #fa4353;
+  cursor: pointer;
+  text-decoration: none;
+  background-color: rgb(12, 11, 11);
+  border-radius: 16px;
+}
+
+/* .navlink::after {
+  content: "";
+
+  width: 0;
+  height: 2px;
+  background: #fa4353;
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  transition: width 0.3s ease-in-out;
+}
+
+.navlink:hover::after {
+  content: '';
+  width: 100%;
+  height: 2px;
+  background: #fa4353;
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+} */
+
+.profile-link {
+  position: relative;
+}
+
+.profile-link.active .submenu {
+  display: flex;
+
+  opacity: 1; /* Show submenu with smooth opacity transition */
+
+}
+
+.submenu {
+  position: absolute;
+  top: 120%;
+
+  border: 1px solid white;
+  /* left: 10px; */
+  right: 0px;
+  flex-direction: column;
+  display: none;
+  background-color: black;
+  width: 200px;
+  z-index: 1;
+  opacity: 0; /* Initially hidden */
+  transition: opacity 0.9s ease-in-out; /* Add transition for opacity */
+  margin: auto;
+  box-shadow: 2.8px 2.8px 2.2px rgba(0, 0, 0, 0.02),
+    6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
+    12.5px 12.5px 10px rgba(0, 0, 0, 0.035),
+    22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),
+    41.8px 41.8px 33.4px rgba(0, 0, 0, 0.05),
+    100px 100px 80px rgba(0, 0, 0, 0.07);
+}
+.profile-link.active .submenu {
+  display: flex;
+  opacity: 1; /* Show submenu with smooth opacity transition */
+
+}
+.submenu .navlink {
+  color: white;
+  margin: 10px 20px 0 0;
+}
+
+.submenu .navlink:hover {
+  color: #fa4353;
+}
+
+.allconversations {
+  display: inline-block;
+}
+
+.logout {
+  display: inline-block;
+
+
+
+  color: white;
+  text-decoration: none;
+}
+
+.menu-icon {
+  display: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+
+/* Add this CSS for the responsive menu */
+.menu li {
+  margin: 0 10px;
+}
+
+/* Add this CSS for the responsive menu */
+
+.menu {
+  display: flex;
+  justify-content: space-around;
+  list-style-type: none;
+}
+
+.menu li {
+  margin: 0;
+}
+
+#mobile {
+  display: none;
+}
+
+#mobile i {
+  color: white;
+  padding-right: 20px;
+  cursor: pointer;
+  font-size: 24px;
+}
+
+@media (max-width: 930px) {
+  nav ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-end;
+    position: fixed;
+    top: 30px;
+    right: -300px;
+    width: 200px;
+    height: 230px;
+    background-color: black;
+    transition: 0.3s ease-in-out;
+  }
+
+  .show {
+    position: absolute;
+    right: 0px;
+    top: 55px;
+    padding: 0;
+    border-radius: 5px;
+  }
+
+  .navlink {
+    margin: 24px;
+  }
+
+  nav ul li {
+    margin-bottom: 25px;
+  }
+
+  #mobile {
+    display: block;
+  }
+
+  #mobile:hover .fas {
+    display: block;
+  }
+
+  .submenu {
+    position: absolute;
+
+    top: 38px;
+    right: 0;
+
+    flex-direction: column;
+    height: 140px;
+    width: 200px;
+    padding: 0 20px;
+    background-color: black;
+  }
+
+  .submenu li {
+    margin-top: 10px;
+  }
+
+  .submenu .navlink {
+    margin: 0;
+    color: white;
+  }
+
+  .logout {
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+  }
+}
