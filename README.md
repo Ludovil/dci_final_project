@@ -22,11 +22,11 @@ This platform uses geolocation.
 
 **How it works ?**
 
-when a user provide a specific adress to the website, a bar or a venue for example, he can see all the other users accounts in the area of this location.
-
-From there, he can click on a specific user and visit his profile.
-
-When he is on his profile, if he wants, he can then directly contact this user via a chat application.
+1. When a user provides a specific address to the website, such as a bar or a venue, the platform uses geolocation to display all the other user accounts in the area of that location.
+2. The user can browse through the list of available musicians in the area and click on a specific user to visit their profile.
+3. On the user's profile, the visitor can view detailed information about the musician, including their location, available sleeping arrangements, provided gear, and optionally, their music genre.
+4. If the visitor is interested in collaborating or connecting with the musician, they have the option to directly contact the user through a built-in chat application.
+5. The chat application facilitates communication and allows users to discuss potential collaborations, exchange further details, or coordinate their musical endeavors.
 
 ## Installation<a name="installation"></a>
 
